@@ -16,7 +16,8 @@ class CreateCasinoProvidersTable extends Migration
         Schema::create('casino_providers', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('hostname')->nullable();
+            $table->string('slug')->unique();
+            $table->string('host')->nullable();
             $table->timestamps();
         });
     }

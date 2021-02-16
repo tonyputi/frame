@@ -14,49 +14,58 @@ class CasinoProvidersSeeder extends Seeder
      */
     public function run()
     {
-        $providers = [
-            'authentic',
-            'ganapati',
-            'yggdrasil',
-            'netentse',
-            'amatic',
-            'greentube',
-            'genii',
-            'multishot',
-            'nektan',
-            'playtech',
-            'nyx',
-            'evolution',
-            'nolimit',
-            'isoftbet',
-            'quickspin',
-            'playngo',
-            'thunderkick',
-            'pragmatic',
-            'spigo',
-            'oryx',
-            'stakelogic',
-            'pariplay',
-            'egt',
-            'leander',
-            'igt',
-            'edict',
-            'bsg',
-            'ggi_quickfire',
-            'netentit',
-            'endorphina',
-            'redtiger',
-            'wazdan',
-            'skywind',
-            'tomhorn',
-            'beefee',
-            'portomaso'
-        ];
+        //$providers = [
+        //    'authentic',
+        //    'ganapati',
+        //    'yggdrasil',
+        //    'netentse',
+        //    'amatic',
+        //    'greentube',
+        //    'genii',
+        //    'multishot',
+        //    'nektan',
+        //    'playtech',
+        //    'nyx',
+        //    'evolution',
+        //    'nolimit',
+        //    'isoftbet',
+        //    'quickspin',
+        //    'playngo',
+        //    'thunderkick',
+        //    'pragmatic',
+        //    'spigo',
+        //    'oryx',
+        //    'stakelogic',
+        //    'pariplay',
+        //    'egt',
+        //    'leander',
+        //    'igt',
+        //    'edict',
+        //    'bsg',
+        //    'ggi_quickfire',
+        //    'netentit',
+        //    'endorphina',
+        //    'redtiger',
+        //    'wazdan',
+        //    'skywind',
+        //    'tomhorn',
+        //    'beefee',
+        //    'portomaso'
+        //];
 
-        foreach($providers as $provider) {
-            CasinoProvider::create([
-                'name' => $provider,
-            ]);
-        }
+        CasinoProvider::create([
+            'name' => 'Play\'N Go',
+            'slug' => 'playngo'
+        ]);
+
+        CasinoProvider::create([
+            'name' => 'Pragmatic',
+            'slug' => 'pragmatic'
+        ]);
+
+        CasinoProvider::create([
+            'name' => 'Netent IT',
+            'slug' => 'netentit'
+        ]);
     }
 }

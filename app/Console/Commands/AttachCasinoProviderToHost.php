@@ -52,10 +52,10 @@ class AttachCasinoProviderToHost extends Command
 
         $collection->each(function($resource) use($hostname) {
             if($this->option('detach')) {
-                $resource->hostname = NULL;
+                $resource->host = NULL;
                 $this->info("<<< Stop redirecting {$resource->name} to {$hostname}");
             } else {
-                $resource->hostname = $hostname;
+                $resource->host = $hostname;
                 $this->info(">>> Start redirecting {$resource->name} to {$hostname}");
             }
 

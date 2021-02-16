@@ -5,21 +5,21 @@ namespace App\Console\Commands;
 use App\Models\CasinoProvider;
 use Illuminate\Console\Command;
 
-class ShowCasinoProviders extends Command
+class ShowCasinoProvidersStatus extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'casino:show';
+    protected $signature = 'casino:status';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Show casino providers status';
 
     /**
      * Create a new command instance.
@@ -38,16 +38,16 @@ class ShowCasinoProviders extends Command
      */
     public function handle()
     {
-        $collection = CasinoProvider::all(['id', 'name', 'hostname']);
+        $collection = CasinoProvider::all(['id', 'name', 'slug', 'host']);
 
-        // $this->table(
-        //     ['ID', 'Name', 'Hostname'],
-        //     $collection->toArray()
-        // );
+         $this->table(
+             ['ID', 'Name', 'Slug', 'Host'],
+             $collection->toArray()
+         );
 
-        file_put_contents('/tmp/nginx.reload', $this->showAsNginxConfig($collection));
+        // file_put_contents('/tmp/nginx.reload', $this->showAsNginxConfig($collection));
 
-        $this->info($this->showAsNginxConfig($collection));
+        // $this->info($this->showAsNginxConfig($collection));
     }
 
     protected function showAsNginxConfig($collection)

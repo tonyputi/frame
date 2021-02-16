@@ -10,12 +10,12 @@ class CasinoProvider extends Model
     use HasFactory;
 
     /**
-     * Set hostname and make sure that is stored as lower string
+     * Set host and make sure that is stored as lower string
      *
      * @param $value
      */
-    public function setHostnameAttribute($value)
+    public function setHostAttribute($value)
     {
-        $this->attributes['hostname'] = strtolower($value);
+        $this->attributes['host'] = strtolower($value);
     }
 }
