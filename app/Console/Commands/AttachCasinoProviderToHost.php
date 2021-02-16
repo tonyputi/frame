@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Collection;
 use App\Models\CasinoProvider;
 use Illuminate\Console\Command;
 
@@ -13,9 +13,9 @@ class AttachCasinoProviderToHost extends Command
      *
      * @var string
      */
-    protected $signature = 'casino:attach 
-        {hostname : The hostname to redirect to casino provider requests. ie vs1234.videoslots.com} 
-        {--p|provider=* : Specify the casino provider by id or name}
+    protected $signature = 'casino:attach
+        {hostname : The hostname to redirect to casino provider requests. ie vs1234.videoslots.com}
+        {--p|provider= : Specify the casino provider by id or name}
         {--d|detach : When specified the hostname gonna be detached from casino provider}';
 
     /**
@@ -23,7 +23,7 @@ class AttachCasinoProviderToHost extends Command
      *
      * @var string
      */
-    protected $description = 'Redirect casino provider to hostname';
+    protected $description = 'Redirect casino provider to specified hostname';
 
     /**
      * Create a new command instance.
@@ -38,14 +38,14 @@ class AttachCasinoProviderToHost extends Command
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
         $hostname = $this->argument('hostname');
 
-        if($this->hasOption('provider')) {
-            $collection = $this->getProvidersByOption($this->option('provider'));
+        if($this->option('provider')) {
+            $collection = $this->getProvidersByName($this->option('provider'));
         } else {
             $collection = $this->getProvidersByChoice();
         }
@@ -58,27 +58,25 @@ class AttachCasinoProviderToHost extends Command
                 $resource->hostname = $hostname;
                 $this->info(">>> Start redirecting {$resource->name} to {$hostname}");
             }
-            
+
             $resource->save();
         });
     }
 
+
+    /**
+     * Get providers by choice
+     *
+     * @return Collection
+     */
     protected function getProvidersByChoice()
     {
         $choices = CasinoProvider::orderBy('id')
             ->get()
-            ->mapWithKeys(fn($resource) => [$resource->id => $resource->name,]);
+            ->mapWithKeys(fn($resource) => [$resource->id => $resource->name]);
 
         $choice = $this->anticipate('Which provider?', $choices);
-
-        // $choice = $this->choice(
-        //     'Choose the casino provider',
-        //     $choices->toArray()
-        // );
-
-        // $provider_id = array_search($choice, $choices->toArray());
-
-        $collection = CasinoProvider::where('name', 'like', "%{$choice}%")->get();
+        $collection = $this->getProvidersByName($choice);
 
         if(!$collection->count()) {
             $this->error("No match found!");
@@ -89,14 +87,13 @@ class AttachCasinoProviderToHost extends Command
     }
 
     /**
-     * get providers by option
+     * Get providers by name
+     *
+     * @param string $name
+     * @return Collection
      */
-    protected function getProvidersByOption(array $providers)
+    protected function getProvidersByName(string $name = null)
     {
-        return CasinoProvider::where(function($builder) use($providers) {
-            foreach($providers as $provider) {
-                $builder->orWhere('name', 'like', "%{$provider}%");
-            }
-        })->get();
+        return CasinoProvider::where('name', 'like', "{$name}%")->get();
     }
 }
