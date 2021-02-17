@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\GameProvider;
 use Illuminate\Database\Seeder;
 
-class GameProvidersSeeder extends Seeder
+class GameProviderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
