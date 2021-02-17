@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     })->name('dashboard');
 
     Route::get('/reservation', [GameProviderQueuesController::class, 'index'])->name('reservations.index');
-    Route::get('/game-providers', [GameProviderController::class, 'index'])->name('game_provider.index');
+    Route::get('/game-providers', [GameProviderController::class, 'index'])->name('game_providers.index');
     Route::get('/game-provider/{id}', [GameProviderController::class, 'show'])->name('game_provider.show');
     Route::post('/game-provider/create', [GameProviderController::class, 'store'])->name('game_provider.store');
     Route::put('/game-provider/{id}/update', [GameProviderController::class, 'update'])->name('game_provider.update');
