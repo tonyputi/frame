@@ -54,6 +54,13 @@
                 <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" />
                 <jet-input-error :message="form.errors.email" class="mt-2" />
             </div>
+
+            <!-- Host -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="host" value="Host" />
+                <jet-input id="host" type="text" class="mt-1 block w-full" v-model="form.host" />
+                <jet-input-error :message="form.errors.host" class="mt-2" />
+            </div>
         </template>
 
         <template #actions>

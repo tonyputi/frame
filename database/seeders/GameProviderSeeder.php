@@ -55,17 +55,22 @@ class GameProviderSeeder extends Seeder
 
         GameProvider::create([
             'name' => 'Play\'N Go',
-            'location_match' => 'playngo'
+            'location_match' => '/diamondbet/soap/playngo.php'
         ]);
 
         GameProvider::create([
             'name' => 'Pragmatic',
-            'location_match' => 'pragmatic'
+            'location_match' => '/diamondbet/soap/pragmatic.php'
         ]);
 
         GameProvider::create([
             'name' => 'Netent IT',
-            'location_match' => 'netentit'
+            'location_match' => '/diamondbet/soap/netentit.php'
+        ]);
+
+        GameProvider::create([
+            'name' => 'Evolution',
+            'location_match' => '/diamondbet/soap/evolution.php'
         ]);
     }
 }

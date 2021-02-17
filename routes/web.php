@@ -30,6 +30,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     })->name('dashboard');
 
     Route::get('/reservation', [\App\Http\Controllers\GameProviderQueuesController::class, 'index'])->name('reservations');
-    Route::get('/casino-providers', [\App\Http\Controllers\CasinoProvidersController::class, 'index'])->name('casino_providers');
+    Route::get('/game-providers', [\App\Http\Controllers\GameProvidersController::class, 'index'])->name('game_providers');
 });
 

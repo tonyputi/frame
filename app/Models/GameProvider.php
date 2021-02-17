@@ -10,12 +10,18 @@ class GameProvider extends Model
     use HasFactory;
 
     /**
-     * Set host and make sure that is stored as lower string
-     *
-     * @param $value
+     * Get the game provider queues for the application.
      */
-    public function setHostAttribute($value)
+    public function gameProviderQueues()
     {
-        $this->attributes['host'] = strtolower($value);
+        return $this->hasMany(GameProviderQueue::class);
+    }
+
+    /**
+     * Get the game provider queues for the application.
+     */
+    public function gameActiveProviderQueue()
+    {
+        return $this->hasOne(GameProviderQueue::class)->where('is_active', true)->withDefault();
     }
 }

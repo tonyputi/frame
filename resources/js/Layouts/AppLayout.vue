@@ -9,15 +9,15 @@
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
-                            <img src="images/logo.png">
+                            <img src="/images/logo.png">
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('casino_providers')" :active="route().current('casino_providers')">
-                                    Casino Providers
+                                <jet-nav-link :href="route('game_providers')" :active="route().current('game_providers')">
+                                    Game Providers
                                 </jet-nav-link>
                                 <jet-nav-link :href="route('reservations')" :active="route().current('reservations')">
                                     Reservations
