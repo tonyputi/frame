@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEnviromentsTable extends Migration
+class CreateEnvironmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEnviromentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('enviroments', function (Blueprint $table) {
+        Schema::create('environments', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->timestamps();
