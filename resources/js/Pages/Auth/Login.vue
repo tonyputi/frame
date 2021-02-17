@@ -38,6 +38,12 @@
                 </jet-button>
             </div>
         </form>
+
+        <div class="flex items-center justify-end mt-4">
+            <inertia-link :href="route('register')" class="text-sm text-gray-500 underline">
+                Register
+            </inertia-link>
+        </div>
     </jet-authentication-card>
 </template>
 
