@@ -22,6 +22,6 @@ class GameProvider extends Model
      */
     public function gameActiveProviderQueue()
     {
-        return $this->hasOne(GameProviderQueue::class)->where('is_active', true);
+        return $this->hasOne(GameProviderQueue::class)->where('is_active', true)->withDefault();
     }
 }

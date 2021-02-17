@@ -41,12 +41,24 @@ class ShowGameProvidersStatus extends Command
         $collection = GameProvider::with('gameActiveProviderQueue')
             ->get(['id', 'name', 'location_modifier', 'location_match']);
 
-        dd($collection);
+        $collection = GameProvider::with('gameActiveProviderQueue')
+            ->get()
+            ->map(function($resource) {
+                return [
+                    'id' => $resource->id,
+                    'name' => $resource->name,
+                    'location_modifier' => $resource->location_modifier,
+                    'location_match' => $resource->location_match,
+                    'host' => $resource->gameActiveProviderQueue->host,
+                    'started_at' => $resource->gameActiveProviderQueue->started_at,
+                    'ended_at' => $resource->gameActiveProviderQueue->ended_at,
+                ];
+            });
 
-         $this->table(
-             ['ID', 'Name', 'Modifier', 'Match', 'Host'],
-             $collection->toArray()
-         );
+        $this->table(
+           ['ID', 'Name', 'Modifier', 'Match', 'Host', 'Started at', 'Ended at'],
+           $collection->toArray()
+        );
 
         // file_put_contents('/tmp/nginx.reload', $this->showAsNginxConfig($collection));
 
