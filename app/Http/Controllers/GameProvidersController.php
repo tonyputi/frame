@@ -7,10 +7,10 @@ use App\Models\GameProvider;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class CasinoProvidersController extends Controller
+class GameProvidersController extends Controller
 {
 
-    const CASINO_PROVIDERS_LIMIT = 20;
+    const CASINO_PROVIDERS_LIMIT = 24;
 
     /**
      * @param Request $request
@@ -18,14 +18,13 @@ class CasinoProvidersController extends Controller
      */
     public function index(Request $request)
     {
-        $casino_providers = GameProvider::query()
+        $game_providers = GameProvider::query()
             ->when($request->search, fn($query) => $query->where('name', 'like', "%{$request->search}%"))
-            ->limit(static::CASINO_PROVIDERS_LIMIT)
-            ->get();
+            ->paginate(static::CASINO_PROVIDERS_LIMIT);
 
-
-        return Inertia::render('CasinoProviders', [
-           'casinoProviders' => $casino_providers
+        return Inertia::render('GameProviders', [
+            'gameProviders' => $game_providers->items(),
+            'meta' => $game_providers
         ]);
     }
 }
