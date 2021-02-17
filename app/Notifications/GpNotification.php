@@ -11,14 +11,20 @@ class GpNotification extends Notification
 {
     use Queueable;
 
+    private $user;
+    private $provider;
+
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param $user
+     * @param $provider
      */
-    public function __construct()
+    public function __construct($user, $provider)
     {
         //
+        $this->user = $user;
+        $this->provider = $provider;
     }
 
     /**
@@ -42,8 +48,8 @@ class GpNotification extends Notification
     {
         return (new SlackMessage)
             ->from('Ghost', ':ghost:')
-            ->to(env('GP_CHANNEL'))
-            ->content('Provider is taken');
+            ->to(env('SLACK_CHANNEL', '#testing'))
+            ->content("Provider {$this->provider} is taken by user {$this->user}");
     }
 
     /**

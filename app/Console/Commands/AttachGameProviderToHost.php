@@ -2,28 +2,30 @@
 
 namespace App\Console\Commands;
 
+use App\Models\GameProviderQueue;
 use Illuminate\Database\Eloquent\Collection;
-use App\Models\CasinoProvider;
+use App\Models\GameProvider;
 use Illuminate\Console\Command;
+use Illuminate\Support\Carbon;
 
-class AttachCasinoProviderToHost extends Command
+class AttachGameProviderToHost extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'casino:attach
-        {hostname : The hostname to redirect to casino provider requests. ie vs1234.videoslots.com}
-        {--p|provider= : Specify the casino provider by id or name}
-        {--d|detach : When specified the hostname gonna be detached from casino provider}';
+    protected $signature = 'game-providers:attach
+        {hostname : The hostname to redirect to game provider requests. ie vs1234.videoslots.com}
+        {--p|provider= : Specify the game provider by id or name}
+        {--d|detach : When specified the hostname gonna be detached from game provider}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Redirect casino provider to specified hostname';
+    protected $description = 'Redirect game provider to specified hostname';
 
     /**
      * Create a new command instance.
@@ -52,10 +54,21 @@ class AttachCasinoProviderToHost extends Command
 
         $collection->each(function($resource) use($hostname) {
             if($this->option('detach')) {
-                $resource->host = NULL;
+                //$resource->host = NULL;
                 $this->info("<<< Stop redirecting {$resource->name} to {$hostname}");
             } else {
-                $resource->host = $hostname;
+                $queue = new GameProviderQueue([
+                    'environment_id' => 1,
+                    'application_id' => 1,
+                    'game_provider_id' => 1,
+                    'host' => 'filippo.videoslots.com',
+                    'started_at' => Carbon::parse('+1 hour'),
+                    'ended_at' => Carbon::parse('+2 hour'),
+                    'applied_at' => Carbon::parse('+1 hour'),
+                    'is_active' => true,
+                ]);
+
+                $resource->gameProviderQueues()->save($queue);
                 $this->info(">>> Start redirecting {$resource->name} to {$hostname}");
             }
 
@@ -71,7 +84,7 @@ class AttachCasinoProviderToHost extends Command
      */
     protected function getProvidersByChoice()
     {
-        $choices = CasinoProvider::orderBy('id')
+        $choices = GameProvider::orderBy('id')
             ->get()
             ->mapWithKeys(fn($resource) => [$resource->id => $resource->name]);
 
@@ -94,6 +107,6 @@ class AttachCasinoProviderToHost extends Command
      */
     protected function getProvidersByName(string $name = null)
     {
-        return CasinoProvider::where('name', 'like', "{$name}%")->get();
+        return GameProvider::where('name', 'like', "{$name}%")->get();
     }
 }

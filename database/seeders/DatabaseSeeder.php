@@ -13,8 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\Host::factory(10)->create();
-        $this->call(CasinoProvidersSeeder::class);
-        // $this->call(LocationSeeder::class);
+        $this->call(EnvironmentSeeder::class);
+        $this->call(ApplicationSeeder::class);
+        $this->call(GameProviderSeeder::class);
+        $this->call(GameProviderQueueSeeder::class);
     }
 }
