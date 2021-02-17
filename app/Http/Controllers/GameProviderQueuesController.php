@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GameProviderQueue;
+use App\Models\GameProvider;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -16,9 +17,13 @@ class GameProviderQueuesController extends Controller
      */
     public function index(Request $request)
     {
+        $game_providers = GameProvider::all();
+
         $game_provider_queue = GameProviderQueue::orderBy('ended_at', 'desc')->paginate(self::GAME_PROVIDER_QUEUE_LIMIT);
-        return Inertia::render('GameProviderQueue', [
-           'gameProviderQueue' => $game_provider_queue
+        return Inertia::render('Reservations', [
+            'gameProviderQueue' => $game_provider_queue,
+            'casinoProviders' => $game_providers,
+            'casinoProvidersNames' => $game_providers->pluck('name')
         ]);
     }
 
@@ -35,7 +40,7 @@ class GameProviderQueuesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,7 +51,7 @@ class GameProviderQueuesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\GameProviderQueue  $gameProviderQueue
+     * @param \App\Models\GameProviderQueue $gameProviderQueue
      * @return \Illuminate\Http\Response
      */
     public function show(GameProviderQueue $gameProviderQueue)
@@ -57,7 +62,7 @@ class GameProviderQueuesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\GameProviderQueue  $gameProviderQueue
+     * @param \App\Models\GameProviderQueue $gameProviderQueue
      * @return \Illuminate\Http\Response
      */
     public function edit(GameProviderQueue $gameProviderQueue)
@@ -68,8 +73,8 @@ class GameProviderQueuesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\GameProviderQueue  $gameProviderQueue
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\GameProviderQueue $gameProviderQueue
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, GameProviderQueue $gameProviderQueue)
@@ -80,7 +85,7 @@ class GameProviderQueuesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\GameProviderQueue  $gameProviderQueue
+     * @param \App\Models\GameProviderQueue $gameProviderQueue
      * @return \Illuminate\Http\Response
      */
     public function destroy(GameProviderQueue $gameProviderQueue)
