@@ -19,6 +19,9 @@
                                 <jet-nav-link :href="route('casino_providers')" :active="route().current('casino_providers')">
                                     Casino Providers
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('reservations')" :active="route().current('reservations')">
+                                    Reservations
+                                </jet-nav-link>
                             </div>
                         </div>
 
