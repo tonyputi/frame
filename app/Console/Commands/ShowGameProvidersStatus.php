@@ -2,24 +2,24 @@
 
 namespace App\Console\Commands;
 
-use App\Models\CasinoProvider;
+use App\Models\GameProvider;
 use Illuminate\Console\Command;
 
-class ShowCasinoProvidersStatus extends Command
+class ShowGameProvidersStatus extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'casino:status';
+    protected $signature = 'game-providers:status';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Show casino providers status';
+    protected $description = 'Show game providers status';
 
     /**
      * Create a new command instance.
@@ -38,10 +38,10 @@ class ShowCasinoProvidersStatus extends Command
      */
     public function handle()
     {
-        $collection = CasinoProvider::all(['id', 'name', 'slug', 'host']);
+        $collection = GameProvider::all(['id', 'name', 'location_modifier', 'location_match', 'host']);
 
          $this->table(
-             ['ID', 'Name', 'Slug', 'Host'],
+             ['ID', 'Name', 'Modifier', 'Match', 'Host'],
              $collection->toArray()
          );
 
