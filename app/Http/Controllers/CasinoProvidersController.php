@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\CasinoProvider;
+use App\Models\GameProvider;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -18,7 +18,7 @@ class CasinoProvidersController extends Controller
      */
     public function index(Request $request)
     {
-        $casino_providers = CasinoProvider::query()
+        $casino_providers = GameProvider::query()
             ->when($request->search, fn($query) => $query->where('name', 'like', "%{$request->search}%"))
             ->limit(static::CASINO_PROVIDERS_LIMIT)
             ->get();
