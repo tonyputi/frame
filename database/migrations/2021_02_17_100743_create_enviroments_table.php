@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCasinoProvidersTable extends Migration
+class CreateEnviromentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateCasinoProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('casino_providers', function (Blueprint $table) {
+        Schema::create('enviroments', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('location')->unique();
-            // $table->string('host')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateCasinoProvidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('casino_providers');
+        Schema::dropIfExists('enviroments');
     }
 }

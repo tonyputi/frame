@@ -1,3 +1,9 @@
+## Quick start
+
+- touch database/database.sqlite
+- php artisan migrate --seed
+- php artisan serve
+
 ## Guidelines
 
 - `master` is representing the stable branch;
