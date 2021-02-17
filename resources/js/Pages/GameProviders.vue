@@ -23,7 +23,7 @@
 <script>
 import AppLayout from '@/Layouts/AppLayout';
 import Welcome from '@/Jetstream/Welcome';
-import CasinoProviderCard from "@/Pages/GameProviders/CasinoProviderCard";
+import CasinoProviderCard from "@/Pages/GameProviders/GameProviderCard";
 import SearchForm from "@/Pages/GameProviders/SearchForm";
 import Pagination from "@/Pages/Common/Pagination";
 
@@ -42,7 +42,7 @@ export default {
     },
 
     created() {
-        console.log(this.meta);
+        console.log(this.gameProviders);
     }
 };
 </script>
