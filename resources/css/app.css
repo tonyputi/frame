@@ -2,3 +2,4 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import 'vue2-timepicker/dist/VueTimepicker.css';
