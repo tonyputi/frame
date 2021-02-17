@@ -41,9 +41,9 @@ class GameProviderController extends Controller
                         'name' => $resource->name,
                         'location_modifier' => $resource->location_modifier,
                         'location_match' => $resource->location_match,
-                        'is_available' => !!!$resource->gameActiveProviderQueue->host,
+                        'is_available' => !!!$resource->gameActiveProviderQueue->user_id,
                         'notes' => !!!$resource->gameActiveProviderQueue->notes,
-                        'host' => $resource->gameActiveProviderQueue->host,
+                        'user' => $resource->gameActiveProviderQueue->user,
                         'started_at' => $resource->gameActiveProviderQueue->started_at,
                         'ended_at' => $resource->gameActiveProviderQueue->ended_at,
                     ];
