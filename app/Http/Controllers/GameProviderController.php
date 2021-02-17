@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CasinoProvider;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class GameProviderController extends Controller
 {
@@ -13,7 +15,9 @@ class GameProviderController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('GameProvider/Index', [
+            'GameProviders' => GameProvider::all()
+        ]);
     }
 
     /**
@@ -24,7 +28,9 @@ class GameProviderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $GameProvider = GameProvider::create($request->input());
+
+        return response($GameProvider, 201);
     }
 
     /**
@@ -35,7 +41,9 @@ class GameProviderController extends Controller
      */
     public function show($id)
     {
-        //
+        return Inertia::render('GameProvider/Show', [
+            'GameProvider' => GameProvider::findOrFail($id)
+        ]);
     }
 
     /**
@@ -47,7 +55,9 @@ class GameProviderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        GameProvider::findOrFail($id)->update($request->input());
+
+        return response(NULL, 204);
     }
 
     /**
@@ -58,6 +68,8 @@ class GameProviderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        GameProvider::findOrFail($id)->delete($id);
+
+        return response(NULL, 204);
     }
 }

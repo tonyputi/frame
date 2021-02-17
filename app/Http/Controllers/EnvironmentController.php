@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Environment;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class EnvironmentController extends Controller
 {
@@ -13,7 +15,9 @@ class EnvironmentController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Environment/Index', [
+            'environments' => Environment::all()
+        ]);
     }
 
     /**
@@ -24,7 +28,9 @@ class EnvironmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $environment = Environment::create($request->input());
+
+        return response($environment, 201);
     }
 
     /**
@@ -35,7 +41,9 @@ class EnvironmentController extends Controller
      */
     public function show($id)
     {
-        //
+        return Inertia::render('Environment/Show', [
+            'environment' => Environment::findOrFail($id)
+        ]);
     }
 
     /**
@@ -47,7 +55,7 @@ class EnvironmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return response(NULL, 204);
     }
 
     /**
@@ -58,6 +66,8 @@ class EnvironmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Environment::findOrFail($id)->delete($id);
+
+        return response(NULL, 204);
     }
 }

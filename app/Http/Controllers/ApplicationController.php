@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ApplicationController extends Controller
 {
@@ -13,7 +15,9 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Application/Index', [
+            'applications' => Application::all()
+        ]);
     }
 
     /**
@@ -24,7 +28,9 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $application = Application::create($request->input());
+
+        return response($application, 201);
     }
 
     /**
@@ -35,7 +41,9 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
-        //
+        return Inertia::render('Application/Show', [
+            'application' => Application::findOrFail($id)
+        ]);
     }
 
     /**
@@ -47,7 +55,7 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return response(NULL, 204);
     }
 
     /**
@@ -58,6 +66,8 @@ class ApplicationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Application::findOrFail($id)->delete($id);
+
+        return response(NULL, 204);
     }
 }
