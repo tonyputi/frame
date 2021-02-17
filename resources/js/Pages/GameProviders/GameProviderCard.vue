@@ -11,7 +11,6 @@
             </button>
         </div>
 
-        <!-- Modal ... It would be better to use this as a component -->
         <common-modal
             @close="isModalShown = false"
             v-if="isModalShown">
