@@ -3,27 +3,27 @@
 namespace App\Console\Commands;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Models\CasinoProvider;
+use App\Models\GameProvider;
 use Illuminate\Console\Command;
 
-class AttachCasinoProviderToHost extends Command
+class AttachGameProviderToHost extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'casino:attach
-        {hostname : The hostname to redirect to casino provider requests. ie vs1234.videoslots.com}
-        {--p|provider= : Specify the casino provider by id or name}
-        {--d|detach : When specified the hostname gonna be detached from casino provider}';
+    protected $signature = 'game-providers:attach
+        {hostname : The hostname to redirect to game provider requests. ie vs1234.videoslots.com}
+        {--p|provider= : Specify the game provider by id or name}
+        {--d|detach : When specified the hostname gonna be detached from game provider}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Redirect casino provider to specified hostname';
+    protected $description = 'Redirect game provider to specified hostname';
 
     /**
      * Create a new command instance.
@@ -71,7 +71,7 @@ class AttachCasinoProviderToHost extends Command
      */
     protected function getProvidersByChoice()
     {
-        $choices = CasinoProvider::orderBy('id')
+        $choices = GameProvider::orderBy('id')
             ->get()
             ->mapWithKeys(fn($resource) => [$resource->id => $resource->name]);
 
@@ -94,6 +94,6 @@ class AttachCasinoProviderToHost extends Command
      */
     protected function getProvidersByName(string $name = null)
     {
-        return CasinoProvider::where('name', 'like', "{$name}%")->get();
+        return GameProvider::where('name', 'like', "{$name}%")->get();
     }
 }
