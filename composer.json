@@ -16,6 +16,7 @@
         "laravel/framework": "^8.12",
         "laravel/jetstream": "^2.2",
         "laravel/sanctum": "^2.6",
+        "laravel/slack-notification-channel": "^2.3",
         "laravel/tinker": "^2.5",
         "tightenco/ziggy": "^1.0"
     },
