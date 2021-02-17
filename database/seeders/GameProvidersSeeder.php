@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\CasinoProvider;
+use App\Models\GameProvider;
 use Illuminate\Database\Seeder;
 
-class CasinoProvidersSeeder extends Seeder
+class GameProvidersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -53,19 +53,19 @@ class CasinoProvidersSeeder extends Seeder
         //    'portomaso'
         //];
 
-        CasinoProvider::create([
+        GameProvider::create([
             'name' => 'Play\'N Go',
-            'slug' => 'playngo'
+            'location_match' => 'playngo'
         ]);
 
-        CasinoProvider::create([
+        GameProvider::create([
             'name' => 'Pragmatic',
-            'slug' => 'pragmatic'
+            'location_match' => 'pragmatic'
         ]);
 
-        CasinoProvider::create([
+        GameProvider::create([
             'name' => 'Netent IT',
-            'slug' => 'netentit'
+            'location_match' => 'netentit'
         ]);
     }
 }
