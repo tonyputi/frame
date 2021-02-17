@@ -1,10 +1,20 @@
+## Quick start
+
+- touch database/database.sqlite
+- php artisan migrate --seed
+- php artisan serve
+
 ## Guidelines
 
 - `master` is representing the stable branch;
 - `develop` is representing the develop branch;
 - always create a branch from `develop`;
  
+## Common issue
 
+The command `php artisan migrate:refresh --seed` is not working properly while using sqlite on certain conditions.
+To make it working you should first wipe your database `php artisan db:wipe` and than `php artisan migrate --seed`.
+This is only affecting `refresh` command. Normal migration will work fine.
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
