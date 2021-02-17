@@ -25,7 +25,7 @@ import AppLayout from '@/Layouts/AppLayout';
 import Welcome from '@/Jetstream/Welcome';
 import GameProviderCard from "@/Pages/GameProviders/GameProviderCard";
 import SearchForm from "@/Pages/GameProviders/SearchForm";
-import Pagination from "@/Pages/Common/Pagination";
+import Pagination from "@/Shared/Pagination";
 
 export default {
     components: {

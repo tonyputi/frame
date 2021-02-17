@@ -23,7 +23,7 @@
 </template>
 <script>
 import BookForm from "@/Pages/GameProviders/BookForm";
-import CommonModal from "@/Pages/Common/CommonModal";
+import CommonModal from "@/Shared/CommonModal";
 export default {
     components: {CommonModal, BookForm},
 
