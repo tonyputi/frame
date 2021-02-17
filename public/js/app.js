@@ -18308,9 +18308,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Welcome */ "./resources/js/Jetstream/Welcome.vue");
-/* harmony import */ var _Pages_GameProviders_GameProviderCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Pages/GameProviders/GameProviderCard */ "./resources/js/Pages/GameProviders/GameProviderCard.vue");
-/* harmony import */ var _Pages_GameProviders_SearchForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Pages/GameProviders/SearchForm */ "./resources/js/Pages/GameProviders/SearchForm.vue");
-
+/* harmony import */ var _Pages_GameProviders_SearchForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Pages/GameProviders/SearchForm */ "./resources/js/Pages/GameProviders/SearchForm.vue");
 
 
 
@@ -18318,8 +18316,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     Welcome: _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__.default,
-    GameProviderCard: _Pages_GameProviders_GameProviderCard__WEBPACK_IMPORTED_MODULE_2__.default,
-    SearchForm: _Pages_GameProviders_SearchForm__WEBPACK_IMPORTED_MODULE_3__.default
+    SearchForm: _Pages_GameProviders_SearchForm__WEBPACK_IMPORTED_MODULE_2__.default
   },
   props: {
     casinoProviders: Array
@@ -23606,13 +23603,8 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
 };
-var _hoisted_4 = {
-  "class": "overflow-hidden sm:rounded-lg py-12 grid grid-cols-3 gap-4"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_search_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("search-form");
-
-  var _component_game_provider_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("game-provider-card");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -23621,15 +23613,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_search_form), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.casinoProviders, function (provider) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_game_provider_card, {
-          provider: provider
-        }, null, 8
-        /* PROPS */
-        , ["provider"]);
-      }), 256
-      /* UNKEYED_FRAGMENT */
-      ))])])])];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_search_form)])])];
     }),
     _: 1
     /* STABLE */
