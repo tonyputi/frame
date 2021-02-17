@@ -9,12 +9,12 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-                <search-form></search-form>
+<!--                <search-form></search-form>-->
                 <div class="py-12">
-                    <vue-table :header="header" :content="content"></vue-table>
+                    <vue-table :header="header" :content="gameProviderQueues"></vue-table>
                 </div>
-<!--                <pagination v-if="gameProviderQueue.last_page > 1"-->
-<!--                            :data="gameProviderQueue" />-->
+                <pagination v-if="gameProviderQueue.last_page > 1"
+                            :data="gameProviderQueue" />
             </div>
         </div>
     </app-layout>
@@ -39,29 +39,32 @@ export default {
     data() {
         return {
             header: [
-                'Environment', 'App', 'Provider', 'User Id', 'Notes', 'Started at', 'Ended at', 'Applied At', 'Is Active'
+                'Environment', 'App', 'Provider', 'User', 'Notes', 'Started at', 'Ended at', 'Applied At', 'Is Active'
             ],
-            queue: null,
-            content: null
+            queue: null
         };
     },
 
-    mounted() {
-        console.log(this.gameProviderQueue)
+    computed: {
+        gameProviderQueues() {
+            if (this.gameProviderQueue) {
+                return this.gameProviderQueue.data.map(data => {
+                    return {
+                        environment: data.environment.name,
+                        application: data.application.name,
+                        provider: data.game_provider.name,
+                        user: data.user.name,
+                        notes: data.notes,
+                        started_at: data.started_at,
+                        ended_at: data.ended_at,
+                        applied_at: data.applied_at,
+                        is_active: data.is_active
+                    };
+                });
+            }
 
-        this.content = this.gameProviderQueue.data.map(data => {
-            return {
-                environment_id: data.environment_id,
-                application_id: data.application_id,
-                game_provider_id: data.game_provider_id,
-                user_id: data.user_id,
-                notes: data.notes,
-                started_at: data.started_at,
-                ended_at: data.ended_at,
-                applied_at: data.applied_at,
-                is_active: data.is_active
-            };
-        });
+            return null;
+        }
     },
 
     props: {

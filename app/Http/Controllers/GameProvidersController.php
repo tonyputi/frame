@@ -10,7 +10,7 @@ use Inertia\Inertia;
 class GameProvidersController extends Controller
 {
 
-    const CASINO_PROVIDERS_LIMIT = 24;
+    const GAME_PROVIDERS_LIMIT = 3;
 
     /**
      * @param Request $request
@@ -21,7 +21,7 @@ class GameProvidersController extends Controller
         $game_providers = GameProvider::query()
             ->with('gameActiveProviderQueue')
             ->when($request->search, fn($query) => $query->where('name', 'like', "%{$request->search}%"))
-            ->paginate(static::CASINO_PROVIDERS_LIMIT);
+            ->paginate(static::GAME_PROVIDERS_LIMIT);
 
         return Inertia::render('GameProviders', [
             'gameProviders' => $game_providers
