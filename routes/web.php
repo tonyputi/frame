@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('/reservation', [GameProviderQueuesController::class, 'index'])->name('reservations.index');
+    Route::get('/reservations', [GameProviderQueuesController::class, 'index'])->name('reservations.index');
     Route::get('/game-providers', [GameProviderController::class, 'index'])->name('game_providers.index');
     Route::get('/game-provider/{id}', [GameProviderController::class, 'show'])->name('game_provider.show');
     Route::post('/game-provider/create', [GameProviderController::class, 'store'])->name('game_provider.store');

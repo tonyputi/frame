@@ -9,18 +9,8 @@ use Inertia\Inertia;
 
 class GameProviderController extends Controller
 {
-//    /**
-//     * Display a listing of the resource.
-//     *
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function index()
-//    {
-//        return Inertia::render('GameProvider/Index', [
-//            'GameProviders' => GameProvider::all()
-//        ]);
-//    }
-    const CASINO_PROVIDERS_LIMIT = 24;
+
+    const GAME_PROVIDERS_LIMIT = 24;
 
     /**
      * @param Request $request
@@ -31,7 +21,7 @@ class GameProviderController extends Controller
         $game_providers = GameProvider::query()
             ->with('gameActiveProviderQueue')
             ->when($request->search, fn($query) => $query->where('name', 'like', "%{$request->search}%"))
-            ->paginate(static::CASINO_PROVIDERS_LIMIT);
+            ->paginate(static::GAME_PROVIDERS_LIMIT);
 
         return Inertia::render('GameProviders', [
             'gameProviders' => $game_providers

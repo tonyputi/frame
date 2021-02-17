@@ -19,8 +19,10 @@ class GameProviderQueuesController extends Controller
     {
         $game_providers = GameProvider::all();
 
-        $game_provider_queue = GameProviderQueue::orderBy('ended_at',
-            'desc')->paginate(self::GAME_PROVIDER_QUEUE_LIMIT);
+        $game_provider_queue = GameProviderQueue::orderBy('ended_at', 'desc')
+            ->with(['user', 'gameProvider', 'environment', 'application'])
+            ->paginate(self::GAME_PROVIDER_QUEUE_LIMIT);
+
         return Inertia::render('Reservations', [
             'gameProviderQueue' => $game_provider_queue,
             'casinoProviders' => $game_providers,
