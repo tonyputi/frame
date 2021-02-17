@@ -31,4 +31,14 @@ class GameProviderQueue extends Model
     {
         return $this->belongsTo(Application::class);
     }
+
+    /**
+     * Set host and make sure that is stored as lower string
+     *
+     * @param $value
+     */
+    public function setHostAttribute($value)
+    {
+        $this->attributes['host'] = strtolower($value);
+    }
 }

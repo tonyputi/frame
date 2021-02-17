@@ -24,14 +24,4 @@ class GameProvider extends Model
     {
         return $this->hasOne(GameProviderQueue::class)->where('is_active', true);
     }
-
-    /**
-     * Set host and make sure that is stored as lower string
-     *
-     * @param $value
-     */
-    //public function setHostAttribute($value)
-    //{
-    //    $this->attributes['host'] = strtolower($value);
-    //}
 }
