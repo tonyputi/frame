@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="updateProfileInformation">
+    <jet-form-section @submitted="updateMiscellaneaInformation">
         <template #title>
             User Miscellanea
         </template>
@@ -61,12 +61,12 @@ export default {
     },
 
     methods: {
-        // updateProfileInformation() {//
-        //     this.form.post(route('user-profile-miscellanea.update'), {
-        //         errorBag: 'updateProfileInformation',
-        //         preserveScroll: true
-        //     });
-        // },
+        updateProfleInformation() {//
+            this.form.post(route('user-miscellanea.update'), {
+                errorBag: 'updateMiscellaneaInformation',
+                preserveScroll: true
+            });
+        },
     },
 }
 </script>
