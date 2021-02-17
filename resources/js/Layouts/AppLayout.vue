@@ -9,16 +9,18 @@
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="flex-shrink-0 flex items-center">
-                                <inertia-link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
-                                </inertia-link>
-                            </div>
+                            <img src="images/logo.png">
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('game_providers')" :active="route().current('game_providers')">
+                                    Game Providers
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('reservations')" :active="route().current('reservations')">
+                                    Reservations
                                 </jet-nav-link>
                             </div>
                         </div>
