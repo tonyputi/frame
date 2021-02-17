@@ -42,6 +42,14 @@ class GameProviderQueue extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
      * Set host and make sure that is stored as lower string
      *
      * @param $value

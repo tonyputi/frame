@@ -39,6 +39,10 @@ export default {
     props: {
         gameProviders: Array,
         meta: Object
+    },
+
+    created() {
+        console.log(this.gameProviders)
     }
 };
 </script>

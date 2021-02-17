@@ -36,7 +36,13 @@ class GameProviderQueuesController extends Controller
      */
     public function store(Request $request)
     {
-        $GameProviderQueue = GameProviderQueue::create($request->input());
+        $GameProviderQueue = new GameProviderQueue($request->input());
+        $GameProviderQueue->environment_id = 1;
+        $GameProviderQueue->application_id = 1;
+        $GameProviderQueue->user_id = 1;
+        $GameProviderQueue->is_active = 1;
+
+        $GameProviderQueue->save();
 
         return response($GameProviderQueue, 201);
     }

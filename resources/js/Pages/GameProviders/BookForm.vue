@@ -52,10 +52,12 @@ export default {
 
     methods: {
         async submit() {
-            await this.$inertia.post('/blah', {
+            await this.$inertia.post('/game-provider-queue/create', {
+                applied_at: this.startAt,
                 started_at: this.startAt,
                 ended_at: this.endAt,
-                notes: this.notes
+                notes: this.notes,
+                game_provider_id: this.provider.id
             });
         },
 
