@@ -30,8 +30,12 @@ composer install
 npm install
 ```
 
-Run the migrations
+Run the migrations/seeds
 
 ```sh
 php artisan migrate
+php artisan db:seed
 ```
+
+
+
