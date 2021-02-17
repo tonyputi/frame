@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\GameProvider;
 use App\Models\GameProviderQueue;
 use Illuminate\Console\Command;
 
