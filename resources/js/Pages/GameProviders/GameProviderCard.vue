@@ -5,15 +5,28 @@
             <h2 class="provider-name">{{ provider.name }}</h2>
         </div>
         <div class="provider-card-body">
-            <button v-if="provider.is_available"
-                    class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150 mt-5">
-                Book
+            <button @click="isModalShown = true"
+                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150 mt-5">
+                Book <span v-if="provider.is_available">&nbsp;Now</span>
             </button>
         </div>
+
+        <!-- Modal ... It would be better to use this as a component -->
+        <common-modal
+            @close="isModalShown = false"
+            v-if="isModalShown">
+            <template #content>
+                <book-form :provider="provider"></book-form>
+            </template>
+        </common-modal>
     </div>
 </template>
 <script>
+import BookForm from "@/Pages/GameProviders/BookForm";
+import CommonModal from "@/Pages/Common/CommonModal";
 export default {
+    components: {CommonModal, BookForm},
+
     props: {
         provider: Object,
     },
@@ -24,8 +37,10 @@ export default {
         }
     },
 
-    created() {
-
+    data() {
+        return {
+            isModalShown: false
+        };
     }
 }
 </script>
