@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\EnvironmentController;
+use App\Http\Controllers\GameProviderController;
+use App\Http\Controllers\GameProviderQueuesController;
+use App\Http\Controllers\GameProvidersController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,7 +33,25 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('/reservation', [\App\Http\Controllers\GameProviderQueuesController::class, 'index'])->name('reservations.index');
-    Route::get('/game-providers', [\App\Http\Controllers\GameProvidersController::class, 'index'])->name('game_providers.index');
+    Route::get('/reservation', [GameProviderQueuesController::class, 'index'])->name('reservations.index');
+    Route::get('/game-providers', [GameProviderController::class, 'index'])->name('game_provider.index');
+    Route::get('/game-provider/{id}', [GameProviderController::class, 'show'])->name('game_provider.show');
+    Route::post('/game-provider/create', [GameProviderController::class, 'store'])->name('game_provider.store');
+    Route::put('/game-provider/{id}/update', [GameProviderController::class, 'update'])->name('game_provider.update');
+    Route::delete('/game-provider/{id}/delete',[GameProviderController::class, 'delete'])->name('game_provider.destroy');
+
+    Route::get('/game-providers-queue', [GameProviderQueuesController::class, 'index'])->name('game_provider_queue.index');
+    Route::get('/game-provider-queue/{id}', [GameProviderQueuesController::class, 'show'])->name('game_provider_queue.show');
+    Route::post('/game-provider-queue/create', [GameProviderQueuesController::class, 'store'])->name('game_provider_queue.store');
+    Route::put('/game-provider-queue/{id}/update', [GameProviderQueuesController::class, 'update'])->name('game_provider_queue.update');
+    Route::delete('/game-provider-queue/{id}/delete',[GameProviderQueuesController::class, 'delete'])->name('game_provider_queue.destroy');
+
+    Route::get('/environments', [EnvironmentController::class, 'index'])->name('environment.index');
+    Route::get('/environment/{id}', [EnvironmentController::class, 'show'])->name('environment.show');
+    Route::post('/environment/create', [EnvironmentController::class, 'store'])->name('environment.store');
+    Route::put('/environment/{id}/update', [EnvironmentController::class, 'update'])->name('environment.update');
+    Route::delete('/environment/{id}/delete',[EnvironmentController::class, 'delete'])->name('environment.destroy');
+
+
 });
 

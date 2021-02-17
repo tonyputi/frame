@@ -19,7 +19,8 @@ class GameProviderQueuesController extends Controller
     {
         $game_providers = GameProvider::all();
 
-        $game_provider_queue = GameProviderQueue::orderBy('ended_at', 'desc')->paginate(self::GAME_PROVIDER_QUEUE_LIMIT);
+        $game_provider_queue = GameProviderQueue::orderBy('ended_at',
+            'desc')->paginate(self::GAME_PROVIDER_QUEUE_LIMIT);
         return Inertia::render('Reservations', [
             'gameProviderQueue' => $game_provider_queue,
             'casinoProviders' => $game_providers,
@@ -30,45 +31,50 @@ class GameProviderQueuesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $GameProviderQueue = GameProviderQueue::create($request->input());
+
+        return response($GameProviderQueue, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        return GameProviderQueue::findOrFail($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        GameProviderQueue::findOrFail($id)->update($request->input());
+
+        return response(null, 204);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        GameProviderQueue::findOrFail($id)->delete($id);
+        return response(null, 204);
     }
 }
