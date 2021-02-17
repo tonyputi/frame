@@ -65,6 +65,7 @@ class AttachGameProviderToHost extends Command
                     'started_at' => Carbon::parse('+1 hour'),
                     'ended_at' => Carbon::parse('+2 hour'),
                     'applied_at' => Carbon::parse('+1 hour'),
+                    'is_active' => true,
                 ]);
 
                 $resource->gameProviderQueues()->save($queue);

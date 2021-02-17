@@ -38,7 +38,10 @@ class ShowGameProvidersStatus extends Command
      */
     public function handle()
     {
-        $collection = GameProvider::all(['id', 'name', 'location_modifier', 'location_match', 'host']);
+        $collection = GameProvider::with('gameActiveProviderQueue')
+            ->get(['id', 'name', 'location_modifier', 'location_match']);
+
+        dd($collection);
 
          $this->table(
              ['ID', 'Name', 'Modifier', 'Match', 'Host'],
