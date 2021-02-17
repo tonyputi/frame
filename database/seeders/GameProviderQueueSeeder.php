@@ -19,7 +19,7 @@ class GameProviderQueueSeeder extends Seeder
             'environment_id' => 1,
             'application_id' => 1,
             'game_provider_id' => 1,
-            'host' => 'filippo.videoslots.com',
+            'user_id' => 1,
             'started_at' => Carbon::parse('+1 hour'),
             'ended_at' => Carbon::parse('+2 hour'),
             'applied_at' => Carbon::parse('+1 hour'),
