@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Models\GameProviderQueue;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\GameProvider;
 use Illuminate\Console\Command;
+use Illuminate\Support\Carbon;
 
 class AttachGameProviderToHost extends Command
 {
@@ -52,10 +54,20 @@ class AttachGameProviderToHost extends Command
 
         $collection->each(function($resource) use($hostname) {
             if($this->option('detach')) {
-                $resource->host = NULL;
+                //$resource->host = NULL;
                 $this->info("<<< Stop redirecting {$resource->name} to {$hostname}");
             } else {
-                $resource->host = $hostname;
+                $queue = new GameProviderQueue([
+                    'environment_id' => 1,
+                    'application_id' => 1,
+                    'game_provider_id' => 1,
+                    'host' => 'filippo.videoslots.com',
+                    'started_at' => Carbon::parse('+1 hour'),
+                    'ended_at' => Carbon::parse('+2 hour'),
+                    'applied_at' => Carbon::parse('+1 hour'),
+                ]);
+
+                $resource->gameProviderQueues()->save($queue);
                 $this->info(">>> Start redirecting {$resource->name} to {$hostname}");
             }
 

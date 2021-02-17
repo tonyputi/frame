@@ -10,6 +10,13 @@ class GameProviderQueue extends Model
     use HasFactory;
 
     /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var string[]|bool
+     */
+    protected $guarded = ['id'];
+
+    /**
      * Get the environment that owns the game provider queue.
      */
     public function environment()
