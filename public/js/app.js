@@ -17649,9 +17649,6 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     gameProviders: Array,
     meta: Object
-  },
-  created: function created() {
-    console.log(this.gameProviders);
   }
 });
 
@@ -18272,12 +18269,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Welcome */ "./resources/js/Jetstream/Welcome.vue");
 /* harmony import */ var _Pages_GameProviders_SearchForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Pages/GameProviders/SearchForm */ "./resources/js/Pages/GameProviders/SearchForm.vue");
 /* harmony import */ var _Shared_VueTable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Shared/VueTable */ "./resources/js/Shared/VueTable.vue");
+/* harmony import */ var _Shared_Pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Shared/Pagination */ "./resources/js/Shared/Pagination.vue");
+
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    Pagination: _Shared_Pagination__WEBPACK_IMPORTED_MODULE_4__.default,
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     Welcome: _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__.default,
     SearchForm: _Pages_GameProviders_SearchForm__WEBPACK_IMPORTED_MODULE_2__.default,
@@ -18291,6 +18291,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    console.log(this.gameProviderQueue);
     this.content = this.gameProviderQueue.data.map(function (data) {
       return {
         environment_id: data.environment_id,
@@ -23546,7 +23547,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         content: $data.content
       }, null, 8
       /* PROPS */
-      , ["header", "content"])])])])];
+      , ["header", "content"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                <pagination v-if=\"gameProviderQueue.last_page > 1\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                            :data=\"gameProviderQueue\" />")])])];
     }),
     _: 1
     /* STABLE */
@@ -24930,7 +24931,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("table", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.header, function (th, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("th", {
       key: index,
-      "class": "px-2 text-center"
+      "class": "px-2 py-2 text-center"
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(th), 1
     /* TEXT */
     );

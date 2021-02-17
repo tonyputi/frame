@@ -2,7 +2,7 @@
     <table class="table-auto w-full">
         <thead class="justify-between">
             <tr class="bg-gray-800 text-white">
-                <th v-for="(th, index) in header" :key="index" class="px-2 text-center"> {{ th }}</th>
+                <th v-for="(th, index) in header" :key="index" class="px-2 py-2 text-center"> {{ th }}</th>
             </tr>
         </thead>
         <tbody class="bg-gray-200">
