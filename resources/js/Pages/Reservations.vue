@@ -11,12 +11,7 @@
 
                 <search-form></search-form>
 
-                <div class="overflow-hidden sm:rounded-lg py-12 grid grid-cols-3 gap-4">
-                    <casino-provider-card
-                        v-for="provider in casinoProviders"
-                        :provider="provider"/>
 
-                </div>
             </div>
         </div>
     </app-layout>
@@ -25,14 +20,12 @@
 <script>
 import AppLayout from '@/Layouts/AppLayout';
 import Welcome from '@/Jetstream/Welcome';
-import CasinoProviderCard from "@/Pages/CasinoProviders/CasinoProviderCard";
-import SearchForm from "@/Pages/CasinoProviders/SearchForm";
+import SearchForm from "@/Pages/GameProviders/SearchForm";
 
 export default {
     components: {
         AppLayout,
         Welcome,
-        CasinoProviderCard,
         SearchForm
     },
 
