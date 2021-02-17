@@ -28,19 +28,9 @@ class GameProviderQueuesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,21 +41,10 @@ class GameProviderQueuesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\GameProviderQueue $gameProviderQueue
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(GameProviderQueue $gameProviderQueue)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\GameProviderQueue $gameProviderQueue
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(GameProviderQueue $gameProviderQueue)
+    public function show($id)
     {
         //
     }
@@ -73,11 +52,11 @@ class GameProviderQueuesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\GameProviderQueue $gameProviderQueue
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GameProviderQueue $gameProviderQueue)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -85,10 +64,10 @@ class GameProviderQueuesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\GameProviderQueue $gameProviderQueue
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GameProviderQueue $gameProviderQueue)
+    public function destroy($id)
     {
         //
     }
