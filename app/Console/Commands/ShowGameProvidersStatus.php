@@ -39,9 +39,6 @@ class ShowGameProvidersStatus extends Command
     public function handle()
     {
         $collection = GameProvider::with('gameActiveProviderQueue')
-            ->get(['id', 'name', 'location_modifier', 'location_match']);
-
-        $collection = GameProvider::with('gameActiveProviderQueue')
             ->get()
             ->map(function($resource) {
                 return [
@@ -59,14 +56,5 @@ class ShowGameProvidersStatus extends Command
            ['ID', 'Name', 'Modifier', 'Match', 'Host', 'Started at', 'Ended at'],
            $collection->toArray()
         );
-
-        // file_put_contents('/tmp/nginx.reload', $this->showAsNginxConfig($collection));
-
-        // $this->info($this->showAsNginxConfig($collection));
-    }
-
-    protected function showAsNginxConfig($collection)
-    {
-        return view('nginx.casino-providers', compact('collection'));
     }
 }

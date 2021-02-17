@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 
 class GameProviderQueue extends Model
 {
@@ -33,6 +34,14 @@ class GameProviderQueue extends Model
     }
 
     /**
+     * Get the game provider that owns the game provider queue.
+     */
+    public function gameProvider()
+    {
+        return $this->belongsTo(GameProvider::class);
+    }
+
+    /**
      * Set host and make sure that is stored as lower string
      *
      * @param $value
@@ -40,5 +49,19 @@ class GameProviderQueue extends Model
     public function setHostAttribute($value)
     {
         $this->attributes['host'] = strtolower($value);
+    }
+
+    /**
+     * Get the nginx configuration
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getNginxConfigAttribute($value)
+    {
+        $keys = ['{{ modifier }}', '{{ match }}', '{{ hostname }}'];
+        $values = [$this->gameProvider->location_modifier, $this->gameProvider->location_match, $this->host];
+
+        return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
     }
 }
