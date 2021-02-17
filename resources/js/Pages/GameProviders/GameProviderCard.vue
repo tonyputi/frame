@@ -11,7 +11,6 @@
             </button>
         </div>
 
-        <!-- Modal ... It would be better to use this as a component -->
         <common-modal
             @close="isModalShown = false"
             v-if="isModalShown">
@@ -23,7 +22,7 @@
 </template>
 <script>
 import BookForm from "@/Pages/GameProviders/BookForm";
-import CommonModal from "@/Pages/Common/CommonModal";
+import CommonModal from "@/Shared/CommonModal";
 export default {
     components: {CommonModal, BookForm},
 

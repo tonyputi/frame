@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('/reservation', [\App\Http\Controllers\GameProviderQueuesController::class, 'index'])->name('reservations');
-    Route::get('/game-providers', [\App\Http\Controllers\GameProvidersController::class, 'index'])->name('game_providers');
+    Route::get('/reservation', [\App\Http\Controllers\GameProviderQueuesController::class, 'index'])->name('reservations.index');
+    Route::get('/game-providers', [\App\Http\Controllers\GameProvidersController::class, 'index'])->name('game_providers.index');
 });
 

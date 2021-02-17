@@ -18,7 +18,7 @@ class CreateGameProviderQueuesTable extends Migration
             $table->foreignId('environment_id')->constrained();
             $table->foreignId('application_id')->constrained();
             $table->foreignId('game_provider_id')->constrained();
-            $table->string('host');
+            $table->foreignId('user_id')->constrained();
             $table->text('notes')->nullable();
             $table->datetime('started_at');
             $table->datetime('ended_at');

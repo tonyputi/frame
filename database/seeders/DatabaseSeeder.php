@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EnvironmentSeeder::class);
         $this->call(ApplicationSeeder::class);
         $this->call(GameProviderSeeder::class);
-        $this->call(GameProviderQueueSeeder::class);
+        //$this->call(GameProviderQueueSeeder::class);
     }
 }

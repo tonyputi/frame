@@ -39,11 +39,10 @@ export default {
     data() {
         const now = new Date();
         const oneHourFromNow = new Date(now.setHours(now.getHours() + 1));
-        const locale = 'en-UK';
 
         return {
-            startAt: (new Date()).toLocaleString(locale),
-            endAt: oneHourFromNow.toLocaleString(locale),
+            startAt: this.formatDate((new Date())),
+            endAt: this.formatDate(oneHourFromNow),
             notes: ''
         }
     },
@@ -52,6 +51,10 @@ export default {
         submit($event) {
             $event.preventDefault();
             this.$emit('success');
+        },
+
+        formatDate(date) {
+            return `${date.toISOString().split('T')[0]} ${date.toTimeString().split(' ')[0]}`;
         }
     }
 }
