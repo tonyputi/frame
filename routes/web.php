@@ -4,6 +4,7 @@ use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\GameProviderController;
 use App\Http\Controllers\GameProviderQueuesController;
 use App\Http\Controllers\GameProvidersController;
+use App\Http\Controllers\UserMiscellanea;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -52,6 +53,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::put('/environment/{id}/update', [EnvironmentController::class, 'update'])->name('environment.update');
     Route::delete('/environment/{id}/delete',[EnvironmentController::class, 'delete'])->name('environment.destroy');
 
+    Route::put('/user/miscellanea/{id}', [UserMiscellanea::class, 'update'])->name('user_miscellanea.update');
 
 });
 
