@@ -61,7 +61,8 @@ export default {
     },
 
     methods: {
-        updateProfleInformation() {//
+        updateMiscellaneaInformation() {
+            console.log('why');
             this.form.post(route('user-miscellanea.update'), {
                 errorBag: 'updateMiscellaneaInformation',
                 preserveScroll: true

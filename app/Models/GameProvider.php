@@ -19,8 +19,17 @@ class GameProvider extends Model
 
    /**
      * Get the game provider queues for the application.
+     * @deprecated
      */
     public function gameActiveProviderQueue()
+    {
+        return $this->activeGameProviderQueue();
+    }
+
+    /**
+     * Get the game provider queues for the application.
+     */
+    public function activeGameProviderQueue()
     {
         return $this->hasOne(GameProviderQueue::class)
             ->where('is_active', true)
@@ -40,11 +49,11 @@ class GameProvider extends Model
     /**
      * Get the game provider queues for the application.
      */
-    //public function candidateGameProviderQueue()
-    //{
-    //    return $this->hasMany(GameProviderQueue::class)
-    //        ->where('is_active', false)
-    //        ->where('started_at', '<=', now)
-    //        ->where('ended_at', '>=', now);
-    //}
+    public function candidateGameProviderQueue()
+    {
+       return $this->hasMany(GameProviderQueue::class)
+           ->where('is_active', false)
+           ->where('started_at', '<=', $this->freshTimestamp())
+           ->where('ended_at', '>=', $this->freshTimestamp());
+    }
 }

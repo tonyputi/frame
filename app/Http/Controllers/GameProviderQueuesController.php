@@ -19,7 +19,7 @@ class GameProviderQueuesController extends Controller
     {
         $game_providers = GameProvider::all();
 
-        $game_provider_queue = GameProviderQueue::orderBy('ended_at', 'desc')
+        $game_provider_queue = GameProviderQueue::orderBy('started_at', 'asc')
             ->with(['user', 'gameProvider', 'environment', 'application'])
             ->paginate(self::GAME_PROVIDER_QUEUE_LIMIT);
 
@@ -41,12 +41,13 @@ class GameProviderQueuesController extends Controller
         $GameProviderQueue = new GameProviderQueue($request->input());
         $GameProviderQueue->environment_id = 1;
         $GameProviderQueue->application_id = 1;
-        $GameProviderQueue->user_id = 1;
+        $GameProviderQueue->user_id = $request->user()->id;
         $GameProviderQueue->is_active = 1;
 
         $GameProviderQueue->save();
 
-        return response($GameProviderQueue, 201);
+        // return response($GameProviderQueue, 201);
+        return redirect()->route('game_provider_queue.index');
     }
 
     /**

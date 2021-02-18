@@ -20,7 +20,9 @@ class GameProviderController extends Controller
     {
         $game_providers = GameProvider::query()
             ->with('gameActiveProviderQueue')
+            ->withCount('gameProviderQueues')
             ->when($request->search, fn($query) => $query->where('name', 'like', "%{$request->search}%"))
+            ->orderBy('started_at', 'asc')
             ->paginate(static::GAME_PROVIDERS_LIMIT);
 
         return Inertia::render('GameProviders', [
@@ -36,6 +38,7 @@ class GameProviderController extends Controller
                         'user' => $resource->gameActiveProviderQueue->user,
                         'started_at' => $resource->gameActiveProviderQueue->started_at,
                         'ended_at' => $resource->gameActiveProviderQueue->ended_at,
+                        'game_provider_queues_count' => $resource->game_provider_queues_count
                     ];
                 }),
             'meta' => $game_providers

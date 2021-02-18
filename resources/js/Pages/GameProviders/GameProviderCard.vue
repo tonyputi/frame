@@ -8,12 +8,20 @@
             <div class="text-sm" v-if="!provider.is_available">
                 <p>{{ provider.user.name }}</p>
                 <p>{{ provider.started_at }} - {{ provider.ended_at }}</p>
+                <p>There are {{ provider.game_provider_queues_count}} reservations before you</p>
             </div>
 
-            <button @click="isModalShown = true"
-                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150 mt-5">
-                Book <span v-if="provider.is_available">&nbsp;Now</span>
-            </button>
+            <div class="flex">
+                <button @click="isModalShown = true"
+                    class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150 mt-5">
+                    Book
+                </button>
+
+                <button @click.native="deleteReservation"
+                    class="mx-2 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150 mt-5">
+                    Release
+                </button>
+            </div>
         </div>
 
         <common-modal
@@ -28,8 +36,14 @@
 <script>
 import BookForm from "@/Pages/GameProviders/BookForm";
 import CommonModal from "@/Shared/CommonModal";
+import JetDangerButton from '@/Jetstream/DangerButton'
+
 export default {
-    components: {CommonModal, BookForm},
+    components: {
+        CommonModal, 
+        BookForm,
+        JetDangerButton,
+    },
 
     props: {
         provider: Object,
@@ -41,10 +55,19 @@ export default {
         }
     },
 
+    methods: {
+        deleteReservation() {
+            alert('not yet implemented');
+        }
+    },
+
     data() {
         return {
             isModalShown: false
         };
+    },
+    mounted() {
+        console.log(this.provider);
     }
 }
 </script>

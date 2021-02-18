@@ -46,10 +46,10 @@ class UserMiscellanea extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        User::findOrFail($id)->update($request->input());
-        return response(NULL, 204);
+        $request->user()->update($request->only('host'));
+        return back();
     }
 
     /**

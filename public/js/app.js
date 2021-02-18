@@ -17733,12 +17733,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Pages_GameProviders_BookForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Pages/GameProviders/BookForm */ "./resources/js/Pages/GameProviders/BookForm.vue");
 /* harmony import */ var _Shared_CommonModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Shared/CommonModal */ "./resources/js/Shared/CommonModal.vue");
+/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     CommonModal: _Shared_CommonModal__WEBPACK_IMPORTED_MODULE_1__.default,
-    BookForm: _Pages_GameProviders_BookForm__WEBPACK_IMPORTED_MODULE_0__.default
+    BookForm: _Pages_GameProviders_BookForm__WEBPACK_IMPORTED_MODULE_0__.default,
+    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__.default
   },
   props: {
     provider: Object
@@ -17748,10 +17751,18 @@ __webpack_require__.r(__webpack_exports__);
       return this.provider.is_available ? 'available' : 'unavailable';
     }
   },
+  methods: {
+    deleteReservation: function deleteReservation() {
+      alert('not yet implemented');
+    }
+  },
   data: function data() {
     return {
       isModalShown: false
     };
+  },
+  mounted: function mounted() {
+    console.log(this.provider);
   }
 });
 
@@ -18143,12 +18154,14 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
-  methods: {// updateProfileInformation() {//
-    //     this.form.post(route('user-profile-miscellanea.update'), {
-    //         errorBag: 'updateProfileInformation',
-    //         preserveScroll: true
-    //     });
-    // },
+  methods: {
+    updateMiscellaneaInformation: function updateMiscellaneaInformation() {
+      console.log('why');
+      this.form.post(route('user-miscellanea.update'), {
+        errorBag: 'updateMiscellaneaInformation',
+        preserveScroll: true
+      });
+    }
   }
 });
 
@@ -22353,11 +22366,8 @@ var _hoisted_5 = {
   key: 0,
   "class": "text-sm"
 };
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Book ");
-
-var _hoisted_7 = {
-  key: 0
+var _hoisted_6 = {
+  "class": "flex"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_book_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("book-form");
@@ -22374,14 +22384,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.provider.started_at) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.provider.ended_at), 1
   /* TEXT */
-  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "There are " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.provider.game_provider_queues_count) + " reservations before you", 1
+  /* TEXT */
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $data.isModalShown = true;
     }),
     "class": "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150 mt-5"
-  }, [_hoisted_6, $props.provider.is_available ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_7, " Now")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), $data.isModalShown ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_common_modal, {
+  }, " Book "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+    onClick: _cache[2] || (_cache[2] = function () {
+      return $options.deleteReservation && $options.deleteReservation.apply($options, arguments);
+    }),
+    "class": "mx-2 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150 mt-5"
+  }, " Release ")])]), $data.isModalShown ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_common_modal, {
     key: 0,
-    onClose: _cache[2] || (_cache[2] = function ($event) {
+    onClose: _cache[3] || (_cache[3] = function ($event) {
       return $data.isModalShown = false;
     })
   }, {
@@ -23233,7 +23250,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_form_section = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-form-section");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_form_section, {
-    onSubmitted: _ctx.updateProfileInformation
+    onSubmitted: $options.updateMiscellaneaInformation
   }, {
     title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_1];
