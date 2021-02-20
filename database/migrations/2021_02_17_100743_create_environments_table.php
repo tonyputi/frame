@@ -27,6 +27,6 @@ class CreateEnvironmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enviroments');
+        Schema::dropIfExists('environments');
     }
 }
