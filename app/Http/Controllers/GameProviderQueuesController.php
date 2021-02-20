@@ -46,8 +46,7 @@ class GameProviderQueuesController extends Controller
 
         $GameProviderQueue->save();
 
-        // return response($GameProviderQueue, 201);
-        return redirect()->route('game_provider_queue.index');
+        return back();
     }
 
     /**
@@ -72,7 +71,7 @@ class GameProviderQueuesController extends Controller
     {
         GameProviderQueue::findOrFail($id)->update($request->input());
 
-        return response(null, 204);
+        return back();
     }
 
     /**
@@ -84,6 +83,7 @@ class GameProviderQueuesController extends Controller
     public function destroy($id)
     {
         GameProviderQueue::findOrFail($id)->delete($id);
-        return response(null, 204);
+        
+        return back();
     }
 }

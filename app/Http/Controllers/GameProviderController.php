@@ -55,7 +55,7 @@ class GameProviderController extends Controller
     {
         $GameProvider = GameProvider::create($request->input());
 
-        return response($GameProvider, 201);
+        return back();
     }
 
     /**
@@ -82,7 +82,7 @@ class GameProviderController extends Controller
     {
         GameProvider::findOrFail($id)->update($request->input());
 
-        return response(NULL, 204);
+        return back();
     }
 
     /**
@@ -95,6 +95,6 @@ class GameProviderController extends Controller
     {
         GameProvider::findOrFail($id)->delete($id);
 
-        return response(NULL, 204);
+        return back();
     }
 }

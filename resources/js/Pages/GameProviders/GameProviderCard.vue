@@ -67,7 +67,7 @@ export default {
         };
     },
     mounted() {
-        console.log(this.provider);
+        // console.log(this.provider);
     }
 }
 </script>

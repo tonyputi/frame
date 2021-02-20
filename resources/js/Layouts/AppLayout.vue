@@ -16,7 +16,7 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('game_providers.index')" :active="route().current('game_providers.index')">
+                                <jet-nav-link :href="route('game-providers.index')" :active="route().current('game-providers.index')">
                                     Game Providers
                                 </jet-nav-link>
                                 <jet-nav-link :href="route('reservations.index')" :active="route().current('reservations.index')">
