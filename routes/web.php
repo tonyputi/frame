@@ -3,7 +3,6 @@
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\GameProviderController;
 use App\Http\Controllers\GameProviderQueuesController;
-use App\Http\Controllers\GameProvidersController;
 use App\Http\Controllers\UserMiscellanea;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +30,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
-    Route::apiResource('environments', EnvironmentsController::class);
+    Route::apiResource('environments', EnvironmentController::class);
     Route::apiResource('game-providers', GameProviderController::class);
     Route::apiResource('game-provider-queues', GameProviderQueuesController::class);
 

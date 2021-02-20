@@ -2,19 +2,16 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Casino Providers
+                Games Providers
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-<!--                <search-form></search-form>-->
                 <div class="py-12">
                     <vue-table :header="header" :content="gameProviderQueues"></vue-table>
                 </div>
-                <pagination v-if="gameProviderQueue.last_page > 1"
-                            :data="gameProviderQueue" />
+                <pagination v-if="gameProviderQueue.last_page > 1" :data="gameProviderQueue" />
             </div>
         </div>
     </app-layout>

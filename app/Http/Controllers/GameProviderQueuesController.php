@@ -46,7 +46,7 @@ class GameProviderQueuesController extends Controller
 
         $GameProviderQueue->save();
 
-        return back();
+        return back(303);
     }
 
     /**
@@ -71,7 +71,7 @@ class GameProviderQueuesController extends Controller
     {
         GameProviderQueue::findOrFail($id)->update($request->input());
 
-        return back();
+        return back(303);
     }
 
     /**

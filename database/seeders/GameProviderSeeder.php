@@ -14,45 +14,6 @@ class GameProviderSeeder extends Seeder
      */
     public function run()
     {
-        //$providers = [
-        //    'authentic',
-        //    'ganapati',
-        //    'yggdrasil',
-        //    'netentse',
-        //    'amatic',
-        //    'greentube',
-        //    'genii',
-        //    'multishot',
-        //    'nektan',
-        //    'playtech',
-        //    'nyx',
-        //    'evolution',
-        //    'nolimit',
-        //    'isoftbet',
-        //    'quickspin',
-        //    'playngo',
-        //    'thunderkick',
-        //    'pragmatic',
-        //    'spigo',
-        //    'oryx',
-        //    'stakelogic',
-        //    'pariplay',
-        //    'egt',
-        //    'leander',
-        //    'igt',
-        //    'edict',
-        //    'bsg',
-        //    'ggi_quickfire',
-        //    'netentit',
-        //    'endorphina',
-        //    'redtiger',
-        //    'wazdan',
-        //    'skywind',
-        //    'tomhorn',
-        //    'beefee',
-        //    'portomaso'
-        //];
-
         GameProvider::create([
             'name' => 'Play\'N Go',
             'location_match' => '/diamondbet/soap/playngo.php'
@@ -156,10 +117,12 @@ class GameProviderSeeder extends Seeder
             'name' => 'Tomhorn',
             'location_match' => '/diamondbet/soap/tomhorn.php'
         ]);
+
         GameProvider::create([
             'name' => 'Portomaso',
             'location_match' => '/diamondbet/soap/portomaso.php'
         ]);
+        
         GameProvider::create([
             'name' => 'Beefee',
             'location_match' => '/diamondbet/soap/beefee.php'
