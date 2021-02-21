@@ -16,38 +16,42 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $leader = User::create([
+        $leader = User::factory()->withPersonalTeam()->create([
             'name' => 'Goran Misogovich',
             'email' => 'goran.misogovich@videoslots.com',
             'host' => 'goran.videoslots.com',
             'password' => Hash::make('12345678')
         ]);
 
-        $team = Team::create([
-            'name' => 'Paradoxical',
-            'user_id' => $leader->id,
-            'personal_team' => true
-        ]);
+        $team = $leader->ownedTeams()->first();
 
-        User::create([
+        $leader->switchTeam($team);
+
+        $user = User::factory()->create([
             'name' => 'Filippo Sallemi',
             'email' => 'filippo.sallemi@videoslots.com',
             'host' => 'filippo.videoslots.com',
             'password' => Hash::make('12345678')
-        ])->teams()->attach($team, ['role' => 'editor']);
+        ]);
+        $user->teams()->attach($team, ['role' => 'editor']);
+        $user->switchTeam($team);
 
-        User::create([
+        $user = User::factory()->create([
             'name' => 'Marc Powell Evans',
             'email' => 'marc.powell@videoslots.com',
             'host' => 'marc.videoslots.com',
             'password' => Hash::make('12345678')
-        ])->teams()->attach($team, ['role' => 'editor']);
+        ]);
+        $user->teams()->attach($team, ['role' => 'editor']);
+        $user->switchTeam($team);
 
-        User::create([
+        $user = User::factory()->create([
             'name' => 'Sandro Basta',
             'email' => 'sandro.basta@videoslots.com',
             'host' => 'sandro.videoslots.com',
             'password' => Hash::make('12345678')
-        ])->teams()->attach($team, ['role' => 'editor']);
+        ]);
+        $user->teams()->attach($team, ['role' => 'editor']);
+        $user->switchTeam($team);
     }
 }

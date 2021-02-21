@@ -25,7 +25,7 @@ class GameProviderController extends Controller
             ->orderBy('started_at', 'asc')
             ->paginate(static::GAME_PROVIDERS_LIMIT);
 
-        return Inertia::render('GameProviders', [
+        return Inertia::render('GameProviders/Index', [
             'gameProviders' => $game_providers
                 ->map(function ($resource) {
                     return [
