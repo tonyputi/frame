@@ -30,9 +30,9 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
-    Route::apiResource('environments', EnvironmentController::class);
-    Route::apiResource('game-providers', GameProviderController::class);
-    Route::apiResource('game-provider-queues', GameProviderQueuesController::class);
+    Route::resource('environments', EnvironmentController::class);
+    Route::resource('game-providers', GameProviderController::class);
+    Route::resource('game-provider-queues', GameProviderQueuesController::class);
 
     Route::get('/reservations', [GameProviderQueuesController::class, 'index'])->name('reservations.index');
     Route::put('/user/miscellanea', [UserMiscellanea::class, 'update'])->name('user-miscellanea.update');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GameProviderResource;
 use App\Models\GameProvider;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -18,31 +19,29 @@ class GameProviderController extends Controller
      */
     public function index(Request $request)
     {
-        $game_providers = GameProvider::query()
-            ->with('gameActiveProviderQueue')
+        $gameProviders = GameProvider::query()
+            ->with('gameProviderQueues')
             ->withCount('gameProviderQueues')
-            ->when($request->search, fn($query) => $query->where('name', 'like', "%{$request->search}%"))
-            ->orderBy('started_at', 'asc')
             ->paginate(static::GAME_PROVIDERS_LIMIT);
 
         return Inertia::render('GameProviders/Index', [
-            'gameProviders' => $game_providers
-                ->map(function ($resource) {
-                    return [
-                        'id' => $resource->id,
-                        'name' => $resource->name,
-                        'location_modifier' => $resource->location_modifier,
-                        'location_match' => $resource->location_match,
-                        'is_available' => !!!$resource->gameActiveProviderQueue->user_id,
-                        'notes' => !!!$resource->gameActiveProviderQueue->notes,
-                        'user' => $resource->gameActiveProviderQueue->user,
-                        'started_at' => $resource->gameActiveProviderQueue->started_at,
-                        'ended_at' => $resource->gameActiveProviderQueue->ended_at,
-                        'game_provider_queues_count' => $resource->game_provider_queues_count
-                    ];
-                }),
-            'meta' => $game_providers
+            'gameProviders' => GameProviderResource::collection($gameProviders),
+            'permissions' => [
+                'canCreateGameProvider' => true,
+                'canUpdateGameProvider' => true,
+                'canDeleteGameProvider' => true,
+            ]
         ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return Inertia::render('GameProviders/Show');
     }
 
     /**
@@ -64,11 +63,25 @@ class GameProviderController extends Controller
      * @param  int  $id
      * @return \Inertia\Response
      */
-    public function show($id)
+    public function show(GameProvider $gameProvider)
     {
-        return Inertia::render('GameProvider/Show', [
-            'GameProvider' => GameProvider::findOrFail($id)
+        return Inertia::render('GameProviders/Show', [
+            'gameProvider' => new GameProviderResource($gameProvider),
+            'permissions' => [
+                'canUpdateGameProvider' => true
+            ]
         ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -95,6 +108,6 @@ class GameProviderController extends Controller
     {
         GameProvider::findOrFail($id)->delete($id);
 
-        return back();
+        return redirect()->route('game-providers.index');
     }
 }
