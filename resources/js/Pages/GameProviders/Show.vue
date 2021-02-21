@@ -9,28 +9,14 @@
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <div>
-                    <!-- <update-profile-information-form :user="$page.props.user" /> -->
+                    <update-game-provider-form :gameProvider="gameProvider.data" />
 
                     <jet-section-border />
                 </div>
 
-                <!-- <div>
-                    <update-miscellanea-form :user="$page.props.user" />
-
-                    <jet-section-border />
-                </div> -->
-
-                <!-- <div v-if="$page.props.jetstream.canUpdatePassword">
-                    <update-password-form class="mt-10 sm:mt-0" />
-
-                    <jet-section-border />
-                </div> -->
-
-                <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
-                    <jet-section-border />
-
+                <div>
                     <delete-game-provider-form :gameProvider="gameProvider.data" class="mt-10 sm:mt-0" />
-                </template>
+                </div>
             </div>
         </div>
     </app-layout>
@@ -40,9 +26,7 @@
     import AppLayout from '@/Layouts/AppLayout'
     import DeleteGameProviderForm from './DeleteGameProviderForm'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
-    // import UpdatePasswordForm from './UpdatePasswordForm'
-    // import UpdateProfileInformationForm from './UpdateProfileInformationForm'
-
+    import UpdateGameProviderForm from './UpdateGameProviderForm'
 
     export default {
         props: {
@@ -59,11 +43,12 @@
         components: {
             AppLayout,
             JetSectionBorder,
-            DeleteGameProviderForm
+            DeleteGameProviderForm,
+            UpdateGameProviderForm
         },
 
         mounted() {
-            console.log(this.gameProvider);
+            // console.log(this.gameProvider);
         }
     }
 </script>

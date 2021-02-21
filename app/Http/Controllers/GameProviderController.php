@@ -91,9 +91,9 @@ class GameProviderController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, GameProvider $gameProvider)
     {
-        GameProvider::findOrFail($id)->update($request->input());
+        $gameProvider->update($request->except('_method'));
 
         return back();
     }

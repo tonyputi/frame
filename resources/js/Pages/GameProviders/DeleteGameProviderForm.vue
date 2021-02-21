@@ -19,7 +19,7 @@
                 </jet-danger-button>
             </div>
 
-            <!-- Delete Account Confirmation Modal -->
+            <!-- Delete Game Provider Confirmation Modal -->
             <jet-dialog-modal :show="confirmingGameProviderDeletion" @close="closeModal">
                 <template #title>
                     Delete {{ gameProvider.name }}
@@ -80,6 +80,10 @@
                     password: '',
                 })
             }
+        },
+
+        mounted() {
+            console.log(this.gameProvider);
         },
 
         methods: {

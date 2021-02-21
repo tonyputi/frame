@@ -10,6 +10,15 @@ class GameProvider extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'location_modifier', 'location_match'
+    ];
+
+    /**
      * Get the game provider queues for the application.
      */
     public function gameProviderQueues()
@@ -17,7 +26,7 @@ class GameProvider extends Model
         return $this->hasMany(GameProviderQueue::class);
     }
 
-   /**
+    /**
      * Get the game provider queues for the application.
      * @deprecated
      */
