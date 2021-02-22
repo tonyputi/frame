@@ -32,14 +32,14 @@
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.id }}</td>
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.name }}</td>
                                 <td class="px-2 py-2 text-sm text-center">
-                                    <inertia-link :href="route('game-providers.show', provider.id)" class="text-sm text-black-500">
+                                    <inertia-link :href="route('game-provider-queues.index')" class="text-sm text-black-500">
                                         {{ provider.game_provider_queues_count }}
                                     </inertia-link>
                                 </td>
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.created_at }}</td>
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.updated_at }}</td>
                                 <td class="px-2 py-2 text-sm text-center">
-                                    <button class="text-sm text-black-500" @click="confirmGameProviderBook(provider)">
+                                    <button class="text-sm text-black-500" @click="gameProviderBeingBooked = provider">
                                         Book
                                     </button>
                                     <inertia-link :href="route('game-providers.show', provider.id)" class="ml-4 text-sm text-black-500">
@@ -53,13 +53,9 @@
                         </tbody>
                     </table>
 
-                    <!-- <book-game-provider-form 
-                        :show="gameProviderBeingRemoved" 
-                        :gameProvider="gameProviderBeingRemoved"
-                        @close="gameProviderBeingRemoved = null" /> -->
-
-                    <book-game-provider-form 
-                        :gameProvider="gameProviders.data[0]" />
+                    <book-game-provider-modal 
+                        :gameProvider="gameProviderBeingBooked"
+                        @close="gameProviderBeingBooked = null" />
 
                 </div>
             </div>
@@ -71,14 +67,14 @@
 import AppLayout from '@/Layouts/AppLayout';
 import SearchForm from "@/Pages/GameProviders/SearchForm";
 import Pagination from "@/Shared/Pagination";
-import BookGameProviderForm from './BookGameProviderForm.vue';
+import BookGameProviderModal from './BookGameProviderModal.vue';
 
 export default {
     components: {
         Pagination,
         AppLayout,
         SearchForm,
-        BookGameProviderForm
+        BookGameProviderModal
     },
 
     props: ['gameProviders', 'permissions'],
@@ -86,15 +82,12 @@ export default {
         return {
             // leaveTeamForm: this.$inertia.form(),
             // removeTeamMemberForm: this.$inertia.form(),
-            gameProviderBeingRemoved: null,
+            gameProviderBeingBooked: null,
         }
     },
 
     methods: {
-        confirmGameProviderBook(gameProvider) {
-            this.gameProviderBeingBooked = gameProvider
-            console.log('provider');
-        }
+        
     },
 
     mounted() {
