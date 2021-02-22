@@ -18739,6 +18739,84 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ActionSection */ "./resources/js/Jetstream/ActionSection.vue");
+/* harmony import */ var _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/DialogModal */ "./resources/js/Jetstream/DialogModal.vue");
+/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
+/* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
+
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    JetActionSection: _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default,
+    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__.default,
+    JetDialogModal: _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_1__.default,
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__.default,
+    JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_5__.default
+  },
+  // props: ['gameProvider'],
+  props: {
+    gameProvider: {
+      type: Object,
+      "default": {
+        name: ''
+      }
+    }
+  },
+  data: function data() {
+    return {
+      confirmingGameProviderBooking: true,
+      form: this.$inertia.form({
+        started_at: '',
+        ended_at: ''
+      })
+    };
+  },
+  mounted: function mounted() {
+    console.log(this.gameProvider);
+  },
+  methods: {
+    confirmGameProviderBooking: function confirmGameProviderBooking() {
+      var _this = this;
+
+      this.confirmingGameProviderBooking = true;
+      setTimeout(function () {
+        return _this.$refs.password.focus();
+      }, 250);
+    },
+    bookGameProvider: function bookGameProvider() {// this.form.delete(route('game-providers.destroy', [this.gameProvider.id]), {
+      //     preserveScroll: true,
+      //     onSuccess: () => this.closeModal(),
+      //     onError: () => this.$refs.password.focus(),
+      //     onFinish: () => this.form.reset(),
+      // })
+    },
+    closeModal: function closeModal() {
+      this.confirmingGameProviderBooking = false;
+      this.form.reset();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=script&lang=js":
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=script&lang=js ***!
@@ -18876,26 +18954,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Welcome */ "./resources/js/Jetstream/Welcome.vue");
-/* harmony import */ var _Pages_GameProviders_GameProviderCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Pages/GameProviders/GameProviderCard */ "./resources/js/Pages/GameProviders/GameProviderCard.vue");
-/* harmony import */ var _Pages_GameProviders_SearchForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Pages/GameProviders/SearchForm */ "./resources/js/Pages/GameProviders/SearchForm.vue");
-/* harmony import */ var _Shared_Pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Shared/Pagination */ "./resources/js/Shared/Pagination.vue");
-
+/* harmony import */ var _Pages_GameProviders_SearchForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/GameProviders/SearchForm */ "./resources/js/Pages/GameProviders/SearchForm.vue");
+/* harmony import */ var _Shared_Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Shared/Pagination */ "./resources/js/Shared/Pagination.vue");
+/* harmony import */ var _BookGameProviderForm_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BookGameProviderForm.vue */ "./resources/js/Pages/GameProviders/BookGameProviderForm.vue");
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    Pagination: _Shared_Pagination__WEBPACK_IMPORTED_MODULE_4__.default,
+    Pagination: _Shared_Pagination__WEBPACK_IMPORTED_MODULE_2__.default,
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    Welcome: _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__.default,
-    GameProviderCard: _Pages_GameProviders_GameProviderCard__WEBPACK_IMPORTED_MODULE_2__.default,
-    SearchForm: _Pages_GameProviders_SearchForm__WEBPACK_IMPORTED_MODULE_3__.default
+    SearchForm: _Pages_GameProviders_SearchForm__WEBPACK_IMPORTED_MODULE_1__.default,
+    BookGameProviderForm: _BookGameProviderForm_vue__WEBPACK_IMPORTED_MODULE_3__.default
   },
   props: ['gameProviders', 'permissions'],
-  mounted: function mounted() {
-    console.log(this.gameProviders.data[0]);
+  data: function data() {
+    return {
+      // leaveTeamForm: this.$inertia.form(),
+      // removeTeamMemberForm: this.$inertia.form(),
+      gameProviderBeingRemoved: null
+    };
+  },
+  methods: {
+    confirmGameProviderBook: function confirmGameProviderBook(gameProvider) {
+      this.gameProviderBeingBooked = gameProvider;
+      console.log('provider');
+    }
+  },
+  mounted: function mounted() {//console.log(this.gameProviders.data[0]);
   }
 });
 
@@ -23602,6 +23689,90 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=template&id=5fd69858":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=template&id=5fd69858 ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "mt-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <jet-input type=\"password\" class=\"mt-1 block w-3/4\" placeholder=\"Password\"\n                            ref=\"password\"\n                            v-model=\"form.password\"\n                            @keyup.enter.native=\"bookGameProvider\" />\n\n                <jet-input-error :message=\"form.errors.password\" class=\"mt-2\" /> ")], -1
+/* HOISTED */
+);
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevermind ");
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Book Game Provider ");
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_jet_secondary_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-secondary-button");
+
+  var _component_jet_danger_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-danger-button");
+
+  var _component_jet_dialog_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-dialog-modal");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Boook Game Provider Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dialog_modal, {
+    show: $data.confirmingGameProviderBooking,
+    onClose: $options.closeModal
+  }, {
+    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Book " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.gameProvider.name), 1
+      /* TEXT */
+      )];
+    }),
+    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Are you sure you want to delete {{ gameProvider.name }}? Once game provider is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. "), _hoisted_1];
+    }),
+    footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_secondary_button, {
+        onClick: $options.closeModal
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_2];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_danger_button, {
+        "class": ["ml-2", {
+          'opacity-25': $data.form.processing
+        }],
+        onClick: $options.bookGameProvider,
+        disabled: $data.form.processing
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_3];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["onClick", "class", "disabled"])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show", "onClose"])], 2112
+  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+  );
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc ***!
@@ -23900,20 +24071,16 @@ var _hoisted_13 = {
   "class": "px-2 py-2 text-sm text-center"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-  "class": "text-sm text-black-500"
-}, " Book ", -1
-/* HOISTED */
-);
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Show ");
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Show ");
-
-var _hoisted_16 = {
+var _hoisted_15 = {
   key: 0,
   "class": "ml-4 text-sm text-red-500"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
+
+  var _component_book_game_provider_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("book-game-provider-form");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -23960,22 +24127,33 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(provider.updated_at), 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+          "class": "text-sm text-black-500",
+          onClick: function onClick($event) {
+            return $options.confirmGameProviderBook(provider);
+          }
+        }, " Book ", 8
+        /* PROPS */
+        , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
           href: _ctx.route('game-providers.show', provider.id),
           "class": "ml-4 text-sm text-black-500"
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-            return [_hoisted_15];
+            return [_hoisted_14];
           }),
           _: 2
           /* DYNAMIC */
 
         }, 1032
         /* PROPS, DYNAMIC_SLOTS */
-        , ["href"]), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", _hoisted_16, " Delete ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
+        , ["href"]), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", _hoisted_15, " Delete ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))])])])])])];
+      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <book-game-provider-form \n                        :show=\"gameProviderBeingRemoved\" \n                        :gameProvider=\"gameProviderBeingRemoved\"\n                        @close=\"gameProviderBeingRemoved = null\" /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_book_game_provider_form, {
+        gameProvider: $props.gameProviders.data[0]
+      }, null, 8
+      /* PROPS */
+      , ["gameProvider"])])])])];
     }),
     _: 1
     /* STABLE */
@@ -46768,6 +46946,32 @@ _BookForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__fil
 
 /***/ }),
 
+/***/ "./resources/js/Pages/GameProviders/BookGameProviderForm.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/BookGameProviderForm.vue ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _BookGameProviderForm_vue_vue_type_template_id_5fd69858__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookGameProviderForm.vue?vue&type=template&id=5fd69858 */ "./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=template&id=5fd69858");
+/* harmony import */ var _BookGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookGameProviderForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=script&lang=js");
+
+
+
+_BookGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _BookGameProviderForm_vue_vue_type_template_id_5fd69858__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_BookGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/BookGameProviderForm.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_BookGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue":
 /*!*********************************************************************!*\
   !*** ./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue ***!
@@ -47998,6 +48202,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=script&lang=js":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookGameProviderForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=script&lang=js":
 /*!*********************************************************************************************!*\
   !*** ./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=script&lang=js ***!
@@ -49054,6 +49274,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=template&id=5fd69858":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=template&id=5fd69858 ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookGameProviderForm_vue_vue_type_template_id_5fd69858__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookGameProviderForm_vue_vue_type_template_id_5fd69858__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookGameProviderForm.vue?vue&type=template&id=5fd69858 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderForm.vue?vue&type=template&id=5fd69858");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc":
 /*!***************************************************************************************************!*\
   !*** ./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc ***!
@@ -49751,6 +49987,8 @@ var map = {
 	"./GameProviders.vue": "./resources/js/Pages/GameProviders.vue",
 	"./GameProviders/BookForm": "./resources/js/Pages/GameProviders/BookForm.vue",
 	"./GameProviders/BookForm.vue": "./resources/js/Pages/GameProviders/BookForm.vue",
+	"./GameProviders/BookGameProviderForm": "./resources/js/Pages/GameProviders/BookGameProviderForm.vue",
+	"./GameProviders/BookGameProviderForm.vue": "./resources/js/Pages/GameProviders/BookGameProviderForm.vue",
 	"./GameProviders/DeleteGameProviderForm": "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue",
 	"./GameProviders/DeleteGameProviderForm.vue": "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue",
 	"./GameProviders/GameProviderCard": "./resources/js/Pages/GameProviders/GameProviderCard.vue",

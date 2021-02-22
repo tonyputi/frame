@@ -39,7 +39,7 @@
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.created_at }}</td>
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.updated_at }}</td>
                                 <td class="px-2 py-2 text-sm text-center">
-                                    <button class="text-sm text-black-500">
+                                    <button class="text-sm text-black-500" @click="confirmGameProviderBook(provider)">
                                         Book
                                     </button>
                                     <inertia-link :href="route('game-providers.show', provider.id)" class="ml-4 text-sm text-black-500">
@@ -53,6 +53,14 @@
                         </tbody>
                     </table>
 
+                    <!-- <book-game-provider-form 
+                        :show="gameProviderBeingRemoved" 
+                        :gameProvider="gameProviderBeingRemoved"
+                        @close="gameProviderBeingRemoved = null" /> -->
+
+                    <book-game-provider-form 
+                        :gameProvider="gameProviders.data[0]" />
+
                 </div>
             </div>
         </div>
@@ -61,24 +69,36 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout';
-import Welcome from '@/Jetstream/Welcome';
-import GameProviderCard from "@/Pages/GameProviders/GameProviderCard";
 import SearchForm from "@/Pages/GameProviders/SearchForm";
 import Pagination from "@/Shared/Pagination";
+import BookGameProviderForm from './BookGameProviderForm.vue';
 
 export default {
     components: {
         Pagination,
         AppLayout,
-        Welcome,
-        GameProviderCard,
-        SearchForm
+        SearchForm,
+        BookGameProviderForm
     },
 
     props: ['gameProviders', 'permissions'],
+    data() {
+        return {
+            // leaveTeamForm: this.$inertia.form(),
+            // removeTeamMemberForm: this.$inertia.form(),
+            gameProviderBeingRemoved: null,
+        }
+    },
+
+    methods: {
+        confirmGameProviderBook(gameProvider) {
+            this.gameProviderBeingBooked = gameProvider
+            console.log('provider');
+        }
+    },
 
     mounted() {
-        console.log(this.gameProviders.data[0]);
+        //console.log(this.gameProviders.data[0]);
     }
 };
 </script>
