@@ -18824,17 +18824,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/Pages/GameProviders/BookForm'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var _Shared_CommonModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Shared/CommonModal */ "./resources/js/Shared/CommonModal.vue");
-/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
-
+/* harmony import */ var _Shared_CommonModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Shared/CommonModal */ "./resources/js/Shared/CommonModal.vue");
+/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    CommonModal: _Shared_CommonModal__WEBPACK_IMPORTED_MODULE_1__.default,
-    BookForm: Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/Pages/GameProviders/BookForm'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__.default
+    CommonModal: _Shared_CommonModal__WEBPACK_IMPORTED_MODULE_0__.default,
+    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_1__.default
   },
   props: {
     provider: Object

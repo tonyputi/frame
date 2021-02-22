@@ -34,14 +34,12 @@
     </div>
 </template>
 <script>
-import BookForm from "@/Pages/GameProviders/BookForm";
 import CommonModal from "@/Shared/CommonModal";
 import JetDangerButton from '@/Jetstream/DangerButton'
 
 export default {
     components: {
         CommonModal, 
-        BookForm,
         JetDangerButton,
     },
 
