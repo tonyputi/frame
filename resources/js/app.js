@@ -6,7 +6,7 @@ import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-v
 
 const el = document.getElementById('app');
 
-createApp({
+const app = createApp({
     render: () =>
         h(InertiaApp, {
             initialPage: JSON.parse(el.dataset.page),

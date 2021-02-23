@@ -11,7 +11,7 @@
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     
                     <div>
-                        <inertia-link :href="route('game-providers.create')" class="ml-4 text-sm text-black-500">
+                        <inertia-link :href="route('game-providers.create')" class="m-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
                             Create
                         </inertia-link>
                     </div>
@@ -19,31 +19,33 @@
                     <table class="table-auto w-full">
                         <thead>
                             <tr class="border border-black-600">
-                                <th class="px-2 py-2 text-sm text-center">#</th>
+                                <th class="px-2 py-2 text-sm text-center">Status</th>
                                 <th class="px-2 py-2 text-sm text-center">Name</th>
                                 <th class="px-2 py-2 text-sm text-center">Reservations</th>
-                                <th class="px-2 py-2 text-sm text-center">Created At</th>
-                                <th class="px-2 py-2 text-sm text-center">Updated At</th>
+                                <th class="px-2 py-2 text-sm text-center">Reserved By</th>
+                                <th class="px-2 py-2 text-sm text-center">Starting At</th>
+                                <th class="px-2 py-2 text-sm text-center">Ending At</th>
                                 <th class="px-2 py-2 text-sm text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="provider in gameProviders.data" :key="provider.id" class="border border-black-600">
-                                <td class="px-2 py-2 text-sm text-center">{{ provider.id }}</td>
+                                <td class="px-2 py-2 text-sm text-center">{{ provider.candidate_game_provider_on_queue.is_active }}</td>
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.name }}</td>
                                 <td class="px-2 py-2 text-sm text-center">
                                     <inertia-link :href="route('game-provider-queues.index')" class="text-sm text-black-500">
                                         {{ provider.game_provider_queues_count }}
                                     </inertia-link>
                                 </td>
-                                <td class="px-2 py-2 text-sm text-center">{{ provider.created_at }}</td>
-                                <td class="px-2 py-2 text-sm text-center">{{ provider.updated_at }}</td>
+                                <td class="px-2 py-2 text-sm text-center">{{ provider.candidate_game_provider_on_queue.user_id }}</td>
+                                <td class="px-2 py-2 text-sm text-center">{{ provider.candidate_game_provider_on_queue.started_at }}</td>
+                                <td class="px-2 py-2 text-sm text-center">{{ provider.candidate_game_provider_on_queue.ended_at }}</td>
                                 <td class="px-2 py-2 text-sm text-center">
                                     <div class="flex items-center">
-                                        <button class="text-sm text-black-500" @click="gameProviderBeingBooked = provider">
+                                        <button class="text-sm text-black-500" @click="gameProviderBeingBooked=provider">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
-    </svg>
+                                                <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                                            </svg>
                                         </button>
                                         <inertia-link :href="route('game-providers.show', provider.id)" class="ml-4 text-sm text-black-500">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
@@ -89,9 +91,8 @@ export default {
     props: ['gameProviders', 'permissions'],
     data() {
         return {
-            // leaveTeamForm: this.$inertia.form(),
-            // removeTeamMemberForm: this.$inertia.form(),
             gameProviderBeingBooked: null,
+            gameProviderBeingDeleted: null,
         }
     },
 
@@ -100,7 +101,7 @@ export default {
     },
 
     mounted() {
-        //console.log(this.gameProviders.data[0]);
+        console.log(this.gameProviders.data);
     }
 };
 </script>

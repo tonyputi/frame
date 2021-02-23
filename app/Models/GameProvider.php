@@ -23,22 +23,25 @@ class GameProvider extends Model
      */
     public function gameProviderQueues()
     {
-        return $this->hasMany(GameProviderQueue::class);
+        return $this->hasMany(GameProviderQueue::class)
+            ->orderBy('started_at', 'desc');
     }
 
     /**
      * Get the game provider queues for the application.
-     * @deprecated
      */
-    public function gameActiveProviderQueue()
+    public function candidateGameProviderOnQueue()
     {
-        return $this->activeGameProviderQueue();
+        return $this->hasOne(GameProviderQueue::class)
+            ->orderBy('started_at', 'desc')
+            ->with('user')
+            ->withDefault();
     }
 
     /**
      * Get the game provider queues for the application.
      */
-    public function activeGameProviderQueue()
+    public function activeGameProviderOnQueue()
     {
         return $this->hasOne(GameProviderQueue::class)
             ->where('is_active', true)
@@ -48,21 +51,21 @@ class GameProvider extends Model
     /**
      * Get the game provider queues for the application.
      */
-    public function expiredGameProviderQueue()
-    {
-        return $this->hasMany(GameProviderQueue::class)
-            ->where('is_active', true)
-            ->where('ended_at', '<', $this->freshTimestamp());
-    }
+    // public function expiredGameProviderQueue()
+    // {
+    //     return $this->hasMany(GameProviderQueue::class)
+    //         ->where('is_active', true)
+    //         ->where('ended_at', '<', $this->freshTimestamp());
+    // }
 
     /**
      * Get the game provider queues for the application.
      */
-    public function candidateGameProviderQueue()
-    {
-       return $this->hasMany(GameProviderQueue::class)
-           ->where('is_active', false)
-           ->where('started_at', '<=', $this->freshTimestamp())
-           ->where('ended_at', '>=', $this->freshTimestamp());
-    }
+    // public function candidateGameProviderQueue()
+    // {
+    //    return $this->hasMany(GameProviderQueue::class)
+    //        ->where('is_active', false)
+    //        ->where('started_at', '<=', $this->freshTimestamp())
+    //        ->where('ended_at', '>=', $this->freshTimestamp());
+    // }
 }

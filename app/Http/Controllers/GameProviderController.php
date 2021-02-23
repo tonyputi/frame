@@ -20,7 +20,7 @@ class GameProviderController extends Controller
     public function index(Request $request)
     {
         $gameProviders = GameProvider::query()
-            ->with('gameProviderQueues')
+            ->with('candidateGameProviderOnQueue')
             ->withCount('gameProviderQueues')
             ->paginate(static::GAME_PROVIDERS_LIMIT);
 
