@@ -77,8 +77,7 @@
                     game_provider_id: 1,
                     started_at: this.formatDate(new Date()),
                     ended_at: this.formatDate(new Date(new Date().setHours(new Date().getHours() + 1))),
-                    applied_at: this.formatDate(new Date()),
-                    notes: ''
+                    notes: null
                 })
             }
         },

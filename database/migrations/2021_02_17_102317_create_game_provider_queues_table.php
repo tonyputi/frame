@@ -22,7 +22,7 @@ class CreateGameProviderQueuesTable extends Migration
             $table->text('notes')->nullable();
             $table->datetime('started_at');
             $table->datetime('ended_at');
-            $table->datetime('applied_at');
+            $table->datetime('applied_at')->nullable();
             $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
