@@ -2,7 +2,7 @@
     <!-- Boook Game Provider Modal -->
     <jet-dialog-modal :show="gameProvider" @close="closeModal">
         <template #title>
-            Book {{ name }}
+            Book {{ gameProvider?.name }}
         </template>
 
         <template #content>
@@ -80,12 +80,6 @@
                     ended_at: moment().add(1, 'hours'),
                     notes: null
                 })
-            }
-        },
-
-        computed: {
-            name() {
-                return this.gameProvider ? this.gameProvider.name : ''
             }
         },
 

@@ -111,10 +111,6 @@
             }
         },
 
-        mounted() {
-            console.log(this.gameProvider)
-        },
-
         methods: {
             updateGameProvider() {
                 if (this.$refs.logo) {
@@ -131,7 +127,7 @@
                 this.$refs.logo.click();
             },
 
-            updatelogoPreview() {
+            updateLogoPreview() {
                 const reader = new FileReader();
 
                 reader.onload = (e) => {
@@ -141,7 +137,7 @@
                 reader.readAsDataURL(this.$refs.logo.files[0]);
             },
 
-            deletelogo() {
+            deleteLogo() {
                 this.$inertia.delete(route('game-provider-logo.destroy'), {
                     preserveScroll: true,
                     onSuccess: () => (this.logoPreview = null),
