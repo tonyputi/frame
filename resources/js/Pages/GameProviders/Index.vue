@@ -9,20 +9,27 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex my-4">
-                        <input class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                            type="search"
-                            v-model="search"
-                            placeholder="Search" />
-                        <inertia-link :href="route('game-providers.create')" class="ml-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
-                            Create
-                        </inertia-link>
-                    </div>
+                    <input type="search"
+                           class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                           @keyup="filterGameProvider"
+                           v-model="search"
+                           placeholder="Search for game provider" />
+
+                    <inertia-link :href="route('game-providers.create')" class="ml-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
+                        Create
+                    </inertia-link>
+                </div>
+
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
                     <table class="table-auto w-full">
                         <thead>
-                            <tr class="border border-black-600">
+                            <tr>
+                                <th colspan="7">Toolbar</th>
+                            </tr>
+                            <tr>
                                 <th class="px-2 py-2 text-sm text-center">Status</th>
                                 <th class="px-2 py-2 text-sm text-center">Name</th>
                                 <th class="px-2 py-2 text-sm text-center">Reservations</th>
@@ -35,13 +42,13 @@
                         <tbody>
                             <tr v-for="provider in gameProviders.data" :key="provider.id" class="border border-black-600">
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.candidate_game_provider_on_queue.is_active }}</td>
-                                <td class="px-2 py-2 text-sm text-center">{{ provider.name }}</td>
+                                <td class="px-2 py-2 text-sm text-left">{{ provider.name }}</td>
                                 <td class="px-2 py-2 text-sm text-center">
                                     <inertia-link :href="route('game-provider-queues.index')" class="text-sm text-black-500">
                                         {{ provider.game_provider_queues_count }}
                                     </inertia-link>
                                 </td>
-                                <td class="px-2 py-2 text-sm text-center">{{ provider.candidate_game_provider_on_queue.user_id }}</td>
+                                <td class="px-2 py-2 text-sm text-center">{{ provider.candidate_game_provider_on_queue.user?.name }}</td>
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.candidate_game_provider_on_queue.started_at }}</td>
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.candidate_game_provider_on_queue.ended_at }}</td>
                                 <td class="px-2 py-2 text-sm text-center">
@@ -57,7 +64,7 @@
                                                 <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                                             </svg>
                                         </inertia-link>
-                                        <button class="ml-4 text-sm text-red-500" v-if="permissions.canDeleteGameProvider">
+                                        <button class="ml-4 text-sm text-red-500" v-if="permissions.canDeleteGameProvider" @click="gameProviderBeingDeleted=provider">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                                 <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                                             </svg>
@@ -68,9 +75,13 @@
                         </tbody>
                     </table>
 
-                    <book-game-provider-modal 
+                    <book-game-provider-modal
                         :gameProvider="gameProviderBeingBooked"
                         @close="gameProviderBeingBooked = null" />
+
+                    <delete-game-provider-modal
+                        :gameProvider="gameProviderBeingDeleted"
+                        @close="gameProviderBeingDeleted = null" />
 
                 </div>
             </div>
@@ -82,30 +93,34 @@
 import AppLayout from '@/Layouts/AppLayout';
 import SearchForm from "@/Pages/GameProviders/SearchForm";
 import Pagination from "@/Shared/Pagination";
-import BookGameProviderModal from './BookGameProviderModal.vue';
+import BookGameProviderModal from './BookGameProviderModal';
+import DeleteGameProviderModal from './DeleteGameProviderModal';
 
 export default {
     components: {
         Pagination,
         AppLayout,
         SearchForm,
-        BookGameProviderModal
+        BookGameProviderModal,
+        DeleteGameProviderModal
     },
 
     props: ['gameProviders', 'permissions'],
+
     data() {
         return {
+            searchPid: null,
+            search: '',
             gameProviderBeingBooked: null,
             gameProviderBeingDeleted: null,
         }
     },
 
     methods: {
-        
-    },
-
-    mounted() {
-        console.log(this.gameProviders.data);
+        filterGameProvider() {
+            clearTimeout(this.searchPid);
+            this.searchPid = setTimeout(() => this.$inertia.reload({data: { search: this.search }}), 1000)
+        }
     }
 };
 </script>

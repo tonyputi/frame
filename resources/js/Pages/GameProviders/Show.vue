@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Game Provider: {{ gameProvider.data.name }}
+                Game Provider: {{ gameProvider.data?.name }}
             </h2>
         </template>
 
@@ -29,26 +29,13 @@
     import UpdateGameProviderForm from './UpdateGameProviderForm'
 
     export default {
-        props: {
-            gameProvider: {
-                type: Object,
-                default: {
-                    data: {
-                        name: ''
-                    }
-                }
-            }
-        },
+        props: ['gameProvider'],
 
         components: {
             AppLayout,
             JetSectionBorder,
             DeleteGameProviderForm,
             UpdateGameProviderForm
-        },
-
-        mounted() {
-            // console.log(this.gameProvider);
         }
     }
 </script>

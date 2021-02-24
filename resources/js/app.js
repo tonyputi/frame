@@ -13,6 +13,13 @@ createApp({
             resolveComponent: (name) => require(`./Pages/${name}`).default,
         })
 })
-    .mixin({ methods: { route } })
-    .use(InertiaPlugin)
-    .mount(el);
+
+app.config.globalProperties.$filters = {
+    optional(value) {
+        return value ? value : {}
+    },
+}
+
+app.mixin({ methods: { route } })
+app.use(InertiaPlugin)
+app.mount(el);
