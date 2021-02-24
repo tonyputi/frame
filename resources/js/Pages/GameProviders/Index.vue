@@ -8,14 +8,19 @@
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    
-                    <div>
-                        <inertia-link :href="route('game-providers.create')" class="m-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
-                            Create
-                        </inertia-link>
-                    </div>
+                <div class="flex my-4">
+                    <input type="search"
+                           class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                           @keyup="filterGameProvider"
+                           v-model="search"
+                           placeholder="Search for game provider" />
 
+                    <inertia-link :href="route('game-providers.create')" class="ml-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
+                        Create
+                    </inertia-link>
+                </div>
+
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <table class="table-auto w-full">
                         <thead>
                             <tr class="border border-black-600">
@@ -64,7 +69,7 @@
                         </tbody>
                     </table>
 
-                    <book-game-provider-modal 
+                    <book-game-provider-modal
                         :gameProvider="gameProviderBeingBooked"
                         @close="gameProviderBeingBooked = null" />
 
@@ -75,10 +80,11 @@
 </template>
 
 <script>
+import { fff } from '@/helpers';
 import AppLayout from '@/Layouts/AppLayout';
 import SearchForm from "@/Pages/GameProviders/SearchForm";
 import Pagination from "@/Shared/Pagination";
-import BookGameProviderModal from './BookGameProviderModal.vue';
+import BookGameProviderModal from './BookGameProviderModal';
 
 export default {
     components: {
@@ -91,17 +97,22 @@ export default {
     props: ['gameProviders', 'permissions'],
     data() {
         return {
+            searchPid: null,
+            search: '',
             gameProviderBeingBooked: null,
             gameProviderBeingDeleted: null,
         }
     },
 
     methods: {
-        
+        filterGameProvider() {
+            clearTimeout(this.searchPid);
+            this.searchPid = setTimeout(() => this.$inertia.reload({data: { search: this.search }}), 1000)
+        }
     },
 
     mounted() {
-        console.log(this.gameProviders.data);
+        //console.log(this.gameProviders.data);
     }
 };
 </script>

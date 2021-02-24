@@ -20,6 +20,7 @@ class GameProviderController extends Controller
     public function index(Request $request)
     {
         $gameProviders = GameProvider::query()
+            ->when($request->input('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
             ->with('candidateGameProviderOnQueue')
             ->withCount('gameProviderQueues')
             ->paginate(static::GAME_PROVIDERS_LIMIT);

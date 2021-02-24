@@ -53,6 +53,7 @@
     import JetInputError from '@/Jetstream/InputError'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton'
     import JetButton from '@/Jetstream/Button'
+    import moment from 'moment';
 
     export default {
         components: {
@@ -75,8 +76,8 @@
                     application_id: 1,
                     environment_id: 1,
                     game_provider_id: 1,
-                    started_at: this.formatDate(new Date()),
-                    ended_at: this.formatDate(new Date(new Date().setHours(new Date().getHours() + 1))),
+                    started_at: moment(),
+                    ended_at: moment().add(1, 'hours'),
                     notes: null
                 })
             }
@@ -103,10 +104,6 @@
 
                 this.form.reset()
             },
-
-            formatDate(date) {
-                return `${date.toISOString().split('T')[0]} ${date.toTimeString().split(' ')[0]}`;
-            }
         },
     }
 </script>
