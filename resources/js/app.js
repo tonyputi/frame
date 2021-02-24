@@ -6,12 +6,12 @@ import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-v
 
 const el = document.getElementById('app');
 
-const app = createApp({
+createApp({
     render: () =>
         h(InertiaApp, {
             initialPage: JSON.parse(el.dataset.page),
             resolveComponent: (name) => require(`./Pages/${name}`).default,
-        }),
+        })
 })
     .mixin({ methods: { route } })
     .use(InertiaPlugin)

@@ -8,13 +8,17 @@
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    
-                    <div>
-                        <inertia-link :href="route('game-providers.create')" class="m-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
+                <div class="flex my-4">
+                        <input class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                            type="search"
+                            v-model="search"
+                            placeholder="Search" />
+                        <inertia-link :href="route('game-providers.create')" class="ml-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
                             Create
                         </inertia-link>
                     </div>
+
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
                     <table class="table-auto w-full">
                         <thead>
@@ -25,7 +29,7 @@
                                 <th class="px-2 py-2 text-sm text-center">Reserved By</th>
                                 <th class="px-2 py-2 text-sm text-center">Starting At</th>
                                 <th class="px-2 py-2 text-sm text-center">Ending At</th>
-                                <th class="px-2 py-2 text-sm text-center">Actions</th>
+                                <th class="px-2 py-2 text-sm text-center"></th>
                             </tr>
                         </thead>
                         <tbody>
