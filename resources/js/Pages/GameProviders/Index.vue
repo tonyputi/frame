@@ -9,18 +9,17 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex my-4">
-                    <input type="search"
-                           class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                           @keyup="filterGameProvider"
-                           v-model="search"
-                           placeholder="Search for game provider" />
+                    <search-input class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" />
+<!--                    <input type="search"-->
+<!--                           class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"-->
+<!--                           @keyup="filterGameProvider"-->
+<!--                           v-model="search"-->
+<!--                           placeholder="Search for game provider" />-->
 
                     <inertia-link :href="route('game-providers.create')" class="ml-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
                         Create
                     </inertia-link>
                 </div>
-
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
@@ -91,16 +90,16 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout';
-import SearchForm from "@/Pages/GameProviders/SearchForm";
 import Pagination from "@/Shared/Pagination";
 import BookGameProviderModal from './BookGameProviderModal';
 import DeleteGameProviderModal from './DeleteGameProviderModal';
+import SearchInput from "@/Components/SearchInput";
 
 export default {
     components: {
         Pagination,
         AppLayout,
-        SearchForm,
+        SearchInput,
         BookGameProviderModal,
         DeleteGameProviderModal
     },
