@@ -9,12 +9,13 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex my-4">
-                    <search-input class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" />
-<!--                    <input type="search"-->
-<!--                           class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"-->
-<!--                           @keyup="filterGameProvider"-->
-<!--                           v-model="search"-->
-<!--                           placeholder="Search for game provider" />-->
+                    <!-- <jet-input name="search" class="w-full" @input="filterGameProvider" /> -->
+                    <!-- <search-input name="search" class="w-full" @input="filterGameProvider" /> -->
+                   <input type="search"
+                        class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                        @keyup="filterGameProvider"
+                        v-model="search"
+                        placeholder="Search for game provider" />
 
                     <inertia-link :href="route('game-providers.create')" class="ml-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
                         Create
@@ -22,9 +23,8 @@
                 </div>
 
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-
-                    <table class="table-auto w-full">
-                        <thead>
+                    <jet-table>
+                        <template #header>
                             <tr>
                                 <th colspan="7">Toolbar</th>
                             </tr>
@@ -37,8 +37,9 @@
                                 <th class="px-2 py-2 text-sm text-center">Ending At</th>
                                 <th class="px-2 py-2 text-sm text-center"></th>
                             </tr>
-                        </thead>
-                        <tbody>
+                        </template>
+
+                        <template #body>
                             <tr v-for="provider in gameProviders.data" :key="provider.id" class="border border-black-600">
                                 <td class="px-2 py-2 text-sm text-center">{{ provider.candidate_game_provider_on_queue.is_active }}</td>
                                 <td class="px-2 py-2 text-sm text-left">{{ provider.name }}</td>
@@ -71,8 +72,8 @@
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
+                        </template>
+                    </jet-table>
 
                     <book-game-provider-modal
                         :gameProvider="gameProviderBeingBooked"
@@ -94,12 +95,16 @@ import Pagination from "@/Shared/Pagination";
 import BookGameProviderModal from './BookGameProviderModal';
 import DeleteGameProviderModal from './DeleteGameProviderModal';
 import SearchInput from "@/Components/SearchInput";
+import JetInput from "@/Jetstream/Input";
+import JetTable from "@/Components/Table";
 
 export default {
     components: {
         Pagination,
         AppLayout,
         SearchInput,
+        JetInput,
+        JetTable,
         BookGameProviderModal,
         DeleteGameProviderModal
     },
@@ -117,6 +122,7 @@ export default {
 
     methods: {
         filterGameProvider() {
+            // console.log('what?');
             clearTimeout(this.searchPid);
             this.searchPid = setTimeout(() => this.$inertia.reload({data: { search: this.search }}), 1000)
         }

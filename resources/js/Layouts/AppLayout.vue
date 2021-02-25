@@ -19,9 +19,9 @@
                                 <jet-nav-link :href="route('game-providers.index')" :active="route().current('game-providers.index')">
                                     Game Providers
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('reservations.index')" :active="route().current('reservations.index')">
-                                    Reservations
-                                </jet-nav-link>
+                                <!-- <jet-nav-link :href="route('payment-providers.index')" :active="route().current('payment-providers.index')">
+                                    Payment Providers
+                                </jet-nav-link> -->
                             </div>
                         </div>
 
