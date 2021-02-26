@@ -20,7 +20,7 @@
 <script>
 import AppLayout from '@/Layouts/AppLayout';
 import Welcome from '@/Jetstream/Welcome';
-import SearchForm from "@/Pages/GameProviders/SearchForm";
+// import SearchForm from "@/Pages/GameProviders/SearchForm";
 import VueTable from '@/Shared/VueTable';
 // import Pagination from "@/Shared/Pagination";
 
@@ -29,7 +29,7 @@ export default {
         // Pagination,
         AppLayout,
         Welcome,
-        SearchForm,
+        // SearchForm,
         VueTable
     },
 
