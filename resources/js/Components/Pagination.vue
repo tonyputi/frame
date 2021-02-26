@@ -79,63 +79,6 @@
 
 <script>
 export default {
-    props: ['meta'],
-
-    mounted() {
-        console.log(this.meta)
-    },
-
-    computed: {
-        params() {
-            const search = location.search.substring(1);
-            if (search && search.length) {
-                return JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
-            }
-
-            return {};
-        },
-
-        page() {
-            return this.meta.current_page;
-        }
-    },
-
-    methods: {
-        goToFirst($event) {
-            $event.preventDefault();
-            this.goToPage(1);
-        },
-
-        goToLast($event) {
-            $event.preventDefault();
-            this.goToPage(this.meta.last_page);
-        },
-
-        goToPrevious($event) {
-            $event.preventDefault();
-            if (this.page > 1) {
-                this.goToPage(this.page - 1);
-            }
-        },
-
-        goToNext($event) {
-            $event.preventDefault();
-            if (this.meta.last_page > this.page) {
-                this.goToPage(this.page + 1);
-            }
-        },
-
-        goToPage(page) {
-            this.$inertia.replace(
-                window.location.pathname,
-                {
-                    meta: {
-                        ...this.params,
-                        page: page
-                    }
-                }
-            );
-        }
-    }
+    props: ['meta']
 };
 </script>
