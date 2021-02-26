@@ -10,9 +10,6 @@ use Inertia\Inertia;
 
 class GameProviderController extends Controller
 {
-
-    const GAME_PROVIDERS_LIMIT = 24;
-
     /**
      * @param Request $request
      * @return \Inertia\Response
@@ -23,7 +20,7 @@ class GameProviderController extends Controller
             ->when($request->input('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
             ->with('candidateGameProviderOnQueue')
             ->withCount('gameProviderQueues')
-            ->paginate(static::GAME_PROVIDERS_LIMIT);
+            ->paginate();
 
         return Inertia::render('GameProviders/Index', [
             'gameProviders' => GameProviderResource::collection($gameProviders),
@@ -53,6 +50,7 @@ class GameProviderController extends Controller
      */
     public function store(Request $request)
     {
+        // TODO: validation is missed here
         $GameProvider = GameProvider::create($request->input());
 
         return back();
@@ -61,7 +59,7 @@ class GameProviderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  GameProvider  $gameProvider
      * @return \Inertia\Response
      */
     public function show(GameProvider $gameProvider)
@@ -77,10 +75,10 @@ class GameProviderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  GameProvider  $gameProvider
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(GameProvider $gameProvider)
     {
         //
     }
@@ -89,11 +87,12 @@ class GameProviderController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
+     * @param  GameProvider  $gameProvider
      * @return Response
      */
     public function update(Request $request, GameProvider $gameProvider)
     {
+        // TODO: validation is missed here
         $gameProvider->update($request->except('_method'));
 
         return back();
@@ -102,10 +101,10 @@ class GameProviderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  GameProvider  $gameProvider
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(GameProvider $gameProvider)
     {
         GameProvider::findOrFail($id)->delete($id);
 

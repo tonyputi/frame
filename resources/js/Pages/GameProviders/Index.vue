@@ -11,9 +11,10 @@
                 <div class="flex my-4">
                     <!-- <jet-input name="search" class="w-full" @input="filterGameProvider" /> -->
                     <!-- <search-input name="search" class="w-full" @input="filterGameProvider" /> -->
-                   <input type="search"
+                   <input type="text"
+                        name="search"
                         class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                        @keyup="filterGameProvider"
+                        @input="filterGameProvider"
                         v-model="search"
                         placeholder="Search for game provider" />
 
@@ -28,7 +29,7 @@
                             <tr>
                                 <th colspan="7">Toolbar</th>
                             </tr>
-                            <tr>
+                            <tr class="bg-gray-800 text-white"> 
                                 <th class="px-2 py-2 text-sm text-center">Status</th>
                                 <th class="px-2 py-2 text-sm text-center">Name</th>
                                 <th class="px-2 py-2 text-sm text-center">Reservations</th>
@@ -75,6 +76,8 @@
                         </template>
                     </jet-table>
 
+                    <pagination :data="gameProviders.meta" />
+
                     <book-game-provider-modal
                         :gameProvider="gameProviderBeingBooked"
                         @close="gameProviderBeingBooked = null" />
@@ -91,12 +94,12 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout';
-import Pagination from "@/Shared/Pagination";
 import BookGameProviderModal from './BookGameProviderModal';
 import DeleteGameProviderModal from './DeleteGameProviderModal';
 import SearchInput from "@/Components/SearchInput";
 import JetInput from "@/Jetstream/Input";
 import JetTable from "@/Components/Table";
+import Pagination from "@/Components/Pagination";
 
 export default {
     components: {
@@ -106,7 +109,8 @@ export default {
         JetInput,
         JetTable,
         BookGameProviderModal,
-        DeleteGameProviderModal
+        DeleteGameProviderModal,
+        Pagination
     },
 
     props: ['gameProviders', 'permissions'],

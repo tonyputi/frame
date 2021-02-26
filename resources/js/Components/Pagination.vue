@@ -35,10 +35,12 @@
 
         <div @click="goToLast" class="pagination-link">
             <p class="leading-relaxed cursor-pointer mx-2 text-gray-500 hover:text-blue-500 text-sm font-semibold">
-                Last</p>
+                Last
+            </p>
         </div>
     </div>
 </template>
+
 <script>
 export default {
     props: {
