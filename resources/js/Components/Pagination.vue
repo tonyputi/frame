@@ -28,7 +28,7 @@
                         </inertia-link>
                     </template> -->
 
-                    <inertia-link href="#" class="disabled:opacity-50 relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <inertia-link :href="meta.path" :data="{ page: 1 }" class="disabled:opacity-50 relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                         <span class="sr-only">Previous</span>
                         <!-- Heroicon name: solid/chevron-left -->
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -37,7 +37,7 @@
                     </inertia-link>
 
                     <template v-for="i in meta.last_page" :key="i">
-                        <inertia-link href="#" :class="[{active: i == meta.current_page}, 'relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50']">
+                        <inertia-link :href="meta.path" :data="{ page: i }" :class="[{active: i == meta.current_page}, 'relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50']">
                             {{ i }}
                         </inertia-link>
                     </template>
@@ -64,7 +64,7 @@
 <!--                        10-->
 <!--                    </a>-->
 
-                    <inertia-link href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <inertia-link :href="meta.path" :data="{ page: meta.last_page }" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                         <span class="sr-only">Next</span>
                         <!-- Heroicon name: solid/chevron-right -->
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
