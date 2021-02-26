@@ -29,7 +29,7 @@
                             <tr>
                                 <th colspan="7">Toolbar</th>
                             </tr>
-                            <tr class="bg-gray-800 text-white"> 
+                            <tr class="bg-gray-800 text-white">
                                 <th class="px-2 py-2 text-sm text-center">Status</th>
                                 <th class="px-2 py-2 text-sm text-center">Name</th>
                                 <th class="px-2 py-2 text-sm text-center">Reservations</th>
@@ -76,7 +76,7 @@
                         </template>
                     </jet-table>
 
-                    <pagination :data="gameProviders.meta" />
+                    <pagination :meta="gameProviders.meta" />
 
                     <book-game-provider-modal
                         :gameProvider="gameProviderBeingBooked"
