@@ -30,11 +30,11 @@
                     </span>
                 </div>
 
-                <jet-secondary-button class="mt-2 mr-2" type="button" @click.native.prevent="selectNewLogo">
+                <jet-secondary-button class="mt-2 mr-2" type="button" @click.prevent="selectNewLogo">
                     Select A New Logo
                 </jet-secondary-button>
 
-                <jet-secondary-button type="button" class="mt-2" @click.native.prevent="deleteLogo" v-if="gameProvider.logo_path">
+                <jet-secondary-button type="button" class="mt-2" @click.prevent="deleteLogo" v-if="gameProvider.logo_path">
                     Remove Logo
                 </jet-secondary-button>
 
@@ -144,7 +144,7 @@
                 }
             },
 
-            selectNewlogo() {
+            selectNewLogo() {
                 this.$refs.logo.click();
             },
 

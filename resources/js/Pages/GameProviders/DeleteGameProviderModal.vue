@@ -11,18 +11,18 @@
                 <jet-input type="password" class="mt-1 block w-3/4" placeholder="Password"
                            ref="password"
                            v-model="form.password"
-                           @keyup.enter.native="deleteGameProvider" />
+                           @keyup.enter="deleteGameProvider" />
 
                 <jet-input-error :message="form.errors.password" class="mt-2" />
             </div>
         </template>
 
         <template #footer>
-            <jet-secondary-button @click.native="closeModal">
+            <jet-secondary-button @click="closeModal">
                 Nevermind
             </jet-secondary-button>
 
-            <jet-danger-button class="ml-2" @click.native="deleteGameProvider" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <jet-danger-button class="ml-2" @click="deleteGameProvider" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Delete
             </jet-danger-button>
         </template>

@@ -3,23 +3,19 @@ require('./bootstrap');
 // Import modules...
 import { createApp, h } from 'vue';
 import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
+import { InertiaProgress } from '@inertiajs/progress';
 
 const el = document.getElementById('app');
 
-const app = createApp({
+createApp({
     render: () =>
         h(InertiaApp, {
             initialPage: JSON.parse(el.dataset.page),
             resolveComponent: (name) => require(`./Pages/${name}`).default,
-        })
+        }),
 })
+    .mixin({ methods: { route } })
+    .use(InertiaPlugin)
+    .mount(el);
 
-app.config.globalProperties.$filters = {
-    optional(value) {
-        return value ? value : {}
-    },
-}
-
-app.mixin({ methods: { route } })
-app.use(InertiaPlugin)
-app.mount(el);
+InertiaProgress.init({ color: '#4B5563' });
