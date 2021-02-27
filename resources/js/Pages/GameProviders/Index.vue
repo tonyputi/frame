@@ -27,13 +27,13 @@
                             <!-- <tr>
                                 <th colspan="7">Toolbar</th>
                             </tr> -->
-                            <tr class="bg-gray-800 text-white text-center">
-                                <th class="px-2 py-4">Status</th>
-                                <th class="px-2 py-4">Name</th>
-                                <th class="px-2 py-4">Reservations</th>
-                                <th class="px-2 py-4">Reserved By</th>
-                                <th class="px-2 py-4">Starting At</th>
-                                <th class="px-2 py-4">Ending At</th>
+                            <tr class="bg-gray-800 text-white">
+                                <th class="px-2 py-4 text-center">Status</th>
+                                <th class="px-2 py-4 text-left">Name</th>
+                                <th class="px-2 py-4 text-left">Reservations</th>
+                                <th class="px-2 py-4 text-left">Reserved By</th>
+                                <th class="px-2 py-4 text-left">Starting At</th>
+                                <th class="px-2 py-4 text-left">Ending At</th>
                                 <th class="px-2 py-4"></th>
                             </tr>
                         </template>
@@ -42,14 +42,14 @@
                             <tr v-for="provider in gameProviders.data" :key="provider.id" class="border border-black-600">
                                 <td class="px-2 py-4 text-center">{{ provider.candidate_game_provider_on_queue.is_active }}</td>
                                 <td class="px-2 py-4 text-left">{{ provider.name }}</td>
-                                <td class="px-2 py-4 text-center">
+                                <td class="px-2 py-4 text-left">
                                     <inertia-link :href="route('game-provider-queues.index')">
                                         {{ provider.game_provider_queues_count }}
                                     </inertia-link>
                                 </td>
-                                <td class="px-2 py-4 text-center">{{ provider.candidate_game_provider_on_queue.started_at }}</td>
-                                <td class="px-2 py-4 text-center">{{ provider.candidate_game_provider_on_queue.ended_at }}</td>
-                                <td class="px-2 py-4 text-center">{{ provider.candidate_game_provider_on_queue.user?.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ provider.candidate_game_provider_on_queue.user?.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ provider.candidate_game_provider_on_queue.started_at }}</td>
+                                <td class="px-2 py-4 text-left">{{ provider.candidate_game_provider_on_queue.ended_at }}</td>
                                 <td class="px-2 py-4 text-center">
                                     <div class="flex">
                                         <button class="text-black-500" @click="gameProviderBeingBooked=provider">
