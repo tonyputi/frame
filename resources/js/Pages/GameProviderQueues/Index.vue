@@ -24,12 +24,14 @@
                         <template #header>
                             <tr class="bg-gray-800 text-white">
                                 <th class="px-2 py-4 w-16">
-                                    <jet-checkbox v-model:checked="gameProviderQueuesSelected" />
+                                    <jet-checkbox v-model:checked="resourcesSelected" />
                                 </th>
                                 <th class="px-2 py-4 text-left">ID</th>
+                                <th class="px-2 py-4 text-left">User</th>
+                                <th class="px-2 py-4 text-left">Game Provider</th>
                                 <th class="px-2 py-4 text-left">Envirnoment</th>
                                 <th class="px-2 py-4 text-left">Application</th>
-                                <th class="px-2 py-4 text-left">Game Provider</th>
+                                <th class="px-2 py-4 text-left">Is Active</th>
                                 <th class="px-2 py-4 text-left">Started At</th>
                                 <th class="px-2 py-4 text-left">Ended At</th>
                                 <th class="px-2 py-4"></th>
@@ -42,9 +44,11 @@
                                     <jet-checkbox :value="resource" v-model:checked="resourcesSelected" />
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.id }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.user.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.game_provider.name }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.environment.name }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.application.name }}</td>
-                                <td class="px-2 py-4 text-left">{{ resource.game_provider.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.is_active }}</td>
                                 <td class="px-2 py-4 text-left">{{ formatDate(resource.started_at) }}</td>
                                 <td class="px-2 py-4 text-left">{{ formatDate(resource.ended_at) }}</td>
                                 <td class="px-2 py-4 text-center">

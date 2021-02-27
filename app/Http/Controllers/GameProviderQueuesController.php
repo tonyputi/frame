@@ -16,7 +16,10 @@ class GameProviderQueuesController extends Controller
     public function index(Request $request)
     {
         $gameProviderQueues = GameProviderQueue::query()
-            // ->when($request->input('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
+            ->when($request->input('search'), function($query) use($request) {
+                $query->whereHas('user', fn($query) => $query->where('name', 'like', "%{$request->search}%"));
+                $query->orWhereHas('gameProvider', fn($query) => $query->where('name', 'like', "%{$request->search}%"));
+            })
             ->with(['user', 'gameProvider', 'environment', 'application'])
             ->paginate();
 
