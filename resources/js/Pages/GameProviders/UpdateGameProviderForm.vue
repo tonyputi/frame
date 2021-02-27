@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="updateGameProvider">
+    <jet-form-section @submitted="updateOrCreate">
         <template #title>
             Game Provider Information
         </template>
@@ -102,12 +102,18 @@
             JetSecondaryButton,
         },
 
-        props: ['gameProvider'],
+        props: {
+            gameProvider: {
+                type: Object,
+                default: {
+
+                }
+            }
+        },
 
         data() {
             return {
                 form: this.$inertia.form({
-                    _method: 'PUT',
                     name: this.gameProvider.name,
                     logo: null,
                     location_modifier: this.gameProvider.location_modifier,
@@ -120,29 +126,36 @@
         },
 
         methods: {
-            updateGameProvider() {
-                // if (this.$refs.logo) {
-                //     this.form.logo = this.$refs.logo.files[0]
-                // }
+            updateOrCreate() {
+                if (this.$refs.logo) {
+                    this.form.logo = this.$refs.logo.files[0]
+                }
 
-                this.form.post(route('game-providers.update', [this.gameProvider.id]), {
-                    errorBag: 'updateGameProvider',
-                    preserveScroll: true
-                });
+                if(this.gameProvider.id) {
+                    this.form.put(route('game-providers.update', [this.gameProvider.id]), {
+                        errorBag: 'updateGameProvider',
+                        preserveScroll: true
+                    });
+                } else {
+                    this.form.post(route('game-providers.store'), {
+                        errorBag: 'createGameProvider',
+                        preserveScroll: true
+                    });
+                }
             },
 
             selectNewlogo() {
-                // this.$refs.logo.click();
+                this.$refs.logo.click();
             },
 
             updateLogoPreview() {
                 const reader = new FileReader();
 
-                // reader.onload = (e) => {
-                //     this.logoPreview = e.target.result;
-                // };
+                reader.onload = (e) => {
+                    this.logoPreview = e.target.result;
+                };
 
-                // reader.readAsDataURL(this.$refs.logo.files[0]);
+                reader.readAsDataURL(this.$refs.logo.files[0]);
             },
 
             deleteLogo() {

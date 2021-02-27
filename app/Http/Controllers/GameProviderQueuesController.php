@@ -2,31 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GameProviderQueue;
-use App\Models\GameProvider;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
+use App\Models\GameProviderQueue;
+use App\Http\Resources\GameProviderQueueResource;
 
 class GameProviderQueuesController extends Controller
 {
-    const GAME_PROVIDER_QUEUE_LIMIT = 20;
-
     /**
      * @param Request $request
      * @return \Inertia\Response
      */
     public function index(Request $request)
     {
-        $game_providers = GameProvider::all();
-
-        $game_provider_queue = GameProviderQueue::orderBy('started_at', 'asc')
+        $gameProviderQueues = GameProviderQueue::query()
+            // ->when($request->input('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
             ->with(['user', 'gameProvider', 'environment', 'application'])
-            ->paginate(self::GAME_PROVIDER_QUEUE_LIMIT);
+            ->paginate();
 
-        return Inertia::render('Reservations', [
-            'gameProviderQueue' => $game_provider_queue,
-            'casinoProviders' => $game_providers,
-            'casinoProvidersNames' => $game_providers->pluck('name')
+        return Inertia::render('GameProviderQueues/Index', [
+            'gameProviderQueues' => $gameProviderQueues,
+            'gameProviderQueues' => GameProviderQueueResource::collection($gameProviderQueues),
+            'permissions' => [
+                'canCreateGameProviderQueue' => true,
+                'canUpdateGameProviderQueue' => true,
+                'canDeleteGameProviderQueue' => true,
+            ]
         ]);
     }
 

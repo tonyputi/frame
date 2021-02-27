@@ -40,7 +40,9 @@ class GameProviderController extends Controller
     public function create()
     {
         return Inertia::render('GameProviders/Show', [
-            'gameProvider' => new GameProviderResource(new GameProvider),
+            'gameProvider' => new GameProviderResource(new GameProvider([
+                'location_modifier' => '~*'
+            ])),
             'permissions' => [
                 'canDeleteGameProvider' => false,
             ]
@@ -56,13 +58,14 @@ class GameProviderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|unique:game_providers',
+            'location_modifier' => 'required',
+            'location_match' => 'required',
         ]);
 
-        // TODO: validation is missed here
         GameProvider::create($request->input());
 
-        return back();
+        return redirect()->route('game-providers.index');
     }
 
     /**
@@ -102,7 +105,12 @@ class GameProviderController extends Controller
      */
     public function update(Request $request, GameProvider $gameProvider)
     {
-        // TODO: validation is missed here
+        $request->validate([
+            'name' => ['required', "unique:game_providers,name,{$gameProvider->id}"],
+            'location_modifier' => 'required',
+            'location_match' => 'required',
+        ]);
+
         $gameProvider->update($request->except('_method'));
 
         return back();
