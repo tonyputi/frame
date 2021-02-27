@@ -18,7 +18,7 @@ class GameProviderController extends Controller
     {
         $gameProviders = GameProvider::query()
             ->when($request->input('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
-            ->with('candidateGameProviderOnQueue')
+            ->with('candidateGameProviderOnQueue.user')
             ->withCount('gameProviderQueues')
             ->paginate();
 
@@ -39,7 +39,12 @@ class GameProviderController extends Controller
      */
     public function create()
     {
-        return Inertia::render('GameProviders/Show');
+        return Inertia::render('GameProviders/Show', [
+            'gameProvider' => new GameProviderResource(new GameProvider),
+            'permissions' => [
+                'canDeleteGameProvider' => false,
+            ]
+        ]);
     }
 
     /**
@@ -50,8 +55,12 @@ class GameProviderController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
         // TODO: validation is missed here
-        $GameProvider = GameProvider::create($request->input());
+        GameProvider::create($request->input());
 
         return back();
     }
@@ -67,7 +76,8 @@ class GameProviderController extends Controller
         return Inertia::render('GameProviders/Show', [
             'gameProvider' => new GameProviderResource($gameProvider),
             'permissions' => [
-                'canUpdateGameProvider' => true
+                'canUpdateGameProvider' => true,
+                'canDeleteGameProvider' => true
             ]
         ]);
     }
@@ -106,7 +116,7 @@ class GameProviderController extends Controller
      */
     public function destroy(GameProvider $gameProvider)
     {
-        GameProvider::findOrFail($id)->delete($id);
+        $gameProvider->delete();
 
         return redirect()->route('game-providers.index');
     }

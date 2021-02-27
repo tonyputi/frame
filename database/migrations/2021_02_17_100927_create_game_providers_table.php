@@ -16,8 +16,10 @@ class CreateGameProvidersTable extends Migration
         Schema::create('game_providers', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('logo_path')->nullable();
             $table->string('location_modifier')->default('~*');
             $table->string('location_match')->unique();
+            $table->string('default_host')->nullable();
             $table->timestamps();
         });
     }

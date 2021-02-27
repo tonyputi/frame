@@ -1,5 +1,5 @@
 <template>
-    <div v-if="meta.last_page > 1" class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+    <div v-if="last_page > 1" class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
         <div class="flex-1 flex justify-between sm:hidden">
             <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500">
                 Previous
@@ -12,17 +12,17 @@
             <div>
                 <p class="text-sm text-gray-700">
                     Showing
-                    <span class="font-medium">{{ meta.from }}</span>
+                    <span class="font-medium">{{ from }}</span>
                     to
-                    <span class="font-medium">{{ meta.to }}</span>
+                    <span class="font-medium">{{ to }}</span>
                     of
-                    <span class="font-medium">{{ meta.total }}</span>
+                    <span class="font-medium">{{ total }}</span>
                     results
                 </p>
             </div>
             <div>
                 <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                    <inertia-link :href="meta.path" :data="{ page: prevPage }" :class="[{'opacity-25' : isFirstPage}, 'relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50']">
+                    <inertia-link :href="path" :data="{ page: prevPage }" :class="[{'opacity-25' : isFirstPage}, 'relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50']">
                         <span class="sr-only">Previous</span>
                         <!-- Heroicon name: solid/chevron-left -->
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -30,8 +30,8 @@
                         </svg>
                     </inertia-link>
 
-                    <template v-for="i in meta.last_page" :key="i">
-                        <inertia-link :href="meta.path" :data="{ page: i }" :class="[{'opacity-25': i == meta.current_page}, 'relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50']">
+                    <template v-for="i in last_page" :key="i">
+                        <inertia-link :href="path" :data="{ page: i }" :class="[{'opacity-25': i == current_page}, 'relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50']">
                             {{ i }}
                         </inertia-link>
                     </template>
@@ -58,7 +58,7 @@
 <!--                        10-->
 <!--                    </a>-->
 
-                    <inertia-link :href="meta.path" :data="{ page: nextPage }" :class="[{'opacity-25' : isLastPage}, 'relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50']">
+                    <inertia-link :href="path" :data="{ page: nextPage }" :class="[{'opacity-25' : isLastPage}, 'relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50']">
                         <span class="sr-only">Next</span>
                         <!-- Heroicon name: solid/chevron-right -->
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -73,19 +73,19 @@
 
 <script>
 export default {
-    props: ['meta'],
+    props: ['current_page', 'last_page', 'path', 'from', 'to', 'total'],
     computed: {
         isFirstPage() {
-            return this.meta.current_page == 1;
+            return this.current_page == 1;
         },
         isLastPage() {
-            return this.meta.current_page == this.meta.last_page;
+            return this.current_page == this.last_page;
         },
         prevPage() {
-            return (!this.isFirstPage) ? (this.meta.current_page - 1) : 1;
+            return (!this.isFirstPage) ? (this.current_page - 1) : 1;
         },
         nextPage() {
-            return (!this.isLastPage) ? (this.meta.current_page + 1) : this.meta.last_page;
+            return (!this.isLastPage) ? (this.current_page + 1) : this.last_page;
         },
     }
 };

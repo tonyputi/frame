@@ -11,10 +11,10 @@
                 <div>
                     <update-game-provider-form :gameProvider="gameProvider.data" />
 
-                    <jet-section-border />
+                    <jet-section-border v-if="permissions.canDeleteGameProvider" />
                 </div>
 
-                <div>
+                <div v-if="permissions.canDeleteGameProvider">
                     <delete-game-provider-form :gameProvider="gameProvider.data" class="mt-10 sm:mt-0" />
                 </div>
             </div>
@@ -29,7 +29,7 @@
     import UpdateGameProviderForm from './UpdateGameProviderForm'
 
     export default {
-        props: ['gameProvider'],
+        props: ['gameProvider', 'permissions'],
 
         components: {
             AppLayout,

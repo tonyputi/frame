@@ -2,7 +2,7 @@
     <!-- Boook Game Provider Modal -->
     <jet-dialog-modal :show="gameProvider" @close="closeModal">
         <template #title>
-            Book {{ gameProvider?.name }}
+            Book {{ gameProvider.name }}
         </template>
 
         <template #content>
@@ -75,7 +75,7 @@
                 form: this.$inertia.form({
                     application_id: 1,
                     environment_id: 1,
-                    game_provider_id: 1,
+                    game_provider_id: this.gameProvider.id,
                     started_at: moment(),
                     ended_at: moment().add(1, 'hours'),
                     notes: null

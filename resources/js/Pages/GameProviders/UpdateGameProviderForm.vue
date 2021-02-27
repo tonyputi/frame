@@ -13,8 +13,8 @@
             <div class="col-span-6 sm:col-span-4">
                 <!-- Game Provider File Input -->
                 <input type="file" class="hidden"
-                            ref="logo"
-                            @change="updateLogoPreview">
+                    ref="logo"
+                    @change="updateLogoPreview">
 
                 <jet-label for="logo" value="Logo" />
 
@@ -26,7 +26,7 @@
                 <!-- New Game Provider Logo Preview -->
                 <div class="mt-2" v-show="logoPreview">
                     <span class="block rounded-full w-20 h-20"
-                          :style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + logoPreview + '\');'">
+                        :style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + logoPreview + '\');'">
                     </span>
                 </div>
 
@@ -60,6 +60,13 @@
                 <jet-label for="location_match" value="Location Match" />
                 <jet-input id="location_match" type="text" class="mt-1 block w-full" v-model="form.location_match" />
                 <jet-input-error :message="form.errors.location_match" class="mt-2" />
+            </div>
+
+            <!-- Default host -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="default_host" value="Default Host" />
+                <jet-input id="default_host" type="text" class="mt-1 block w-full" v-model="form.default_host" />
+                <jet-input-error :message="form.errors.default_host" class="mt-2" />
             </div>
         </template>
 
@@ -102,9 +109,10 @@
                 form: this.$inertia.form({
                     _method: 'PUT',
                     name: this.gameProvider.name,
+                    logo: null,
                     location_modifier: this.gameProvider.location_modifier,
                     location_match: this.gameProvider.location_match,
-                    logo: null,
+                    default_host: this.gameProvider.default_host
                 }),
 
                 logoPreview: null,
@@ -113,9 +121,9 @@
 
         methods: {
             updateGameProvider() {
-                if (this.$refs.logo) {
-                    this.form.logo = this.$refs.logo.files[0]
-                }
+                // if (this.$refs.logo) {
+                //     this.form.logo = this.$refs.logo.files[0]
+                // }
 
                 this.form.post(route('game-providers.update', [this.gameProvider.id]), {
                     errorBag: 'updateGameProvider',
@@ -124,17 +132,17 @@
             },
 
             selectNewlogo() {
-                this.$refs.logo.click();
+                // this.$refs.logo.click();
             },
 
             updateLogoPreview() {
                 const reader = new FileReader();
 
-                reader.onload = (e) => {
-                    this.logoPreview = e.target.result;
-                };
+                // reader.onload = (e) => {
+                //     this.logoPreview = e.target.result;
+                // };
 
-                reader.readAsDataURL(this.$refs.logo.files[0]);
+                // reader.readAsDataURL(this.$refs.logo.files[0]);
             },
 
             deleteLogo() {
