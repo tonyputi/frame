@@ -33,8 +33,8 @@ npm install
 Run the migrations/seeds
 
 ```sh
-php artisan migrate
-php artisan db:seed
+touch database/database.sqlite
+php artisan migrate:refresh --seed
 ```
 
 ## Quick start
@@ -50,10 +50,3 @@ php artisan db:seed
 - always create a branch from `develop`;
 
 ## Common issue
-
-The command `php artisan migrate:refresh --seed` is not working properly while using sqlite on certain conditions.
-To make it working you should first wipe your database `php artisan db:wipe` and than `php artisan migrate --seed`.
-This is only affecting `refresh` command. Normal migration will work fine.
-
-
-

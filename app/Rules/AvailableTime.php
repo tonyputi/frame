@@ -40,6 +40,6 @@ class AvailableTime implements Rule
      */
     public function message()
     {
-        return 'The game provider is already resever for :attribute.';
+        return 'The game provider is already reseved for :attribute.';
     }
 }
