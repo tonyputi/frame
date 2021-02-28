@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\GameProviderQueue;
 use App\Http\Resources\GameProviderQueueResource;
 
-class GameProviderQueuesController extends Controller
+class GameProviderQueueController extends Controller
 {
     /**
      * Show the game provider queues list

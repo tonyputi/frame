@@ -31,7 +31,8 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
     Route::resource('environments', EnvironmentController::class);
+    Route::resource('applications', ApplicationController::class);
     Route::resource('game-providers', GameProviderController::class);
-    Route::resource('game-provider-queues', GameProviderQueuesController::class);
+    Route::resource('game-provider-queues', GameProviderQueueController::class);
 });
 
