@@ -157,7 +157,7 @@ export default {
             this.searchPid = setTimeout(() => this.$inertia.reload({data: { search: ev.target.value }}), 1000)
         },
         formatDate(datetime) {
-            return (datetime) ? moment(datetime).format('YYYY-MM-DD hh:mm') : null;
+            return (datetime) ? moment(datetime).format('YYYY-MM-DD hh:mm:ss') : null;
         }
     }
 };

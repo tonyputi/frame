@@ -96,7 +96,7 @@
                 return moment(`${this.date} ${this.start_at}`, 'YYYY-MM-DD HH-mm')
             },
             ended_at() {
-                return moment(`${this.date} ${this.end_at}`, 'YYYY-MM-DD HH-mm')
+                return moment(`${this.date} ${this.end_at}`, 'YYYY-MM-DD HH-mm').subtract(1, 'second')
             }
         },
 

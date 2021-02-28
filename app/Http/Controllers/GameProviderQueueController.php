@@ -46,8 +46,8 @@ class GameProviderQueueController extends Controller
     {
         $request->validate([
             'game_provider_id' => ['required'],
-            'started_at' => ['required', new AvailableTime($request->only('game_provider_id'))],
-            'ended_at' => ['required', new AvailableTime($request->only('game_provider_id'))]
+            'started_at' => ['required', new AvailableTime('game_provider_queues', $request->only('game_provider_id'))],
+            'ended_at' => ['required', new AvailableTime('game_provider_queues', $request->only('game_provider_id'))]
         ]);
 
         $GameProviderQueue = new GameProviderQueue($request->input());

@@ -12,8 +12,9 @@ class AvailableTime implements Rule
      *
      * @return void
      */
-    public function __construct($extraConditions = [])
+    public function __construct($table, $extraConditions = [])
     {
+        $this->table = $table;
         $this->extraConditions = $extraConditions;
     }
 
@@ -26,9 +27,12 @@ class AvailableTime implements Rule
      */
     public function passes($attribute, $value)
     {
-        $query = DB::table('game_provider_queues');
+        $query = DB::table($this->table);
         $query->where($this->extraConditions);
         $query->whereRaw('? BETWEEN started_at AND ended_at', [$value]);
+        // $query->whereRaw('? BETWEEN strftime("%Y-%m-%d %H:%M:00", started_at) AND strftime("%Y-%m-%d %H:%M:00", ended_at)', [$value]);
+
+        // dd($query->get());
 
         return !$query->exists();
     }

@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\GameProviderController;
-use App\Http\Controllers\GameProviderQueuesController;
-use App\Http\Controllers\UserMiscellanea;
+use App\Http\Controllers\GameProviderQueueController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
