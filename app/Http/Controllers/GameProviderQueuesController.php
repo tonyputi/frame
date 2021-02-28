@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Rules\AvailableTime;
 use Illuminate\Http\Request;
 use App\Models\GameProviderQueue;
 use App\Http\Resources\GameProviderQueueResource;
@@ -10,6 +11,8 @@ use App\Http\Resources\GameProviderQueueResource;
 class GameProviderQueuesController extends Controller
 {
     /**
+     * Show the game provider queues list
+     * 
      * @param Request $request
      * @return \Inertia\Response
      */
@@ -24,7 +27,6 @@ class GameProviderQueuesController extends Controller
             ->paginate();
 
         return Inertia::render('GameProviderQueues/Index', [
-            'gameProviderQueues' => $gameProviderQueues,
             'gameProviderQueues' => GameProviderQueueResource::collection($gameProviderQueues),
             'permissions' => [
                 'canCreateGameProviderQueue' => true,
@@ -42,6 +44,12 @@ class GameProviderQueuesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'game_provider_id' => ['required'],
+            'started_at' => ['required', new AvailableTime($request->only('game_provider_id'))],
+            'ended_at' => ['required', new AvailableTime($request->only('game_provider_id'))]
+        ]);
+
         $GameProviderQueue = new GameProviderQueue($request->input());
         $GameProviderQueue->user_id = $request->user()->id;
         $GameProviderQueue->save();

@@ -11,6 +11,8 @@ use Inertia\Inertia;
 class GameProviderController extends Controller
 {
     /**
+     * Show the game provider list
+     * 
      * @param Request $request
      * @return \Inertia\Response
      */
@@ -58,9 +60,9 @@ class GameProviderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:game_providers',
-            'location_modifier' => 'required',
-            'location_match' => 'required',
+            'name' => ['required', 'unique:game_providers'],
+            'location_modifier' => ['required'],
+            'location_match' => ['required'],
         ]);
 
         GameProvider::create($request->input());
