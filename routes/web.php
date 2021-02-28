@@ -33,8 +33,5 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::resource('environments', EnvironmentController::class);
     Route::resource('game-providers', GameProviderController::class);
     Route::resource('game-provider-queues', GameProviderQueuesController::class);
-
-    Route::get('/reservations', [GameProviderQueuesController::class, 'index'])->name('reservations.index');
-    Route::put('/user/miscellanea', [UserMiscellanea::class, 'update'])->name('user-miscellanea.update');
 });
 
