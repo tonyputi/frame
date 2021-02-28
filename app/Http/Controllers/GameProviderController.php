@@ -11,7 +11,7 @@ use Inertia\Inertia;
 class GameProviderController extends Controller
 {
     /**
-     * Show the game provider list
+     * Display a listing of the resource.
      * 
      * @param Request $request
      * @return \Inertia\Response

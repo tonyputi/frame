@@ -11,7 +11,7 @@ use App\Http\Resources\GameProviderQueueResource;
 class GameProviderQueueController extends Controller
 {
     /**
-     * Show the game provider queues list
+     * Display a listing of the resource.
      * 
      * @param Request $request
      * @return \Inertia\Response
