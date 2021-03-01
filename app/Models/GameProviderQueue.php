@@ -50,13 +50,50 @@ class GameProviderQueue extends Model
     }
 
     /**
-     * Set host and make sure that is stored as lower string
+     * Scope a query to only include available/queable bookings.
      *
-     * @param $value
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function setHostAttribute($value)
+    public function scopeAvailable($query)
     {
-        $this->attributes['host'] = strtolower($value);
+        return $query->where('ended_at', '>=', $this->freshTimestamp()->toIso8601String());
+    }
+
+    /**
+     * Scope a query to only include expired bookings.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeExpired($query)
+    {
+        return $query->where('ended_at', '<', $this->freshTimestamp()->toIso8601String());
+    }
+
+    /**
+     * Scope a query to only include active bookings.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query, $value = true)
+    {
+        return $query->where('is_active', $value);
+    }
+
+    /**
+     * Scope a query to only include active bookings.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFilter($query, $value)
+    {
+        $query->whereHas('user', fn($query) => $query->where('name', 'like', "%{$value}%"));
+        $query->orWhereHas('gameProvider', fn($query) => $query->where('name', 'like', "%{$value}%"));
+
+        return $query;
     }
 
     /**

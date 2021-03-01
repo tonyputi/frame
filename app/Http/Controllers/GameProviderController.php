@@ -20,8 +20,8 @@ class GameProviderController extends Controller
     {
         $gameProviders = GameProvider::query()
             ->when($request->input('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
-            ->with('candidateGameProviderOnQueue.user')
-            ->withCount('gameProviderQueues')
+            ->with('nextBooking.user')
+            ->withCount('nextBookings')
             ->paginate();
 
         return Inertia::render('GameProviders/Index', [
@@ -29,7 +29,7 @@ class GameProviderController extends Controller
             'permissions' => [
                 'canCreateGameProvider' => true,
                 'canUpdateGameProvider' => true,
-                'canDeleteGameProvider' => true,
+                'canDeleteGameProvider' => $request->user()->is_admin,
             ]
         ]);
     }

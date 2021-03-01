@@ -102,8 +102,8 @@
 
         methods: {
             bookGameProvider() {
-                this.form.started_at = this.started_at
-                this.form.ended_at = this.ended_at
+                this.form.started_at = this.started_at.toISOString()
+                this.form.ended_at = this.ended_at.toISOString()
 
                 this.form.post(route('game-provider-queues.store'), {
                     preserveScroll: true,

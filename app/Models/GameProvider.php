@@ -26,78 +26,67 @@ class GameProvider extends Model
      * @var array
      */
     protected $appends = [
-        'logo_url',
+        'logo_url'
     ];
 
     /**
-     * Get the game provider queues for the application.
+     * Get all the bookings history for that provider
+     *
+     * @return HasMany
      */
-    public function gameProviderQueues()
-    {
-        return $this->hasMany(GameProviderQueue::class)
-            ->orderBy('started_at', 'desc');
-    }
-
-    /**
-     * Get the game provider queues for the application.
-     */
-    public function candidateGameProviderOnQueue()
-    {
-        // dd($this->freshTimestamp()->toString());
-
-        return $this->hasOne(GameProviderQueue::class)
-            // ->whereRaw("? BETWEEN started_at AND ended_at", [$this->freshTimestamp()])
-            ->where('ended_at', '>', $this->freshTimestamp())
-            ->where('is_active', false)
-            ->orderBy('started_at', 'asc')
-            ->withDefault();
-    }
-
-    /**
-     * Get the game provider queues for the application.
-     */
-    public function activeGameProviderOnQueue()
-    {
-        return $this->hasOne(GameProviderQueue::class)
-            ->where('is_active', true)
-            ->withDefault();
-    }
-
     public function bookings()
     {
         return $this->hasMany(GameProviderQueue::class)
             ->orderBy('started_at', 'asc');
     }
 
+    /**
+     * Get all the new booking history for that provider
+     *
+     * @return HasMany
+     */
     public function nextBookings()
     {
-        return $this->hasMany(GameProviderQueue::class)
-            ->where('ended_at', '>=', $this->freshTimestamp())
-            ->where('is_active', false)
-            ->orderBy('started_at', 'asc')
-            ->withDefault();
+        return $this->bookings()
+            ->available()
+            ->active(false);
+    }
+
+    /**
+     * Get the next booking for that provider
+     *
+     * @return HasMany
+     */
+    public function nextBooking()
+    {
+        return $this->hasOne(GameProviderQueue::class)
+            ->available()
+            ->active(false)
+            ->orderBy('started_at', 'asc');
+    }
+
+    /**
+     * Get the current booking for that provider
+     *
+     * @return HasMany
+     */
+    public function currentBooking()
+    {
+        return $this->hasOne(GameProviderQueue::class)
+            ->whereRaw("? BETWEEN started_at AND ended_at", [$this->freshTimestamp()->toIso8601String()])
+            ->active(false)
+            ->orderBy('started_at', 'asc');
     }
 
     /**
      * Get the game provider queues for the application.
      */
-    // public function expiredGameProviderQueue()
-    // {
-    //     return $this->hasMany(GameProviderQueue::class)
-    //         ->where('is_active', true)
-    //         ->where('ended_at', '<', $this->freshTimestamp());
-    // }
-
-    /**
-     * Get the game provider queues for the application.
-     */
-    // public function candidateGameProviderQueue()
-    // {
-    //    return $this->hasMany(GameProviderQueue::class)
-    //        ->where('is_active', false)
-    //        ->where('started_at', '<=', $this->freshTimestamp())
-    //        ->where('ended_at', '>=', $this->freshTimestamp());
-    // }
+    public function expiredBookings()
+    {
+        return $this->hasMany(GameProviderQueue::class)
+            ->active(true)
+            ->expired();
+    }
 
     /**
      * Update the game provider logo.
