@@ -18748,7 +18748,7 @@ __webpack_require__.r(__webpack_exports__);
       }, 1000);
     },
     formatDate: function formatDate(datetime) {
-      return datetime ? moment__WEBPACK_IMPORTED_MODULE_6___default()(datetime).format('YYYY-MM-DD hh:mm:ss') : null;
+      return datetime ? moment__WEBPACK_IMPORTED_MODULE_6___default()(datetime).format('YYYY-MM-DD HH:mm:ss') : null;
     }
   }
 });
@@ -18815,10 +18815,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     started_at: function started_at() {
-      return moment__WEBPACK_IMPORTED_MODULE_8___default()("".concat(this.date, " ").concat(this.start_at), 'YYYY-MM-DD HH-mm');
+      return moment__WEBPACK_IMPORTED_MODULE_8___default()("".concat(this.date, " ").concat(this.start_at), 'YYYY-MM-DD HH:mm');
     },
     ended_at: function ended_at() {
-      return moment__WEBPACK_IMPORTED_MODULE_8___default()("".concat(this.date, " ").concat(this.end_at), 'YYYY-MM-DD HH-mm').subtract(1, 'second');
+      return moment__WEBPACK_IMPORTED_MODULE_8___default()("".concat(this.date, " ").concat(this.end_at), 'YYYY-MM-DD HH:mm').subtract(1, 'second');
     }
   },
   methods: {
@@ -19040,7 +19040,7 @@ __webpack_require__.r(__webpack_exports__);
       }, 1000);
     },
     formatDate: function formatDate(datetime) {
-      return datetime ? moment__WEBPACK_IMPORTED_MODULE_8___default()(datetime).format('YYYY-MM-DD hh:mm:ss') : null;
+      return datetime ? moment__WEBPACK_IMPORTED_MODULE_8___default()(datetime).format('YYYY-MM-DD HH:mm:ss') : null;
     }
   }
 });

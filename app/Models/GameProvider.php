@@ -43,8 +43,13 @@ class GameProvider extends Model
      */
     public function candidateGameProviderOnQueue()
     {
+        // dd($this->freshTimestamp()->toString());
+
         return $this->hasOne(GameProviderQueue::class)
-            ->orderBy('started_at', 'desc')
+            // ->whereRaw("? BETWEEN started_at AND ended_at", [$this->freshTimestamp()])
+            ->where('ended_at', '>', $this->freshTimestamp())
+            ->where('is_active', false)
+            ->orderBy('started_at', 'asc')
             ->withDefault();
     }
 
@@ -55,6 +60,21 @@ class GameProvider extends Model
     {
         return $this->hasOne(GameProviderQueue::class)
             ->where('is_active', true)
+            ->withDefault();
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(GameProviderQueue::class)
+            ->orderBy('started_at', 'asc');
+    }
+
+    public function nextBookings()
+    {
+        return $this->hasMany(GameProviderQueue::class)
+            ->where('ended_at', '>=', $this->freshTimestamp())
+            ->where('is_active', false)
+            ->orderBy('started_at', 'asc')
             ->withDefault();
     }
 
@@ -122,8 +142,8 @@ class GameProvider extends Model
     public function getLogoUrlAttribute()
     {
         return $this->logo_path
-                    ? Storage::disk('public')->url($this->logo_path)
-                    : $this->defaultLogoUrl();
+            ? Storage::disk('public')->url($this->logo_path)
+            : $this->defaultLogoUrl();
     }
 
     /**
