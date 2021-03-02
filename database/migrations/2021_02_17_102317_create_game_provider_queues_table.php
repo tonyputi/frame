@@ -19,12 +19,14 @@ class CreateGameProviderQueuesTable extends Migration
             $table->foreignId('application_id')->constrained();
             $table->foreignId('game_provider_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->boolean('is_active')->default(false);
             $table->text('notes')->nullable();
             $table->datetime('started_at');
             $table->datetime('ended_at');
             $table->datetime('applied_at')->nullable();
-            $table->boolean('is_active')->default(false);
             $table->timestamps();
+
+            // TODO: we need to make unique(game_provider_id, started_at, ended_at)
         });
     }
 

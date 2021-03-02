@@ -1,8 +1,7 @@
 <template>
-<!--    <input @input="$emit('update:value', $event.target.value)" type="text" />-->
-    <!-- <jet-input type="text" @input="$emit('update:modelValue', $event.target.value)" /> -->
-    <!-- <jet-input type="text" @input="doSomething($event)" /> -->
-    <jet-input type="text" @input="$emit('update:search', $event.target.value)" />
+    <jet-input type="text" 
+        class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" 
+        @input="search" />
 </template>
 
 <script>
@@ -17,22 +16,21 @@ export default {
             sid: null
         }
     },
-    emits: ['input', 'update:search'],
-    methods: {
-        doSomething(ev) {
-            console.log('update:modelValue', ev);
-            this.$emit('update:modelValue', ev.target.value)
-            // clearTimeout(this.sid);
-            // if(ev instanceof KeyboardEvent && ev.keyCode != 13) {
-            //     this.sid = setTimeout(() => {
-            //         console.log('update:value', ev.target.value);
-            //         // this.$emit('update:value', ev.target.value)
-            //     }, 500);
-            // } else {
-            //     console.log('update:value2', ev);
-            //     this.$emit('update:value', ev.target.value);
-            // }
+    props: {
+        timeout: {
+            type: Number,
+            default: 500
         }
+    },
+    emits: ['input'],
+    methods: {
+        search(ev) {
+            clearTimeout(this.sid);
+            this.sid = setTimeout(() => this.$emit('input', ev), this.timeout);
+        },
+        // search: _.debounce(function(ev) {
+        //     this.$emit('input', ev)
+        // }, 500)
     }
 }
 </script>

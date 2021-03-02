@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -73,7 +74,7 @@ class GameProvider extends Model
     public function currentBooking()
     {
         return $this->hasOne(GameProviderQueue::class)
-            ->whereRaw("? BETWEEN started_at AND ended_at", [$this->freshTimestamp()->toIso8601String()])
+            ->current()
             ->active(false)
             ->orderBy('started_at', 'asc');
     }
@@ -143,5 +144,22 @@ class GameProvider extends Model
     protected function defaultLogoUrl()
     {
         return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF';
+    }
+
+    /**
+     * Get the nginx configuration
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getNginxConfigAttribute($value)
+    {
+        if($this->currentBooking()->exists())
+        {
+            $keys = ['{{ modifier }}', '{{ match }}', '{{ hostname }}'];
+            $values = [$this->location_modifier, $this->location_match, $this->currentBooking->user->host];
+
+            return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
+        }
     }
 }

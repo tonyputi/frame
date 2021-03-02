@@ -9,7 +9,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex my-4">
-                    <jet-input 
+                    <search-input 
                         @input="filter"
                         class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
                         placeholder="Search for game provider" />
@@ -22,19 +22,16 @@
                 <div v-if="gameProviders.meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <jet-table class="text-sm">
                         <template #header>
-                            <!-- <tr>
-                                <th colspan="7">Toolbar</th>
-                            </tr> -->
                             <tr class="bg-gray-800 text-white">
                                 <th class="px-2 py-4 w-16">
-                                    <jet-checkbox v-model:checked="gameProvidersSelected" />
+                                    <jet-checkbox v-model:checked="selectAll" />
                                 </th>
                                 <th class="px-2 py-4 text-left">ID</th>
                                 <th class="px-2 py-4 text-left">Logo</th>
                                 <th class="px-2 py-4 text-left">Status</th>
                                 <th class="px-2 py-4 text-left">Name</th>
-                                <th class="px-2 py-4 text-left">Reservations</th>
-                                <th class="px-2 py-4 text-left">Reserved By</th>
+                                <th class="px-2 py-4 text-left">Bookings</th>
+                                <th class="px-2 py-4 text-left">Booked By</th>
                                 <th class="px-2 py-4 text-left">Starting At</th>
                                 <th class="px-2 py-4 text-left">Ending At</th>
                                 <th class="px-2 py-4"></th>
@@ -123,6 +120,7 @@ import BookGameProviderModal from './BookGameProviderModal';
 import DeleteGameProviderModal from './DeleteGameProviderModal';
 import JetTable from "@/Components/Table";
 import Pagination from "@/Components/Pagination";
+import SearchInput from "@/Components/SearchInput";
 import JetLinkButton from "@/Components/LinkButton";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
@@ -138,23 +136,39 @@ export default {
         BookGameProviderModal,
         DeleteGameProviderModal,
         Pagination,
+        SearchInput
     },
 
     props: ['gameProviders', 'permissions'],
 
+    // data: () => ({
+    //     gameProviderBeingBooked: null,
+    //     gameProviderBeingDeleted: null,
+    //     gameProvidersSelected: []
+    // }),
+
     data() {
         return {
-            searchPid: null,
             gameProviderBeingBooked: null,
             gameProviderBeingDeleted: null,
             gameProvidersSelected: []
         }
     },
 
+    computed: {
+        selectAll: {
+            get() {
+                return this.gameProviders.data ? this.gameProvidersSelected.length == this.gameProviders.data.length : false;
+            },
+            set(value) {
+                (value) ? this.gameProvidersSelected = this.gameProviders.data : this.gameProvidersSelected = [];
+            }
+        }
+    },
+
     methods: {
         filter(ev) {
-            clearTimeout(this.searchPid);
-            this.searchPid = setTimeout(() => this.$inertia.reload({data: { search: ev.target.value }}), 1000)
+            this.$inertia.reload({data: { search: ev.target.value }})
         },
         formatDate(datetime) {
             return (datetime) ? moment(datetime).format('YYYY-MM-DD HH:mm:ss') : null;

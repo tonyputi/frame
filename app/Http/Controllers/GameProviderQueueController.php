@@ -18,17 +18,14 @@ class GameProviderQueueController extends Controller
      */
     public function index(Request $request)
     {
-        $gameProviderQueues = GameProviderQueue::with(['user', 'gameProvider', 'environment', 'application'])
+        $bookings = GameProviderQueue::with(['user', 'gameProvider', 'environment', 'application'])
+            ->when($request->input('search'), fn($query) => $query->filter($request->search))
             ->available()
-            ->when($request->input('search'), function($query) use($request) {
-                $query->whereHas('user', fn($query) => $query->where('name', 'like', "%{$request->search}%"));
-                $query->orWhereHas('gameProvider', fn($query) => $query->where('name', 'like', "%{$request->search}%"));
-            })
             ->orderBy('started_at', 'asc')
             ->paginate();
 
         return Inertia::render('GameProviderQueues/Index', [
-            'gameProviderQueues' => GameProviderQueueResource::collection($gameProviderQueues),
+            'gameProviderQueues' => GameProviderQueueResource::collection($bookings),
             'permissions' => [
                 'canCreateGameProviderQueue' => true,
                 'canUpdateGameProviderQueue' => true,
@@ -51,9 +48,9 @@ class GameProviderQueueController extends Controller
             'ended_at' => ['required', new AvailableTime('game_provider_queues', $request->only('game_provider_id'))]
         ]);
 
-        $GameProviderQueue = new GameProviderQueue($request->input());
-        $GameProviderQueue->user_id = $request->user()->id;
-        $GameProviderQueue->save();
+        $booking = new GameProviderQueue($request->input());
+        $booking->user_id = $request->user()->id;
+        $booking->save();
 
         return back(303);
     }
@@ -64,9 +61,16 @@ class GameProviderQueueController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(GameProviderQueue $booking)
     {
-        return GameProviderQueue::findOrFail($id);
+        return Inertia::render('GameProviderQueues/Index', [
+            'gameProviderQueues' => new GameProviderQueueResource($booking),
+            'permissions' => [
+                'canCreateGameProviderQueue' => true,
+                'canUpdateGameProviderQueue' => true,
+                'canDeleteGameProviderQueue' => true,
+            ]
+        ]);
     }
 
     /**
@@ -76,9 +80,14 @@ class GameProviderQueueController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, GameProviderQueue $booking)
     {
-        GameProviderQueue::findOrFail($id)->update($request->input());
+        $request->validate([
+            'started_at' => ['required', new AvailableTime('game_provider_queues', $request->only('game_provider_id'))],
+            'ended_at' => ['required', new AvailableTime('game_provider_queues', $request->only('game_provider_id'))]
+        ]);
+
+        $booking->update($request->input());
 
         return back(303);
     }
@@ -89,9 +98,9 @@ class GameProviderQueueController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(GameProviderQueue $booking)
     {
-        GameProviderQueue::findOrFail($id)->delete($id);
+        $booking->delete();
         
         return back();
     }

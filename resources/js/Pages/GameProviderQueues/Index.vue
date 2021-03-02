@@ -9,9 +9,8 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex my-4">
-                    <jet-input 
+                    <search-input 
                         @input="filter"
-                        class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
                         placeholder="Search for game provider" />
 
                     <jet-link-button :href="route('game-providers.create')">
@@ -96,6 +95,7 @@ import AppLayout from '@/Layouts/AppLayout';
 import JetTable from "@/Components/Table";
 import Pagination from "@/Components/Pagination";
 import JetLinkButton from "@/Components/LinkButton";
+import SearchInput from "@/Components/SearchInput";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import moment from 'moment';
@@ -108,6 +108,7 @@ export default {
         JetCheckbox,
         JetTable,
         Pagination,
+        SearchInput
     },
 
     props: ['gameProviderQueues', 'permissions'],
@@ -122,8 +123,7 @@ export default {
 
     methods: {
         filter(ev) {
-            clearTimeout(this.searchPid);
-            this.searchPid = setTimeout(() => this.$inertia.reload({data: { search: ev.target.value }}), 1000)
+            this.$inertia.reload({data: { search: ev.target.value }})
         },
         formatDate(datetime) {
             return (datetime) ? moment(datetime).format('YYYY-MM-DD HH:mm:ss') : null;

@@ -50,6 +50,17 @@ class GameProviderQueue extends Model
     }
 
     /**
+     * Scope a query to only include current bookings.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCurrent($query)
+    {
+        return $query->whereRaw("? BETWEEN started_at AND ended_at", [$this->freshTimestamp()->toIso8601String()]);
+    }
+
+    /**
      * Scope a query to only include available/queable bookings.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
@@ -94,19 +105,5 @@ class GameProviderQueue extends Model
         $query->orWhereHas('gameProvider', fn($query) => $query->where('name', 'like', "%{$value}%"));
 
         return $query;
-    }
-
-    /**
-     * Get the nginx configuration
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getNginxConfigAttribute($value)
-    {
-        $keys = ['{{ modifier }}', '{{ match }}', '{{ hostname }}'];
-        $values = [$this->gameProvider->location_modifier, $this->gameProvider->location_match, $this->host];
-
-        return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
     }
 }
