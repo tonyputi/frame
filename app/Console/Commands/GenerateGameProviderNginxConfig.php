@@ -50,31 +50,23 @@ class GenerateGameProviderNginxConfig extends Command
         $storage = Storage::disk('local');
         // create directory storage/app/nginx is does not exists
         $storage->makeDirectory($directory);
-        $storage->put($filepath, $header);
+        $storage->put($filepath, "{$header}\r\n");
 
-        // $gameProviders = GameProvider::all();
-        // $gameProviders->each(function($gameProvider) use($storage, $filepath) {
-        //     if($gameProvider->nginxConfig) {
-        //         $storage->append($filepath, NULL);
-        //         $storage->append($filepath, $gameProvider->nginxConfig);
-        //     }
-        // });
-
-        $bookings = Booking::current()->active(false)->get();
+        $bookings = Booking::current()->get();
         $bookings->each(function($booking) use($storage, $filepath) {
-            $storage->append($filepath, NULL);
             $storage->append($filepath, $booking->gameProvider->nginxConfig);
         });
 
         // validate nginx configuration
+        // $this->validateConfiguration();
 
         // reload nginx configuration
+        // $this->reloadConfiguration();
 
         // set current processed bookings as active
         Booking::whereIn('id', $bookings->pluck('id'))->update(['is_active' => true]);
 
         // send slack notification
-
         return 0;
     }
 

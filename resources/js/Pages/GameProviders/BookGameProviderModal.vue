@@ -118,14 +118,14 @@
                 },
                 set(value) {
                     this.form.ended_at = moment(`${this.date} ${value}`)
-                        .subtract(1, 'second')
                 }
             }
         },
 
         methods: {
             bookGameProvider() {
-                console.log(moment().utc().toISOString(), this.form.started_at);
+                // need to remove one second to match ie 14:04:59
+                this.form.ended_at = moment(this.form.ended_at).subtract(1, 'second')
 
                 this.form.post(route('game-providers.bookings.store', [this.gameProvider.id]), {
                     preserveScroll: true,

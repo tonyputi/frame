@@ -11,6 +11,12 @@
                 <div>
                     <update-game-provider-form :gameProvider="gameProvider.data" :permissions="permissions" />
 
+                    <jet-section-border />
+                </div>
+
+                <div>
+                    <update-game-provider-advanced-form :gameProvider="gameProvider.data" :permissions="permissions" />
+
                     <jet-section-border v-if="permissions.canDeleteGameProvider" />
                 </div>
 
@@ -27,6 +33,7 @@
     import DeleteGameProviderForm from './DeleteGameProviderForm'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
     import UpdateGameProviderForm from './UpdateGameProviderForm'
+    import UpdateGameProviderAdvancedForm from './UpdateGameProviderAdvancedForm'
 
     export default {
         props: ['gameProvider', 'permissions'],
@@ -35,7 +42,8 @@
             AppLayout,
             JetSectionBorder,
             DeleteGameProviderForm,
-            UpdateGameProviderForm
+            UpdateGameProviderForm,
+            UpdateGameProviderAdvancedForm
         }
     }
 </script>

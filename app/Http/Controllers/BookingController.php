@@ -48,13 +48,13 @@ class BookingController extends Controller
                 'required', 
                 'date',
                 'before:ended_at',
-                new AvailableTime('bookings', $request->only('game_provider_id'))
+                new AvailableTime('bookings', $gameProvider->id)
             ],
             'ended_at' => [
                 'required', 
                 'date',
                 'after:started_at',
-                new AvailableTime('bookings', $request->only('game_provider_id'))
+                new AvailableTime('bookings', $gameProvider->id)
             ]
         ]);
 

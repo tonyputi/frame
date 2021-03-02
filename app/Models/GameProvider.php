@@ -49,8 +49,7 @@ class GameProvider extends Model
     public function nextBookings()
     {
         return $this->bookings()
-            ->available()
-            ->active(false);
+            ->available();
     }
 
     /**
@@ -62,7 +61,6 @@ class GameProvider extends Model
     {
         return $this->hasOne(Booking::class)
             ->available()
-            ->active(false)
             ->orderBy('started_at', 'asc');
     }
 
@@ -75,7 +73,6 @@ class GameProvider extends Model
     {
         return $this->hasOne(Booking::class)
             ->current()
-            ->active(false)
             ->orderBy('started_at', 'asc');
     }
 
