@@ -9,10 +9,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex my-4">
-                    <search-input
-                        @input="filter"
-                        class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                        placeholder="Search for game provider" />
+                    <search-input @input="filter" placeholder="Search for game provider" />
 
                     <jet-link-button :href="route('game-providers.create')">
                         Create
@@ -105,7 +102,7 @@
                     @close="gameProviderBeingBooked = null" />
 
                 <!-- game provider delete modal -->
-                <delete-game-provider-modal v-if="gameProviderBeingDeleted"
+                <delete-game-provider-modal
                     :gameProvider="gameProviderBeingDeleted"
                     @close="gameProviderBeingDeleted = null" />
 

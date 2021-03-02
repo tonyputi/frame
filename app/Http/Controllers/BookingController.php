@@ -7,6 +7,7 @@ use App\Rules\AvailableTime;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Http\Resources\BookingResource;
+use App\Models\GameProvider;
 
 class BookingController extends Controller
 {
@@ -40,15 +41,15 @@ class BookingController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, GameProvider $gameProvider)
     {
         $request->validate([
-            'game_provider_id' => ['required'],
             'started_at' => ['required', new AvailableTime('bookings', $request->only('game_provider_id'))],
             'ended_at' => ['required', new AvailableTime('bookings', $request->only('game_provider_id'))]
         ]);
 
         $booking = new Booking($request->input());
+        $booking->game_provider_id = $gameProvider->id;
         $booking->user_id = $request->user()->id;
         $booking->save();
 

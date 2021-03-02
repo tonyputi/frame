@@ -18850,7 +18850,6 @@ __webpack_require__.r(__webpack_exports__);
       form: this.$inertia.form({
         application_id: 1,
         environment_id: 1,
-        game_provider_id: null,
         started_at: null,
         ended_at: null,
         notes: null
@@ -18871,8 +18870,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.form.started_at = this.started_at.toISOString();
       this.form.ended_at = this.ended_at.toISOString();
-      this.form.game_provider_id = this.gameProvider.id;
-      this.form.post(route('bookings.store'), {
+      this.form.post(route('game-providers.bookings.store', [this.gameProvider.id]), {
         preserveScroll: true,
         onSuccess: function onSuccess() {
           return _this.closeModal();
@@ -24224,7 +24222,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_jet_dialog_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-dialog-modal");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_dialog_modal, {
+  return $props.gameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_dialog_modal, {
+    key: 0,
     show: $props.gameProvider,
     onClose: $options.closeModal
   }, {
@@ -24293,7 +24292,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["show", "onClose"]);
+  , ["show", "onClose"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -24537,7 +24536,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_search_input, {
         onInput: $options.filter,
-        "class": "w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none",
         placeholder: "Search for game provider"
       }, null, 8
       /* PROPS */
@@ -24657,15 +24655,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, null, 8
       /* PROPS */
-      , ["gameProvider"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" game provider delete modal "), $data.gameProviderBeingDeleted ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_delete_game_provider_modal, {
-        key: 2,
+      , ["gameProvider"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" game provider delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_game_provider_modal, {
         gameProvider: $data.gameProviderBeingDeleted,
         onClose: _cache[4] || (_cache[4] = function ($event) {
           return $data.gameProviderBeingDeleted = null;
         })
       }, null, 8
       /* PROPS */
-      , ["gameProvider"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])];
+      , ["gameProvider"])])])];
     }),
     _: 1
     /* STABLE */

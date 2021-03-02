@@ -83,7 +83,6 @@
                 form: this.$inertia.form({
                     application_id: 1,
                     environment_id: 1,
-                    game_provider_id: null,
                     started_at: null,
                     ended_at: null,
                     notes: null
@@ -105,9 +104,8 @@
             bookGameProvider() {
                 this.form.started_at = this.started_at.toISOString()
                 this.form.ended_at = this.ended_at.toISOString()
-                this.form.game_provider_id = this.gameProvider.id
 
-                this.form.post(route('bookings.store'), {
+                this.form.post(route('game-providers.bookings.store', [this.gameProvider.id]), {
                     preserveScroll: true,
                     onSuccess: () => this.closeModal(),
                     onError: () => this.$refs.started_at.focus(),
