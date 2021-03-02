@@ -1,11 +1,12 @@
 <?php
 
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\GameProviderController;
-use App\Http\Controllers\BookingController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::resource('environments', EnvironmentController::class);
     Route::resource('applications', ApplicationController::class);
     Route::resource('game-providers', GameProviderController::class);
-    Route::resource('bookings', BookingController::class);
+    Route::resource('game-providers.bookings', BookingController::class)->shallow();
 });
 

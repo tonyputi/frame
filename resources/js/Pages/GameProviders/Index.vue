@@ -57,7 +57,7 @@
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.name }}</td>
                                 <td class="px-2 py-4 text-left">
-                                    <inertia-link :href="route('bookings.index')">
+                                    <inertia-link :href="route('game-providers.bookings.index', [resource.id])">
                                         {{ resource.next_bookings_count }}
                                     </inertia-link>
                                 </td>
