@@ -58,9 +58,9 @@
                                         {{ resource.next_bookings_count }}
                                     </inertia-link>
                                 </td>
-                                <td class="px-2 py-4 text-left">{{ resource.next_booking?.user?.name }}</td>
-                                <td class="px-2 py-4 text-left">{{ formatDate(resource.next_booking?.started_at) }}</td>
-                                <td class="px-2 py-4 text-left">{{ formatDate(resource.next_booking?.ended_at) }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.current_booking?.user?.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ formatDate(resource.current_booking?.started_at) }}</td>
+                                <td class="px-2 py-4 text-left">{{ formatDate(resource.current_booking?.ended_at) }}</td>
                                 <td class="px-2 py-4 text-center">
                                     <div class="flex">
                                         <button class="text-black-500" @click="gameProviderBeingBooked=resource">
@@ -137,12 +137,6 @@ export default {
     },
 
     props: ['gameProviders', 'permissions'],
-
-    // data: () => ({
-    //     gameProviderBeingBooked: null,
-    //     gameProviderBeingDeleted: null,
-    //     gameProvidersSelected: []
-    // }),
 
     data() {
         return {

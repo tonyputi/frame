@@ -20,7 +20,7 @@ class GameProviderController extends Controller
     {
         $gameProviders = GameProvider::query()
             ->when($request->input('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
-            ->with('nextBooking.user')
+            ->with('currentBooking.user')
             ->withCount('nextBookings')
             ->paginate();
 

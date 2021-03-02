@@ -23,7 +23,7 @@
                         <template #header>
                             <tr class="bg-gray-800 text-white">
                                 <th class="px-2 py-4 w-16">
-                                    <jet-checkbox v-model:checked="resourcesSelected" />
+                                    <jet-checkbox v-model:checked="bookingsSelected" />
                                 </th>
                                 <th class="px-2 py-4 text-left">ID</th>
                                 <th class="px-2 py-4 text-left">User</th>
@@ -40,7 +40,7 @@
                         <template #body>
                             <tr v-for="resource in bookings.data" :key="resource.id" class="border border-black-600">
                                 <td class="px-2 py-4 text-center">
-                                    <jet-checkbox :value="resource" v-model:checked="resourcesSelected" />
+                                    <jet-checkbox :value="resource" v-model:checked="bookingsSelected" />
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.id }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.user.name }}</td>
@@ -58,7 +58,7 @@
                                                 <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                                             </svg>
                                         </inertia-link>
-                                        <button class="text-red-500 ml-4 " v-if="permissions.canDeleteBooking" @click="bookingBeingDeleted=resource">
+                                        <button class="text-red-500 ml-4 " v-if="isDeletable(resource)" @click="bookingBeingDeleted=resource">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                                 <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                                             </svg>
@@ -80,10 +80,10 @@
                     <p>Ooops! No Game providers bookings to show. Please change search value </p>
                 </div>
 
-                <!-- game provider delete modal -->
-                <!-- <delete-game-provider-queue-modal v-if="resourceBeingDeleted"
-                    :booking="resourceBeingDeleted"
-                    @close="resourceBeingDeleted = null" /> -->
+                <!-- booking delete modal -->
+                <delete-booking-modal
+                    :booking="bookingBeingDeleted"
+                    @close="bookingBeingDeleted = null" />
 
             </div>
         </div>
@@ -96,6 +96,7 @@ import JetTable from "@/Components/Table";
 import Pagination from "@/Components/Pagination";
 import JetLinkButton from "@/Components/LinkButton";
 import SearchInput from "@/Components/SearchInput";
+import DeleteBookingModal from './DeleteBookingModal';
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import moment from 'moment';
@@ -108,7 +109,8 @@ export default {
         JetCheckbox,
         JetTable,
         Pagination,
-        SearchInput
+        SearchInput,
+        DeleteBookingModal
     },
 
     props: ['bookings', 'permissions'],
@@ -116,8 +118,8 @@ export default {
     data() {
         return {
             searchPid: null,
-            resourceBeingDeleted: null,
-            resourcesSelected: []
+            bookingBeingDeleted: null,
+            bookingsSelected: []
         }
     },
 
@@ -127,6 +129,21 @@ export default {
         },
         formatDate(datetime) {
             return (datetime) ? moment(datetime).format('YYYY-MM-DD HH:mm:ss') : null;
+        },
+        isDeletable(resource) {
+            // if(!this.permissions.canDeleteBooking) {
+            //     return false;
+            // }
+
+            if(resource.is_active) {
+                return false;
+            }
+
+            if(resource.user_id != this.$page.props.user.id) {
+                return false;
+            }
+
+            return true;
         }
     }
 };

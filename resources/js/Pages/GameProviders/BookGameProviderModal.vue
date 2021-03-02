@@ -6,24 +6,25 @@
         </template>
 
         <template #content>
-            <!-- Are you sure you want to delete {{ name }}? Once game provider is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. -->
-
             <form>
+                <!-- Start date -->
                 <div class="col-span-6 sm:col-span-4 mt-2">
                     <jet-label for="date" value="Date" />
-                    <jet-input id="date" type="date" class="mt-1 block w-full" v-model="date" ref="date" />
+                    <jet-input id="date" type="date" class="mt-1 block w-full" v-model="date" ref="date" :min="minDate" :max="maxDate" />
                     <jet-input-error :message="form.errors.started_at" class="mt-2" />
                 </div>
 
+                <!-- Start time -->
                 <div class="col-span-6 sm:col-span-4 mt-2">
                     <jet-label for="start_at" value="Started at" />
-                    <jet-input id="start_at" type="time" class="mt-1 block w-full" v-model="start_at" step="300" />
+                    <jet-input id="start_at" type="time" class="mt-1 block w-full" v-model="start_at" :step="step" />
                     <jet-input-error :message="form.errors.started_at" class="mt-2" />
                 </div>
 
+                <!-- End time -->
                 <div class="col-span-6 sm:col-span-4 mt-2">
                     <jet-label for="end_at" value="Ended at" />
-                    <jet-input id="end_at" type="time" class="mt-1 block w-full" v-model="end_at" step="300" />
+                    <jet-input id="end_at" type="time" class="mt-1 block w-full" v-model="end_at" :step="step" />
                     <jet-input-error :message="form.errors.ended_at" class="mt-2" />
                 </div>
 
@@ -76,6 +77,7 @@
 
         data() {
             return {
+                step: 5 * 60,
                 form: this.$inertia.form({
                     application_id: 1,
                     environment_id: 1,
@@ -87,6 +89,12 @@
         },
 
         computed: {
+            minDate(){
+                return moment().format('YYYY-MM-DD')
+            },
+            maxDate(){
+                return moment().add(6, 'months').format('YYYY-MM-DD')
+            },
             date: {
                 get() {
                     return moment(this.form.started_at).format('YYYY-MM-DD')
@@ -109,13 +117,16 @@
                     return moment(this.form.ended_at).format('HH:mm')
                 },
                 set(value) {
-                    this.form.ended_at = moment(`${this.date} ${value}`).subtract(1, 'second')
+                    this.form.ended_at = moment(`${this.date} ${value}`)
+                        .subtract(1, 'second')
                 }
             }
         },
 
         methods: {
             bookGameProvider() {
+                console.log(moment().utc().toISOString(), this.form.started_at);
+
                 this.form.post(route('game-providers.bookings.store', [this.gameProvider.id]), {
                     preserveScroll: true,
                     onSuccess: () => this.closeModal(),

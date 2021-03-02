@@ -17,6 +17,15 @@ class Booking extends Model
     protected $guarded = ['id'];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_active' => 'boolean'
+    ];
+
+    /**
      * Get the environment that owns the game provider queue.
      */
     public function environment()

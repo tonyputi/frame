@@ -9,7 +9,7 @@ use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
-class GenarateGameProviderNginxConfig extends Command
+class GenerateGameProviderNginxConfig extends Command
 {
     /**
      * The name and signature of the console command.
@@ -66,6 +66,20 @@ class GenarateGameProviderNginxConfig extends Command
             $storage->append($filepath, $booking->gameProvider->nginxConfig);
         });
 
+        // validate nginx configuration
+
+        // reload nginx configuration
+
+        // set current processed bookings as active
+        Booking::whereIn('id', $bookings->pluck('id'))->update(['is_active' => true]);
+
+        // send slack notification
+
+        return 0;
+    }
+
+    protected function validateConfiguration()
+    {
         // check if nginx -t command is success
         $process = new Process(['nginx', '-t']);
         $process->run();
@@ -73,13 +87,15 @@ class GenarateGameProviderNginxConfig extends Command
             throw new ProcessFailedException($process);
         }
         $this->info($process->getOutput());
-        // reload nginx config
+    }
+
+    protected function reloadConfiguration()
+    {
         $process = new Process(['sudo', 'nginx', '-s', 'reload']);
         $process->run();
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
-        // send slack notification
-        return 0;
+        $this->info($process->getOutput());
     }
 }

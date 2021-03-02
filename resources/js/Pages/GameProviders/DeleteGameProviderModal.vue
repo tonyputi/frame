@@ -8,12 +8,12 @@
             Are you sure you want to delete {{ gameProvider?.name }}? Once game provider is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
 
             <div class="mt-4">
-                <jet-input type="password" class="mt-1 block w-3/4" placeholder="Password"
-                           ref="password"
-                           v-model="form.password"
+                <jet-input type="name" class="mt-1 block w-3/4" placeholder="Game Provider Name"
+                           ref="name"
+                           v-model="form.name"
                            @keyup.enter="deleteGameProvider" />
 
-                <jet-input-error :message="form.errors.password" class="mt-2" />
+                <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
         </template>
 
@@ -55,7 +55,7 @@ export default {
             confirmingGameProviderDeletion: false,
 
             form: this.$inertia.form({
-                password: '',
+                name: '',
             })
         }
     },
@@ -64,14 +64,14 @@ export default {
         confirmGameProviderDeletion() {
             this.confirmingGameProviderDeletion = true;
 
-            setTimeout(() => this.$refs.password.focus(), 250)
+            setTimeout(() => this.$refs.name.focus(), 250)
         },
 
         deleteGameProvider() {
             this.form.delete(route('game-providers.destroy', [this.gameProvider.id]), {
                 preserveScroll: true,
                 onSuccess: () => this.closeModal(),
-                onError: () => this.$refs.password.focus(),
+                onError: () => this.$refs.name.focus(),
                 onFinish: () => this.form.reset(),
             })
         },

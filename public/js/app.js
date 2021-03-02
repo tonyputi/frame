@@ -18713,6 +18713,67 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ActionSection */ "./resources/js/Jetstream/ActionSection.vue");
+/* harmony import */ var _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/DialogModal */ "./resources/js/Jetstream/DialogModal.vue");
+/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
+/* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    JetActionSection: _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default,
+    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__.default,
+    JetDialogModal: _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_1__.default,
+    JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_3__.default
+  },
+  props: ['booking'],
+  emits: ['close'],
+  data: function data() {
+    return {
+      confirmingBookingDeletion: false,
+      form: this.$inertia.form({})
+    };
+  },
+  methods: {
+    confirmBookingDeletion: function confirmBookingDeletion() {
+      this.confirmingBookingDeletion = true;
+    },
+    deleteBooking: function deleteBooking() {
+      var _this = this;
+
+      this.form["delete"](route('bookings.destroy', [this.booking.id]), {
+        preserveScroll: true,
+        onSuccess: function onSuccess() {
+          return _this.closeModal();
+        },
+        // onError: () => this.$refs.name.focus(),
+        onFinish: function onFinish() {
+          return _this.form.reset();
+        }
+      });
+    },
+    closeModal: function closeModal() {
+      this.$emit('close');
+      this.form.reset();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/Index.vue?vue&type=script&lang=js":
 /*!***************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/Index.vue?vue&type=script&lang=js ***!
@@ -18729,10 +18790,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Pagination */ "./resources/js/Components/Pagination.vue");
 /* harmony import */ var _Components_LinkButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/LinkButton */ "./resources/js/Components/LinkButton.vue");
 /* harmony import */ var _Components_SearchInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/SearchInput */ "./resources/js/Components/SearchInput.vue");
-/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _DeleteBookingModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DeleteBookingModal */ "./resources/js/Pages/Bookings/DeleteBookingModal.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
+
 
 
 
@@ -18745,18 +18808,19 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     JetLinkButton: _Components_LinkButton__WEBPACK_IMPORTED_MODULE_3__.default,
-    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_5__.default,
-    JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_6__.default,
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_6__.default,
+    JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_7__.default,
     JetTable: _Components_Table__WEBPACK_IMPORTED_MODULE_1__.default,
     Pagination: _Components_Pagination__WEBPACK_IMPORTED_MODULE_2__.default,
-    SearchInput: _Components_SearchInput__WEBPACK_IMPORTED_MODULE_4__.default
+    SearchInput: _Components_SearchInput__WEBPACK_IMPORTED_MODULE_4__.default,
+    DeleteBookingModal: _DeleteBookingModal__WEBPACK_IMPORTED_MODULE_5__.default
   },
   props: ['bookings', 'permissions'],
   data: function data() {
     return {
       searchPid: null,
-      resourceBeingDeleted: null,
-      resourcesSelected: []
+      bookingBeingDeleted: null,
+      bookingsSelected: []
     };
   },
   methods: {
@@ -18768,7 +18832,21 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     formatDate: function formatDate(datetime) {
-      return datetime ? moment__WEBPACK_IMPORTED_MODULE_7___default()(datetime).format('YYYY-MM-DD HH:mm:ss') : null;
+      return datetime ? moment__WEBPACK_IMPORTED_MODULE_8___default()(datetime).format('YYYY-MM-DD HH:mm:ss') : null;
+    },
+    isDeletable: function isDeletable(resource) {
+      // if(!this.permissions.canDeleteBooking) {
+      //     return false;
+      // }
+      if (resource.is_active) {
+        return false;
+      }
+
+      if (resource.user_id != this.$page.props.user.id) {
+        return false;
+      }
+
+      return true;
     }
   }
 });
@@ -18844,6 +18922,7 @@ __webpack_require__.r(__webpack_exports__);
   emits: ['close'],
   data: function data() {
     return {
+      step: 5 * 60,
       form: this.$inertia.form({
         application_id: 1,
         environment_id: 1,
@@ -18854,6 +18933,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
+    minDate: function minDate() {
+      return moment__WEBPACK_IMPORTED_MODULE_8___default()().format('YYYY-MM-DD');
+    },
+    maxDate: function maxDate() {
+      return moment__WEBPACK_IMPORTED_MODULE_8___default()().add(6, 'months').format('YYYY-MM-DD');
+    },
     date: {
       get: function get() {
         return moment__WEBPACK_IMPORTED_MODULE_8___default()(this.form.started_at).format('YYYY-MM-DD');
@@ -18884,6 +18969,7 @@ __webpack_require__.r(__webpack_exports__);
     bookGameProvider: function bookGameProvider() {
       var _this = this;
 
+      console.log(moment__WEBPACK_IMPORTED_MODULE_8___default()().utc().toISOString(), this.form.started_at);
       this.form.post(route('game-providers.bookings.store', [this.gameProvider.id]), {
         preserveScroll: true,
         onSuccess: function onSuccess() {
@@ -18996,7 +19082,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       confirmingGameProviderDeletion: false,
       form: this.$inertia.form({
-        password: ''
+        name: ''
       })
     };
   },
@@ -19006,7 +19092,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.confirmingGameProviderDeletion = true;
       setTimeout(function () {
-        return _this.$refs.password.focus();
+        return _this.$refs.name.focus();
       }, 250);
     },
     deleteGameProvider: function deleteGameProvider() {
@@ -19018,7 +19104,7 @@ __webpack_require__.r(__webpack_exports__);
           return _this2.closeModal();
         },
         onError: function onError() {
-          return _this2.$refs.password.focus();
+          return _this2.$refs.name.focus();
         },
         onFinish: function onFinish() {
           return _this2.form.reset();
@@ -19079,11 +19165,6 @@ __webpack_require__.r(__webpack_exports__);
     SearchInput: _Components_SearchInput__WEBPACK_IMPORTED_MODULE_5__.default
   },
   props: ['gameProviders', 'permissions'],
-  // data: () => ({
-  //     gameProviderBeingBooked: null,
-  //     gameProviderBeingDeleted: null,
-  //     gameProvidersSelected: []
-  // }),
   data: function data() {
     return {
       gameProviderBeingBooked: null,
@@ -23619,6 +23700,85 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevermind ");
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete ");
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_jet_secondary_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-secondary-button");
+
+  var _component_jet_danger_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-danger-button");
+
+  var _component_jet_dialog_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-dialog-modal");
+
+  return $props.booking ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_dialog_modal, {
+    key: 0,
+    show: $props.booking,
+    onClose: $options.closeModal
+  }, {
+    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Booking " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.booking.id), 1
+      /* TEXT */
+      )];
+    }),
+    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.booking.id) + "? Once booking is deleted, all of its resources and data will be permanently deleted. ", 1
+      /* TEXT */
+      )];
+    }),
+    footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_secondary_button, {
+        onClick: $options.closeModal
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_1];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_danger_button, {
+        "class": ["ml-2", {
+          'opacity-25': $data.form.processing
+        }],
+        onClick: $options.deleteBooking,
+        disabled: $data.form.processing
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_2];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["onClick", "class", "disabled"])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show", "onClose"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/Index.vue?vue&type=template&id=ec8465f4":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/Index.vue?vue&type=template&id=ec8465f4 ***!
@@ -23804,6 +23964,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("pagination");
 
+  var _component_delete_booking_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-booking-modal");
+
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
@@ -23832,9 +23994,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
-            checked: $data.resourcesSelected,
+            checked: $data.bookingsSelected,
             "onUpdate:checked": _cache[1] || (_cache[1] = function ($event) {
-              return $data.resourcesSelected = $event;
+              return $data.bookingsSelected = $event;
             })
           }, null, 8
           /* PROPS */
@@ -23847,9 +24009,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "class": "border border-black-600"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
               value: resource,
-              checked: $data.resourcesSelected,
+              checked: $data.bookingsSelected,
               "onUpdate:checked": _cache[2] || (_cache[2] = function ($event) {
-                return $data.resourcesSelected = $event;
+                return $data.bookingsSelected = $event;
               })
             }, null, 8
             /* PROPS */
@@ -23881,11 +24043,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
             }, 1032
             /* PROPS, DYNAMIC_SLOTS */
-            , ["href"]), $props.permissions.canDeleteBooking ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+            , ["href"]), $options.isDeletable(resource) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
               key: 0,
               "class": "text-red-500 ml-4 ",
               onClick: function onClick($event) {
-                return _ctx.bookingBeingDeleted = resource;
+                return $data.bookingBeingDeleted = resource;
               }
             }, [_hoisted_30], 8
             /* PROPS */
@@ -23903,7 +24065,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 1
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" no result alert "), _hoisted_31], 64
       /* STABLE_FRAGMENT */
-      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" game provider delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <delete-game-provider-queue-modal v-if=\"resourceBeingDeleted\"\n                    :booking=\"resourceBeingDeleted\"\n                    @close=\"resourceBeingDeleted = null\" /> ")])])];
+      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" booking delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_booking_modal, {
+        booking: $data.bookingBeingDeleted,
+        onClose: _cache[3] || (_cache[3] = function ($event) {
+          return $data.bookingBeingDeleted = null;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["booking"])])])];
     }),
     _: 1
     /* STABLE */
@@ -24018,7 +24187,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )];
     }),
     content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Are you sure you want to delete {{ name }}? Once game provider is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Start date "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "date",
         value: "Date"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -24029,15 +24198,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $options.date = $event;
         }),
-        ref: "date"
+        ref: "date",
+        min: $options.minDate,
+        max: $options.maxDate
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+      , ["modelValue", "min", "max"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
         message: $data.form.errors.started_at,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
-      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Start time "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "start_at",
         value: "Started at"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -24048,15 +24219,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $options.start_at = $event;
         }),
-        step: "300"
+        step: $data.step
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+      , ["modelValue", "step"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
         message: $data.form.errors.started_at,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
-      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End time "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "end_at",
         value: "Ended at"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -24067,10 +24238,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return $options.end_at = $event;
         }),
-        step: "300"
+        step: $data.step
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+      , ["modelValue", "step"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
         message: $data.form.errors.ended_at,
         "class": "mt-2"
       }, null, 8
@@ -24258,19 +24429,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$gameProvider2 = $props.gameProvider) === null || _$props$gameProvider2 === void 0 ? void 0 : _$props$gameProvider2.name) + "? Once game provider is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. ", 1
       /* TEXT */
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        type: "password",
+        type: "name",
         "class": "mt-1 block w-3/4",
-        placeholder: "Password",
-        ref: "password",
-        modelValue: $data.form.password,
+        placeholder: "Game Provider Name",
+        ref: "name",
+        modelValue: $data.form.name,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.form.password = $event;
+          return $data.form.name = $event;
         }),
         onKeyup: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)($options.deleteGameProvider, ["enter"])
       }, null, 8
       /* PROPS */
       , ["modelValue", "onKeyup"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: $data.form.errors.password,
+        message: $data.form.errors.name,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
@@ -24583,7 +24754,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.gameProviders.data, function (resource) {
-            var _resource$next_bookin, _resource$next_bookin2, _resource$next_bookin3, _resource$next_bookin4, _resource$next_bookin5;
+            var _resource$next_bookin, _resource$current_boo, _resource$current_boo2, _resource$current_boo3, _resource$current_boo4;
 
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tr", {
               key: resource.id,
@@ -24619,11 +24790,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
             }, 1032
             /* PROPS, DYNAMIC_SLOTS */
-            , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_resource$next_bookin2 = resource.next_booking) === null || _resource$next_bookin2 === void 0 ? void 0 : (_resource$next_bookin3 = _resource$next_bookin2.user) === null || _resource$next_bookin3 === void 0 ? void 0 : _resource$next_bookin3.name), 1
+            , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_resource$current_boo = resource.current_booking) === null || _resource$current_boo === void 0 ? void 0 : (_resource$current_boo2 = _resource$current_boo.user) === null || _resource$current_boo2 === void 0 ? void 0 : _resource$current_boo2.name), 1
             /* TEXT */
-            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate((_resource$next_bookin4 = resource.next_booking) === null || _resource$next_bookin4 === void 0 ? void 0 : _resource$next_bookin4.started_at)), 1
+            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate((_resource$current_boo3 = resource.current_booking) === null || _resource$current_boo3 === void 0 ? void 0 : _resource$current_boo3.started_at)), 1
             /* TEXT */
-            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate((_resource$next_bookin5 = resource.next_booking) === null || _resource$next_bookin5 === void 0 ? void 0 : _resource$next_bookin5.ended_at)), 1
+            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate((_resource$current_boo4 = resource.current_booking) === null || _resource$current_boo4 === void 0 ? void 0 : _resource$current_boo4.ended_at)), 1
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
               "class": "text-black-500",
@@ -68406,6 +68577,32 @@ _VerifyEmail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Bookings/DeleteBookingModal.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/DeleteBookingModal.vue ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DeleteBookingModal_vue_vue_type_template_id_3f5e811b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteBookingModal.vue?vue&type=template&id=3f5e811b */ "./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b");
+/* harmony import */ var _DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteBookingModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js");
+
+
+
+_DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteBookingModal_vue_vue_type_template_id_3f5e811b__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Bookings/DeleteBookingModal.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Bookings/Index.vue":
 /*!***********************************************!*\
   !*** ./resources/js/Pages/Bookings/Index.vue ***!
@@ -69552,6 +69749,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js":
+/*!************************************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteBookingModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Bookings/Index.vue?vue&type=script&lang=js":
 /*!***********************************************************************!*\
   !*** ./resources/js/Pages/Bookings/Index.vue?vue&type=script&lang=js ***!
@@ -70592,6 +70805,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingModal_vue_vue_type_template_id_3f5e811b__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingModal_vue_vue_type_template_id_3f5e811b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteBookingModal.vue?vue&type=template&id=3f5e811b */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Bookings/Index.vue?vue&type=template&id=ec8465f4":
 /*!*****************************************************************************!*\
   !*** ./resources/js/Pages/Bookings/Index.vue?vue&type=template&id=ec8465f4 ***!
@@ -71209,6 +71438,8 @@ var map = {
 	"./Auth/TwoFactorChallenge.vue": "./resources/js/Pages/Auth/TwoFactorChallenge.vue",
 	"./Auth/VerifyEmail": "./resources/js/Pages/Auth/VerifyEmail.vue",
 	"./Auth/VerifyEmail.vue": "./resources/js/Pages/Auth/VerifyEmail.vue",
+	"./Bookings/DeleteBookingModal": "./resources/js/Pages/Bookings/DeleteBookingModal.vue",
+	"./Bookings/DeleteBookingModal.vue": "./resources/js/Pages/Bookings/DeleteBookingModal.vue",
 	"./Bookings/Index": "./resources/js/Pages/Bookings/Index.vue",
 	"./Bookings/Index.vue": "./resources/js/Pages/Bookings/Index.vue",
 	"./Dashboard": "./resources/js/Pages/Dashboard.vue",
