@@ -12,15 +12,15 @@
             <!-- Game Provider Logo -->
             <div class="col-span-6 sm:col-span-4">
                 <!-- Game Provider File Input -->
-                <input type="file" class="hidden"
-                    ref="logo"
-                    @change="updateLogoPreview">
+                <input type="file" class="hidden" ref="logo" 
+                    @change="updateLogoPreview" 
+                    v-if="permissions.canUpdateGameProvider" />
 
                 <jet-label for="logo" value="Logo" />
 
                 <!-- Current Game Provider Logo -->
-                <div class="mt-2" v-show="! logoPreview">
-                    <img :src="gameProvider.logo_url" :alt="gameProvider.name" class="rounded-full h-20 w-20 object-cover">
+                <div class="mt-2" v-show="!logoPreview">
+                    <img class="rounded-full h-20 w-20 object-cover" :src="gameProvider.logo_url" :alt="gameProvider.name">
                 </div>
 
                 <!-- New Game Provider Logo Preview -->
@@ -30,7 +30,7 @@
                     </span>
                 </div>
 
-                <jet-secondary-button class="mt-2 mr-2" type="button" @click.prevent="selectNewLogo">
+                <jet-secondary-button type="button" class="mt-2 mr-2" @click.prevent="selectNewLogo" v-if="permissions.canUpdateGameProvider">
                     Select A New Logo
                 </jet-secondary-button>
 
@@ -44,33 +44,37 @@
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="name" value="Name" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
+                <jet-input id="name" type="text" class="mt-1 block w-full" 
+                    v-model="form.name" :disabled="!permissions.canUpdateGameProvider" />
                 <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
 
             <!-- Location Modifier -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="location_modifier" value="Location Modifier" />
-                <jet-input id="location_modifier" type="text" class="mt-1 block w-full" v-model="form.location_modifier" />
+                <jet-input id="location_modifier" type="text" class="mt-1 block w-full" 
+                    v-model="form.location_modifier" :disabled="!permissions.canUpdateGameProvider" />
                 <jet-input-error :message="form.errors.location_modifier" class="mt-2" />
             </div>
 
             <!-- Location Match -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="location_match" value="Location Match" />
-                <jet-input id="location_match" type="text" class="mt-1 block w-full" v-model="form.location_match" />
+                <jet-input id="location_match" type="text" class="mt-1 block w-full" 
+                    v-model="form.location_match" :disabled="!permissions.canUpdateGameProvider" />
                 <jet-input-error :message="form.errors.location_match" class="mt-2" />
             </div>
 
             <!-- Default host -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="default_host" value="Default Host" />
-                <jet-input id="default_host" type="text" class="mt-1 block w-full" v-model="form.default_host" />
+                <jet-input id="default_host" type="text" class="mt-1 block w-full" 
+                    v-model="form.default_host" :disabled="!permissions.canUpdateGameProvider" />
                 <jet-input-error :message="form.errors.default_host" class="mt-2" />
             </div>
         </template>
 
-        <template #actions>
+        <template #actions v-if="permissions.canUpdateGameProvider">
             <jet-action-message :on="form.recentlySuccessful" class="mr-3">
                 Saved.
             </jet-action-message>
@@ -105,9 +109,10 @@
         props: {
             gameProvider: {
                 type: Object,
-                default: {
-
-                }
+                default: {}
+            },
+            permissions: {
+                type: Object
             }
         },
 

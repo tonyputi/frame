@@ -9,7 +9,7 @@
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <div>
-                    <update-game-provider-form :gameProvider="gameProvider.data" />
+                    <update-game-provider-form :gameProvider="gameProvider.data" :permissions="permissions" />
 
                     <jet-section-border v-if="permissions.canDeleteGameProvider" />
                 </div>

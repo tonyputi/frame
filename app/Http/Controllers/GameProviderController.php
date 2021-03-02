@@ -24,7 +24,7 @@ class GameProviderController extends Controller
             ->withCount('nextBookings')
             ->paginate();
 
-        return $inertia = Inertia::render('GameProviders/Index', [
+        return Inertia::render('GameProviders/Index', [
             'gameProviders' => GameProviderResource::collection($gameProviders),
             'permissions' => [
                 'canCreateGameProvider' => true,
@@ -32,8 +32,6 @@ class GameProviderController extends Controller
                 'canDeleteGameProvider' => $request->user()->is_admin,
             ]
         ]);
-
-        dd($inertia);
     }
 
     /**
@@ -78,13 +76,13 @@ class GameProviderController extends Controller
      * @param  GameProvider  $gameProvider
      * @return \Inertia\Response
      */
-    public function show(GameProvider $gameProvider)
+    public function show(Request $request, GameProvider $gameProvider)
     {
         return Inertia::render('GameProviders/Show', [
             'gameProvider' => new GameProviderResource($gameProvider),
             'permissions' => [
-                'canUpdateGameProvider' => true,
-                'canDeleteGameProvider' => true
+                'canUpdateGameProvider' => $request->user()->is_admin,
+                'canDeleteGameProvider' => $request->user()->is_admin,
             ]
         ]);
     }

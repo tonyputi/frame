@@ -18844,39 +18844,53 @@ __webpack_require__.r(__webpack_exports__);
   emits: ['close'],
   data: function data() {
     return {
-      date: moment__WEBPACK_IMPORTED_MODULE_8___default()().format('YYYY-MM-DD'),
-      start_at: this.nextFifthMinute().format('HH:mm'),
-      end_at: this.nextFifthMinute().add(15, 'minutes').format('HH:mm'),
       form: this.$inertia.form({
         application_id: 1,
         environment_id: 1,
-        started_at: null,
-        ended_at: null,
+        started_at: this.nextFifthMinute(),
+        ended_at: this.nextFifthMinute().add(15, 'minutes'),
         notes: null
       })
     };
   },
   computed: {
-    started_at: function started_at() {
-      return moment__WEBPACK_IMPORTED_MODULE_8___default()("".concat(this.date, " ").concat(this.start_at), 'YYYY-MM-DD HH:mm');
+    date: {
+      get: function get() {
+        return moment__WEBPACK_IMPORTED_MODULE_8___default()(this.form.started_at).format('YYYY-MM-DD');
+      },
+      set: function set(value) {
+        this.form.started_at = moment__WEBPACK_IMPORTED_MODULE_8___default()("".concat(value, " ").concat(this.start_at));
+        this.form.ended_at = moment__WEBPACK_IMPORTED_MODULE_8___default()("".concat(value, " ").concat(this.end_at));
+      }
     },
-    ended_at: function ended_at() {
-      return moment__WEBPACK_IMPORTED_MODULE_8___default()("".concat(this.date, " ").concat(this.end_at), 'YYYY-MM-DD HH:mm').subtract(1, 'second');
+    start_at: {
+      get: function get() {
+        return moment__WEBPACK_IMPORTED_MODULE_8___default()(this.form.started_at).format('HH:mm');
+      },
+      set: function set(value) {
+        this.form.started_at = moment__WEBPACK_IMPORTED_MODULE_8___default()("".concat(this.date, " ").concat(value));
+      }
+    },
+    end_at: {
+      get: function get() {
+        return moment__WEBPACK_IMPORTED_MODULE_8___default()(this.form.ended_at).format('HH:mm');
+      },
+      set: function set(value) {
+        this.form.ended_at = moment__WEBPACK_IMPORTED_MODULE_8___default()("".concat(this.date, " ").concat(value)).subtract(1, 'second');
+      }
     }
   },
   methods: {
     bookGameProvider: function bookGameProvider() {
       var _this = this;
 
-      this.form.started_at = this.started_at.toISOString();
-      this.form.ended_at = this.ended_at.toISOString();
       this.form.post(route('game-providers.bookings.store', [this.gameProvider.id]), {
         preserveScroll: true,
         onSuccess: function onSuccess() {
           return _this.closeModal();
         },
         onError: function onError() {
-          return _this.$refs.started_at.focus();
+          return _this.$refs.date.focus();
         },
         onFinish: function onFinish() {
           return _this.form.reset();
@@ -18887,6 +18901,7 @@ __webpack_require__.r(__webpack_exports__);
       var now = moment__WEBPACK_IMPORTED_MODULE_8___default()();
       var minute = 5 - now.minute() % 5;
       now.add(minute, 'minutes');
+      now.set('seconds', 0);
       return now;
     },
     closeModal: function closeModal() {
@@ -19172,6 +19187,9 @@ __webpack_require__.r(__webpack_exports__);
     gameProvider: {
       type: Object,
       "default": {}
+    },
+    permissions: {
+      type: Object
     }
   },
   data: function data() {
@@ -24007,11 +24025,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "date",
         type: "date",
         "class": "mt-1 block w-full",
-        modelValue: $data.date,
+        modelValue: $options.date,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.date = $event;
+          return $options.date = $event;
         }),
-        step: "300"
+        ref: "date"
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
@@ -24021,14 +24039,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "start_at",
-        value: "Start at"
+        value: "Started at"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "start_at",
         type: "time",
         "class": "mt-1 block w-full",
-        modelValue: $data.start_at,
+        modelValue: $options.start_at,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.start_at = $event;
+          return $options.start_at = $event;
         }),
         step: "300"
       }, null, 8
@@ -24045,9 +24063,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "end_at",
         type: "time",
         "class": "mt-1 block w-full",
-        modelValue: $data.end_at,
+        modelValue: $options.end_at,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return $data.end_at = $event;
+          return $options.end_at = $event;
         }),
         step: "300"
       }, null, 8
@@ -24713,10 +24731,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_game_provider_form, {
-        gameProvider: $props.gameProvider.data
+        gameProvider: $props.gameProvider.data,
+        permissions: $props.permissions
       }, null, 8
       /* PROPS */
-      , ["gameProvider"]), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_section_border, {
+      , ["gameProvider", "permissions"]), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_section_border, {
         key: 0
       })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_game_provider_form, {
         gameProvider: $props.gameProvider.data,
@@ -24799,7 +24818,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_form_section, {
     onSubmitted: $options.updateOrCreate
-  }, {
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
     title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_1];
     }),
@@ -24807,7 +24826,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_2];
     }),
     form: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Game Provider Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Game Provider File Input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Game Provider Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Game Provider File Input "), $props.permissions.canUpdateGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
+        key: 0,
         type: "file",
         "class": "hidden",
         ref: "logo",
@@ -24816,13 +24836,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, null, 544
       /* HYDRATE_EVENTS, NEED_PATCH */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "logo",
         value: "Logo"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Current Game Provider Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+        "class": "rounded-full h-20 w-20 object-cover",
         src: $props.gameProvider.logo_url,
-        alt: $props.gameProvider.name,
-        "class": "rounded-full h-20 w-20 object-cover"
+        alt: $props.gameProvider.name
       }, null, 8
       /* PROPS */
       , ["src", "alt"])], 512
@@ -24834,9 +24854,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* STYLE */
       )], 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.logoPreview]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_secondary_button, {
-        "class": "mt-2 mr-2",
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.logoPreview]]), $props.permissions.canUpdateGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_secondary_button, {
+        key: 1,
         type: "button",
+        "class": "mt-2 mr-2",
         onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($options.selectNewLogo, ["prevent"])
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -24847,8 +24868,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["onClick"]), $props.gameProvider.logo_path ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_secondary_button, {
-        key: 0,
+      , ["onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.gameProvider.logo_path ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_secondary_button, {
+        key: 2,
         type: "button",
         "class": "mt-2",
         onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($options.deleteLogo, ["prevent"])
@@ -24877,10 +24898,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.form.name = $event;
         }),
-        autocomplete: "name"
+        disabled: !$props.permissions.canUpdateGameProvider
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+      , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
         message: $data.form.errors.name,
         "class": "mt-2"
       }, null, 8
@@ -24895,10 +24916,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: $data.form.location_modifier,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return $data.form.location_modifier = $event;
-        })
+        }),
+        disabled: !$props.permissions.canUpdateGameProvider
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+      , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
         message: $data.form.errors.location_modifier,
         "class": "mt-2"
       }, null, 8
@@ -24913,10 +24935,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: $data.form.location_match,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
           return $data.form.location_match = $event;
-        })
+        }),
+        disabled: !$props.permissions.canUpdateGameProvider
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+      , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
         message: $data.form.errors.location_match,
         "class": "mt-2"
       }, null, 8
@@ -24931,17 +24954,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: $data.form.default_host,
         "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
           return $data.form.default_host = $event;
-        })
+        }),
+        disabled: !$props.permissions.canUpdateGameProvider
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+      , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
         message: $data.form.errors.default_host,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
       , ["message"])])];
     }),
-    actions: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+    _: 2
+    /* DYNAMIC */
+
+  }, [$props.permissions.canUpdateGameProvider ? {
+    name: "actions",
+    fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_action_message, {
         on: $data.form.recentlySuccessful,
         "class": "mr-3"
@@ -24969,12 +24998,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, 8
       /* PROPS */
       , ["class", "disabled"])];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
+    })
+  } : undefined]), 1032
+  /* PROPS, DYNAMIC_SLOTS */
   , ["onSubmitted"]);
 }
 

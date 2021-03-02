@@ -11,12 +11,12 @@
             <form>
                 <div class="col-span-6 sm:col-span-4 mt-2">
                     <jet-label for="date" value="Date" />
-                    <jet-input id="date" type="date" class="mt-1 block w-full" v-model="date" step="300" />
+                    <jet-input id="date" type="date" class="mt-1 block w-full" v-model="date" ref="date" />
                     <jet-input-error :message="form.errors.started_at" class="mt-2" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-4 mt-2">
-                    <jet-label for="start_at" value="Start at" />
+                    <jet-label for="start_at" value="Started at" />
                     <jet-input id="start_at" type="time" class="mt-1 block w-full" v-model="start_at" step="300" />
                     <jet-input-error :message="form.errors.started_at" class="mt-2" />
                 </div>
@@ -76,39 +76,50 @@
 
         data() {
             return {
-                date: moment().format('YYYY-MM-DD'),
-                start_at: this.nextFifthMinute().format('HH:mm'),
-                end_at: this.nextFifthMinute().add(15, 'minutes').format('HH:mm'),
-
                 form: this.$inertia.form({
                     application_id: 1,
                     environment_id: 1,
-                    started_at: null,
-                    ended_at: null,
+                    started_at: this.nextFifthMinute(),
+                    ended_at: this.nextFifthMinute().add(15, 'minutes'),
                     notes: null
                 })
             }
         },
 
         computed: {
-            started_at() {
-                return moment(`${this.date} ${this.start_at}`, 'YYYY-MM-DD HH:mm')
+            date: {
+                get() {
+                    return moment(this.form.started_at).format('YYYY-MM-DD')
+                },
+                set(value) {
+                    this.form.started_at = moment(`${value} ${this.start_at}`)
+                    this.form.ended_at = moment(`${value} ${this.end_at}`)
+                }
             },
-
-            ended_at() {
-                return moment(`${this.date} ${this.end_at}`, 'YYYY-MM-DD HH:mm').subtract(1, 'second')
+            start_at: {
+                get() {
+                    return moment(this.form.started_at).format('HH:mm')
+                },
+                set(value) {
+                    this.form.started_at = moment(`${this.date} ${value}`)
+                }
+            },
+            end_at: {
+                get() {
+                    return moment(this.form.ended_at).format('HH:mm')
+                },
+                set(value) {
+                    this.form.ended_at = moment(`${this.date} ${value}`).subtract(1, 'second')
+                }
             }
         },
 
         methods: {
             bookGameProvider() {
-                this.form.started_at = this.started_at.toISOString()
-                this.form.ended_at = this.ended_at.toISOString()
-
                 this.form.post(route('game-providers.bookings.store', [this.gameProvider.id]), {
                     preserveScroll: true,
                     onSuccess: () => this.closeModal(),
-                    onError: () => this.$refs.started_at.focus(),
+                    onError: () => this.$refs.date.focus(),
                     onFinish: () => this.form.reset(),
                 })
             },
@@ -117,6 +128,8 @@
                 let now = moment()
                 let minute = 5 - (now.minute() % 5)
                 now.add(minute, 'minutes')
+                now.set('seconds', 0)
+
                 return now
             },
 

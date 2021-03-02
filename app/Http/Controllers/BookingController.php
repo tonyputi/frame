@@ -44,8 +44,18 @@ class BookingController extends Controller
     public function store(Request $request, GameProvider $gameProvider)
     {
         $request->validate([
-            'started_at' => ['required', new AvailableTime('bookings', $request->only('game_provider_id'))],
-            'ended_at' => ['required', new AvailableTime('bookings', $request->only('game_provider_id'))]
+            'started_at' => [
+                'required', 
+                'date',
+                'before:ended_at',
+                new AvailableTime('bookings', $request->only('game_provider_id'))
+            ],
+            'ended_at' => [
+                'required', 
+                'date',
+                'after:started_at',
+                new AvailableTime('bookings', $request->only('game_provider_id'))
+            ]
         ]);
 
         $booking = new Booking($request->input());
