@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\GameProviderController;
-use App\Http\Controllers\GameProviderQueueController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,6 +32,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::resource('environments', EnvironmentController::class);
     Route::resource('applications', ApplicationController::class);
     Route::resource('game-providers', GameProviderController::class);
-    Route::resource('game-provider-queues', GameProviderQueueController::class);
+    Route::resource('bookings', BookingController::class);
 });
 

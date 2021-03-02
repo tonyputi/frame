@@ -3,9 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Support\Str;
-use App\Models\GameProvider;
 use Illuminate\Console\Command;
-use App\Models\GameProviderQueue;
+use App\Models\Booking;
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -61,7 +60,7 @@ class GenarateGameProviderNginxConfig extends Command
         //     }
         // });
 
-        $bookings = GameProviderQueue::current()->active(false)->get();
+        $bookings = Booking::current()->active(false)->get();
         $bookings->each(function($booking) use($storage, $filepath) {
             $storage->append($filepath, NULL);
             $storage->append($filepath, $booking->gameProvider->nginxConfig);

@@ -12,8 +12,8 @@ class Application extends Model
     /**
      * Get the game provider queues for the application.
      */
-    public function gameProviderQueues()
+    public function bookings()
     {
-        return $this->hasMany(GameProviderQueue::class);
+        return $this->hasMany(Booking::class);
     }
 }

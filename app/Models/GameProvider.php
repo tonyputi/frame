@@ -37,7 +37,7 @@ class GameProvider extends Model
      */
     public function bookings()
     {
-        return $this->hasMany(GameProviderQueue::class)
+        return $this->hasMany(Booking::class)
             ->orderBy('started_at', 'asc');
     }
 
@@ -60,7 +60,7 @@ class GameProvider extends Model
      */
     public function nextBooking()
     {
-        return $this->hasOne(GameProviderQueue::class)
+        return $this->hasOne(Booking::class)
             ->available()
             ->active(false)
             ->orderBy('started_at', 'asc');
@@ -73,7 +73,7 @@ class GameProvider extends Model
      */
     public function currentBooking()
     {
-        return $this->hasOne(GameProviderQueue::class)
+        return $this->hasOne(Booking::class)
             ->current()
             ->active(false)
             ->orderBy('started_at', 'asc');
@@ -84,7 +84,7 @@ class GameProvider extends Model
      */
     public function expiredBookings()
     {
-        return $this->hasMany(GameProviderQueue::class)
+        return $this->hasMany(Booking::class)
             ->active(true)
             ->expired();
     }

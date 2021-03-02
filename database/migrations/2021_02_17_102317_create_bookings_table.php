@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGameProviderQueuesTable extends Migration
+class CreateBookingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGameProviderQueuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('game_provider_queues', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('environment_id')->constrained();
             $table->foreignId('application_id')->constrained();
@@ -37,6 +37,6 @@ class CreateGameProviderQueuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_provider_queues');
+        Schema::dropIfExists('bookings');
     }
 }

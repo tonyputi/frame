@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
-use App\Models\GameProviderQueue;
+use App\Models\Booking;
 
-class GameProviderQueueSeeder extends Seeder
+class BookingSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class GameProviderQueueSeeder extends Seeder
      */
     public function run()
     {
-        GameProviderQueue::create([
+        Booking::create([
             'environment_id' => 1,
             'application_id' => 1,
             'game_provider_id' => 1,

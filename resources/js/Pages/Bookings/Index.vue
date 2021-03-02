@@ -9,7 +9,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex my-4">
-                    <search-input 
+                    <search-input
                         @input="filter"
                         placeholder="Search for game provider" />
 
@@ -18,7 +18,7 @@
                     </jet-link-button>
                 </div>
 
-                <div v-if="gameProviderQueues.meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div v-if="bookings.meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <jet-table class="text-sm">
                         <template #header>
                             <tr class="bg-gray-800 text-white">
@@ -38,7 +38,7 @@
                         </template>
 
                         <template #body>
-                            <tr v-for="resource in gameProviderQueues.data" :key="resource.id" class="border border-black-600">
+                            <tr v-for="resource in bookings.data" :key="resource.id" class="border border-black-600">
                                 <td class="px-2 py-4 text-center">
                                     <jet-checkbox :value="resource" v-model:checked="resourcesSelected" />
                                 </td>
@@ -52,13 +52,13 @@
                                 <td class="px-2 py-4 text-left">{{ formatDate(resource.ended_at) }}</td>
                                 <td class="px-2 py-4 text-center">
                                     <div class="flex">
-                                        <inertia-link class="text-black-500 ml-4" :href="route('game-provider-queues.show', resource.id)">
+                                        <inertia-link class="text-black-500 ml-4" :href="route('bookings.show', resource.id)">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                                                 <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                                             </svg>
                                         </inertia-link>
-                                        <button class="text-red-500 ml-4 " v-if="permissions.canDeleteGameProviderQueue" @click="gameProviderQueueBeingDeleted=resource">
+                                        <button class="text-red-500 ml-4 " v-if="permissions.canDeleteBooking" @click="bookingBeingDeleted=resource">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                                 <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                                             </svg>
@@ -69,7 +69,7 @@
                         </template>
                     </jet-table>
 
-                    <pagination v-bind="gameProviderQueues.meta" />
+                    <pagination v-bind="bookings.meta" />
                 </div>
 
                 <!-- no result alert -->
@@ -82,7 +82,7 @@
 
                 <!-- game provider delete modal -->
                 <!-- <delete-game-provider-queue-modal v-if="resourceBeingDeleted"
-                    :gameProviderQueue="resourceBeingDeleted"
+                    :booking="resourceBeingDeleted"
                     @close="resourceBeingDeleted = null" /> -->
 
             </div>
@@ -111,7 +111,7 @@ export default {
         SearchInput
     },
 
-    props: ['gameProviderQueues', 'permissions'],
+    props: ['bookings', 'permissions'],
 
     data() {
         return {

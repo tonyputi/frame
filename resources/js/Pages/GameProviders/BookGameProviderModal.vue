@@ -1,6 +1,6 @@
 <template>
     <!-- Boook Game Provider Modal -->
-    <jet-dialog-modal :show="gameProvider" @close="closeModal">
+    <jet-dialog-modal  v-if="!!gameProvider" :show="gameProvider" @close="closeModal">
         <template #title>
             Book {{ gameProvider.name }}
         </template>
@@ -83,7 +83,7 @@
                 form: this.$inertia.form({
                     application_id: 1,
                     environment_id: 1,
-                    game_provider_id: this.gameProvider.id,
+                    game_provider_id: null,
                     started_at: null,
                     ended_at: null,
                     notes: null
@@ -95,6 +95,7 @@
             started_at() {
                 return moment(`${this.date} ${this.start_at}`, 'YYYY-MM-DD HH:mm')
             },
+
             ended_at() {
                 return moment(`${this.date} ${this.end_at}`, 'YYYY-MM-DD HH:mm').subtract(1, 'second')
             }
@@ -104,8 +105,9 @@
             bookGameProvider() {
                 this.form.started_at = this.started_at.toISOString()
                 this.form.ended_at = this.ended_at.toISOString()
+                this.form.game_provider_id = this.gameProvider.id
 
-                this.form.post(route('game-provider-queues.store'), {
+                this.form.post(route('bookings.store'), {
                     preserveScroll: true,
                     onSuccess: () => this.closeModal(),
                     onError: () => this.$refs.started_at.focus(),

@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\GameProviderQueue;
+use App\Models\Booking;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\GameProvider;
 use Illuminate\Console\Command;
@@ -57,7 +57,7 @@ class AttachGameProviderToHost extends Command
                 //$resource->host = NULL;
                 $this->info("<<< Stop redirecting {$resource->name} to {$hostname}");
             } else {
-                $queue = new GameProviderQueue([
+                $queue = new Booking([
                     'environment_id' => 1,
                     'application_id' => 1,
                     'game_provider_id' => 1,
@@ -68,7 +68,7 @@ class AttachGameProviderToHost extends Command
                     'is_active' => true,
                 ]);
 
-                $resource->gameProviderQueues()->save($queue);
+                $resource->boookings()->save($queue);
                 $this->info(">>> Start redirecting {$resource->name} to {$hostname}");
             }
 

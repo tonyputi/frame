@@ -9,7 +9,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex my-4">
-                    <search-input 
+                    <search-input
                         @input="filter"
                         class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
                         placeholder="Search for game provider" />
@@ -57,7 +57,7 @@
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.name }}</td>
                                 <td class="px-2 py-4 text-left">
-                                    <inertia-link :href="route('game-provider-queues.index')">
+                                    <inertia-link :href="route('bookings.index')">
                                         {{ resource.next_bookings_count }}
                                     </inertia-link>
                                 </td>
@@ -100,7 +100,7 @@
                 </div>
 
                 <!-- game provider book modal -->
-                <book-game-provider-modal v-if="gameProviderBeingBooked"
+                <book-game-provider-modal
                     :gameProvider="gameProviderBeingBooked"
                     @close="gameProviderBeingBooked = null" />
 
