@@ -13,13 +13,11 @@ class GameProvider extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
-     * @var array
+     * @var string[]|bool
      */
-    protected $fillable = [
-        'name', 'location_modifier', 'location_match', 'default_host'
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The accessors to append to the model's array form.
@@ -199,12 +197,10 @@ class GameProvider extends Model
     public static function defaultLocationBlock()
     {
         return <<<'EOD'
-        
-            auth_basic off;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_redirect off;
-            
+        auth_basic off;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_redirect off;
         EOD;
     }
 }

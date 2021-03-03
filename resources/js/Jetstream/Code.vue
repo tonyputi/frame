@@ -1,13 +1,10 @@
 <template>
-    <textarea 
-        class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
-        :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" ref="textarea" />
+    <textarea ref="textarea" />
 </template>
 
 <script>
     import CodeMirror from 'codemirror'
     import 'codemirror/mode/nginx/nginx'
-
     import 'codemirror/lib/codemirror.css'
     import 'codemirror/theme/dracula.css'
 
@@ -27,7 +24,7 @@
             const config = {
                 ...{
                     tabSize: 4,
-                    indentWithTabs: true,
+                    indentWithTabs: false,
                     lineWrapping: true,
                     lineNumbers: true,
                     theme: 'dracula',
@@ -37,6 +34,13 @@
             }
 
             this.codemirror = CodeMirror.fromTextArea(this.$refs.textarea, config)
+            
+            this.doc.on('change', (cm, changeObj) => {
+                this.$emit('update:modelValue', cm.getValue())
+            })
+
+            this.doc.setValue(this.modelValue)
+
             this.codemirror.setSize('100%', 250)
         },
 
@@ -44,7 +48,13 @@
             focus() {
                 this.$refs.textarea.focus()
             }
-        }
+        },
+
+        computed: {
+            doc() {
+                return this.codemirror.getDoc()
+            },
+        },
     }
 </script>
 

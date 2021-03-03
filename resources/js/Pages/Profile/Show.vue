@@ -47,7 +47,6 @@
     import UpdatePasswordForm from './UpdatePasswordForm'
     import UpdateProfileInformationForm from './UpdateProfileInformationForm'
 
-
     export default {
         props: ['sessions'],
 
@@ -58,7 +57,7 @@
             LogoutOtherBrowserSessionsForm,
             TwoFactorAuthenticationForm,
             UpdatePasswordForm,
-            UpdateProfileInformationForm
+            UpdateProfileInformationForm,
         },
     }
 </script>

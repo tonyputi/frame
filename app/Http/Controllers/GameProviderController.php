@@ -81,7 +81,7 @@ class GameProviderController extends Controller
         return Inertia::render('GameProviders/Show', [
             'gameProvider' => new GameProviderResource($gameProvider),
             'permissions' => [
-                'canUpdateGameProvider' => $request->user()->is_admin,
+                'canUpdateGameProvider' => true, //$request->user()->is_admin,
                 'canDeleteGameProvider' => $request->user()->is_admin,
             ]
         ]);
@@ -108,9 +108,10 @@ class GameProviderController extends Controller
     public function update(Request $request, GameProvider $gameProvider)
     {
         $request->validate([
-            'name' => ['required', "unique:game_providers,name,{$gameProvider->id}"],
-            'location_modifier' => 'required',
-            'location_match' => 'required',
+            'name' => ['sometimes', 'required', "unique:game_providers,name,{$gameProvider->id}"],
+            'location_modifier' => ['sometimes', 'required'],
+            'location_match' => ['sometimes', 'required'],
+            'location_block' => ['sometimes', 'required'],
         ]);
 
         $gameProvider->update($request->except('_method'));

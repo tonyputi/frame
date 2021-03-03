@@ -17574,9 +17574,11 @@ codemirror__WEBPACK_IMPORTED_MODULE_0___default().defineMode('htmltwig', functio
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     var config = _objectSpread(_objectSpread({}, _objectSpread({
       tabSize: 4,
-      indentWithTabs: true,
+      indentWithTabs: false,
       lineWrapping: true,
       lineNumbers: true,
       theme: 'dracula'
@@ -17587,11 +17589,20 @@ codemirror__WEBPACK_IMPORTED_MODULE_0___default().defineMode('htmltwig', functio
     });
 
     this.codemirror = codemirror__WEBPACK_IMPORTED_MODULE_0___default().fromTextArea(this.$refs.textarea, config);
+    this.doc.on('change', function (cm, changeObj) {
+      _this.$emit('update:modelValue', cm.getValue());
+    });
+    this.doc.setValue(this.modelValue);
     this.codemirror.setSize('100%', 250);
   },
   methods: {
     focus: function focus() {
       this.$refs.textarea.focus();
+    }
+  },
+  computed: {
+    doc: function doc() {
+      return this.codemirror.getDoc();
     }
   }
 });
@@ -20990,17 +21001,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  ref: "textarea"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("textarea", {
-    "class": "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
-    value: $props.modelValue,
-    onInput: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.$emit('update:modelValue', $event.target.value);
-    }),
-    ref: "textarea"
-  }, null, 40
-  /* PROPS, HYDRATE_EVENTS */
-  , ["value"]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("textarea", _hoisted_1, null, 512
+  /* NEED_PATCH */
+  );
 }
 
 /***/ }),
