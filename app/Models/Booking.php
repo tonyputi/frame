@@ -98,7 +98,14 @@ class Booking extends Model
      */
     public function scopeActive($query, $value = true)
     {
-        return $query->where('is_active', $value);
+        // return $query->where('is_active', $value);
+        if($value) {
+            $query->whereNotNull('applied_at');
+        } else {
+            $query->whereNull('applied_at');
+        }
+        
+        return $query;
     }
 
     /**

@@ -49,6 +49,14 @@
                 <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
 
+            <!-- Default Host -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="default_host" value="Default Host" />
+                <jet-input id="default_host" type="text" class="mt-1 block w-full" 
+                    v-model="form.default_host" :disabled="!permissions.canUpdateGameProvider" />
+                <jet-input-error :message="form.errors.default_host" class="mt-2" />
+            </div>
+
             <!-- Location Modifier -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="location_modifier" value="Location Modifier" />
@@ -65,12 +73,12 @@
                 <jet-input-error :message="form.errors.location_match" class="mt-2" />
             </div>
 
-            <!-- Default host -->
+            <!-- Location Block -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="default_host" value="Default Host" />
-                <jet-input id="default_host" type="text" class="mt-1 block w-full" 
-                    v-model="form.default_host" :disabled="!permissions.canUpdateGameProvider" />
-                <jet-input-error :message="form.errors.default_host" class="mt-2" />
+                <jet-label for="location_block" value="Location Block" />
+                <jet-textarea id="location_block" class="mt-1 block w-full" rows="5" 
+                    v-model="form.location_block" :disabled="!permissions.canUpdateGameProvider" />
+                <jet-input-error :message="form.errors.location_block" class="mt-2" />
             </div>
         </template>
 
@@ -90,6 +98,7 @@
     import JetButton from '@/Jetstream/Button'
     import JetFormSection from '@/Jetstream/FormSection'
     import JetInput from '@/Jetstream/Input'
+    import JetTextarea from '@/Jetstream/Textarea'
     import JetInputError from '@/Jetstream/InputError'
     import JetLabel from '@/Jetstream/Label'
     import JetActionMessage from '@/Jetstream/ActionMessage'
@@ -101,6 +110,7 @@
             JetButton,
             JetFormSection,
             JetInput,
+            JetTextarea,
             JetInputError,
             JetLabel,
             JetSecondaryButton,
@@ -123,6 +133,7 @@
                     logo: null,
                     location_modifier: this.gameProvider.location_modifier,
                     location_match: this.gameProvider.location_match,
+                    location_block: this.gameProvider.location_block,
                     default_host: this.gameProvider.default_host
                 }),
 

@@ -144,6 +144,32 @@ class GameProvider extends Model
     }
 
     /**
+     * return location block value always
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getLocationBlockAttribute($value)
+    {
+        return $value ?? $this->defaultLocationBlock();
+    }
+
+    public function setLocationBlockAttribute($value)
+    {
+        $this->attributes['location_block'] = $value ?? $this->defaultLocationBlock();
+    }
+
+    public static function defaultLocationBlock()
+    {
+        return <<<EOF
+        auth_basic off;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_redirect off;
+        EOF;
+    }
+
+    /**
      * Get the nginx configuration
      *
      * @param  string  $value
@@ -151,10 +177,18 @@ class GameProvider extends Model
      */
     public function getNginxConfigAttribute($value)
     {
+        $keys = ['{{ modifier }}', '{{ match }}', '{{ host }}'];
+
         if($this->currentBooking()->exists())
         {
-            $keys = ['{{ modifier }}', '{{ match }}', '{{ hostname }}'];
             $values = [$this->location_modifier, $this->location_match, $this->currentBooking->user->host];
+
+            return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
+        }
+
+        if($this->default_host)
+        {
+            $values = [$this->location_modifier, $this->location_match, $this->default_host];
 
             return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
         }

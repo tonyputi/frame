@@ -11,14 +11,14 @@
                 <div>
                     <update-game-provider-form :gameProvider="gameProvider.data" :permissions="permissions" />
 
-                    <jet-section-border />
+                    <jet-section-border v-if="permissions.canDeleteGameProvider" />
                 </div>
 
-                <div>
+                <!-- <div>
                     <update-game-provider-advanced-form :gameProvider="gameProvider.data" :permissions="permissions" />
 
                     <jet-section-border v-if="permissions.canDeleteGameProvider" />
-                </div>
+                </div> -->
 
                 <div v-if="permissions.canDeleteGameProvider">
                     <delete-game-provider-form :gameProvider="gameProvider.data" class="mt-10 sm:mt-0" />

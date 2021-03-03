@@ -27,7 +27,7 @@
 
             <!-- Location Block -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="location_block" value="Block" />
+                <jet-label for="location_block" value="Location Block" />
                 <jet-textarea id="location_block" class="mt-1 block w-full" rows="5" 
                     v-model="form.location_block" :disabled="!permissions.canUpdateGameProvider" />
                 <jet-input-error :message="form.errors.location_block" class="mt-2" />

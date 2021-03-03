@@ -52,10 +52,26 @@ class GenerateGameProviderNginxConfig extends Command
         $storage->makeDirectory($directory);
         $storage->put($filepath, "{$header}\r\n");
 
+
+        // GameProvider::with('currentBooking.user')->each(function($gameProvider){
+            
+        // });
+
+
+
+        // checking if there are booking not yet processed/applied
+        if(!Booking::current()->active('false')->exists()) {
+            $this->info('Nothing to do');
+            return 0;
+        }
+
         $bookings = Booking::current()->get();
         $bookings->each(function($booking) use($storage, $filepath) {
             $storage->append($filepath, $booking->gameProvider->nginxConfig);
         });
+
+        // if nginx config is already applied than skip
+        // if one of booking has applied at == null than reload
 
         // validate nginx configuration
         // $this->validateConfiguration();
@@ -64,12 +80,20 @@ class GenerateGameProviderNginxConfig extends Command
         // $this->reloadConfiguration();
 
         // set current processed bookings as active
-        Booking::whereIn('id', $bookings->pluck('id'))->update(['is_active' => true]);
+        Booking::whereIn('id', $bookings->pluck('id'))->update([
+            'is_active' => true,
+            'applied_at' => now()
+        ]);
 
         // send slack notification
         return 0;
     }
 
+    /**
+     * Validate nginx configuration
+     *
+     * @return void
+     */
     protected function validateConfiguration()
     {
         // check if nginx -t command is success
@@ -81,6 +105,11 @@ class GenerateGameProviderNginxConfig extends Command
         $this->info($process->getOutput());
     }
 
+    /**
+     * Reload nginx configuration
+     *
+     * @return void
+     */
     protected function reloadConfiguration()
     {
         $process = new Process(['sudo', 'nginx', '-s', 'reload']);

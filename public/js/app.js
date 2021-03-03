@@ -19327,10 +19327,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 /* harmony import */ var _Jetstream_FormSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/FormSection */ "./resources/js/Jetstream/FormSection.vue");
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
-/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-/* harmony import */ var _Jetstream_ActionMessage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/ActionMessage */ "./resources/js/Jetstream/ActionMessage.vue");
-/* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
+/* harmony import */ var _Jetstream_Textarea__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Textarea */ "./resources/js/Jetstream/Textarea.vue");
+/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Jetstream_ActionMessage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/ActionMessage */ "./resources/js/Jetstream/ActionMessage.vue");
+/* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
+
 
 
 
@@ -19340,13 +19342,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    JetActionMessage: _Jetstream_ActionMessage__WEBPACK_IMPORTED_MODULE_5__.default,
+    JetActionMessage: _Jetstream_ActionMessage__WEBPACK_IMPORTED_MODULE_6__.default,
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__.default,
     JetFormSection: _Jetstream_FormSection__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
-    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_3__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default,
-    JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_6__.default
+    JetTextarea: _Jetstream_Textarea__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__.default,
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__.default,
+    JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_7__.default
   },
   props: {
     gameProvider: {
@@ -19364,6 +19367,7 @@ __webpack_require__.r(__webpack_exports__);
         logo: null,
         location_modifier: this.gameProvider.location_modifier,
         location_match: this.gameProvider.location_match,
+        location_block: this.gameProvider.location_block,
         default_host: this.gameProvider.default_host
       }),
       logoPreview: null
@@ -24972,8 +24976,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_jet_section_border = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-section-border");
 
-  var _component_update_game_provider_advanced_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-game-provider-advanced-form");
-
   var _component_delete_game_provider_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-game-provider-form");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
@@ -24992,14 +24994,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         permissions: $props.permissions
       }, null, 8
       /* PROPS */
-      , ["gameProvider", "permissions"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_game_provider_advanced_form, {
-        gameProvider: $props.gameProvider.data,
-        permissions: $props.permissions
-      }, null, 8
-      /* PROPS */
       , ["gameProvider", "permissions"]), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_section_border, {
         key: 0
-      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_game_provider_form, {
+      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div>\n                    <update-game-provider-advanced-form :gameProvider=\"gameProvider.data\" :permissions=\"permissions\" />\n\n                    <jet-section-border v-if=\"permissions.canDeleteGameProvider\" />\n                </div> "), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_game_provider_form, {
         gameProvider: $props.gameProvider.data,
         "class": "mt-10 sm:mt-0"
       }, null, 8
@@ -25111,7 +25108,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Location Block "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "location_block",
-        value: "Block"
+        value: "Location Block"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_textarea, {
         id: "location_block",
         "class": "mt-1 block w-full",
@@ -25215,10 +25212,13 @@ var _hoisted_10 = {
 var _hoisted_11 = {
   "class": "col-span-6 sm:col-span-4"
 };
+var _hoisted_12 = {
+  "class": "col-span-6 sm:col-span-4"
+};
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Saved. ");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Saved. ");
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Save ");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Save ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
@@ -25228,6 +25228,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_input_error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input-error");
 
   var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
+
+  var _component_jet_textarea = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-textarea");
 
   var _component_jet_action_message = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-action-message");
 
@@ -25325,7 +25327,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mt-2"
       }, null, 8
       /* PROPS */
-      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Location Modifier "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Default Host "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "default_host",
+        value: "Default Host"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "default_host",
+        type: "text",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.default_host,
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+          return $data.form.default_host = $event;
+        }),
+        disabled: !$props.permissions.canUpdateGameProvider
+      }, null, 8
+      /* PROPS */
+      , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+        message: $data.form.errors.default_host,
+        "class": "mt-2"
+      }, null, 8
+      /* PROPS */
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Location Modifier "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "location_modifier",
         value: "Location Modifier"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -25333,7 +25354,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text",
         "class": "mt-1 block w-full",
         modelValue: $data.form.location_modifier,
-        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
           return $data.form.location_modifier = $event;
         }),
         disabled: !$props.permissions.canUpdateGameProvider
@@ -25344,7 +25365,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mt-2"
       }, null, 8
       /* PROPS */
-      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Location Match "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Location Match "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "location_match",
         value: "Location Match"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -25352,7 +25373,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text",
         "class": "mt-1 block w-full",
         modelValue: $data.form.location_match,
-        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
           return $data.form.location_match = $event;
         }),
         disabled: !$props.permissions.canUpdateGameProvider
@@ -25363,22 +25384,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mt-2"
       }, null, 8
       /* PROPS */
-      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Default host "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "default_host",
-        value: "Default Host"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "default_host",
-        type: "text",
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Location Block "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "location_block",
+        value: "Location Block"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_textarea, {
+        id: "location_block",
         "class": "mt-1 block w-full",
-        modelValue: $data.form.default_host,
-        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return $data.form.default_host = $event;
+        rows: "5",
+        modelValue: $data.form.location_block,
+        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+          return $data.form.location_block = $event;
         }),
         disabled: !$props.permissions.canUpdateGameProvider
       }, null, 8
       /* PROPS */
       , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: $data.form.errors.default_host,
+        message: $data.form.errors.location_block,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
@@ -25395,7 +25416,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mr-3"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_12];
+          return [_hoisted_13];
         }),
         _: 1
         /* STABLE */
@@ -25409,7 +25430,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         disabled: $data.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_13];
+          return [_hoisted_14];
         }),
         _: 1
         /* STABLE */
