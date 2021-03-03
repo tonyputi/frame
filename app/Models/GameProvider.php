@@ -154,19 +154,15 @@ class GameProvider extends Model
         return $value ?? $this->defaultLocationBlock();
     }
 
+    /**
+     * set location block value
+     *
+     * @param string $value
+     * @return string
+     */
     public function setLocationBlockAttribute($value)
     {
         $this->attributes['location_block'] = $value ?? $this->defaultLocationBlock();
-    }
-
-    public static function defaultLocationBlock()
-    {
-        return <<<EOF
-        auth_basic off;
-        proxy_set_header X-Real-IP \$remote_addr;
-        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_redirect off;
-        EOF;
     }
 
     /**
@@ -177,20 +173,38 @@ class GameProvider extends Model
      */
     public function getNginxConfigAttribute($value)
     {
-        $keys = ['{{ modifier }}', '{{ match }}', '{{ host }}'];
+        $keys = ['{{ modifier }}', '{{ match }}', '{{ slot }}', '{{ host }}'];
 
         if($this->currentBooking()->exists())
         {
-            $values = [$this->location_modifier, $this->location_match, $this->currentBooking->user->host];
+            $values = [$this->location_modifier, $this->location_match, $this->location_block, $this->currentBooking->user->host];
 
             return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
         }
 
         if($this->default_host)
         {
-            $values = [$this->location_modifier, $this->location_match, $this->default_host];
+            $values = [$this->location_modifier, $this->location_match, $this->location_block, $this->default_host];
 
             return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
         }
+    }
+
+    /**
+     * Get the default nginx location block configuration
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public static function defaultLocationBlock()
+    {
+        return <<<'EOD'
+        
+            auth_basic off;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_redirect off;
+            
+        EOD;
     }
 }

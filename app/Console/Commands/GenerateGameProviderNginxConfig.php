@@ -2,9 +2,10 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Support\Str;
-use Illuminate\Console\Command;
 use App\Models\Booking;
+use Illuminate\Support\Str;
+use App\Models\GameProvider;
+use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -47,28 +48,28 @@ class GenerateGameProviderNginxConfig extends Command
         $directory = 'nginx';
         $filepath = "{$directory}/game-providers.conf";
 
-        $storage = Storage::disk('local');
-        // create directory storage/app/nginx is does not exists
-        $storage->makeDirectory($directory);
-        $storage->put($filepath, "{$header}\r\n");
-
-
-        // GameProvider::with('currentBooking.user')->each(function($gameProvider){
-            
-        // });
-
-
-
         // checking if there are booking not yet processed/applied
-        if(!Booking::current()->active('false')->exists()) {
+        if(!Booking::current()->active(false)->exists()) {
             $this->info('Nothing to do');
             return 0;
         }
 
-        $bookings = Booking::current()->get();
-        $bookings->each(function($booking) use($storage, $filepath) {
-            $storage->append($filepath, $booking->gameProvider->nginxConfig);
+        $storage = Storage::disk('local');
+        // create directory storage/app/nginx is does not exists
+        $storage->makeDirectory($directory);
+        // put header on nginx config
+        $storage->put($filepath, "{$header}\r\n");
+
+        GameProvider::with('currentBooking.user')->each(function($gameProvider) use($storage, $filepath) {
+            if($gameProvider->nginxConfig) {
+                $storage->append($filepath, $gameProvider->nginxConfig);    
+            }
         });
+
+        // $bookings = Booking::current()->get();
+        // $bookings->each(function($booking) use($storage, $filepath) {
+        //     $storage->append($filepath, $booking->gameProvider->nginxConfig);
+        // });
 
         // if nginx config is already applied than skip
         // if one of booking has applied at == null than reload
@@ -80,10 +81,10 @@ class GenerateGameProviderNginxConfig extends Command
         // $this->reloadConfiguration();
 
         // set current processed bookings as active
-        Booking::whereIn('id', $bookings->pluck('id'))->update([
-            'is_active' => true,
-            'applied_at' => now()
-        ]);
+        // Booking::whereIn('id', $bookings->pluck('id'))->update([
+        //     'is_active' => true,
+        //     'applied_at' => now()
+        // ]);
 
         // send slack notification
         return 0;
