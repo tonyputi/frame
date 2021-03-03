@@ -74,9 +74,9 @@
             </div>
 
             <!-- Location Block -->
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-6 sm:col-span-6 w-full">
                 <jet-label for="location_block" value="Location Block" />
-                <jet-textarea id="location_block" class="mt-1 block w-full" rows="5" 
+                <jet-code id="location_block" class="mt-1 block w-full" rows="5" 
                     v-model="form.location_block" :disabled="!permissions.canUpdateGameProvider" />
                 <jet-input-error :message="form.errors.location_block" class="mt-2" />
             </div>
@@ -99,11 +99,12 @@
     import JetFormSection from '@/Jetstream/FormSection'
     import JetInput from '@/Jetstream/Input'
     import JetTextarea from '@/Jetstream/Textarea'
+    import JetCode from '@/Jetstream/Code'
     import JetInputError from '@/Jetstream/InputError'
     import JetLabel from '@/Jetstream/Label'
     import JetActionMessage from '@/Jetstream/ActionMessage'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton'
-
+    
     export default {
         components: {
             JetActionMessage,
@@ -111,6 +112,7 @@
             JetFormSection,
             JetInput,
             JetTextarea,
+            JetCode,
             JetInputError,
             JetLabel,
             JetSecondaryButton,
