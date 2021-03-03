@@ -92,10 +92,10 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout';
-import JetTable from "@/Components/Table";
-import Pagination from "@/Components/Pagination";
-import JetLinkButton from "@/Components/LinkButton";
-import SearchInput from "@/Components/SearchInput";
+import JetTable from "@/Jetstream/Table";
+import Pagination from "@/Jetstream/Pagination";
+import JetLinkButton from "@/Jetstream/LinkButton";
+import SearchInput from "@/Jetstream/SearchInput";
 import DeleteBookingModal from './DeleteBookingModal';
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
