@@ -74,7 +74,7 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        return Inertia::render('Bookings/Index', [
+        return Inertia::render('Bookings/Show', [
             'booking' => new BookingResource($booking),
             'permissions' => [
                 'canCreateBooking' => true,

@@ -24,6 +24,8 @@ class GameProviderController extends Controller
             ->withCount('nextBookings')
             ->paginate();
 
+        // return GameProviderResource::collection($gameProviders);
+
         return Inertia::render('GameProviders/Index', [
             'gameProviders' => GameProviderResource::collection($gameProviders),
             'permissions' => [
@@ -42,9 +44,7 @@ class GameProviderController extends Controller
     public function create()
     {
         return Inertia::render('GameProviders/Show', [
-            'gameProvider' => new GameProviderResource(new GameProvider([
-                'location_modifier' => '~*'
-            ])),
+            'gameProvider' => new GameProviderResource(new GameProvider),
             'permissions' => [
                 'canDeleteGameProvider' => false,
             ]
