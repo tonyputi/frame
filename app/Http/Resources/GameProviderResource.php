@@ -15,5 +15,14 @@ class GameProviderResource extends JsonResource
     public function toArray($request)
     {
         return parent::toArray($request);
+
+        return [
+            'fields' => parent::toArray($request),
+            'permissions' => [
+                'canSee' => true,
+                'canUpdate' => true,
+                'canDelete' => true,
+            ]
+        ];
     }
 }

@@ -37,6 +37,13 @@ touch database/database.sqlite
 php artisan migrate:refresh --seed
 ```
 
+Create `/etc/sudoers/frame`
+
+```
+www-data ALL=(ALL:ALL) NOPASSWD: /usr/sbin/nginx -t
+www-data ALL=(ALL:ALL) NOPASSWD: /usr/sbin/nginx -s reload
+```
+
 ## Quick start
 
 - touch database/database.sqlite
@@ -50,3 +57,16 @@ php artisan migrate:refresh --seed
 - always create a branch from `develop`;
 
 ## Common issue
+
+## TODO
+
+1. make use of laravel flash session in order to show jetstram alert on success
+2. create a preview of nginx configuration
+3. autorefresh both game providers and booking index
+4. rename game_providers to location and create proper model make use of tags
+5. set the cron to work by minutes instead of 5 minutes steps
+6. finish the select jetstream component
+7. fix codemirror issue
+8. improve pagination
+9. review command name
+10. add videoslots style
