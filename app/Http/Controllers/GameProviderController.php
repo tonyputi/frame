@@ -12,7 +12,7 @@ class GameProviderController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * 
+     *
      * @param Request $request
      * @return \Inertia\Response
      */
@@ -31,7 +31,7 @@ class GameProviderController extends Controller
             'permissions' => [
                 'canCreateGameProvider' => true,
                 'canUpdateGameProvider' => true,
-                'canDeleteGameProvider' => $request->user()->is_admin,
+                'canDeleteGameProvider' => true,
             ]
         ]);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GameProviderResource;
 use Inertia\Inertia;
 use App\Rules\AvailableTime;
 use Illuminate\Http\Request;
@@ -36,6 +37,21 @@ class BookingController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return Inertia::render('Bookings/Show', [
+            'booking' => new BookingResource(new Booking),
+            'permissions' => [
+                'canDeleteBooking' => false,
+            ]
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
@@ -45,13 +61,13 @@ class BookingController extends Controller
     {
         $request->validate([
             'started_at' => [
-                'required', 
+                'required',
                 'date',
                 'before:ended_at',
                 new AvailableTime('bookings', $gameProvider->id)
             ],
             'ended_at' => [
-                'required', 
+                'required',
                 'date',
                 'after:started_at',
                 new AvailableTime('bookings', $gameProvider->id)

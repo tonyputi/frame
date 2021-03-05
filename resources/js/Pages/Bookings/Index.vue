@@ -13,7 +13,7 @@
                         @input="filter"
                         placeholder="Search for game provider" />
 
-                    <jet-link-button :href="route('game-providers.create')">
+                    <jet-link-button :href="route('game-providers.bookings.create', [1])">
                         Create
                     </jet-link-button>
                 </div>
