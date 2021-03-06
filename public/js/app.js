@@ -19430,7 +19430,8 @@ __webpack_require__.r(__webpack_exports__);
     filter: function filter(ev) {
       this.$inertia.reload({
         data: {
-          search: ev.target.value
+          search: ev.target.value,
+          page: 1
         }
       });
     },

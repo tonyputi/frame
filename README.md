@@ -56,7 +56,11 @@ www-data ALL=(ALL:ALL) NOPASSWD: /usr/sbin/nginx -s reload
 - `develop` is representing the develop branch;
 - always create a branch from `develop`;
 
-## Common issue
+## Known issue
+
+1. Pagination is not resetting to page 0 while searching
+2. Modal is removing scroolbar
+3. when flush db nginx config command is not flushing file as well
 
 ## TODO
 
@@ -66,7 +70,8 @@ www-data ALL=(ALL:ALL) NOPASSWD: /usr/sbin/nginx -s reload
 4. rename game_providers to location and create proper model make use of tags
 5. set the cron to work by minutes instead of 5 minutes steps
 6. finish the select jetstream component
-7. fix codemirror issue
-8. improve pagination
-9. review command name
-10. add videoslots style
+7. improve pagination with ...
+8. review command name
+9. add videoslots style
+10. create time calendar select component (hard)
+11. add dashboard with queue provider lists

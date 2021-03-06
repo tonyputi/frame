@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Booking;
 use Illuminate\Support\Str;
 use App\Models\GameProvider;
+use App\Notifications\GameProviderRedirected;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Storage;
@@ -98,7 +99,7 @@ class GenerateGameProviderNginxConfig extends Command
     protected function validateConfiguration()
     {
         // check if nginx -t command is success
-        $process = new Process(['nginx', '-t']);
+        $process = new Process(['sudo', 'nginx', '-t']);
         $process->run();
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
@@ -119,5 +120,16 @@ class GenerateGameProviderNginxConfig extends Command
             throw new ProcessFailedException($process);
         }
         $this->info($process->getOutput());
+    }
+
+    /**
+     * Notify slack channel about the redirect
+     *
+     * @return void
+     */
+    protected function notifyChannel()
+    {
+        // Notification::route('slack', 'https://hooks.slack.com/services/...')
+        //     ->notify(new GameProviderRedirected($invoice));
     }
 }

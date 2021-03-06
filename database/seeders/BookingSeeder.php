@@ -18,7 +18,7 @@ class BookingSeeder extends Seeder
         Booking::create([
             'environment_id' => 1,
             'application_id' => 1,
-            'game_provider_id' => 1,
+            'location_id' => 1,
             'user_id' => 1,
             'started_at' => Carbon::parse('+1 hour'),
             'ended_at' => Carbon::parse('+2 hour'),

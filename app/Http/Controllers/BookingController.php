@@ -75,7 +75,7 @@ class BookingController extends Controller
         ]);
 
         $booking = new Booking($request->input());
-        $booking->game_provider_id = $gameProvider->id;
+        $booking->location_id = $gameProvider->id;
         $booking->user_id = $request->user()->id;
         $booking->save();
 
@@ -110,8 +110,8 @@ class BookingController extends Controller
     public function update(Request $request, Booking $booking)
     {
         $request->validate([
-            'started_at' => ['sometimes', new AvailableTime('bookings', $request->only('game_provider_id'))],
-            'ended_at' => ['sometimes', new AvailableTime('bookings', $request->only('game_provider_id'))]
+            'started_at' => ['sometimes', new AvailableTime('bookings', $request->only('location_id'))],
+            'ended_at' => ['sometimes', new AvailableTime('bookings', $request->only('location_id'))]
         ]);
 
         $booking->update($request->input());

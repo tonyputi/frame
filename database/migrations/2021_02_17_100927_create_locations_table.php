@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGameProvidersTable extends Migration
+class CreateLocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGameProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('game_providers', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('logo_path')->nullable();
@@ -32,6 +32,6 @@ class CreateGameProvidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_providers');
+        Schema::dropIfExists('locations');
     }
 }

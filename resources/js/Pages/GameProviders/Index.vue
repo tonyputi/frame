@@ -159,7 +159,7 @@ export default {
 
     methods: {
         filter(ev) {
-            this.$inertia.reload({data: { search: ev.target.value }})
+            this.$inertia.reload({data: { search: ev.target.value, page: 1 }})
         },
         formatDate(datetime) {
             return (datetime) ? moment(datetime).format('YYYY-MM-DD HH:mm:ss') : null;

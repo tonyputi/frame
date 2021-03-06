@@ -17,9 +17,18 @@
                 default: []
             }
         },
-        props: ['modelValue', 'options'],
 
         emits: ['update:modelValue'],
+
+        computed: {
+            optionss() {
+                if(typeof this.options === Array) {
+
+                } else if(typeof this.options === Object) {
+
+                }
+            }
+        },
 
         methods: {
             focus() {
