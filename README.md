@@ -65,8 +65,6 @@ www-data ALL=(ALL:ALL) NOPASSWD: /usr/sbin/nginx -s reload
 
 - create a preview of nginx configuration
 - autorefresh both game providers and booking index
-- set the cron to work by minutes instead of 5 minutes steps
-- finish the select jetstream component
 - improve pagination with ...
 - review command name
 - add videoslots style

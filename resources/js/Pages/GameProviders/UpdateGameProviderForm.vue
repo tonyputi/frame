@@ -60,16 +60,9 @@
             <!-- Location Modifier -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="location_modifier" value="Location Modifier" />
-                <select id="location_match" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
-                    v-model="form.location_modifier" :disabled="!permissions.canUpdateGameProvider">
-                    <option value="none"></option>
-                    <option value="=">=</option>
-                    <option value="~">~</option>
-                    <option value="~*">~*</option>
-                    <option value="^~">^~</option>
-                </select>
-                <!-- <jet-input id="location_modifier" type="text" class="mt-1 block w-full" 
-                    v-model="form.location_modifier" :disabled="!permissions.canUpdateGameProvider" /> -->
+                <jet-select id="location_match" class="mt-1 block w-full"
+                    v-model="form.location_modifier" :options="['', '=', '~', '~*', '^~']" 
+                    :disabled="!permissions.canUpdateGameProvider" />
                 <jet-input-error :message="form.errors.location_modifier" class="mt-2" />
             </div>
 
@@ -112,6 +105,7 @@
     import JetLabel from '@/Jetstream/Label'
     import JetActionMessage from '@/Jetstream/ActionMessage'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton'
+    import JetSelect from '@/Jetstream/Select'
     
     export default {
         components: {
@@ -123,6 +117,7 @@
             JetCode,
             JetInputError,
             JetLabel,
+            JetSelect,
             JetSecondaryButton,
         },
 
