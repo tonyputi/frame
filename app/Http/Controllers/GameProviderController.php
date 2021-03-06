@@ -65,9 +65,11 @@ class GameProviderController extends Controller
             'location_match' => ['required'],
         ]);
 
-        GameProvider::create($request->input());
+        $gameProvider = GameProvider::create($request->input());
 
-        return redirect()->route('game-providers.index');
+        return redirect()
+            ->route('game-providers.index')
+            ->banner("Game Provider: {$gameProvider->name} created!");
     }
 
     /**
@@ -81,8 +83,8 @@ class GameProviderController extends Controller
         return Inertia::render('GameProviders/Show', [
             'gameProvider' => new GameProviderResource($gameProvider),
             'permissions' => [
-                'canUpdateGameProvider' => true, //$request->user()->is_admin,
-                'canDeleteGameProvider' => $request->user()->is_admin,
+                'canUpdateGameProvider' => true,
+                'canDeleteGameProvider' => true,
             ]
         ]);
     }
@@ -95,7 +97,13 @@ class GameProviderController extends Controller
      */
     public function edit(GameProvider $gameProvider)
     {
-        //
+        return Inertia::render('GameProviders/Show', [
+            'gameProvider' => new GameProviderResource($gameProvider),
+            'permissions' => [
+                'canUpdateGameProvider' => true,
+                'canDeleteGameProvider' => false,
+            ]
+        ]);
     }
 
     /**
@@ -116,7 +124,7 @@ class GameProviderController extends Controller
 
         $gameProvider->update($request->except('_method'));
 
-        return back();
+        return back(303)->banner("Game Provider: {$gameProvider->name} updated!");
     }
 
     /**
@@ -129,6 +137,8 @@ class GameProviderController extends Controller
     {
         $gameProvider->delete();
 
-        return redirect()->route('game-providers.index');
+        return redirect()
+            ->route('game-providers.index')
+            ->banner("Game Provider: {$gameProvider->name} deleted!");
     }
 }

@@ -79,7 +79,7 @@ class BookingController extends Controller
         $booking->user_id = $request->user()->id;
         $booking->save();
 
-        return back(303);
+        return back(303)->banner("Game Provider: {$gameProvider->name} booked!");
     }
 
     /**
