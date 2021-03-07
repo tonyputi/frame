@@ -1,8 +1,8 @@
 <template>
     <!-- Boook Game Provider Modal -->
-    <jet-dialog-modal  v-if="!!gameProvider" :show="gameProvider" @close="closeModal">
+    <jet-dialog-modal :show="gameProvider" @close="closeModal">
         <template #title>
-            Book {{ gameProvider.name }}
+            Book {{ gameProvider?.name }}
         </template>
 
         <template #content>

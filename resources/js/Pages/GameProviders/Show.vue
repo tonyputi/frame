@@ -24,9 +24,9 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import DeleteGameProviderForm from './DeleteGameProviderForm'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
     import UpdateGameProviderForm from './UpdateGameProviderForm'
+    import DeleteGameProviderForm from './DeleteGameProviderForm'
 
     export default {
         props: ['gameProvider', 'permissions'],

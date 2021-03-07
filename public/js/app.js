@@ -19503,9 +19503,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _DeleteGameProviderForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteGameProviderForm */ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue");
-/* harmony import */ var _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/SectionBorder */ "./resources/js/Jetstream/SectionBorder.vue");
-/* harmony import */ var _UpdateGameProviderForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UpdateGameProviderForm */ "./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue");
+/* harmony import */ var _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/SectionBorder */ "./resources/js/Jetstream/SectionBorder.vue");
+/* harmony import */ var _UpdateGameProviderForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateGameProviderForm */ "./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue");
+/* harmony import */ var _DeleteGameProviderForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DeleteGameProviderForm */ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue");
 
 
 
@@ -19514,9 +19514,9 @@ __webpack_require__.r(__webpack_exports__);
   props: ['gameProvider', 'permissions'],
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    JetSectionBorder: _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_2__.default,
-    DeleteGameProviderForm: _DeleteGameProviderForm__WEBPACK_IMPORTED_MODULE_1__.default,
-    UpdateGameProviderForm: _UpdateGameProviderForm__WEBPACK_IMPORTED_MODULE_3__.default
+    JetSectionBorder: _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_1__.default,
+    DeleteGameProviderForm: _DeleteGameProviderForm__WEBPACK_IMPORTED_MODULE_3__.default,
+    UpdateGameProviderForm: _UpdateGameProviderForm__WEBPACK_IMPORTED_MODULE_2__.default
   }
 });
 
@@ -24916,13 +24916,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_jet_dialog_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-dialog-modal");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Boook Game Provider Modal "), !!$props.gameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_dialog_modal, {
-    key: 0,
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Boook Game Provider Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dialog_modal, {
     show: $props.gameProvider,
     onClose: $options.closeModal
   }, {
     title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Book " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.gameProvider.name), 1
+      var _$props$gameProvider;
+
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Book " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$gameProvider = $props.gameProvider) === null || _$props$gameProvider === void 0 ? void 0 : _$props$gameProvider.name), 1
       /* TEXT */
       )];
     }),
@@ -25039,7 +25040,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["show", "onClose"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2112
+  , ["show", "onClose"])], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   );
 }
@@ -25151,8 +25152,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_jet_dialog_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-dialog-modal");
 
-  return $props.gameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_dialog_modal, {
-    key: 0,
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_dialog_modal, {
     show: $props.gameProvider,
     onClose: $options.closeModal
   }, {
@@ -25221,7 +25221,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["show", "onClose"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+  , ["show", "onClose"]);
 }
 
 /***/ }),
@@ -25847,7 +25847,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "for": "location_modifier",
         value: "Location Modifier"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_select, {
-        id: "location_match",
+        id: "location_modifier",
         "class": "mt-1 block w-full",
         modelValue: $data.form.location_modifier,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {

@@ -1,5 +1,5 @@
 <template>
-    <jet-dialog-modal v-if="gameProvider" :show="gameProvider" @close="closeModal">
+    <jet-dialog-modal :show="gameProvider" @close="closeModal">
         <template #title>
             Delete {{ gameProvider?.name }}
         </template>

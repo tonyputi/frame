@@ -27,7 +27,7 @@ Install the dependencies and devDependencies.
 
 ```sh
 composer install
-npm install
+php artisan key:generate
 ```
 
 Run the migrations/seeds
@@ -37,6 +37,12 @@ touch database/database.sqlite
 php artisan migrate:refresh --seed
 ```
 
+Serve the application
+
+```sh
+php artisan serve
+```
+
 Create `/etc/sudoers/frame`
 
 ```
@@ -44,21 +50,20 @@ www-data ALL=(ALL:ALL) NOPASSWD: /usr/sbin/nginx -t
 www-data ALL=(ALL:ALL) NOPASSWD: /usr/sbin/nginx -s reload
 ```
 
-## Quick start
-
-- touch database/database.sqlite
-- php artisan migrate --seed
-- php artisan serve
+Install node development environment (only for developers)
+```sh
+npm install
+npm run watch
+```
 
 ## Guidelines
 
 - `master` is representing the stable branch;
 - `develop` is representing the develop branch;
-- always create a branch from `develop`;
+- always create a branch from `develop` ie `feature/some-new-feature`;
 
-## Known issue
+## Known issues
 
-- Modal is removing scroolbar
 - when flush db nginx config command is not flushing file as well
 
 ## TODO
@@ -70,3 +75,4 @@ www-data ALL=(ALL:ALL) NOPASSWD: /usr/sbin/nginx -s reload
 - add videoslots style
 - create time calendar select component (hard)
 - add dashboard with queue provider lists
+- install opensource implementation of pusher/broadcast

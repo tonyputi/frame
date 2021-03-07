@@ -60,7 +60,7 @@
             <!-- Location Modifier -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="location_modifier" value="Location Modifier" />
-                <jet-select id="location_match" class="mt-1 block w-full"
+                <jet-select id="location_modifier" class="mt-1 block w-full"
                     v-model="form.location_modifier" :options="['', '=', '~', '~*', '^~']" 
                     :disabled="!permissions.canUpdateGameProvider" />
                 <jet-input-error :message="form.errors.location_modifier" class="mt-2" />
