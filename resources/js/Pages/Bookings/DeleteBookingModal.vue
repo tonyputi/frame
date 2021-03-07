@@ -1,5 +1,5 @@
 <template>
-    <jet-dialog-modal v-if="booking" :show="booking" @close="closeModal">
+    <jet-confirmation-modal v-if="booking" :show="booking" @close="closeModal">
         <template #title>
             Delete Booking {{ booking.id }}
         </template>
@@ -17,12 +17,12 @@
                 Delete
             </jet-danger-button>
         </template>
-    </jet-dialog-modal>
+    </jet-confirmation-modal>
 </template>
 
 <script>
 import JetActionSection from '@/Jetstream/ActionSection'
-import JetDialogModal from '@/Jetstream/DialogModal'
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal'
 import JetDangerButton from '@/Jetstream/DangerButton'
 import JetSecondaryButton from '@/Jetstream/SecondaryButton'
 
@@ -30,8 +30,9 @@ export default {
     components: {
         JetActionSection,
         JetDangerButton,
-        JetDialogModal,
+        JetConfirmationModal,
         JetSecondaryButton,
+        JetDangerButton
     },
 
     props: ['booking'],

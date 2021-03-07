@@ -25,10 +25,10 @@
                 <jet-input-error :message="form.errors.ended_at" class="mt-2" />
             </div>
 
-            <!-- Ended at -->
+            <!-- Notes -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="notes" value="Notes" />
-                <jet-textarea id="notes" type="text" class="mt-1 block w-full" 
+                <jet-textarea id="notes" class="mt-1 block w-full" 
                     v-model="form.notes" :disabled="!permissions.canUpdateBooking" />
                 <jet-input-error :message="form.errors.notes" class="mt-2" />
             </div>

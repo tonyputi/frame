@@ -44,9 +44,17 @@ class Booking extends Model
     /**
      * Get the game provider that owns the game provider queue.
      */
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'location_id');
+    }
+
+    /**
+     * Get the game provider that owns the game provider queue.
+     */
     public function gameProvider()
     {
-        return $this->belongsTo(GameProvider::class);
+        return $this->belongsTo(GameProvider::class, 'location_id');
     }
 
     /**

@@ -1,5 +1,5 @@
 <template>
-    <jet-dialog-modal :show="gameProvider" @close="closeModal">
+    <jet-confirmation-modal :show="gameProvider" @close="closeModal">
         <template #title>
             Delete {{ gameProvider?.name }}
         </template>
@@ -26,25 +26,25 @@
                 Delete
             </jet-danger-button>
         </template>
-    </jet-dialog-modal>
+    </jet-confirmation-modal>
 </template>
 
 <script>
 import JetActionSection from '@/Jetstream/ActionSection'
-import JetDialogModal from '@/Jetstream/DialogModal'
-import JetDangerButton from '@/Jetstream/DangerButton'
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal'
 import JetInput from '@/Jetstream/Input'
 import JetInputError from '@/Jetstream/InputError'
 import JetSecondaryButton from '@/Jetstream/SecondaryButton'
+import JetDangerButton from '@/Jetstream/DangerButton'
 
 export default {
     components: {
         JetActionSection,
-        JetDangerButton,
-        JetDialogModal,
+        JetConfirmationModal,
         JetInput,
         JetInputError,
         JetSecondaryButton,
+        JetDangerButton,
     },
 
     props: ['gameProvider'],
