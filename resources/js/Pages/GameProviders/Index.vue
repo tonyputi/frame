@@ -16,7 +16,7 @@
                     </jet-link-button>
                 </div>
 
-                <div v-if="gameProviders.meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div v-if="meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <jet-table class="text-sm">
                         <template #header>
                             <tr class="bg-gray-800 text-white">
@@ -36,31 +36,32 @@
                         </template>
 
                         <template #body>
-                            <tr v-for="resource in gameProviders.data" :key="resource.id" class="border border-black-600">
+                            <tr v-for="resource in data" :key="resource.fields.id" class="border border-black-600">
+                                
                                 <td class="px-2 py-4 text-center">
                                     <jet-checkbox :value="resource" v-model:checked="gameProvidersSelected" />
                                 </td>
-                                <td class="px-2 py-4 text-left">{{ resource.id }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.fields.id }}</td>
                                 <td class="px-2 py-4 text-left">
-                                    <img class="h-8 w-8 rounded-full object-cover" :src="resource.logo_url" :alt="resource.name" />
+                                    <img class="h-8 w-8 rounded-full object-cover" :src="resource.fields.logo_url" :alt="resource.fields.name" />
                                 </td>
                                 <td class="px-2 py-4 text-left">
-                                    <svg v-if="resource.current_booking?.is_active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                                    <svg v-if="resource.fields.current_booking?.is_active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                         <path fill-rule="evenodd" d="M5.05 3.636a1 1 0 010 1.414 7 7 0 000 9.9 1 1 0 11-1.414 1.414 9 9 0 010-12.728 1 1 0 011.414 0zm9.9 0a1 1 0 011.414 0 9 9 0 010 12.728 1 1 0 11-1.414-1.414 7 7 0 000-9.9 1 1 0 010-1.414zM7.879 6.464a1 1 0 010 1.414 3 3 0 000 4.243 1 1 0 11-1.415 1.414 5 5 0 010-7.07 1 1 0 011.415 0zm4.242 0a1 1 0 011.415 0 5 5 0 010 7.072 1 1 0 01-1.415-1.415 3 3 0 000-4.242 1 1 0 010-1.415zM10 9a1 1 0 011 1v.01a1 1 0 11-2 0V10a1 1 0 011-1z" clip-rule="evenodd" />
                                     </svg>
                                     <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                         <path d="M3.707 2.293a1 1 0 00-1.414 1.414l6.921 6.922c.05.062.105.118.168.167l6.91 6.911a1 1 0 001.415-1.414l-.675-.675a9.001 9.001 0 00-.668-11.982A1 1 0 1014.95 5.05a7.002 7.002 0 01.657 9.143l-1.435-1.435a5.002 5.002 0 00-.636-6.294A1 1 0 0012.12 7.88c.924.923 1.12 2.3.587 3.415l-1.992-1.992a.922.922 0 00-.018-.018l-6.99-6.991zM3.238 8.187a1 1 0 00-1.933-.516c-.8 3-.025 6.336 2.331 8.693a1 1 0 001.414-1.415 6.997 6.997 0 01-1.812-6.762zM7.4 11.5a1 1 0 10-1.73 1c.214.371.48.72.795 1.035a1 1 0 001.414-1.414c-.191-.191-.35-.4-.478-.622z" />
                                     </svg>
                                 </td>
-                                <td class="px-2 py-4 text-left">{{ resource.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.fields.name }}</td>
                                 <td class="px-2 py-4 text-left">
-                                    <inertia-link :href="route('game-providers.bookings.index', [resource.id])">
-                                        {{ resource.next_bookings_count }}
+                                    <inertia-link :href="route('game-providers.bookings.index', [resource.fields.id])">
+                                        {{ resource.fields.next_bookings_count }}
                                     </inertia-link>
                                 </td>
-                                <td class="px-2 py-4 text-left">{{ resource.current_booking?.user?.name }}</td>
-                                <td class="px-2 py-4 text-left">{{ formatDate(resource.current_booking?.started_at) }}</td>
-                                <td class="px-2 py-4 text-left">{{ formatDate(resource.current_booking?.ended_at) }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.fields.current_booking?.user?.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ formatDate(resource.fields.current_booking?.started_at) }}</td>
+                                <td class="px-2 py-4 text-left">{{ formatDate(resource.fields.current_booking?.ended_at) }}</td>
                                 <td class="px-2 py-4 text-center">
                                     <div class="flex">
                                         <button class="text-black-500" @click="gameProviderBeingBooked=resource">
@@ -68,7 +69,7 @@
                                                 <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                                             </svg>
                                         </button>
-                                        <inertia-link class="text-black-500 ml-4" :href="route('game-providers.show', resource.id)">
+                                        <inertia-link class="text-black-500 ml-4" :href="route('game-providers.show', resource.fields.id)">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                                                 <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
@@ -85,7 +86,7 @@
                         </template>
                     </jet-table>
 
-                    <pagination v-bind="gameProviders.meta" />
+                    <pagination v-bind="meta" />
                 </div>
 
                 <!-- no result alert -->
@@ -136,7 +137,7 @@ export default {
         SearchInput
     },
 
-    props: ['gameProviders', 'permissions'],
+    props: ['data', 'meta', 'permissions'],
 
     data() {
         return {
@@ -149,10 +150,10 @@ export default {
     computed: {
         selectAll: {
             get() {
-                return this.gameProviders.data ? this.gameProvidersSelected.length == this.gameProviders.data.length : false;
+                return this.data ? this.gameProvidersSelected.length == this.data.length : false;
             },
             set(value) {
-                (value) ? this.gameProvidersSelected = this.gameProviders.data : this.gameProvidersSelected = [];
+                (value) ? this.gameProvidersSelected = this.data : this.gameProvidersSelected = [];
             }
         }
     },

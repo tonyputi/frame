@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\GameProviderResource;
+use Inertia\Inertia;
 use App\Models\GameProvider;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Inertia\Inertia;
+use App\Http\Resources\JetstreamResource;
+use App\Http\Resources\GameProviderResource;
 
 class GameProviderController extends Controller
 {
@@ -18,22 +19,24 @@ class GameProviderController extends Controller
      */
     public function index(Request $request)
     {
-        $gameProviders = GameProvider::query()
+        $collection = GameProvider::query()
             ->when($request->input('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
             ->with('currentBooking.user')
             ->withCount('nextBookings')
             ->paginate();
 
-        // return GameProviderResource::collection($gameProviders);
-
-        return Inertia::render('GameProviders/Index', [
-            'gameProviders' => GameProviderResource::collection($gameProviders),
-            'permissions' => [
+        // TODO: this is a workaround. inertia should already provide
+        // a way to convert JsonResponse to proper array
+        $props = JetstreamResource::collection($collection)
+            ->additional(['permissions' => [
                 'canCreateGameProvider' => true,
                 'canUpdateGameProvider' => true,
                 'canDeleteGameProvider' => true,
-            ]
-        ]);
+            ]])
+            ->toResponse($request)
+            ->getData(true);
+
+        return Inertia::render('GameProviders/Index', $props);
     }
 
     /**
