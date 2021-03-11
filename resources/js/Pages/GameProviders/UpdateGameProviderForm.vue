@@ -14,13 +14,13 @@
                 <!-- Game Provider File Input -->
                 <input type="file" class="hidden" ref="logo" 
                     @change="updateLogoPreview" 
-                    v-if="permissions.canUpdateGameProvider" />
+                    v-if="canUpdateOrCreate" />
 
                 <jet-label for="logo" value="Logo" />
 
                 <!-- Current Game Provider Logo -->
                 <div class="mt-2" v-show="!logoPreview">
-                    <img class="rounded-full h-20 w-20 object-cover" :src="gameProvider.logo_url" :alt="gameProvider.name">
+                    <img class="rounded-full h-20 w-20 object-cover" :src="attributes.logo_url" :alt="attributes.name">
                 </div>
 
                 <!-- New Game Provider Logo Preview -->
@@ -30,11 +30,11 @@
                     </span>
                 </div>
 
-                <jet-secondary-button type="button" class="mt-2 mr-2" @click.prevent="selectNewLogo" v-if="permissions.canUpdateGameProvider">
+                <jet-secondary-button type="button" class="mt-2 mr-2" @click.prevent="selectNewLogo" v-if="canUpdateOrCreate">
                     Select A New Logo
                 </jet-secondary-button>
 
-                <jet-secondary-button type="button" class="mt-2" @click.prevent="deleteLogo" v-if="gameProvider.logo_path">
+                <jet-secondary-button type="button" class="mt-2" @click.prevent="deleteLogo" v-if="attributes.logo_path">
                     Remove Logo
                 </jet-secondary-button>
 
@@ -45,7 +45,7 @@
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="name" value="Name" />
                 <jet-input id="name" type="text" class="mt-1 block w-full" 
-                    v-model="form.name" :disabled="!permissions.canUpdateGameProvider" />
+                    v-model="form.name" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
 
@@ -53,7 +53,7 @@
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="default_host" value="Default Host" />
                 <jet-input id="default_host" type="text" class="mt-1 block w-full" 
-                    v-model="form.default_host" :disabled="!permissions.canUpdateGameProvider" />
+                    v-model="form.default_host" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.default_host" class="mt-2" />
             </div>
 
@@ -62,7 +62,7 @@
                 <jet-label for="location_modifier" value="Location Modifier" />
                 <jet-select id="location_modifier" class="mt-1 block w-full"
                     v-model="form.location_modifier" :options="['', '=', '~', '~*', '^~']" 
-                    :disabled="!permissions.canUpdateGameProvider" />
+                    :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.location_modifier" class="mt-2" />
             </div>
 
@@ -70,7 +70,7 @@
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="location_match" value="Location Match" />
                 <jet-input id="location_match" type="text" class="mt-1 block w-full" 
-                    v-model="form.location_match" :disabled="!permissions.canUpdateGameProvider" />
+                    v-model="form.location_match" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.location_match" class="mt-2" />
             </div>
 
@@ -78,12 +78,12 @@
             <div class="col-span-6 sm:col-span-6 w-full">
                 <jet-label for="location_block" value="Location Block" />
                 <jet-code id="location_block" class="mt-1 block w-full" rows="5" 
-                    v-model="form.location_block" :disabled="!permissions.canUpdateGameProvider" />
+                    v-model="form.location_block" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.location_block" class="mt-2" />
             </div>
         </template>
 
-        <template #actions v-if="permissions.canUpdateGameProvider">
+        <template #actions v-if="canUpdateOrCreate">
             <jet-action-message :on="form.recentlySuccessful" class="mr-3">
                 Saved.
             </jet-action-message>
@@ -122,7 +122,7 @@
         },
 
         props: {
-            gameProvider: {
+            attributes: {
                 type: Object,
                 default: {}
             },
@@ -134,15 +134,21 @@
         data() {
             return {
                 form: this.$inertia.form({
-                    name: this.gameProvider.name,
+                    name: this.attributes.name,
                     logo: null,
-                    location_modifier: this.gameProvider.location_modifier,
-                    location_match: this.gameProvider.location_match,
-                    location_block: this.gameProvider.location_block,
-                    default_host: this.gameProvider.default_host
+                    location_modifier: this.attributes.location_modifier,
+                    location_match: this.attributes.location_match,
+                    location_block: this.attributes.location_block,
+                    default_host: this.attributes.default_host
                 }),
 
                 logoPreview: null,
+            }
+        },
+
+        computed: {
+            canUpdateOrCreate() {
+                return this.permissions.canUpdate || this.permissions.canCreate
             }
         },
 
@@ -152,8 +158,8 @@
                     this.form.logo = this.$refs.logo.files[0]
                 }
 
-                if(this.gameProvider.id) {
-                    this.form.put(route('game-providers.update', [this.gameProvider.id]), {
+                if(this.attributes.id) {
+                    this.form.put(route('game-providers.update', [this.attributes.id]), {
                         errorBag: 'updateGameProvider',
                         preserveScroll: true
                     });

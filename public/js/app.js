@@ -19513,12 +19513,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['gameProvider', 'permissions'],
+  props: ['data'],
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     JetSectionBorder: _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_1__.default,
     DeleteGameProviderForm: _DeleteGameProviderForm__WEBPACK_IMPORTED_MODULE_3__.default,
     UpdateGameProviderForm: _UpdateGameProviderForm__WEBPACK_IMPORTED_MODULE_2__.default
+  },
+  mounted: function mounted() {
+    console.log(this.data);
   }
 });
 
@@ -19569,7 +19572,7 @@ __webpack_require__.r(__webpack_exports__);
     JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__.default
   },
   props: {
-    gameProvider: {
+    attributes: {
       type: Object,
       "default": {}
     },
@@ -19580,15 +19583,20 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: this.$inertia.form({
-        name: this.gameProvider.name,
+        name: this.attributes.name,
         logo: null,
-        location_modifier: this.gameProvider.location_modifier,
-        location_match: this.gameProvider.location_match,
-        location_block: this.gameProvider.location_block,
-        default_host: this.gameProvider.default_host
+        location_modifier: this.attributes.location_modifier,
+        location_match: this.attributes.location_match,
+        location_block: this.attributes.location_block,
+        default_host: this.attributes.default_host
       }),
       logoPreview: null
     };
+  },
+  computed: {
+    canUpdateOrCreate: function canUpdateOrCreate() {
+      return this.permissions.canUpdate || this.permissions.canCreate;
+    }
   },
   methods: {
     updateOrCreate: function updateOrCreate() {
@@ -19596,8 +19604,8 @@ __webpack_require__.r(__webpack_exports__);
         this.form.logo = this.$refs.logo.files[0];
       }
 
-      if (this.gameProvider.id) {
-        this.form.put(route('game-providers.update', [this.gameProvider.id]), {
+      if (this.attributes.id) {
+        this.form.put(route('game-providers.update', [this.attributes.id]), {
           errorBag: 'updateGameProvider',
           preserveScroll: true
         });
@@ -25495,10 +25503,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.data, function (resource) {
-            var _resource$fields$curr, _resource$fields$curr2, _resource$fields$curr3, _resource$fields$curr4, _resource$fields$curr5;
+            var _resource$attributes$, _resource$attributes$2, _resource$attributes$3, _resource$attributes$4, _resource$attributes$5;
 
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tr", {
-              key: resource.fields.id,
+              key: resource.attributes.id,
               "class": "border border-black-600"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
               value: resource,
@@ -25508,21 +25516,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               })
             }, null, 8
             /* PROPS */
-            , ["value", "checked"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.fields.id), 1
+            , ["value", "checked"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.attributes.id), 1
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
               "class": "h-8 w-8 rounded-full object-cover",
-              src: resource.fields.logo_url,
-              alt: resource.fields.name
+              src: resource.attributes.logo_url,
+              alt: resource.attributes.name
             }, null, 8
             /* PROPS */
-            , ["src", "alt"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_21, [(_resource$fields$curr = resource.fields.current_booking) !== null && _resource$fields$curr !== void 0 && _resource$fields$curr.is_active ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_22, [_hoisted_23])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_24, [_hoisted_25]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.fields.name), 1
+            , ["src", "alt"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_21, [(_resource$attributes$ = resource.attributes.current_booking) !== null && _resource$attributes$ !== void 0 && _resource$attributes$.is_active ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_22, [_hoisted_23])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_24, [_hoisted_25]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.attributes.name), 1
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-              href: _ctx.route('game-providers.bookings.index', [resource.fields.id])
+              href: _ctx.route('game-providers.bookings.index', [resource.attributes.id])
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.fields.next_bookings_count), 1
+                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.attributes.next_bookings_count), 1
                 /* TEXT */
                 )];
               }),
@@ -25531,11 +25539,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
             }, 1032
             /* PROPS, DYNAMIC_SLOTS */
-            , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_resource$fields$curr2 = resource.fields.current_booking) === null || _resource$fields$curr2 === void 0 ? void 0 : (_resource$fields$curr3 = _resource$fields$curr2.user) === null || _resource$fields$curr3 === void 0 ? void 0 : _resource$fields$curr3.name), 1
+            , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_resource$attributes$2 = resource.attributes.current_booking) === null || _resource$attributes$2 === void 0 ? void 0 : (_resource$attributes$3 = _resource$attributes$2.user) === null || _resource$attributes$3 === void 0 ? void 0 : _resource$attributes$3.name), 1
             /* TEXT */
-            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate((_resource$fields$curr4 = resource.fields.current_booking) === null || _resource$fields$curr4 === void 0 ? void 0 : _resource$fields$curr4.started_at)), 1
+            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate((_resource$attributes$4 = resource.attributes.current_booking) === null || _resource$attributes$4 === void 0 ? void 0 : _resource$attributes$4.started_at)), 1
             /* TEXT */
-            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate((_resource$fields$curr5 = resource.fields.current_booking) === null || _resource$fields$curr5 === void 0 ? void 0 : _resource$fields$curr5.ended_at)), 1
+            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate((_resource$attributes$5 = resource.attributes.current_booking) === null || _resource$attributes$5 === void 0 ? void 0 : _resource$attributes$5.ended_at)), 1
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
               "class": "text-black-500",
@@ -25544,9 +25552,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               }
             }, [_hoisted_33], 8
             /* PROPS */
-            , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+            , ["onClick"]), resource.permissions.canView ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
+              key: 0,
               "class": "text-black-500 ml-4",
-              href: _ctx.route('game-providers.show', resource.fields.id)
+              href: _ctx.route('game-providers.show', resource.attributes.id)
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                 return [_hoisted_34];
@@ -25556,8 +25565,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
             }, 1032
             /* PROPS, DYNAMIC_SLOTS */
-            , ["href"]), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
-              key: 0,
+            , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), resource.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+              key: 1,
               "class": "text-red-500 ml-4 ",
               onClick: function onClick($event) {
                 return $data.gameProviderBeingDeleted = resource;
@@ -25635,22 +25644,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      var _$props$gameProvider$;
+      var _$props$data$attribut;
 
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", _hoisted_1, " Game Provider: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$gameProvider$ = $props.gameProvider.data) === null || _$props$gameProvider$ === void 0 ? void 0 : _$props$gameProvider$.name), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", _hoisted_1, " Game Provider: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$data$attribut = $props.data.attributes) === null || _$props$data$attribut === void 0 ? void 0 : _$props$data$attribut.name), 1
       /* TEXT */
       )];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_game_provider_form, {
-        gameProvider: $props.gameProvider.data,
-        permissions: $props.permissions
-      }, null, 8
-      /* PROPS */
-      , ["gameProvider", "permissions"]), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_section_border, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_game_provider_form, $props.data, null, 16
+      /* FULL_PROPS */
+      ), $props.data.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_section_border, {
         key: 0
-      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $props.permissions.canDeleteGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_game_provider_form, {
-        gameProvider: $props.gameProvider.data,
+      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $props.data.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_game_provider_form, {
+        gameProvider: $props.data.attributes,
         "class": "mt-10 sm:mt-0"
       }, null, 8
       /* PROPS */
@@ -25745,7 +25751,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_2];
     }),
     form: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Game Provider Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Game Provider File Input "), $props.permissions.canUpdateGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Game Provider Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Game Provider File Input "), $options.canUpdateOrCreate ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
         key: 0,
         type: "file",
         "class": "hidden",
@@ -25760,8 +25766,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "Logo"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Current Game Provider Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
         "class": "rounded-full h-20 w-20 object-cover",
-        src: $props.gameProvider.logo_url,
-        alt: $props.gameProvider.name
+        src: $props.attributes.logo_url,
+        alt: $props.attributes.name
       }, null, 8
       /* PROPS */
       , ["src", "alt"])], 512
@@ -25773,7 +25779,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* STYLE */
       )], 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.logoPreview]]), $props.permissions.canUpdateGameProvider ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_secondary_button, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.logoPreview]]), $options.canUpdateOrCreate ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_secondary_button, {
         key: 1,
         type: "button",
         "class": "mt-2 mr-2",
@@ -25787,7 +25793,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.gameProvider.logo_path ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_secondary_button, {
+      , ["onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.attributes.logo_path ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_secondary_button, {
         key: 2,
         type: "button",
         "class": "mt-2",
@@ -25817,7 +25823,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.form.name = $event;
         }),
-        disabled: !$props.permissions.canUpdateGameProvider
+        disabled: !$options.canUpdateOrCreate
       }, null, 8
       /* PROPS */
       , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
@@ -25836,7 +25842,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return $data.form.default_host = $event;
         }),
-        disabled: !$props.permissions.canUpdateGameProvider
+        disabled: !$options.canUpdateOrCreate
       }, null, 8
       /* PROPS */
       , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
@@ -25855,7 +25861,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $data.form.location_modifier = $event;
         }),
         options: ['', '=', '~', '~*', '^~'],
-        disabled: !$props.permissions.canUpdateGameProvider
+        disabled: !$options.canUpdateOrCreate
       }, null, 8
       /* PROPS */
       , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
@@ -25874,7 +25880,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
           return $data.form.location_match = $event;
         }),
-        disabled: !$props.permissions.canUpdateGameProvider
+        disabled: !$options.canUpdateOrCreate
       }, null, 8
       /* PROPS */
       , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
@@ -25893,7 +25899,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
           return $data.form.location_block = $event;
         }),
-        disabled: !$props.permissions.canUpdateGameProvider
+        disabled: !$options.canUpdateOrCreate
       }, null, 8
       /* PROPS */
       , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
@@ -25906,7 +25912,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 2
     /* DYNAMIC */
 
-  }, [$props.permissions.canUpdateGameProvider ? {
+  }, [$options.canUpdateOrCreate ? {
     name: "actions",
     fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_action_message, {

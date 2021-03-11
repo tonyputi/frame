@@ -29,9 +29,7 @@ class GameProviderController extends Controller
         // a way to convert JsonResponse to proper array
         $props = JetstreamResource::collection($collection)
             ->additional(['permissions' => [
-                'canCreateGameProvider' => true,
-                'canUpdateGameProvider' => true,
-                'canDeleteGameProvider' => true,
+                'canCreate' => true
             ]])
             ->toResponse($request)
             ->getData(true);
@@ -44,14 +42,20 @@ class GameProviderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return Inertia::render('GameProviders/Show', [
-            'gameProvider' => new GameProviderResource(new GameProvider),
-            'permissions' => [
-                'canDeleteGameProvider' => false,
-            ]
-        ]);
+        $props = (new JetstreamResource(new GameProvider))
+            ->toResponse($request)
+            ->getData(true);
+
+        return Inertia::render('GameProviders/Show', $props);
+
+        // return Inertia::render('GameProviders/Show', [
+        //     'gameProvider' => new GameProviderResource(new GameProvider),
+        //     'permissions' => [
+        //         'canDeleteGameProvider' => false,
+        //     ]
+        // ]);
     }
 
     /**
@@ -83,13 +87,11 @@ class GameProviderController extends Controller
      */
     public function show(Request $request, GameProvider $gameProvider)
     {
-        return Inertia::render('GameProviders/Show', [
-            'gameProvider' => new GameProviderResource($gameProvider),
-            'permissions' => [
-                'canUpdateGameProvider' => true,
-                'canDeleteGameProvider' => true,
-            ]
-        ]);
+        $props = (new JetstreamResource($gameProvider))
+            ->toResponse($request)
+            ->getData(true);
+
+        return Inertia::render('GameProviders/Show', $props);
     }
 
     /**
@@ -98,15 +100,13 @@ class GameProviderController extends Controller
      * @param  GameProvider  $gameProvider
      * @return \Illuminate\Http\Response
      */
-    public function edit(GameProvider $gameProvider)
+    public function edit(Request $request, GameProvider $gameProvider)
     {
-        return Inertia::render('GameProviders/Show', [
-            'gameProvider' => new GameProviderResource($gameProvider),
-            'permissions' => [
-                'canUpdateGameProvider' => true,
-                'canDeleteGameProvider' => false,
-            ]
-        ]);
+        $props = (new JetstreamResource($gameProvider))
+            ->toResponse($request)
+            ->getData(true);
+
+        return Inertia::render('GameProviders/Show', $props);
     }
 
     /**
@@ -119,7 +119,7 @@ class GameProviderController extends Controller
     public function update(Request $request, GameProvider $gameProvider)
     {
         $request->validate([
-            'name' => ['sometimes', 'required', "unique:game_providers,name,{$gameProvider->id}"],
+            'name' => ['sometimes', 'required', "unique:locations,name,{$gameProvider->id}"],
             'location_modifier' => ['sometimes', 'required'],
             'location_match' => ['sometimes', 'required'],
             'location_block' => ['sometimes', 'required'],

@@ -15,9 +15,9 @@ class JetstreamResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'fields' => parent::toArray($request),
+            'attributes' => parent::toArray($request),
             'permissions' => [
-                'canSee' => true,
+                'canView' => true,
                 'canUpdate' => true,
                 'canDelete' => true,
             ]

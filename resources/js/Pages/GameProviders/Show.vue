@@ -2,20 +2,20 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Game Provider: {{ gameProvider.data?.name }}
+                Game Provider: {{ data.attributes?.name }}
             </h2>
         </template>
 
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <div>
-                    <update-game-provider-form :gameProvider="gameProvider.data" :permissions="permissions" />
+                    <update-game-provider-form v-bind="data" />
 
-                    <jet-section-border v-if="permissions.canDeleteGameProvider" />
+                    <jet-section-border v-if="data.permissions.canDelete" />
                 </div>
 
-                <div v-if="permissions.canDeleteGameProvider">
-                    <delete-game-provider-form :gameProvider="gameProvider.data" class="mt-10 sm:mt-0" />
+                <div v-if="data.permissions.canDelete">
+                    <delete-game-provider-form :gameProvider="data.attributes" class="mt-10 sm:mt-0" />
                 </div>
             </div>
         </div>
@@ -29,13 +29,17 @@
     import DeleteGameProviderForm from './DeleteGameProviderForm'
 
     export default {
-        props: ['gameProvider', 'permissions'],
+        props: ['data'],
 
         components: {
             AppLayout,
             JetSectionBorder,
             DeleteGameProviderForm,
             UpdateGameProviderForm
+        },
+
+        mounted() {
+            console.log(this.data)
         }
     }
 </script>
