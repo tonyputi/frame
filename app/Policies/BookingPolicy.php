@@ -65,6 +65,10 @@ class BookingPolicy
      */
     public function delete(User $user, Booking $booking)
     {
+        if(!$booking->exists) {
+            return false;
+        }
+
         return true;
     }
 

@@ -11,7 +11,7 @@
                 <div class="flex my-4">
                     <search-input @input="filter" placeholder="Search for game provider or user" />
 
-                    <jet-link-button :href="route('game-providers.bookings.create', [1])">
+                    <jet-link-button :href="route('game-providers.bookings.create', [gameProviderId])">
                         Create
                     </jet-link-button>
                 </div>
@@ -122,6 +122,12 @@ export default {
         return {
             bookingBeingDeleted: null,
             bookingsSelected: []
+        }
+    },
+
+    computed: {
+        gameProviderId() {
+            return route().params['game_provider']
         }
     },
 

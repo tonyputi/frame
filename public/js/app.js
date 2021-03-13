@@ -19006,6 +19006,11 @@ __webpack_require__.r(__webpack_exports__);
       bookingsSelected: []
     };
   },
+  computed: {
+    gameProviderId: function gameProviderId() {
+      return route().params['game_provider'];
+    }
+  },
   methods: {
     // TODO: this can be mixed
     filter: function filter(ev) {
@@ -19123,17 +19128,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     updateOrCreate: function updateOrCreate() {
-      if (this.$refs.logo) {
-        this.form.logo = this.$refs.logo.files[0];
-      }
-
-      if (this.gameProvider.id) {
-        this.form.put(route('booking.update', [this.gameProvider.id]), {
+      if (this.attributes.id) {
+        this.form.put(route('bookings.update', [this.attributes.id]), {
           errorBag: 'updateBooking',
           preserveScroll: true
         });
       } else {
-        this.form.post(route('booking.store'), {
+        this.form.post(route('game-providers.bookings.store', [route().params['game_provider']]), {
           errorBag: 'createBooking',
           preserveScroll: true
         });
@@ -24554,7 +24555,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["onInput"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_link_button, {
-        href: _ctx.route('game-providers.bookings.create', [1])
+        href: _ctx.route('game-providers.bookings.create', [$options.gameProviderId])
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_5];

@@ -100,17 +100,13 @@
 
         methods: {
             updateOrCreate() {
-                if (this.$refs.logo) {
-                    this.form.logo = this.$refs.logo.files[0]
-                }
-
-                if(this.gameProvider.id) {
-                    this.form.put(route('booking.update', [this.gameProvider.id]), {
+                if(this.attributes.id) {
+                    this.form.put(route('bookings.update', [this.attributes.id]), {
                         errorBag: 'updateBooking',
                         preserveScroll: true
                     });
                 } else {
-                    this.form.post(route('booking.store'), {
+                    this.form.post(route('game-providers.bookings.store', [route().params['game_provider']]), {
                         errorBag: 'createBooking',
                         preserveScroll: true
                     });
