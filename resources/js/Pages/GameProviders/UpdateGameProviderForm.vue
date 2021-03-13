@@ -127,7 +127,8 @@
                 default: {}
             },
             permissions: {
-                type: Object
+                type: Object,
+                default: {}
             }
         },
 
@@ -147,6 +148,7 @@
         },
 
         computed: {
+            // TODO: this can be mixed
             canUpdateOrCreate() {
                 return this.permissions.canUpdate || this.permissions.canCreate
             }

@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\GameProviderResource;
 use Inertia\Inertia;
+use App\Models\Booking;
+use App\Models\GameProvider;
 use App\Rules\AvailableTime;
 use Illuminate\Http\Request;
-use App\Models\Booking;
-use App\Http\Resources\BookingResource;
-use App\Models\GameProvider;
+use App\Http\Resources\JetstreamResource;
 
 class BookingController extends Controller
 {
+
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Booking::class, 'booking');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,20 +30,23 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        $bookings = Booking::with(['user', 'gameProvider', 'environment', 'application'])
+        $collection = Booking::with(['user', 'gameProvider', 'environment', 'application'])
             ->when($request->input('search'), fn($query) => $query->filter($request->search))
             ->available()
             ->orderBy('started_at', 'asc')
             ->paginate();
 
-        return Inertia::render('Bookings/Index', [
-            'bookings' => BookingResource::collection($bookings),
-            'permissions' => [
-                'canCreateBooking' => true,
-                'canUpdateBooking' => true,
-                'canDeleteBooking' => true,
-            ]
-        ]);
+        // TODO: this is a workaround. inertia should already provide
+        // a way to convert JsonResponse to proper array
+        $props = JetstreamResource::collection($collection)
+            ->additional(['permissions' => [
+                'canCreate' => true
+            ]])
+            ->toResponse($request)
+            ->getData(true);
+
+
+        return Inertia::render('Bookings/Index', $props);
     }
 
     /**
@@ -41,14 +54,13 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return Inertia::render('Bookings/Show', [
-            'booking' => new BookingResource(new Booking),
-            'permissions' => [
-                'canDeleteBooking' => false,
-            ]
-        ]);
+        $props = (new JetstreamResource(new Booking))
+            ->toResponse($request)
+            ->getData(true);
+
+        return Inertia::render('Bookings/Show', $props);
     }
 
     /**
@@ -88,16 +100,28 @@ class BookingController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show(Request $request, Booking $booking)
     {
-        return Inertia::render('Bookings/Show', [
-            'booking' => new BookingResource($booking),
-            'permissions' => [
-                'canCreateBooking' => true,
-                'canUpdateBooking' => true,
-                'canDeleteBooking' => true,
-            ]
-        ]);
+        $props = (new JetstreamResource($booking))
+            ->toResponse($request)
+            ->getData(true);
+
+        return Inertia::render('Bookings/Show', $props);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Booking  $booking
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request, Booking $booking)
+    {
+        $props = (new JetstreamResource($booking))
+            ->toResponse($request)
+            ->getData(true);
+
+        return Inertia::render('Bookings/Edit', $props);
     }
 
     /**

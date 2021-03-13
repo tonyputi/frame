@@ -15,7 +15,7 @@
                 </div>
 
                 <div v-if="data.permissions.canDelete">
-                    <delete-game-provider-form :gameProvider="data.attributes" class="mt-10 sm:mt-0" />
+                    <delete-game-provider-form :data="data" class="mt-10 sm:mt-0" />
                 </div>
             </div>
         </div>
@@ -36,10 +36,6 @@
             JetSectionBorder,
             DeleteGameProviderForm,
             UpdateGameProviderForm
-        },
-
-        mounted() {
-            console.log(this.data)
         }
     }
 </script>

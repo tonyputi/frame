@@ -2,23 +2,21 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Game Provider Queue
+                Game Provider Bookings
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex my-4">
-                    <search-input
-                        @input="filter"
-                        placeholder="Search for game provider" />
+                    <search-input @input="filter" placeholder="Search for game provider or user" />
 
                     <jet-link-button :href="route('game-providers.bookings.create', [1])">
                         Create
                     </jet-link-button>
                 </div>
 
-                <div v-if="bookings.meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div v-if="meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <jet-table class="text-sm">
                         <template #header>
                             <tr class="bg-gray-800 text-white">
@@ -38,32 +36,32 @@
                         </template>
 
                         <template #body>
-                            <tr v-for="resource in bookings.data" :key="resource.id" class="border border-black-600">
+                            <tr v-for="resource in data" :key="resource.attributes.id" class="border border-black-600">
                                 <td class="px-2 py-4 text-center">
                                     <jet-checkbox :value="resource" v-model:checked="bookingsSelected" />
                                 </td>
-                                <td class="px-2 py-4 text-left">{{ resource.id }}</td>
-                                <td class="px-2 py-4 text-left">{{ resource.user.name }}</td>
-                                <td class="px-2 py-4 text-left">{{ resource.game_provider.name }}</td>
-                                <td class="px-2 py-4 text-left">{{ resource.environment.name }}</td>
-                                <td class="px-2 py-4 text-left">{{ resource.application.name }}</td>
-                                <td class="px-2 py-4 text-left">{{ resource.is_active }}</td>
-                                <td class="px-2 py-4 text-left">{{ formatDate(resource.started_at) }}</td>
-                                <td class="px-2 py-4 text-left">{{ formatDate(resource.ended_at) }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.attributes.id }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.attributes.user.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.attributes.game_provider.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.attributes.environment?.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.attributes.application?.name }}</td>
+                                <td class="px-2 py-4 text-left">{{ resource.attributes.is_active }}</td>
+                                <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.started_at) }}</td>
+                                <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.ended_at) }}</td>
                                 <td class="px-2 py-4 text-center">
                                     <div class="flex">
-                                        <inertia-link class="text-black-500 ml-4" :href="route('bookings.show', resource.id)">
+                                        <inertia-link class="text-black-500 ml-4" :href="route('bookings.show', resource.attributes.id)">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                                             </svg>
                                         </inertia-link>
-                                        <inertia-link class="text-black-500 ml-4" :href="route('bookings.show', resource.id)">
+                                        <inertia-link class="text-black-500 ml-4" :href="route('bookings.show', resource.attributes.id)">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                                                 <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                                             </svg>
                                         </inertia-link>
-                                        <button class="text-red-500 ml-4 " v-if="isDeletable(resource)" @click="bookingBeingDeleted=resource">
+                                        <button class="text-red-500 ml-4 " v-if="resource.permissions.canDelete" @click="bookingBeingDeleted=resource">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                                 <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                                             </svg>
@@ -74,7 +72,7 @@
                         </template>
                     </jet-table>
 
-                    <pagination v-bind="bookings.meta" />
+                    <pagination v-bind="meta" />
                 </div>
 
                 <!-- no result alert -->
@@ -87,7 +85,7 @@
 
                 <!-- booking delete modal -->
                 <delete-booking-modal
-                    :booking="bookingBeingDeleted"
+                    v-bind="bookingBeingDeleted"
                     @close="bookingBeingDeleted = null" />
 
             </div>
@@ -118,37 +116,22 @@ export default {
         DeleteBookingModal
     },
 
-    props: ['bookings', 'permissions'],
+    props: ['data', 'meta', 'permissions'],
 
     data() {
         return {
-            searchPid: null,
             bookingBeingDeleted: null,
             bookingsSelected: []
         }
     },
 
     methods: {
+        // TODO: this can be mixed
         filter(ev) {
-            this.$inertia.reload({data: { search: ev.target.value }})
+            this.$inertia.reload({data: { search: ev.target.value, page: 1 }})
         },
         formatDate(datetime) {
             return (datetime) ? moment(datetime).format('YYYY-MM-DD HH:mm:ss') : null;
-        },
-        isDeletable(resource) {
-            // if(!this.permissions.canDeleteBooking) {
-            //     return false;
-            // }
-
-            if(resource.is_active) {
-                return false;
-            }
-
-            if(resource.user_id != this.$page.props.user.id) {
-                return false;
-            }
-
-            return true;
         }
     }
 };

@@ -29,13 +29,21 @@
                                 <th class="px-2 py-4 text-left">Name</th>
                                 <th class="px-2 py-4 text-left">Bookings</th>
                                 <th class="px-2 py-4 text-left">Booked By</th>
-                                <th class="px-2 py-4 text-left">Starting At</th>
-                                <th class="px-2 py-4 text-left">Ending At</th>
+                                <th class="px-2 py-4 text-left">Booked Time</th>
                                 <th class="px-2 py-4"></th>
                             </tr>
                         </template>
 
                         <template #body>
+                            <template v-for="resource in data" :key="resource.attributes.id">
+                                <game-provider-table-row :resource="resource"
+                                    :selected="gameProvidersSelected"
+                                    @book="gameProviderBeingBooked = $event"
+                                    @delete="gameProviderBeingDeleted = $event" />
+                            </template>
+                        </template>
+
+                        <!-- <template #body>
                             <tr v-for="resource in data" :key="resource.attributes.id" class="border border-black-600">
                                 
                                 <td class="px-2 py-4 text-center">
@@ -83,7 +91,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        </template>
+                        </template> -->
                     </jet-table>
 
                     <pagination v-bind="meta" />
@@ -99,12 +107,12 @@
 
                 <!-- game provider book modal -->
                 <book-game-provider-modal
-                    :gameProvider="gameProviderBeingBooked"
+                    v-bind="gameProviderBeingBooked"
                     @close="gameProviderBeingBooked = null" />
 
                 <!-- game provider delete modal -->
                 <delete-game-provider-modal
-                    :gameProvider="gameProviderBeingDeleted"
+                    v-bind="gameProviderBeingDeleted"
                     @close="gameProviderBeingDeleted = null" />
 
             </div>
@@ -116,6 +124,7 @@
 import AppLayout from '@/Layouts/AppLayout';
 import BookGameProviderModal from './BookGameProviderModal';
 import DeleteGameProviderModal from './DeleteGameProviderModal';
+import GameProviderTableRow from './GameProviderTableRow';
 import JetTable from "@/Jetstream/Table";
 import Pagination from "@/Jetstream/Pagination";
 import SearchInput from "@/Jetstream/SearchInput";
@@ -131,10 +140,11 @@ export default {
         JetInput,
         JetCheckbox,
         JetTable,
+        Pagination,
+        SearchInput,
+        GameProviderTableRow,
         BookGameProviderModal,
         DeleteGameProviderModal,
-        Pagination,
-        SearchInput
     },
 
     props: ['data', 'meta', 'permissions'],
@@ -159,6 +169,7 @@ export default {
     },
 
     methods: {
+        // TODO: this can be mixed
         filter(ev) {
             this.$inertia.reload({data: { search: ev.target.value, page: 1 }})
         },

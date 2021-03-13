@@ -14,14 +14,14 @@
             </div>
 
             <div class="mt-5">
-                <jet-danger-button @click="bookingBeingDeleted=booking">
+                <jet-danger-button @click="bookingBeingDeleted = data">
                     Delete Booking
                 </jet-danger-button>
             </div>
 
-            <!-- Delete Game Provider Confirmation Modal -->
+            <!-- Delete Booking Confirmation Modal -->
             <delete-booking-modal
-                :booking="bookingBeingDeleted"
+                v-bind="bookingBeingDeleted"
                 @close="bookingBeingDeleted = null" />
         </template>
     </jet-action-section>
@@ -47,7 +47,7 @@ export default {
         DeleteBookingModal
     },
 
-    props: ['booking'],
+    props: ['data'],
 
     data() {
         return {

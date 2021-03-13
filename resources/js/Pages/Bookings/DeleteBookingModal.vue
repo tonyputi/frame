@@ -1,11 +1,11 @@
 <template>
-    <jet-confirmation-modal v-if="booking" :show="booking" @close="closeModal">
+    <jet-confirmation-modal :show="attributes" @close="closeModal">
         <template #title>
-            Delete Booking {{ booking.id }}
+            Delete Booking {{ attributes?.id }}
         </template>
 
         <template #content>
-            Are you sure you want to delete {{ booking.id }}? Once booking is deleted, all of its resources and data will be permanently deleted.
+            Are you sure you want to delete {{ attributes?.id }}? Once booking is deleted, all of its resources and data will be permanently deleted.
         </template>
 
         <template #footer>
@@ -35,7 +35,7 @@ export default {
         JetDangerButton
     },
 
-    props: ['booking'],
+    props: ['attributes', 'permissions'],
     emits: ['close'],
 
     data() {
@@ -51,7 +51,7 @@ export default {
         },
 
         deleteBooking() {
-            this.form.delete(route('bookings.destroy', [this.booking.id]), {
+            this.form.delete(route('bookings.destroy', [this.attributes.id]), {
                 preserveScroll: true,
                 onSuccess: () => this.closeModal(),
                 // onError: () => this.$refs.name.focus(),

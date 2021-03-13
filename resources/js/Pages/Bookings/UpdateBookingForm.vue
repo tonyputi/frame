@@ -13,7 +13,7 @@
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="started_at" value="Started at" />
                 <jet-input id="started_at" type="text" class="mt-1 block w-full" 
-                    v-model="form.started_at" :disabled="!permissions.canUpdateBooking" />
+                    v-model="form.started_at" :disabled="!permissions.canUpdate" />
                 <jet-input-error :message="form.errors.started_at" class="mt-2" />
             </div>
 
@@ -21,7 +21,7 @@
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="ended_at" value="Ended at" />
                 <jet-input id="ended_at" type="text" class="mt-1 block w-full" 
-                    v-model="form.ended_at" :disabled="!permissions.canUpdateBooking" />
+                    v-model="form.ended_at" :disabled="!permissions.canUpdate" />
                 <jet-input-error :message="form.errors.ended_at" class="mt-2" />
             </div>
 
@@ -29,12 +29,12 @@
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="notes" value="Notes" />
                 <jet-textarea id="notes" class="mt-1 block w-full" 
-                    v-model="form.notes" :disabled="!permissions.canUpdateBooking" />
+                    v-model="form.notes" :disabled="!permissions.canUpdate" />
                 <jet-input-error :message="form.errors.notes" class="mt-2" />
             </div>
         </template>
 
-        <template #actions v-if="permissions.canUpdateBooking">
+        <template #actions v-if="permissions.canUpdate">
             <jet-action-message :on="form.recentlySuccessful" class="mr-3">
                 Saved.
             </jet-action-message>
@@ -71,22 +71,30 @@
         },
 
         props: {
-            booking: {
+            attributes: {
                 type: Object,
                 default: {}
             },
             permissions: {
-                type: Object
+                type: Object,
+                default: {}
             }
         },
 
         data() {
             return {
                 form: this.$inertia.form({
-                    started_at: this.booking.started_at,
-                    ended_at: this.booking.ended_at,
-                    notes: this.booking.notes
+                    started_at: this.attributes.started_at,
+                    ended_at: this.attributes.ended_at,
+                    notes: this.attributes.notes
                 }),
+            }
+        },
+
+        computed: {
+            // TODO: this can be mixed
+            canUpdateOrCreate() {
+                return this.permissions.canUpdate || this.permissions.canCreate
             }
         },
 
@@ -98,12 +106,12 @@
 
                 if(this.gameProvider.id) {
                     this.form.put(route('booking.update', [this.gameProvider.id]), {
-                        errorBag: 'updateGameProvider',
+                        errorBag: 'updateBooking',
                         preserveScroll: true
                     });
                 } else {
                     this.form.post(route('booking.store'), {
-                        errorBag: 'createGameProvider',
+                        errorBag: 'createBooking',
                         preserveScroll: true
                     });
                 }

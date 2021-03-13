@@ -17,9 +17,9 @@ class JetstreamResource extends JsonResource
         return [
             'attributes' => parent::toArray($request),
             'permissions' => [
-                'canView' => true,
-                'canUpdate' => true,
-                'canDelete' => true,
+                'canView' => $request->user()->can('view', $this->resource),
+                'canUpdate' => $request->user()->can('update', $this->resource),
+                'canDelete' => $request->user()->can('delete', $this->resource),
             ]
         ];
     }

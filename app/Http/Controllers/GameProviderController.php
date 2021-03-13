@@ -7,10 +7,20 @@ use App\Models\GameProvider;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Resources\JetstreamResource;
-use App\Http\Resources\GameProviderResource;
 
 class GameProviderController extends Controller
 {
+
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(GameProvider::class, 'game_provider');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,13 +59,6 @@ class GameProviderController extends Controller
             ->getData(true);
 
         return Inertia::render('GameProviders/Show', $props);
-
-        // return Inertia::render('GameProviders/Show', [
-        //     'gameProvider' => new GameProviderResource(new GameProvider),
-        //     'permissions' => [
-        //         'canDeleteGameProvider' => false,
-        //     ]
-        // ]);
     }
 
     /**
@@ -67,8 +70,8 @@ class GameProviderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'unique:game_providers'],
-            'location_modifier' => ['required'],
+            'name' => ['required', 'unique:locations'],
+            'location_modifier' => ['nullable', 'in:=,~,~*,^~'],
             'location_match' => ['required'],
         ]);
 

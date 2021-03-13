@@ -1,8 +1,8 @@
 <template>
     <!-- Boook Game Provider Modal -->
-    <jet-dialog-modal :show="gameProvider" @close="closeModal">
+    <jet-dialog-modal :show="attributes" @close="closeModal">
         <template #title>
-            Book {{ gameProvider?.name }}
+            Book {{ attributes?.name }}
         </template>
 
         <template #content>
@@ -72,15 +72,13 @@
             JetButton,
         },
 
-        props: ['gameProvider'],
+        props: ['attributes', 'permissions'],
         emits: ['close'],
 
         data() {
             return {
                 step: 5 * 60,
                 form: this.$inertia.form({
-                    application_id: 1,
-                    environment_id: 1,
                     started_at: this.nextFifthMinute(),
                     ended_at: this.nextFifthMinute().add(15, 'minutes'),
                     notes: null
@@ -127,7 +125,7 @@
                 // need to remove one second to match ie 14:04:59
                 this.form.ended_at = moment(this.form.ended_at).subtract(1, 'second')
 
-                this.form.post(route('game-providers.bookings.store', [this.gameProvider.id]), {
+                this.form.post(route('game-providers.bookings.store', [this.attributes.id]), {
                     preserveScroll: true,
                     onSuccess: () => this.closeModal(),
                     onError: () => this.$refs.date.focus(),

@@ -14,14 +14,14 @@
             </div>
 
             <div class="mt-5">
-                <jet-danger-button @click.native="gameProviderBeingDeleted=gameProvider">
+                <jet-danger-button @click="gameProviderBeingDeleted=data">
                     Delete Game Provider
                 </jet-danger-button>
             </div>
 
             <!-- Delete Game Provider Confirmation Modal -->
             <delete-game-provider-modal
-                :gameProvider="gameProviderBeingDeleted"
+                v-bind="gameProviderBeingDeleted"
                 @close="gameProviderBeingDeleted = null" />
         </template>
     </jet-action-section>
@@ -47,7 +47,7 @@ export default {
         DeleteGameProviderModal
     },
 
-    props: ['gameProvider'],
+    props: ['data'],
 
     data() {
         return {
