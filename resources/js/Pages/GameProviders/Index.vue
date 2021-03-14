@@ -16,6 +16,8 @@
                     </jet-link-button>
                 </div>
 
+                <timeline />
+
                 <div v-if="meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <jet-table class="text-sm">
                         <template #header>
@@ -34,16 +36,16 @@
                             </tr>
                         </template>
 
-                        <template #body>
+                        <!-- <template #body>
                             <template v-for="resource in data" :key="resource.attributes.id">
                                 <game-provider-table-row :resource="resource"
                                     :selected="gameProvidersSelected"
                                     @book="gameProviderBeingBooked = $event"
                                     @delete="gameProviderBeingDeleted = $event" />
                             </template>
-                        </template>
+                        </template> -->
 
-                        <!-- <template #body>
+                        <template #body>
                             <tr v-for="resource in data" :key="resource.attributes.id" class="border border-black-600">
                                 
                                 <td class="px-2 py-4 text-center">
@@ -51,25 +53,23 @@
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.id }}</td>
                                 <td class="px-2 py-4 text-left">
-                                    <img class="h-8 w-8 rounded-full object-cover" :src="resource.attributes.logo_url" :alt="resource.attributes.name" />
+                                    <span v-if="resource.attributes?.current_booking?.is_active" class="bg-red-600 inline-block w-3 h-3 mr-2 rounded-full" />
+                                    <span v-else class="bg-green-600 inline-block w-3 h-3 mr-2 rounded-full" />
                                 </td>
                                 <td class="px-2 py-4 text-left">
-                                    <svg v-if="resource.attributes.current_booking?.is_active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                                        <path fill-rule="evenodd" d="M5.05 3.636a1 1 0 010 1.414 7 7 0 000 9.9 1 1 0 11-1.414 1.414 9 9 0 010-12.728 1 1 0 011.414 0zm9.9 0a1 1 0 011.414 0 9 9 0 010 12.728 1 1 0 11-1.414-1.414 7 7 0 000-9.9 1 1 0 010-1.414zM7.879 6.464a1 1 0 010 1.414 3 3 0 000 4.243 1 1 0 11-1.415 1.414 5 5 0 010-7.07 1 1 0 011.415 0zm4.242 0a1 1 0 011.415 0 5 5 0 010 7.072 1 1 0 01-1.415-1.415 3 3 0 000-4.242 1 1 0 010-1.415zM10 9a1 1 0 011 1v.01a1 1 0 11-2 0V10a1 1 0 011-1z" clip-rule="evenodd" />
-                                    </svg>
-                                    <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                                        <path d="M3.707 2.293a1 1 0 00-1.414 1.414l6.921 6.922c.05.062.105.118.168.167l6.91 6.911a1 1 0 001.415-1.414l-.675-.675a9.001 9.001 0 00-.668-11.982A1 1 0 1014.95 5.05a7.002 7.002 0 01.657 9.143l-1.435-1.435a5.002 5.002 0 00-.636-6.294A1 1 0 0012.12 7.88c.924.923 1.12 2.3.587 3.415l-1.992-1.992a.922.922 0 00-.018-.018l-6.99-6.991zM3.238 8.187a1 1 0 00-1.933-.516c-.8 3-.025 6.336 2.331 8.693a1 1 0 001.414-1.415 6.997 6.997 0 01-1.812-6.762zM7.4 11.5a1 1 0 10-1.73 1c.214.371.48.72.795 1.035a1 1 0 001.414-1.414c-.191-.191-.35-.4-.478-.622z" />
-                                    </svg>
+                                    <img class="h-8 w-8 rounded-full object-cover" :src="resource.attributes.logo_url" :alt="resource.attributes.name" />
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.name }}</td>
                                 <td class="px-2 py-4 text-left">
                                     <inertia-link :href="route('game-providers.bookings.index', [resource.attributes.id])">
-                                        {{ resource.attributes.next_bookings_count }}
+                                        <span class="inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none text-white bg-gray-800 rounded-full">
+                                            {{ resource.attributes.next_bookings_count }}
+                                        </span>
                                     </inertia-link>
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.current_booking?.user?.name }}</td>
                                 <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.current_booking?.started_at) }}</td>
-                                <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.current_booking?.ended_at) }}</td>
+                                <!-- <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.current_booking?.ended_at) }}</td> -->
                                 <td class="px-2 py-4 text-center">
                                     <div class="flex">
                                         <button class="text-black-500" @click="gameProviderBeingBooked=resource">
@@ -91,7 +91,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        </template> -->
+                        </template>
                     </jet-table>
 
                     <pagination v-bind="meta" />
@@ -125,6 +125,7 @@ import AppLayout from '@/Layouts/AppLayout';
 import BookGameProviderModal from './BookGameProviderModal';
 import DeleteGameProviderModal from './DeleteGameProviderModal';
 import GameProviderTableRow from './GameProviderTableRow';
+import Timeline from './Timeline';
 import JetTable from "@/Jetstream/Table";
 import Pagination from "@/Jetstream/Pagination";
 import SearchInput from "@/Jetstream/SearchInput";
@@ -145,6 +146,7 @@ export default {
         GameProviderTableRow,
         BookGameProviderModal,
         DeleteGameProviderModal,
+        Timeline
     },
 
     props: ['data', 'meta', 'permissions'],
@@ -155,6 +157,17 @@ export default {
             gameProviderBeingDeleted: null,
             gameProvidersSelected: []
         }
+    },
+
+    mounted() {
+        const slot = 5;
+        let now = moment().endOf('minute');
+        let end = moment().endOf('day');
+
+        console.log(end.diff(now, 'minutes') / 5)
+
+        // console.log(now.format('HH:mm:ss'), end.format('HH:mm:ss'));
+
     },
 
     computed: {

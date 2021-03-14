@@ -69,6 +69,10 @@ class BookingPolicy
             return false;
         }
 
+        if($booking->is_active) {
+            return false;
+        }
+
         return true;
     }
 

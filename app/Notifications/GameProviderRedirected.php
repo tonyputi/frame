@@ -13,14 +13,16 @@ class GameProviderRedirected extends Notification
 {
     use Queueable;
 
+    private $booking;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($booking)
     {
-        //
+        $this->booking = $booking;
     }
 
     /**
@@ -43,8 +45,9 @@ class GameProviderRedirected extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
+            ->line("Hi, with this email we want to inform you that {$this->booking->gameProvider->name} is now redirected to {$this->booking->user->name}")
+            // ->line('The introduction to the notification.')
+            // ->action('Notification Action', url('/'))
             ->line('Thank you for using our application!');
     }
 
@@ -69,8 +72,8 @@ class GameProviderRedirected extends Notification
     public function toBroadcast($notifiable)
     {
         return new BroadcastMessage([
-            'location_id' => $this->gameProvider->id,
-            'user' => $this->user->id,
+            'location_id' => $this->booking->location_id,
+            'user' => $this->booking->user_id,
         ]);
     }
 

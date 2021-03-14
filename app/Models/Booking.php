@@ -22,7 +22,10 @@ class Booking extends Model
      * @var array
      */
     protected $casts = [
-        'is_active' => 'boolean'
+        'is_active' => 'boolean',
+        'started_at' => 'datetime',
+        'ended_at' => 'datetime',
+        'applied_at' => 'datetime'
     ];
 
     /**
@@ -128,5 +131,10 @@ class Booking extends Model
         $query->orWhereHas('gameProvider', fn($query) => $query->where('name', 'like', "%{$value}%"));
 
         return $query;
+    }
+
+    public function getIsActiveAttribute()
+    {
+        return $this->started_at->isPast() and $this->ended_at->isFuture();
     }
 }

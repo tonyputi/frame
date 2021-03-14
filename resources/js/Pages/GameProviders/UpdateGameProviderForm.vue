@@ -77,7 +77,10 @@
             <!-- Location Block -->
             <div class="col-span-6 sm:col-span-6 w-full">
                 <jet-label for="location_block" value="Location Block" />
-                <jet-code id="location_block" class="mt-1 block w-full" rows="5" 
+                <!-- <pre class="bg-gray-800 text-white px-2 py-2">
+                    <code>{{ form.location_block }}</code>
+                </pre> -->
+                <jet-code id="location_block"
                     v-model="form.location_block" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.location_block" class="mt-2" />
             </div>

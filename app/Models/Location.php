@@ -90,10 +90,10 @@ class Location extends Model
      * @param string $value
      * @return string
      */
-    public function setLocationBlockAttribute($value)
-    {
-        $this->attributes['location_block'] = $value ?? $this->defaultLocationBlock();
-    }
+    // public function setLocationBlockAttribute($value)
+    // {
+    //     $this->attributes['location_block'] = $value ?? $this->defaultLocationBlock();
+    // }
 
     /**
      * Get the nginx configuration

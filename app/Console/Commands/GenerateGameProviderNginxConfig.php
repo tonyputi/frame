@@ -5,10 +5,11 @@ namespace App\Console\Commands;
 use App\Models\Booking;
 use Illuminate\Support\Str;
 use App\Models\GameProvider;
-use App\Notifications\GameProviderRedirected;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\GameProviderRedirected;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class GenerateGameProviderNginxConfig extends Command
@@ -50,10 +51,10 @@ class GenerateGameProviderNginxConfig extends Command
         $filepath = "{$directory}/game-providers.conf";
 
         // checking if there are booking not yet processed/applied
-        if(!Booking::current()->active(false)->exists()) {
-            $this->info('Nothing to do');
-            return 0;
-        }
+        // if(!Booking::current()->active(false)->exists()) {
+        //     $this->info('Nothing to do');
+        //     return 0;
+        // }
 
         $storage = Storage::disk('local');
         // create directory storage/app/nginx is does not exists
@@ -61,7 +62,7 @@ class GenerateGameProviderNginxConfig extends Command
         // put header on nginx config
         $storage->put($filepath, "{$header}\r\n");
 
-        GameProvider::with('currentBooking.user')->each(function($gameProvider) use($storage, $filepath) {
+        $collection = GameProvider::with('currentBooking.user')->each(function($gameProvider) use($storage, $filepath) {
             if($gameProvider->nginxConfig) {
                 $storage->append($filepath, $gameProvider->nginxConfig);    
             }
@@ -88,6 +89,7 @@ class GenerateGameProviderNginxConfig extends Command
         // ]);
 
         // send slack notification
+        $this->notifyChannel();
         return 0;
     }
 
@@ -129,6 +131,12 @@ class GenerateGameProviderNginxConfig extends Command
      */
     protected function notifyChannel()
     {
+        $resource = GameProvider::first();
+
+        // Notification::route('broadcast', 'something')
+        //     ->route('mail', 'filippo.sallemi@videoslots.com')
+        //     ->notify(new GameProviderRedirected($resource));
+
         // Notification::route('slack', 'https://hooks.slack.com/services/...')
         //     ->notify(new GameProviderRedirected($invoice));
     }

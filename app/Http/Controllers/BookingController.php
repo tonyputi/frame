@@ -31,6 +31,7 @@ class BookingController extends Controller
     public function index(Request $request)
     {
         $collection = Booking::with(['user', 'gameProvider', 'environment', 'application'])
+            ->when($request->game_provider, fn($query) => $query->where('location_id', $request->game_provider))
             ->when($request->input('search'), fn($query) => $query->filter($request->search))
             ->available()
             ->orderBy('started_at', 'asc')

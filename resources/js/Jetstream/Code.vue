@@ -39,9 +39,7 @@
                 this.$emit('update:modelValue', cm.getValue())
             })
 
-            if(this.modelValue) {
-                this.doc.setValue(this.modelValue)
-            }
+            this.doc.setValue(this.modelValue)
 
             this.codemirror.setSize('100%', 250)
         },
