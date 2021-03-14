@@ -76,3 +76,4 @@ npm run watch
 - create time calendar select component (hard)
 - add dashboard with queue provider lists
 - install opensource implementation of pusher/broadcast
+- add socialiate to proper register players through office365

@@ -45,7 +45,10 @@
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.game_provider.name }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.environment?.name }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.application?.name }}</td>
-                                <td class="px-2 py-4 text-left">{{ resource.attributes.is_active }}</td>
+                                <td class="px-2 py-4 text-left">
+                                    <span v-if="resource.attributes.is_active" class="bg-red-600 inline-block w-3 h-3 mr-2 rounded-full" />
+                                    <span v-else class="bg-green-600 inline-block w-3 h-3 mr-2 rounded-full" />
+                                </td>
                                 <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.started_at) }}</td>
                                 <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.ended_at) }}</td>
                                 <td class="px-2 py-4 text-center">

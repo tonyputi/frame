@@ -24,8 +24,8 @@
                                     <jet-checkbox v-model:checked="selectAll" />
                                 </th>
                                 <th class="px-2 py-4 text-left">ID</th>
-                                <th class="px-2 py-4 text-left">Logo</th>
                                 <th class="px-2 py-4 text-left">Status</th>
+                                <th class="px-2 py-4 text-left">Logo</th>
                                 <th class="px-2 py-4 text-left">Name</th>
                                 <th class="px-2 py-4 text-left">Bookings</th>
                                 <th class="px-2 py-4 text-left">Booked By</th>
