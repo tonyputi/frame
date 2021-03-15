@@ -10,5 +10,9 @@ server {
 
     charset utf-8;
 
-    include {{ app_path }}/game-providers.conf;
+    location / {
+        return 404 'Not found';
+    }
+
+    include {{ app_path }}/locations.conf;
 }

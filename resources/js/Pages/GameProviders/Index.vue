@@ -16,7 +16,7 @@
                     </jet-link-button>
                 </div>
 
-                <timeline />
+                <!-- <timeline /> -->
 
                 <div v-if="meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <jet-table class="text-sm">

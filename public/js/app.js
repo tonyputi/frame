@@ -24737,8 +24737,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_jet_link_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-link-button");
 
-  var _component_timeline = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("timeline");
-
   var _component_jet_checkbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-checkbox");
 
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -24774,7 +24772,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_timeline), $props.meta.total > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_table, {
+      , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <timeline /> "), $props.meta.total > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_table, {
         "class": "text-sm"
       }, {
         header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -24971,28 +24969,27 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "flex flex-row mb-2"
 };
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex flex-row\"><div class=\"flex-auto bg-gray-800 w-px\">1</div><div class=\"flex-auto bg-gray-800 w-px\"></div><div class=\"flex-auto bg-gray-800 w-px\"></div><div class=\"flex-auto bg-gray-800 w-px\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-100\"></div><div class=\"flex-auto bg-gray-100\"></div><div class=\"flex-auto bg-gray-100\"></div><div class=\"flex-auto bg-gray-100\"></div><div class=\"flex-auto bg-gray-100\"></div><div class=\"flex-auto bg-gray-100\"></div><div class=\"flex-auto bg-gray-100\"></div><div class=\"flex-auto bg-gray-100\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div><div class=\"flex-auto bg-gray-800\"></div></div>", 1);
+
 function render(_ctx, _cache) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(24, function (i) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(24, function (i) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
       key: i,
-      "class": "inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none border border-gray-600"
+      "class": "flex-auto text-center border border-gray-600 px-3 py-3 text-xs font-bold leading-none"
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(String(i - 1).padStart(2, '0')), 1
     /* TEXT */
     );
   }), 64
   /* STABLE_FRAGMENT */
   ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(24, function (i) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
       key: i,
-      "class": "inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none border border-gray-600 text-white bg-gray-800"
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(String(i - 1).padStart(2, '0')), 1
-    /* TEXT */
-    );
+      "class": "flex-auto text-center py-3 px-2 border border-gray-600 text-xs font-bold leading-none text-white"
+    }, [_hoisted_3]);
   }), 64
   /* STABLE_FRAGMENT */
-  ))])], 64
-  /* STABLE_FRAGMENT */
-  );
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"flex flex-row mt-2\">\n            <template v-for=\"i in 24\" :key=\"i\">\n                <span class=\"inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none border border-gray-600\">{{ String(i - 1).padStart(2, '0') }}</span>\n            </template>\n        </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"flex flex-row mb-2\">\n            <template v-for=\"i in 24\" :key=\"i\">\n                <span class=\"inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none border border-gray-600 text-white bg-gray-800\">{{ String(i - 1).padStart(2, '0') }}</span>\n            </template>\n        </div> ")]);
 }
 
 /***/ }),

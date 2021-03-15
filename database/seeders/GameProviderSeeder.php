@@ -107,7 +107,8 @@ class GameProviderSeeder extends Seeder
         GameProvider::create([
             'name' => 'Play\'N Go',
             'location_modifier' => '^~',
-            'location_match' => '/diamondbet/soap/playngo.php'
+            'location_match' => '/diamondbet/soap/playngo.php',
+            'default_host' => 'stage-it.videoslots.com'
         ]);
 
         GameProvider::create([

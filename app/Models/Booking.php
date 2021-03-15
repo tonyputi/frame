@@ -23,9 +23,9 @@ class Booking extends Model
      */
     protected $casts = [
         'is_active' => 'boolean',
-        'started_at' => 'datetime',
-        'ended_at' => 'datetime',
-        'applied_at' => 'datetime'
+        // 'started_at' => 'datetime',
+        // 'ended_at' => 'datetime',
+        // 'applied_at' => 'datetime'
     ];
 
     /**
