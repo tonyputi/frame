@@ -159,17 +159,6 @@ export default {
         }
     },
 
-    mounted() {
-        const slot = 5;
-        let now = moment().endOf('minute');
-        let end = moment().endOf('day');
-
-        console.log(end.diff(now, 'minutes') / 5)
-
-        // console.log(now.format('HH:mm:ss'), end.format('HH:mm:ss'));
-
-    },
-
     computed: {
         selectAll: {
             get() {

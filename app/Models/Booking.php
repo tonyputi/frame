@@ -23,9 +23,9 @@ class Booking extends Model
      */
     protected $casts = [
         'is_active' => 'boolean',
-        // 'started_at' => 'datetime',
-        // 'ended_at' => 'datetime',
-        // 'applied_at' => 'datetime'
+        'started_at' => 'datetime',
+        'ended_at' => 'datetime',
+        'applied_at' => 'timestamp'
     ];
 
     /**
@@ -76,7 +76,7 @@ class Booking extends Model
      */
     public function scopeCurrent($query)
     {
-        return $query->whereRaw("? BETWEEN started_at AND ended_at", [$this->freshTimestamp()->toIso8601String()]);
+        return $query->whereRaw("? BETWEEN started_at AND ended_at", [$this->freshTimestamp()]);
     }
 
     /**
@@ -87,7 +87,7 @@ class Booking extends Model
      */
     public function scopeAvailable($query)
     {
-        return $query->where('ended_at', '>=', $this->freshTimestamp()->toIso8601String());
+        return $query->where('ended_at', '>=', $this->freshTimestamp());
     }
 
     /**
@@ -98,7 +98,7 @@ class Booking extends Model
      */
     public function scopeExpired($query)
     {
-        return $query->where('ended_at', '<', $this->freshTimestamp()->toIso8601String());
+        return $query->where('ended_at', '<', $this->freshTimestamp());
     }
 
     /**

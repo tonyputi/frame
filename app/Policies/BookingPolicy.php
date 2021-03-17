@@ -53,6 +53,10 @@ class BookingPolicy
      */
     public function update(User $user, Booking $booking)
     {
+        if($user->id != $booking->user_id) {
+            return false;
+        }
+        
         return true;
     }
 
@@ -65,6 +69,10 @@ class BookingPolicy
      */
     public function delete(User $user, Booking $booking)
     {
+        if($user->id != $booking->user_id) {
+            return false;
+        }
+
         if(!$booking->exists) {
             return false;
         }
