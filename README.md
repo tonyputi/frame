@@ -68,12 +68,17 @@ npm run watch
 
 ## TODO
 
-- create a preview of nginx configuration
-- autorefresh both game providers and booking index
-- improve pagination with ...
+### PHASE 1
+- autorefresh both game providers and booking index with setTimeout
 - review command name
+- add dashboard with bookings organized by provider
+
+### PHASE 2
+- create a preview of nginx configuration
+- improve pagination with ...
 - add videoslots style
 - create time calendar select component (hard)
-- add dashboard with queue provider lists
+- add dashboard with queue provider lists calendar version
 - install opensource implementation of pusher/broadcast
+- autorefresh both game providers and booking index through websockets
 - add socialiate to proper register players through office365
