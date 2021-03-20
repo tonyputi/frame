@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\GameProviderController;
@@ -18,6 +19,10 @@ use App\Http\Controllers\GameProviderController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::group(['domain' => config('frame.domain'), 'prefix' => config('frame.prefix')], function () {
+//     Route::any('/{any?}', LocationController::class)->where('any', '.*');
+// });
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -35,4 +40,3 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::resource('game-providers', GameProviderController::class);
     Route::resource('game-providers.bookings', BookingController::class)->shallow();
 });
-

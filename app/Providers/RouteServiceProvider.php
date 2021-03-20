@@ -2,11 +2,15 @@
 
 namespace App\Providers;
 
-use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Models\Location;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Database\QueryException;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
+use App\Http\Controllers\LocationController;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -46,6 +50,8 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
+            $this->configureLocations();
         });
     }
 
@@ -59,5 +65,28 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
+    }
+
+    /**
+     * Generate dynamic locations as routes
+     *
+     * @return void
+     */
+    protected function configureLocations()
+    {
+        try {
+            Route::middleware('proxy')
+                ->namespace($this->namespace)
+                ->domain(config('frame.domain'))
+                ->prefix(config('frame.prefix'))
+                ->group(function() {
+                    Location::with('currentBooking.user')->each(
+                        fn($location) => Route::any($location->location_match, LocationController::class)->name(Str::kebab($location->name))
+                    );
+                });
+        } catch(QueryException $e) {
+            report($e);
+        }
+        
     }
 }

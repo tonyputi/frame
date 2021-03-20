@@ -79,21 +79,29 @@ class Location extends Model
      * @param string $value
      * @return string
      */
-    public function getLocationBlockAttribute($value)
+    public function getHostAttribute()
     {
-        return $value ?? $this->defaultLocationBlock();
+        if($this->currentBooking()->exists())
+        {
+            return $this->currentBooking->user->host;
+        }
+
+        if($this->default_host)
+        {
+            return $this->default_host;
+        }
     }
 
     /**
-     * set location block value
+     * return location block value always
      *
      * @param string $value
      * @return string
      */
-    // public function setLocationBlockAttribute($value)
-    // {
-    //     $this->attributes['location_block'] = $value ?? $this->defaultLocationBlock();
-    // }
+    public function getLocationBlockAttribute($value)
+    {
+        return $value ?? $this->defaultLocationBlock();
+    }
 
     /**
      * Get the nginx configuration
@@ -105,19 +113,9 @@ class Location extends Model
     {
         $keys = ['{{ modifier }}', '{{ match }}', '{{ slot }}', '{{ host }}'];
 
-        if($this->currentBooking()->exists())
-        {
-            $values = [$this->location_modifier, $this->location_match, $this->location_block, $this->currentBooking->user->host];
+        $values = [$this->location_modifier, $this->location_match, $this->location_block, $this->host];
 
-            return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
-        }
-
-        if($this->default_host)
-        {
-            $values = [$this->location_modifier, $this->location_match, $this->location_block, $this->default_host];
-
-            return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
-        }
+        return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
     }
 
     /**
