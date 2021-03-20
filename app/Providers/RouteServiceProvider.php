@@ -75,12 +75,13 @@ class RouteServiceProvider extends ServiceProvider
     protected function configureLocations()
     {
         try {
-            Route::middleware('proxy')
-                ->namespace($this->namespace)
+            Route::namespace($this->namespace)
+                ->middleware(config('frame.middleware'))
                 ->domain(config('frame.domain'))
                 ->prefix(config('frame.prefix'))
                 ->group(function() {
                     Location::with('currentBooking.user')->each(function($location) {
+                        // $location->routable or $location->configurable
                         if($location->host) {
                             Route::any($location->location_match, LocationController::class)
                                 ->name(Str::slug($location->name));
@@ -88,6 +89,7 @@ class RouteServiceProvider extends ServiceProvider
                     });
                 });
         } catch(QueryException $e) {
+            // we need to inform application that setup is not completed
             report($e);
         }
         

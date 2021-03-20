@@ -3,10 +3,11 @@
 namespace App;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Arr;
 use GuzzleHttp\HandlerStack;
+use Illuminate\Http\Request;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\Psr7\Request as ProxyRequest;
-use Illuminate\Http\Request;
 
 class ProxyPass
 {
@@ -28,12 +29,18 @@ class ProxyPass
 
     public function __construct(Request $request, $url)
     {
-        $this->withHeaders(array_merge([
-            'X-Real-IP' => $request->ip(),
-            'X-Forwarded-For' => $request->ip(),
-            // 'X-Forwarded-Host' => $request->getHost(),
-            // 'X-Forwarded-Proto' => $request->getScheme(),
-        ], $request->header()));
+        logger('request', [
+            'route' => $request->route()->uri(),
+            'headers' => $request->header(),
+            'query' => $request->query(),
+            'content' => $request->getContent()
+        ]);
+
+        $this->headers = Arr::except($request->header(), ['host']);
+        $this->headers['x-real-ip'] = $request->ip();
+        $this->headers['x-forwarded-for'] = [implode(', ', array_merge(explode(', ', $request->header('x-forwarded-for')), [$request->ip()]))];
+        $this->headers['x-forwarded-host'] = $request->getHost();
+        $this->headers['x-forwarded-proto'] = $request->getScheme();
 
         $this->withUrl($url);
         $this->withMethod($request->method());

@@ -93,6 +93,17 @@ class Location extends Model
     }
 
     /**
+     * set the location match value
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setLocationMatchAttribute($value)
+    {
+        $this->attributes['location_match'] = trim($value, '/');
+    }
+
+    /**
      * return location block value always
      *
      * @param string $value
