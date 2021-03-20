@@ -80,9 +80,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->domain(config('frame.domain'))
                 ->prefix(config('frame.prefix'))
                 ->group(function() {
-                    Location::with('currentBooking.user')->each(
-                        fn($location) => Route::any($location->location_match, LocationController::class)->name(Str::kebab($location->name))
-                    );
+                    Location::with('currentBooking.user')->each(function($location) {
+                        if($location->host) {
+                            Route::any($location->location_match, LocationController::class)
+                                ->name(Str::slug($location->name));
+                        }
+                    });
                 });
         } catch(QueryException $e) {
             report($e);

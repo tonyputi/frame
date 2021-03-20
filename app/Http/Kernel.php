@@ -46,7 +46,7 @@ class Kernel extends HttpKernel
         ],
 
         'proxy' => [
-            
+            'throttle:api',
         ]
     ];
 

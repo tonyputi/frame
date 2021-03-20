@@ -28,12 +28,12 @@ class ProxyPass
 
     public function __construct(Request $request, $url)
     {
-        $this->withHeaders([
+        $this->withHeaders(array_merge([
             'X-Real-IP' => $request->ip(),
             'X-Forwarded-For' => $request->ip(),
             // 'X-Forwarded-Host' => $request->getHost(),
             // 'X-Forwarded-Proto' => $request->getScheme(),
-        ]);
+        ], $request->header()));
 
         $this->withUrl($url);
         $this->withMethod($request->method());
@@ -76,17 +76,27 @@ class ProxyPass
         $handler = new CurlHandler();
         $stack = HandlerStack::create($handler);
 
-        return new Client(array_merge(static::default_config, [
-            'handler' => $stack
-        ], $config));
+        return new Client(array_merge(static::default_config, ['handler' => $stack], $config));
     }
 
     public function send()
-    {
-        
+    {       
         $request = new ProxyRequest($this->method, $this->url, $this->headers, $this->content);
         $response = $this->client()->send($request);
+
+        $responseBody = $response->getBody();
+        $responseHeaders = $this->sanitizeHeaders($response->getHeaders(), ['connection', 'transfer-encoding']);
         
-        return $response->getBody();
+        return response($responseBody)->withHeaders($responseHeaders);
+    }
+
+    protected function sanitizeHeaders($headers, $ignores = [])
+    {
+        $headers = array_filter($headers, fn($key) => !in_array(strtolower($key), $ignores), ARRAY_FILTER_USE_KEY);
+        
+        array_walk($headers, fn(&$value) => $value = is_array($value) ? implode(', ', $value) : $value);
+        // $headers = array_map(fn($key, $value) => [$key => $value], array_keys($headers), $headers);
+
+        return $headers;
     }
 }
