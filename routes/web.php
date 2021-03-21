@@ -4,9 +4,6 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\ApplicationController;
-use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\GameProviderController;
 
 /*
@@ -20,10 +17,6 @@ use App\Http\Controllers\GameProviderController;
 |
 */
 
-// Route::group(['domain' => config('frame.domain'), 'prefix' => config('frame.prefix')], function () {
-//     Route::any('/{any?}', LocationController::class)->where('any', '.*');
-// });
-
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -35,8 +28,6 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
-    Route::resource('environments', EnvironmentController::class);
-    Route::resource('applications', ApplicationController::class);
     Route::resource('game-providers', GameProviderController::class);
     Route::resource('game-providers.bookings', BookingController::class)->shallow();
     Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
