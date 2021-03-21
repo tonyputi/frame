@@ -79,21 +79,23 @@ class BookingController extends Controller
                 'required',
                 'date',
                 'before:ended_at',
-                new AvailableTime('bookings', $gameProvider->id)
+                new AvailableTime('bookings', ['location_id' => $gameProvider->id])
             ],
             'ended_at' => [
                 'required',
                 'date',
                 'after:started_at',
-                new AvailableTime('bookings', $gameProvider->id)
+                new AvailableTime('bookings', ['location_id' => $gameProvider->id])
             ]
         ]);
 
         $booking = new Booking($request->input());
         $booking->location_id = $gameProvider->id;
+        $booking->performed_by = $request->user()->id;
         $booking->user_id = $request->user()->id;
         $booking->save();
 
+        // this should be on some event listener
         $request->user()->notify(new BookingCreated($booking));
 
         return back(303)->banner("Game Provider: {$gameProvider->name} booked!");

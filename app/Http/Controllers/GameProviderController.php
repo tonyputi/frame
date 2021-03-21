@@ -38,9 +38,11 @@ class GameProviderController extends Controller
         // TODO: this is a workaround. inertia should already provide
         // a way to convert JsonResponse to proper array
         $props = JetstreamResource::collection($collection)
-            ->additional(['permissions' => [
-                'canCreate' => true
-            ]])
+            ->additional([
+                'permissions' => [
+                    'canCreate' => $request->user()->can('create', GameProvider::class)
+                ]
+            ])
             ->toResponse($request)
             ->getData(true);
 

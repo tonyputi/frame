@@ -11,7 +11,7 @@
                 <div class="flex my-4">
                     <search-input @input="filter" placeholder="Search for game provider or user" />
 
-                    <jet-link-button :href="route('game-providers.bookings.create', [gameProviderId])">
+                    <jet-link-button class="ml-4" :href="route('game-providers.bookings.create', [gameProviderId])">
                         Create
                     </jet-link-button>
                 </div>
@@ -26,8 +26,6 @@
                                 <th class="px-2 py-4 text-left">ID</th>
                                 <th class="px-2 py-4 text-left">User</th>
                                 <th class="px-2 py-4 text-left">Game Provider</th>
-                                <th class="px-2 py-4 text-left">Envirnoment</th>
-                                <th class="px-2 py-4 text-left">Application</th>
                                 <th class="px-2 py-4 text-left">Is Active</th>
                                 <th class="px-2 py-4 text-left">Started At</th>
                                 <th class="px-2 py-4 text-left">Ended At</th>
@@ -43,19 +41,17 @@
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.id }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.user.name }}</td>
                                 <td class="px-2 py-4 text-left">
-                                    <inertia-link class="text-black-500 ml-4" :href="route('game-providers.show', resource.attributes.game_provider.id)">
+                                    <inertia-link class="text-black-500" :href="route('game-providers.show', resource.attributes.game_provider.id)">
                                         {{ resource.attributes.game_provider.name }}
                                     </inertia-link>
                                 </td>
-                                <td class="px-2 py-4 text-left">{{ resource.attributes.environment?.name }}</td>
-                                <td class="px-2 py-4 text-left">{{ resource.attributes.application?.name }}</td>
                                 <td class="px-2 py-4 text-left">
                                     <span v-if="resource.attributes.is_active" class="bg-red-600 inline-block w-3 h-3 mr-2 rounded-full" />
                                     <span v-else class="bg-green-600 inline-block w-3 h-3 mr-2 rounded-full" />
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.started_at) }}</td>
                                 <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.ended_at) }}</td>
-                                <td class="px-2 py-4 text-center">
+                                <td class="px-2 py-4">
                                     <div class="flex flex-row">
                                         <div class="flex-1 ml-2">
                                             <button class="text-red-500" v-if="resource.permissions.canUpdate" @click="bookingBeingReleased=resource">
@@ -65,7 +61,7 @@
                                             </button>
                                         </div>
                                         <div class="flex-1 ml-2">
-                                            <inertia-link class="text-black-500" :href="route('bookings.show', resource.attributes.id)">
+                                            <inertia-link class="text-black-500 p-0"  v-if="resource.permissions.canView" :href="route('bookings.show', resource.attributes.id)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                                                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                                                     <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />

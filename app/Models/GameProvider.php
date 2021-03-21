@@ -8,13 +8,6 @@ use Illuminate\Support\Facades\Storage;
 class GameProvider extends Location
 {
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'locations';
-
-    /**
      * The accessors to append to the model's array form.
      *
      * @var array

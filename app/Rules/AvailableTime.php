@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Carbon;
 
 class AvailableTime implements Rule
 {
@@ -15,7 +16,7 @@ class AvailableTime implements Rule
     public function __construct($table, $extraConditions = [])
     {
         $this->table = $table;
-        $this->extraConditions = $extraConditions;
+        $this->extraConditions = array_map(fn($v, $k) => [$k, '=', $v], $extraConditions, array_keys($extraConditions));
     }
 
     /**
@@ -27,12 +28,11 @@ class AvailableTime implements Rule
      */
     public function passes($attribute, $value)
     {
+        $value = Carbon::parse($value)->toDateTimeString();
+
         $query = DB::table($this->table);
         $query->where($this->extraConditions);
         $query->whereRaw('? BETWEEN started_at AND ended_at', [$value]);
-        // $query->whereRaw('? BETWEEN strftime("%Y-%m-%d %H:%M:00", started_at) AND strftime("%Y-%m-%d %H:%M:00", ended_at)', [$value]);
-
-        // dd($query->get());
 
         return !$query->exists();
     }

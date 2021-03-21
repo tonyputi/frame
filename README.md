@@ -69,6 +69,7 @@ npm run watch
 ## TODO
 
 ### PHASE 1
+- populate factories and use proper seeder
 - notify event for booking created, update, deleted, applied
 - job heartbeat to notify events each monites
 - add dashboard with bookings organized by provider

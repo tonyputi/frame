@@ -39,4 +39,5 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::resource('applications', ApplicationController::class);
     Route::resource('game-providers', GameProviderController::class);
     Route::resource('game-providers.bookings', BookingController::class)->shallow();
+    Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
 });

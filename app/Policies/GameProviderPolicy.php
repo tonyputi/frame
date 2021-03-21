@@ -11,6 +11,20 @@ class GameProviderPolicy
     use HandlesAuthorization;
 
     /**
+     * Perform pre-authorization checks.
+     *
+     * @param  \App\Models\User  $user
+     * @param  string  $ability
+     * @return void|bool
+    */
+    public function before(User $user, $ability)
+    {
+        if ($user->is_admin) {
+            return true;
+        }
+    }
+
+    /**
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
@@ -41,7 +55,7 @@ class GameProviderPolicy
      */
     public function create(User $user)
     {
-        return true;
+        return false;
     }
 
     /**
@@ -53,7 +67,7 @@ class GameProviderPolicy
      */
     public function update(User $user, GameProvider $gameProvider)
     {
-        return true;
+        return false;
     }
 
     /**
@@ -65,11 +79,7 @@ class GameProviderPolicy
      */
     public function delete(User $user, GameProvider $gameProvider)
     {
-        if(!$gameProvider->exists) {
-            return false;
-        }
-
-        return true;
+        return false;
     }
 
     /**

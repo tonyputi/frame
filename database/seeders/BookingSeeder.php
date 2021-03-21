@@ -17,30 +17,42 @@ class BookingSeeder extends Seeder
      */
     public function run()
     {
+        $user = User::inRandomOrder()->firstOrFail();
+
         $booking = Booking::create([
             'location_id' => Location::firstOrFail()->id,
-            'user_id' => User::inRandomOrder()->firstOrFail()->id,
+            'performed_by' => $user->id,
+            'user_id' => $user->id,
             'started_at' => Carbon::now()->startOfMinute(),
             'ended_at' => Carbon::now()->endOfHour(),
         ]);
 
+        $user = User::inRandomOrder()->firstOrFail();
+
         $booking = Booking::create([
             'location_id' => Location::firstOrFail()->id,
-            'user_id' => User::inRandomOrder()->firstOrFail()->id,
+            'performed_by' => $user->id,
+            'user_id' => $user->id,
             'started_at' => Carbon::parse($booking->ended_at)->addSecond(),
             'ended_at' => Carbon::parse($booking->ended_at)->addMinutes(15),
         ]);
 
+        $user = User::inRandomOrder()->firstOrFail();
+
         $booking = Booking::create([
             'location_id' => Location::firstOrFail()->id,
-            'user_id' => User::inRandomOrder()->firstOrFail()->id,
+            'performed_by' => $user->id,
+            'user_id' => $user->id,
             'started_at' => Carbon::parse($booking->ended_at)->addSecond(),
             'ended_at' => Carbon::parse($booking->ended_at)->addMinutes(30),
         ]);
 
+        $user = User::inRandomOrder()->firstOrFail();
+
         $booking = Booking::create([
             'location_id' => Location::firstOrFail()->id,
-            'user_id' => User::inRandomOrder()->firstOrFail()->id,
+            'performed_by' => $user->id,
+            'user_id' => $user->id,
             'started_at' => Carbon::parse($booking->ended_at)->addSecond()->addHour(),
             'ended_at' => Carbon::parse($booking->ended_at)->addHour()->addMinutes(30),
         ]);

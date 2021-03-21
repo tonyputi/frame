@@ -51,7 +51,6 @@
     import JetFormSection from '@/Jetstream/FormSection'
     import JetInput from '@/Jetstream/Input'
     import JetTextarea from '@/Jetstream/Textarea'
-    import JetCode from '@/Jetstream/Code'
     import JetInputError from '@/Jetstream/InputError'
     import JetLabel from '@/Jetstream/Label'
     import JetActionMessage from '@/Jetstream/ActionMessage'
@@ -64,7 +63,6 @@
             JetFormSection,
             JetInput,
             JetTextarea,
-            JetCode,
             JetInputError,
             JetLabel,
             JetSecondaryButton,
