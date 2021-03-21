@@ -25,6 +25,7 @@ class Booking extends Model
         'is_active' => 'boolean',
         'started_at' => 'datetime',
         'ended_at' => 'datetime',
+        'notified_at' => 'timestamp',
         'applied_at' => 'timestamp'
     ];
 
@@ -54,6 +55,8 @@ class Booking extends Model
 
     /**
      * Get the game provider that owns the game provider queue.
+     * 
+     * @deprecated
      */
     public function gameProvider()
     {
@@ -69,14 +72,22 @@ class Booking extends Model
     }
 
     /**
-     * Scope a query to only include current bookings.
+     * Scope a query to only include active bookings.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
+     * @deprecated 
      */
-    public function scopeCurrent($query)
+    public function scopeActive($query, $value = true)
     {
-        return $query->whereRaw("? BETWEEN started_at AND ended_at", [$this->freshTimestamp()]);
+        // return $query->where('is_active', $value);
+        if($value) {
+            $query->whereNotNull('applied_at');
+        } else {
+            $query->whereNull('applied_at');
+        }
+        
+        return $query;
     }
 
     /**
@@ -88,6 +99,17 @@ class Booking extends Model
     public function scopeAvailable($query)
     {
         return $query->where('ended_at', '>=', $this->freshTimestamp());
+    }
+
+    /**
+     * Scope a query to only include current bookings.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCurrent($query)
+    {
+        return $query->whereRaw("? BETWEEN started_at AND ended_at", [$this->freshTimestamp()]);
     }
 
     /**
@@ -107,24 +129,6 @@ class Booking extends Model
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeActive($query, $value = true)
-    {
-        // return $query->where('is_active', $value);
-        if($value) {
-            $query->whereNotNull('applied_at');
-        } else {
-            $query->whereNull('applied_at');
-        }
-        
-        return $query;
-    }
-
-    /**
-     * Scope a query to only include active bookings.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeFilter($query, $value)
     {
         $query->whereHas('user', fn($query) => $query->where('name', 'like', "%{$value}%"));
@@ -133,6 +137,23 @@ class Booking extends Model
         return $query;
     }
 
+    /**
+     * Scope a query to only include notified bookings.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  boolean  $notified
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeNotified($query, $notified = true)
+    {
+        $query->when($notified, fn($query) => $query->whereNotNull('notified_at'), fn($query) => $query->whereNull('notified_at'));
+    }
+
+    /**
+     * Get computed is_active attribute
+     *
+     * @return boolean
+     */
     public function getIsActiveAttribute()
     {
         return $this->started_at->isPast() and $this->ended_at->isFuture();

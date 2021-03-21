@@ -69,11 +69,13 @@ npm run watch
 ## TODO
 
 ### PHASE 1
-- autorefresh both game providers and booking index with setTimeout
-- review command name
+- notify event for booking created, update, deleted, applied
+- job heartbeat to notify events each monites
 - add dashboard with bookings organized by provider
+- autorefresh both game providers and booking index with setTimeout
 
 ### PHASE 2
+- review command name
 - create a preview of nginx configuration
 - improve pagination with ...
 - add videoslots style

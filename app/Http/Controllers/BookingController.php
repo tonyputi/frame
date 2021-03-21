@@ -7,7 +7,9 @@ use App\Models\Booking;
 use App\Models\GameProvider;
 use App\Rules\AvailableTime;
 use Illuminate\Http\Request;
+    use App\Notifications\LocationBooked;
 use App\Http\Resources\JetstreamResource;
+use App\Notifications\BookingCreated;
 
 class BookingController extends Controller
 {
@@ -91,6 +93,8 @@ class BookingController extends Controller
         $booking->location_id = $gameProvider->id;
         $booking->user_id = $request->user()->id;
         $booking->save();
+
+        $request->user()->notify(new BookingCreated($booking));
 
         return back(303)->banner("Game Provider: {$gameProvider->name} booked!");
     }
