@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\GameProvider;
+use App\Models\Location;
 use Illuminate\Database\Seeder;
 
-class GameProviderSeeder extends Seeder
+class LocationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,152 +14,152 @@ class GameProviderSeeder extends Seeder
      */
     public function run()
     {
-        GameProvider::create([
+        Location::create([
             'name' => 'Amatic',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/amatic.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Authentic',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/authentic.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Beefee',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/beefee.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'EGT',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/egt.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Endorphina',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/endorphina.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Evolution',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/evolution.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Ganapati',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/ganapati.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Genii',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/genii.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Greentube',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/greentube.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Multishot',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/multishot.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Netent IT',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/netentit.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Netent SE',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/netentse.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Nektan',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/nektan.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Nyx',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/nyx.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Oryx',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/oryx.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Play\'N Go',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/playngo.php',
             'default_host' => 'stage-it.videoslots.com'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Playtech',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/playtech.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Portomaso',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/portomaso.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Pragmatic',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/pragmatic.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Quickspin',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/quickspin.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Spigo',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/spigo.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Skywind',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/skywind.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Thunderkick',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/thunderkick.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Tomhorn',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/tomhorn.php'
         ]);
 
-        GameProvider::create([
+        Location::create([
             'name' => 'Yggdrasil',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/yggdrasil.php'
