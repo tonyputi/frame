@@ -2,24 +2,25 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Location;
 use App\Models\GameProvider;
 use Illuminate\Console\Command;
 
-class ShowGameProvidersStatus extends Command
+class LocationStatus extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'game-providers:status';
+    protected $signature = 'location:status';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Show game providers status';
+    protected $description = 'Show location status';
 
     /**
      * Create a new command instance.
@@ -38,7 +39,7 @@ class ShowGameProvidersStatus extends Command
      */
     public function handle()
     {
-        $collection = GameProvider::with('gameActiveProviderQueue')
+        $collection = Location::with('currentBooking.user')
             ->get()
             ->map(function($resource) {
                 return [

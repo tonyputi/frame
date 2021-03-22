@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\Notification;
 use App\Notifications\GameProviderRedirected;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
-class GenerateGameProviderNginxConfig extends Command
+class LocationNginx extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'game-providers:config';
+    protected $signature = 'location:nginx';
 
     /**
      * The console command description.
