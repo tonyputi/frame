@@ -65,20 +65,21 @@ npm run watch
 ## Known issues
 
 - when flush db nginx config command is not flushing file as well
+- create booking from booking page is not working
+- improve pagination with ...
 
 ## TODO
 
 ### PHASE 1
 - populate factories and use proper seeder
 - notify event for booking created, update, deleted, applied
-- job heartbeat to notify events each monites
+- job heartbeat to notify events each minutes
 - add dashboard with bookings organized by provider
 - autorefresh both game providers and booking index with setTimeout
 
 ### PHASE 2
 - review command name
 - create a preview of nginx configuration
-- improve pagination with ...
 - add videoslots style
 - create time calendar select component (hard)
 - add dashboard with queue provider lists calendar version

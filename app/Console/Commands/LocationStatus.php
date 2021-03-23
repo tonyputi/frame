@@ -30,6 +30,10 @@ class LocationStatus extends Command
     public function __construct()
     {
         parent::__construct();
+
+        if(config('frame.stack') != 'nginx') {
+            $this->hidden = true;
+        }
     }
 
     /**

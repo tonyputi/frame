@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'stack' => 'nginx',
+    'stack' => env('FRAME_STACK', 'nginx'),
 
     /*
      |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
      |
      */
 
-    'middleware' => ['proxy'],
+    'middleware' => env('FRAME_MIDDLEWARE', ['proxy']),
 
     /*
      |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ return [
      |
      */
 
-    'domain' => 'io.videoslots.com',
+    'domain' => env('FRAME_DOMAIN', 'io.videoslots.com'),
 
     /*
      |--------------------------------------------------------------------------
@@ -50,5 +50,5 @@ return [
      |
      */
 
-    'prefix' => null,
+    'prefix' => env('FRAME_PREFIX', null),
 ];

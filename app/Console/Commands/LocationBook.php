@@ -8,9 +8,11 @@ use App\Models\User;
 use App\Models\Booking;
 use App\Models\Location;
 use Carbon\CarbonPeriod;
+use App\Rules\AvailableTime;
 use Illuminate\Support\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
 
 class LocationBook extends Command
 {
@@ -42,9 +44,12 @@ class LocationBook extends Command
     {
         parent::__construct();
 
+        if(config('frame.stack') != 'nginx') {
+            $this->hidden = true;
+        }
+
         Carbon::macro('dateRange', function ($start, $end, $unit = 'P1D') {
             return new Collection(CarbonPeriod::create($start, $end, $unit));
-            // return new Collection(new DatePeriod($start, new DateInterval('P1D'), $end));
         });
     }
 
@@ -55,53 +60,35 @@ class LocationBook extends Command
      */
     public function handle()
     {
-        if($this->option('user')) {
-            $user = $this->getUserByIdOrEmail($this->option('user'));
-        } else {
-            $user = $this->getUserByChoice();
-        }
-
-        if($this->option('location')) {
-            $location = $this->getLocationByIdOrName($this->option('location'));
-        } else {
-            $location = $this->getLocationByChoice();
-        }
-
-        if($this->option('date')) {
-            $date = Carbon::parse($this->option('date'));
-        } else {
-            $range = Carbon::dateRange(today(), today()->addDays(7))
-                ->map(fn($date) => $date->toDateString());
-            $date = $this->anticipate('What date? YYYY-MM-DD', $range);
-        }
-
-        if($this->option('start')) {
-            $start = Carbon::parse($date . ' ' . $this->option('start'));
-        } else {
-            $range = Carbon::dateRange(now(), today()->addDay(), 'PT1M')
-                ->map(fn($date) => $date->format('H:i'));
-            $start = $this->anticipate('What time you want to start? HH:MM', $range);
-        }
-
-        if($this->option('start')) {
-            $end = Carbon::parse($date . ' ' . $this->option('end'));
-        } else {
-            $range = Carbon::dateRange(now()->addMinutes(15), today()->addDay(), 'PT1M')
-                ->map(fn($date) => $date->format('H:i'));
-            $end = $this->anticipate('What time you want to start? HH:MM', $range);
-        }
+        $user = $this->getUser();
+        $location = $this->getLocation();
+        $date = $this->getDate();
+        $started_at = $this->getStart($date);
+        $ended_at = $this->getEnd($date);
 
         // we need to validate if booking collide with others
+        $validator = Validator::make(compact('started_at', 'ended_at'), [
+            'started_at' => ['date', 'before:ended_at', new AvailableTime('bookings', ['location_id' => $location->id])],
+            'ended_at' => ['date', 'after:started_at', new AvailableTime('bookings', ['location_id' => $location->id])]
+        ]);
+
+        if ($validator->fails()) {
+            foreach($validator->errors() as $error) {
+                $this->error($error);
+            }
+            
+            return -1;
+        }
 
         $booking = Booking::create([
             'performed_by' => $user->id,
             'user_id' => $user->id,
             'location_id' => $location->id,
-            'started_at' => $start,
-            'ended_at' => $end
+            'started_at' => $started_at,
+            'ended_at' => $ended_at
         ]);
 
-        $this->info("Booking location '{$location->name}' for user '{$user->name}'");
+        $this->info("Booking location '{$location->name}' for user '{$user->name}' on date '{$date}' starting at '{$started_at}' and ending at '{$ended_at}'");
 
         return 0;
     }
@@ -109,54 +96,84 @@ class LocationBook extends Command
     /**
      * Get user by id or email
      *
-     * @param string $value
      * @return User
      */
-    protected function getUserByIdOrEmail(string $value)
+    protected function getUser()
     {
-        return User::where(function($query) use($value) {
-            $query->where('id', $value);
-            $query->orWhere('email', $value);
-        })->firstOrFail();
-    }
+        $query = User::query();
 
-    /**
-     * Get user by multiple choice
-     *
-     * @return User
-     */
-    protected function getUserByChoice()
-    {
-        $choices = User::pluck('email')->toArray();
-        $email = $this->choice('Which user?', $choices, 0, null, false);
+        if($this->option('user')) {
+            return $query->where(function($query) {
+                $query->where('id', $this->option('user'));
+                $query->orWhere('email', $this->option('user'));
+            })->firstOrFail();
+        } else {
+            $choices = User::pluck('email')->toArray();
+            $email = $this->choice('Which user?', $choices, 0, null, false);
 
-        return User::where('email', $email)->firstOrFail();
+            return $query->where('email', $email)->firstOrFail();
+        }
     }
 
     /**
      * Get location by id or name
      *
-     * @param string $value
      * @return Location
      */
-    protected function getLocationByIdOrName(string $value)
+    protected function getLocation()
     {
-        return Location::where(function($query) use($value) {
-            $query->where('id', $value);
-            $query->orWhere('name', $value);
-        })->firstOrFail();
+        $query = Location::query();
+
+        if($this->option('location')) {
+            return $query->where(function($query) {
+                $query->where('id', $$this->option('location'));
+                $query->orWhere('name', $this->option('location'));
+            })->firstOrFail();
+        } else {
+            $choices = Location::pluck('name')->toArray();
+            $name = $this->choice('Which user?', $choices, 0, null, false);
+
+            return $query->where('name', $name)->firstOrFail();
+        }
+
     }
 
-    /**
-     * Get location by multiple choice
-     *
-     * @return Location
-     */
-    protected function getLocationByChoice()
+    protected function getDate()
     {
-        $choices = Location::pluck('name')->toArray();
-        $name = $this->choice('Which user?', $choices, 0, null, false);
+        if($this->option('date')) {
+            return Carbon::parse($this->option('date'));
+        } else {
+            $range = Carbon::dateRange(today(), today()->addDays(7))
+                ->map(fn($date) => $date->toDateString());
+            return $this->anticipate('What date? YYYY-MM-DD', $range);
+        }
+    }
 
-        return Location::where('name', $name)->firstOrFail();
+    protected function getStart($date)
+    {
+        $time = $this->option('start');
+
+        if(!$time) {
+            $range = Carbon::dateRange(now(), today()->addDay(), 'PT1M')
+                ->map(fn($date) => $date->format('H:i'));
+
+            $time = $this->anticipate('What time you want to start? HH:MM', $range);
+        }
+
+        return Carbon::parse($date . ' ' . $time);
+    }
+
+    protected function getEnd($date)
+    {
+        $time = $this->option('end');
+
+        if(!$time) {
+            $range = Carbon::dateRange(now()->addMinutes(15), today()->addDay(), 'PT1M')
+                ->map(fn($date) => $date->format('H:i'));
+
+            $time = $this->anticipate('What time you want to end? HH:MM', $range);
+        }
+
+        return Carbon::parse($date . ' ' . $time);
     }
 }
