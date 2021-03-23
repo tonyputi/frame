@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Booking: {{ data.attributes.id }}
+                {{ title }}
             </h2>
         </template>
 
@@ -11,10 +11,10 @@
                 <div>
                     <update-booking-form v-bind="data" />
 
-                    <jet-section-border v-if="data.permissions.canDelete" />
+                    <jet-section-border v-if="permissions.canDelete" />
                 </div>
 
-                <div v-if="data.permissions.canDelete">
+                <div v-if="permissions.canDelete">
                     <delete-booking-form :data="data" class="mt-10 sm:mt-0" />
                 </div>
             </div>
@@ -36,6 +36,25 @@
             JetSectionBorder,
             UpdateBookingForm,
             DeleteBookingForm
+        },
+
+        props: {
+            data: {
+                type: Object,
+                default: {}
+            }
+        },
+
+        computed: {
+            title() {
+                return this.attributes.id ? `Booking: ${this.attributes.id}` : `Create new booking`
+            },
+            attributes() {
+                return this.data.attributes || {}
+            },
+            permissions() {
+                return this.data.permissions || {}
+            }
         }
     }
 </script>

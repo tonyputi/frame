@@ -16,8 +16,6 @@
                     </jet-link-button>
                 </div>
 
-                <!-- <timeline /> -->
-
                 <div v-if="meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <jet-table class="text-sm">
                         <template #header>
@@ -35,15 +33,6 @@
                                 <th class="px-2 py-4"></th>
                             </tr>
                         </template>
-
-                        <!-- <template #body>
-                            <template v-for="resource in data" :key="resource.attributes.id">
-                                <game-provider-table-row :resource="resource"
-                                    :selected="gameProvidersSelected"
-                                    @book="gameProviderBeingBooked = $event"
-                                    @delete="gameProviderBeingDeleted = $event" />
-                            </template>
-                        </template> -->
 
                         <template #body>
                             <tr v-for="resource in data" :key="resource.attributes.id" class="border border-black-600">
@@ -67,9 +56,14 @@
                                         </span>
                                     </inertia-link>
                                 </td>
-                                <td class="px-2 py-4 text-left">{{ resource.attributes.current_booking?.user?.name }}</td>
-                                <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.current_booking?.started_at) }}</td>
-                                <!-- <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.current_booking?.ended_at) }}</td> -->
+                                <td class="px-2 py-4 text-left">
+                                    {{ resource.attributes.current_booking?.user?.name || '-' }}
+                                </td>
+                                <td class="px-2 py-4 text-left">
+                                    {{ datetimeFormat(resource.attributes.current_booking?.started_at, 'YYYY-MM-DD') }}
+                                    {{ datetimeFormat(resource.attributes.current_booking?.started_at, 'HH:mm') }} - 
+                                    {{ datetimeFormat(resource.attributes.current_booking?.ended_at, 'HH:mm') }}
+                                </td>
                                 <td class="px-2 py-4">
                                     <div class="flex">
                                         <button class="text-black-500" @click="gameProviderBeingBooked=resource">
@@ -175,8 +169,10 @@ export default {
         filter(ev) {
             this.$inertia.reload({data: { search: ev.target.value, page: 1 }})
         },
-        formatDate(datetime) {
-            return (datetime) ? moment(datetime).format('YYYY-MM-DD HH:mm:ss') : null;
+        datetimeFormat(datetime, format = null) {
+            if(datetime) {
+                return moment(datetime).format(format)
+            }
         }
     }
 };

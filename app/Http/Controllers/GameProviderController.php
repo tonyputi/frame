@@ -56,7 +56,13 @@ class GameProviderController extends Controller
      */
     public function create(Request $request)
     {
-        return Inertia::render('GameProviders/Show', []);
+        $props = (new JetstreamResource(new GameProvider))
+            ->toResponse($request)
+            ->getData(true);
+        // TODO: this shit is just to be able to have logo_url on the location
+        unset($props['data']['permissions']);
+
+        return Inertia::render('GameProviders/Show', $props);
     }
 
     /**

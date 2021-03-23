@@ -26,7 +26,7 @@
                                 <th class="px-2 py-4 text-left">ID</th>
                                 <th class="px-2 py-4 text-left">User</th>
                                 <th class="px-2 py-4 text-left">Game Provider</th>
-                                <th class="px-2 py-4 text-left">Is Active</th>
+                                <th class="px-2 py-4 text-left">Status</th>
                                 <th class="px-2 py-4 text-left">Started At</th>
                                 <th class="px-2 py-4 text-left">Ended At</th>
                                 <th class="px-2 py-4"></th>

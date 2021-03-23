@@ -58,7 +58,7 @@
             </div>
 
             <!-- Location Modifier -->
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-6 sm:col-span-4" v-if="$page.props.frame.stack == 'nginx'">
                 <jet-label for="location_modifier" value="Location Modifier" />
                 <jet-select id="location_modifier" class="mt-1 block w-full"
                     v-model="form.location_modifier" :options="['', '=', '~', '~*', '^~']" 
@@ -75,11 +75,8 @@
             </div>
 
             <!-- Location Block -->
-            <div class="col-span-6 sm:col-span-6 w-full">
+            <div class="col-span-6 sm:col-span-6 w-full" v-if="$page.props.frame.stack == 'nginx'">
                 <jet-label for="location_block" value="Location Block" />
-                <!-- <pre class="bg-gray-800 text-white px-2 py-2">
-                    <code>{{ form.location_block }}</code>
-                </pre> -->
                 <jet-code id="location_block"
                     v-model="form.location_block" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.location_block" class="mt-2" />
@@ -153,8 +150,8 @@
         computed: {
             // TODO: this can be mixed
             canUpdateOrCreate() {
-                return this.permissions.canUpdate || this.permissions.canCreate
-            }
+                return this.permissions.canUpdate || !this.attributes.id
+            },
         },
 
         methods: {

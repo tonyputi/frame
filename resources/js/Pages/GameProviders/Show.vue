@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Game Provider: {{ data.attributes?.name }}
+                {{ title }}
             </h2>
         </template>
 
@@ -11,10 +11,10 @@
                 <div>
                     <update-game-provider-form v-bind="data" />
 
-                    <jet-section-border v-if="data.permissions.canDelete" />
+                    <jet-section-border v-if="permissions.canDelete" />
                 </div>
 
-                <div v-if="data.permissions.canDelete">
+                <div v-if="permissions.canDelete">
                     <delete-game-provider-form :data="data" class="mt-10 sm:mt-0" />
                 </div>
             </div>
@@ -36,6 +36,25 @@
             JetSectionBorder,
             DeleteGameProviderForm,
             UpdateGameProviderForm
+        },
+
+        props: {
+            data: {
+                type: Object,
+                default: {}
+            }
+        },
+
+        computed: {
+            title() {
+                return this.attributes.id ? `Game Provider: ${this.attributes.name}` : `Create new game provider`
+            },
+            attributes() {
+                return this.data.attributes || {}
+            },
+            permissions() {
+                return this.data.permissions || {}
+            }
         }
     }
 </script>
