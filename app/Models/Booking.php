@@ -30,20 +30,13 @@ class Booking extends Model
     ];
 
     /**
-     * Get the environment that owns the game provider queue.
+     * The accessors to append to the model's array form.
+     *
+     * @var array
      */
-    public function environment()
-    {
-        return $this->belongsTo(Environment::class);
-    }
-
-    /**
-     * Get the application that owns the game provider queue.
-     */
-    public function application()
-    {
-        return $this->belongsTo(Application::class);
-    }
+    protected $appends = [
+        'is_active',
+    ];
 
     /**
      * Get the game provider that owns the game provider queue.
@@ -156,6 +149,6 @@ class Booking extends Model
      */
     public function getIsActiveAttribute()
     {
-        return $this->started_at->isPast() and $this->ended_at->isFuture();
+        return optional($this->started_at)->isPast() and optional($this->ended_at)->isFuture();
     }
 }

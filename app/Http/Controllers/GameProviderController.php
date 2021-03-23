@@ -56,11 +56,7 @@ class GameProviderController extends Controller
      */
     public function create(Request $request)
     {
-        $props = (new JetstreamResource(new GameProvider))
-            ->toResponse($request)
-            ->getData(true);
-
-        return Inertia::render('GameProviders/Show', $props);
+        return Inertia::render('GameProviders/Show', []);
     }
 
     /**

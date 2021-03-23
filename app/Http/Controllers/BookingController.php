@@ -7,7 +7,6 @@ use App\Models\Booking;
 use App\Models\GameProvider;
 use App\Rules\AvailableTime;
 use Illuminate\Http\Request;
-    use App\Notifications\LocationBooked;
 use App\Http\Resources\JetstreamResource;
 use App\Notifications\BookingCreated;
 
@@ -32,7 +31,7 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        $collection = Booking::with(['user', 'gameProvider', 'environment', 'application'])
+        $collection = Booking::with(['user', 'gameProvider'])
             ->when($request->game_provider, fn($query) => $query->where('location_id', $request->game_provider))
             ->when($request->input('search'), fn($query) => $query->filter($request->search))
             ->available()
@@ -59,11 +58,7 @@ class BookingController extends Controller
      */
     public function create(Request $request)
     {
-        $props = (new JetstreamResource(new Booking))
-            ->toResponse($request)
-            ->getData(true);
-
-        return Inertia::render('Bookings/Show', $props);
+        return Inertia::render('Bookings/Show', []);
     }
 
     /**
