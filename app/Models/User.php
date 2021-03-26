@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'host'
+        'name', 'email', 'password', 'hostname'
     ];
 
     /**
@@ -59,4 +59,15 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * return true if user has resolve option anebled
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getHasResolveOptionAttribute($value)
+    {
+        return $this->hostname and $this->ipv4;
+    }
 }

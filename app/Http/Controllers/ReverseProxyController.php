@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ProxyPass;
+use App\Services\ReverseProxy;
 use Illuminate\Http\Request;
 
-class LocationController extends Controller
+class ReverseProxyController extends Controller
 {
     public function __invoke(Request $request)
     {
@@ -15,7 +15,7 @@ class LocationController extends Controller
             $url.= "?{$request->getQueryString()}";
         }
 
-        $proxy = new ProxyPass($request, $url);
+        $proxy = new ReverseProxy($request, $url);
         
         return $proxy->send();
     }

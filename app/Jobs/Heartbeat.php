@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Booking;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Carbon;
-use App\Notifications\BookingApplied;
+use App\Notifications\BookingAppliedNotification;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -35,7 +35,7 @@ class Heartbeat implements ShouldQueue
     public function handle()
     {
         Booking::current()->notified(false)->each(function($booking) {
-            User::each(fn($user) => $user->notify(new BookingApplied($booking)));
+            User::each(fn($user) => $user->notify(new BookingAppliedNotification($booking)));
             $booking->notified_at = Carbon::now();
             $booking->save();
         });

@@ -43,7 +43,7 @@ export default {
         return {
             confirmingBookingDeletion: false,
             form: this.$inertia.form({
-                ended_at: moment() 
+                ended_at: moment()
             })
         }
     },

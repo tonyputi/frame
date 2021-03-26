@@ -7,8 +7,9 @@ use App\Models\Booking;
 use App\Models\GameProvider;
 use App\Rules\AvailableTime;
 use Illuminate\Http\Request;
-use App\Http\Resources\JetstreamResource;
+use Illuminate\Validation\Rule;
 use App\Notifications\BookingCreated;
+use App\Http\Resources\JetstreamResource;
 
 class BookingController extends Controller
 {
@@ -87,11 +88,9 @@ class BookingController extends Controller
         $booking = new Booking($request->input());
         $booking->location_id = $gameProvider->id;
         $booking->performed_by = $request->user()->id;
+        // if not passed user_id is the same as request->id
         $booking->user_id = $request->user()->id;
         $booking->save();
-
-        // this should be on some event listener
-        $request->user()->notify(new BookingCreated($booking));
 
         return back(303)->banner("Game Provider: {$gameProvider->name} booked!");
     }
@@ -135,9 +134,14 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
+        // Rule::unique('users')->where(function ($query) {
+        //     return $query->where('account_id', 1);
+        // });
+
+        // TODO: this is not working due to collision with itself
         $request->validate([
-            'started_at' => ['sometimes', new AvailableTime('bookings', $request->only('location_id'))],
-            'ended_at' => ['sometimes', new AvailableTime('bookings', $request->only('location_id'))]
+            'started_at' => ['sometimes', new AvailableTime('bookings', ['location_id' => $booking->location_id])],
+            'ended_at' => ['sometimes', new AvailableTime('bookings', ['location_id' => $booking->location_id])]
         ]);
 
         $booking->update($request->input());

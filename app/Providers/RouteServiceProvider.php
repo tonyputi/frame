@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Database\QueryException;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
-use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ReverseProxyController;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -85,7 +85,7 @@ class RouteServiceProvider extends ServiceProvider
                     Location::with('currentBooking.user')->each(function($location) {
                         // $location->routable or $location->configurable
                         if($location->host) {
-                            Route::any($location->location_match, LocationController::class)
+                            Route::any($location->location_match, ReverseProxyController::class)
                                 ->name(Str::slug($location->name));
                         }
                     });

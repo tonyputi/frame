@@ -4,7 +4,7 @@ namespace App\Notifications;
 
 use Illuminate\Notifications\Messages\MailMessage;
 
-class BookingApplied extends BookingCreated
+class BookingAppliedNotification extends BookingCreatedNotification
 {
     /**
      * Get the mail representation of the notification.

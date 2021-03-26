@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Events\BookingCreated;
+use App\Events\BookingDeleted;
+use App\Events\BookingUpdated;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Booking extends Model
 {
@@ -36,6 +39,19 @@ class Booking extends Model
      */
     protected $appends = [
         'is_active',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * Allows for object-based events for native Eloquent events.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => BookingCreated::class,
+        'updated' => BookingUpdated::class,
+        'deleted' => BookingDeleted::class
     ];
 
     /**
@@ -73,7 +89,6 @@ class Booking extends Model
      */
     public function scopeActive($query, $value = true)
     {
-        // return $query->where('is_active', $value);
         if($value) {
             $query->whereNotNull('applied_at');
         } else {

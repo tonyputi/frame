@@ -58,7 +58,7 @@ class LocationStatus extends Command
             });
 
         $this->table(
-           ['ID', 'Name', 'Modifier', 'Match', 'Host', 'Started at', 'Ended at'],
+           ['ID', 'Name', 'Modifier', 'Match', 'Hostname', 'Started at', 'Ended at'],
            $collection->toArray()
         );
     }

@@ -6,10 +6,10 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
 use GuzzleHttp\HandlerStack;
 use Illuminate\Http\Request;
-use GuzzleHttp\Handler\CurlHandler;
+use GuzzleHttp\Handler\CurlMultiHandler;
 use GuzzleHttp\Psr7\Request as ProxyRequest;
 
-class ProxyPass
+class ReverseProxy
 {
     const default_config = [
         'timeout' => 20.0
@@ -38,6 +38,7 @@ class ProxyPass
 
         $this->headers = Arr::except($request->header(), ['host']);
         $this->headers['x-real-ip'] = $request->ip();
+        // here we need to append ip to chain
         $this->headers['x-forwarded-for'] = [implode(', ', array_merge(explode(', ', $request->header('x-forwarded-for')), [$request->ip()]))];
         $this->headers['x-forwarded-host'] = $request->getHost();
         $this->headers['x-forwarded-proto'] = $request->getScheme();
@@ -78,23 +79,33 @@ class ProxyPass
         return $this;
     }
 
-    public function client($config = [])
-    {
-        $handler = new CurlHandler();
-        $stack = HandlerStack::create($handler);
-
-        return new Client(array_merge(static::default_config, ['handler' => $stack], $config));
-    }
-
-    public function send()
+    public function send($options = [])
     {       
         $request = new ProxyRequest($this->method, $this->url, $this->headers, $this->content);
-        $response = $this->client()->send($request);
+        $response = $this->client($options)->send($request);
 
         $responseBody = $response->getBody();
         $responseHeaders = $this->sanitizeHeaders($response->getHeaders(), ['connection', 'transfer-encoding']);
         
         return response($responseBody)->withHeaders($responseHeaders);
+    }
+
+    protected function client($config = [])
+    {
+        $handler = new CurlMultiHandler([
+            'options' => [
+                CURLOPT_RESOLVE => [
+                    'filippo.videoslots.com:10.0.10.72'
+                ]
+            ]
+        ]);
+
+        $stack = HandlerStack::create($handler);
+
+        return new Client(array_merge(static::default_config, [
+            'handler' => $stack,
+
+        ], $config));
     }
 
     protected function sanitizeHeaders($headers, $ignores = [])

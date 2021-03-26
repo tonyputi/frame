@@ -4,7 +4,7 @@ namespace App\Notifications;
 
 use Illuminate\Notifications\Messages\MailMessage;
 
-class BookingDeleted extends BookingCreated
+class BookingUpdatedNotification extends BookingCreatedNotification
 {
     /**
      * Get the mail representation of the notification.
@@ -15,7 +15,7 @@ class BookingDeleted extends BookingCreated
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line("Booking deleted")
+            ->line('Booking Updated')
             ->action('Notification Action', url('/'))
             ->line('Thank you for using our application!');
     }

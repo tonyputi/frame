@@ -51,10 +51,10 @@
 
             <!-- Default Host -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="default_host" value="Default Host" />
-                <jet-input id="default_host" type="text" class="mt-1 block w-full" 
-                    v-model="form.default_host" :disabled="!canUpdateOrCreate" />
-                <jet-input-error :message="form.errors.default_host" class="mt-2" />
+                <jet-label for="default_hostname" value="Default Host" />
+                <jet-input id="default_hostname" type="text" class="mt-1 block w-full" 
+                    v-model="form.default_hostname" :disabled="!canUpdateOrCreate" />
+                <jet-input-error :message="form.errors.default_hostname" class="mt-2" />
             </div>
 
             <!-- Location Modifier -->
@@ -140,7 +140,7 @@
                     location_modifier: this.attributes.location_modifier,
                     location_match: this.attributes.location_match,
                     location_block: this.attributes.location_block,
-                    default_host: this.attributes.default_host
+                    default_hostname: this.attributes.default_hostname
                 }),
 
                 logoPreview: null,

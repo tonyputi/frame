@@ -93,9 +93,9 @@ class Location extends Model
             return $this->currentBooking->user->host;
         }
 
-        if($this->default_host)
+        if($this->default_hostname)
         {
-            return $this->default_host;
+            return $this->default_hostname;
         }
     }
 

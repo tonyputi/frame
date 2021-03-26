@@ -21,7 +21,8 @@ class CreateLocationsTable extends Migration
             $table->string('location_modifier')->nullable();
             $table->string('location_match')->unique();
             $table->string('location_block')->nullable();
-            $table->string('default_host')->nullable();
+            $table->string('default_hostname')->nullable();
+            $table->string('default_ipv4')->nullable();
             $table->timestamps();
         });
     }

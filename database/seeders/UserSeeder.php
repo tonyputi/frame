@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         User::factory()->withPersonalTeam()->create([
             'name' => 'Ricardo Ruiz',
             'email' => 'ricardo.ruiz@videoslots.com',
-            'host' => 'ricardo.videoslots.com',
+            'hostname' => 'ricardo.videoslots.com',
             'password' => Hash::make('12345678'),
             'is_admin' => true
         ]);
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
         User::factory()->withPersonalTeam()->create([
             'name' => 'Nicky Bartolo',
             'email' => 'nicky.bartolo@videoslots.com',
-            'host' => 'nikcy.videoslots.com',
+            'hostname' => 'nikcy.videoslots.com',
             'password' => Hash::make('12345678'),
             'is_admin' => true
         ]);
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
         $leader = User::factory()->withPersonalTeam()->create([
             'name' => 'Goran Misogovich',
             'email' => 'goran.misogovich@videoslots.com',
-            'host' => 'goran.videoslots.com',
+            'hostname' => 'goran.videoslots.com',
             'password' => Hash::make('12345678')
         ]);
 
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Filippo Sallemi',
             'email' => 'filippo.sallemi@videoslots.com',
-            'host' => 'filippo.videoslots.com',
+            'hostname' => 'filippo.videoslots.com',
             'password' => Hash::make('12345678')
         ]);
         $user->teams()->attach($team, ['role' => 'editor']);
@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Marc Powell Evans',
             'email' => 'marc.powell@videoslots.com',
-            'host' => 'marc.videoslots.com',
+            'hostname' => 'marc.videoslots.com',
             'password' => Hash::make('12345678')
         ]);
         $user->teams()->attach($team, ['role' => 'editor']);
@@ -63,7 +63,7 @@ class UserSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Sandro Basta',
             'email' => 'sandro.basta@videoslots.com',
-            'host' => 'sandro.videoslots.com',
+            'hostname' => 'sandro.videoslots.com',
             'password' => Hash::make('12345678')
         ]);
         $user->teams()->attach($team, ['role' => 'editor']);

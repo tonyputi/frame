@@ -8,6 +8,19 @@ use Illuminate\Support\Carbon;
 
 class AvailableTime implements Rule
 {
+    // new AvailableTime('bookings')
+
+    /**
+     * Create a new rule instance.
+     *
+     * @return void
+     */
+    // public function __construct($table, $column, $except, $idColumn)
+    // {
+    //     $this->table = $table;
+    //     $this->column = $column;
+    // }
+
     /**
      * Create a new rule instance.
      *

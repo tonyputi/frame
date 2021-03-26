@@ -117,7 +117,6 @@ import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import DeleteBookingModal from './DeleteBookingModal';
 import ReleaseBookingModal from './ReleaseBookingModal';
-import moment from 'moment';
 
 export default {
     components: {
@@ -149,9 +148,14 @@ export default {
     },
 
     methods: {
-        // TODO: this can be mixed
+        // TODO: this can be mixed in HasTable.js
         filter(ev) {
             this.$inertia.reload({data: { search: ev.target.value, page: 1 }})
+        },
+        datetimeFormat(datetime, format = null) {
+            if(datetime) {
+                return moment(datetime).format(format)
+            }
         },
         formatDate(datetime) {
             return (datetime) ? moment(datetime).format('YYYY-MM-DD HH:mm:ss') : null;

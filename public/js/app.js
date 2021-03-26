@@ -18056,9 +18056,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
 /* harmony import */ var _DeleteBookingModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./DeleteBookingModal */ "./resources/js/Pages/Bookings/DeleteBookingModal.vue");
 /* harmony import */ var _ReleaseBookingModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ReleaseBookingModal */ "./resources/js/Pages/Bookings/ReleaseBookingModal.vue");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_9__);
-
 
 
 
@@ -18094,7 +18091,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    // TODO: this can be mixed
+    // TODO: this can be mixed in HasTable.js
     filter: function filter(ev) {
       this.$inertia.reload({
         data: {
@@ -18103,8 +18100,15 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
+    datetimeFormat: function datetimeFormat(datetime) {
+      var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (datetime) {
+        return moment(datetime).format(format);
+      }
+    },
     formatDate: function formatDate(datetime) {
-      return datetime ? moment__WEBPACK_IMPORTED_MODULE_9___default()(datetime).format('YYYY-MM-DD HH:mm:ss') : null;
+      return datetime ? moment(datetime).format('YYYY-MM-DD HH:mm:ss') : null;
     }
   }
 });
@@ -18701,9 +18705,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_LinkButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Jetstream/LinkButton */ "./resources/js/Jetstream/LinkButton.vue");
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_11__);
-
 
 
 
@@ -18724,7 +18725,6 @@ __webpack_require__.r(__webpack_exports__);
     JetTable: _Jetstream_Table__WEBPACK_IMPORTED_MODULE_5__.default,
     Pagination: _Jetstream_Pagination__WEBPACK_IMPORTED_MODULE_6__.default,
     SearchInput: _Jetstream_SearchInput__WEBPACK_IMPORTED_MODULE_7__.default,
-    GameProviderTableRow: _GameProviderTableRow__WEBPACK_IMPORTED_MODULE_3__.default,
     BookGameProviderModal: _BookGameProviderModal__WEBPACK_IMPORTED_MODULE_1__.default,
     DeleteGameProviderModal: _DeleteGameProviderModal__WEBPACK_IMPORTED_MODULE_2__.default,
     Timeline: _Timeline__WEBPACK_IMPORTED_MODULE_4__.default
@@ -18748,7 +18748,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    // TODO: this can be mixed
+    // TODO: this can be mixed in HasTable.js
     filter: function filter(ev) {
       this.$inertia.reload({
         data: {
@@ -18761,7 +18761,7 @@ __webpack_require__.r(__webpack_exports__);
       var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
       if (datetime) {
-        return moment__WEBPACK_IMPORTED_MODULE_11___default()(datetime).format(format);
+        return moment(datetime).format(format);
       }
     }
   }
@@ -18881,7 +18881,7 @@ __webpack_require__.r(__webpack_exports__);
         location_modifier: this.attributes.location_modifier,
         location_match: this.attributes.location_match,
         location_block: this.attributes.location_block,
-        default_host: this.attributes.default_host
+        default_hostname: this.attributes.default_hostname
       }),
       logoPreview: null
     };
@@ -19360,7 +19360,7 @@ __webpack_require__.r(__webpack_exports__);
         _method: 'PUT',
         name: this.user.name,
         email: this.user.email,
-        host: this.user.host,
+        hostname: this.user.hostname,
         ipv4: this.user.ipv4,
         photo: null
       }),
@@ -21263,7 +21263,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "table-auto w-full"
+  "class": "table-auto w-full overflow-x-auto"
 };
 var _hoisted_2 = {
   "class": "border-b-2 border-yellow-400"
@@ -25092,7 +25092,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.datetimeFormat((_resource$attributes$4 = resource.attributes.current_booking) === null || _resource$attributes$4 === void 0 ? void 0 : _resource$attributes$4.started_at, 'YYYY-MM-DD')) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.datetimeFormat((_resource$attributes$5 = resource.attributes.current_booking) === null || _resource$attributes$5 === void 0 ? void 0 : _resource$attributes$5.started_at, 'HH:mm')) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.datetimeFormat((_resource$attributes$6 = resource.attributes.current_booking) === null || _resource$attributes$6 === void 0 ? void 0 : _resource$attributes$6.ended_at, 'HH:mm')), 1
             /* TEXT */
-            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"inline-flex items-center\">\n                                        <span class=\"inline-flex\">\n                                            <a href=\"#\" class=\"cursor-pointer text-70 hover:text-primary mr-3 inline-flex items-center has-tooltip\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"18\" viewBox=\"0 0 22 16\" aria-labelledby=\"view\" role=\"presentation\" class=\"fill-current\">\n                                                    <path d=\"M16.56 13.66a8 8 0 0 1-11.32 0L.3 8.7a1 1 0 0 1 0-1.42l4.95-4.95a8 8 0 0 1 11.32 0l4.95 4.95a1 1 0 0 1 0 1.42l-4.95 4.95-.01.01zm-9.9-1.42a6 6 0 0 0 8.48 0L19.38 8l-4.24-4.24a6 6 0 0 0-8.48 0L2.4 8l4.25 4.24h.01zM10.9 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z\"></path\n                                                ></svg>\n                                            </a>\n                                        </span>\n                                        <span class=\"inline-flex\" v-if=\"resource.attributes.id % 2\">\n                                            <a href=\"#\" class=\"inline-flex cursor-pointer text-70 hover:text-primary mr-3 has-tooltip\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-labelledby=\"edit\" role=\"presentation\" class=\"fill-current\">\n                                                    <path d=\"M4.3 10.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM6 14h2.59l9-9L15 2.41l-9 9V14zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h6a1 1 0 1 1 0 2H2v14h14v-6z\"></path>\n                                                </svg>\n                                            </a>\n                                        </span>\n                                        <button data-testid=\"operators-items-0-delete-button\" class=\"inline-flex appearance-none cursor-pointer hover:text-primary mr-3 has-tooltip\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-labelledby=\"delete\" role=\"presentation\" class=\"fill-current\">\n                                                <path fill-rule=\"nonzero\" d=\"M6 4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6H1a1 1 0 1 1 0-2h5zM4 6v12h12V6H4zm8-2V2H8v2h4zM8 8a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z\"></path>\n                                            </svg>\n                                        </button>\n                                    </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"inline-flex items-center\">\n                                        <span class=\"inline-flex\">\n                                            <a href=\"#\" class=\"cursor-pointer text-70 hover:text-primary mr-3 inline-flex items-center\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"18\" viewBox=\"0 0 22 16\" aria-labelledby=\"view\" role=\"presentation\" class=\"fill-current\">\n                                                    <path d=\"M16.56 13.66a8 8 0 0 1-11.32 0L.3 8.7a1 1 0 0 1 0-1.42l4.95-4.95a8 8 0 0 1 11.32 0l4.95 4.95a1 1 0 0 1 0 1.42l-4.95 4.95-.01.01zm-9.9-1.42a6 6 0 0 0 8.48 0L19.38 8l-4.24-4.24a6 6 0 0 0-8.48 0L2.4 8l4.25 4.24h.01zM10.9 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z\"></path\n                                                ></svg>\n                                            </a>\n                                        </span>\n                                        <span class=\"inline-flex\" v-if=\"resource.attributes.id % 2\">\n                                            <a href=\"#\" class=\"inline-flex cursor-pointer text-70 hover:text-primary mr-3\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-labelledby=\"edit\" role=\"presentation\" class=\"fill-current\">\n                                                    <path d=\"M4.3 10.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM6 14h2.59l9-9L15 2.41l-9 9V14zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h6a1 1 0 1 1 0 2H2v14h14v-6z\"></path>\n                                                </svg>\n                                            </a>\n                                        </span>\n                                        <button class=\"inline-flex appearance-none cursor-pointer hover:text-primary mr-3\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-labelledby=\"delete\" role=\"presentation\" class=\"fill-current\">\n                                                <path fill-rule=\"nonzero\" d=\"M6 4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6H1a1 1 0 1 1 0-2h5zM4 6v12h12V6H4zm8-2V2H8v2h4zM8 8a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z\"></path>\n                                            </svg>\n                                        </button>\n                                    </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
               "class": "text-black-500",
               onClick: function onClick($event) {
                 return $data.gameProviderBeingBooked = resource;
@@ -25421,21 +25421,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Default Host "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "default_host",
+        "for": "default_hostname",
         value: "Default Host"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "default_host",
+        id: "default_hostname",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: $data.form.default_host,
+        modelValue: $data.form.default_hostname,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return $data.form.default_host = $event;
+          return $data.form.default_hostname = $event;
         }),
         disabled: !$options.canUpdateOrCreate
       }, null, 8
       /* PROPS */
       , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: $data.form.errors.default_host,
+        message: $data.form.errors.default_hostname,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
@@ -26587,7 +26587,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mt-2"
       }, null, 8
       /* PROPS */
-      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" IPv4 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Host "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "hostname",
+        value: "Hostname"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "hostname",
+        type: "text",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.hostname,
+        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+          return $data.form.hostname = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+        message: $data.form.errors.hostname,
+        "class": "mt-2"
+      }, null, 8
+      /* PROPS */
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" IPv4 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "ipv4",
         value: "IPv4"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -26595,31 +26613,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text",
         "class": "mt-1 block w-full",
         modelValue: $data.form.ipv4,
-        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
           return $data.form.ipv4 = $event;
         })
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
         message: $data.form.errors.ipv4,
-        "class": "mt-2"
-      }, null, 8
-      /* PROPS */
-      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Host "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "host",
-        value: "Host"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "host",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: $data.form.host,
-        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return $data.form.host = $event;
-        })
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: $data.form.errors.host,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
@@ -28053,6 +28053,7 @@ _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__.InertiaProgress.init({
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+window.moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

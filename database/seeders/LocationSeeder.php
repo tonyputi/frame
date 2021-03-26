@@ -108,7 +108,7 @@ class LocationSeeder extends Seeder
             'name' => 'Play\'N Go',
             'location_modifier' => '^~',
             'location_match' => '/diamondbet/soap/playngo.php',
-            'default_host' => 'stage-it.videoslots.com'
+            'default_hostname' => 'stage-it.videoslots.com'
         ]);
 
         Location::create([
