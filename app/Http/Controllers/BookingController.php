@@ -7,8 +7,6 @@ use App\Models\Booking;
 use App\Models\GameProvider;
 use App\Rules\AvailableTime;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use App\Notifications\BookingCreated;
 use App\Http\Resources\JetstreamResource;
 
 class BookingController extends Controller
@@ -134,10 +132,6 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        // Rule::unique('users')->where(function ($query) {
-        //     return $query->where('account_id', 1);
-        // });
-
         // TODO: this is not working due to collision with itself
         $request->validate([
             'started_at' => ['sometimes', new AvailableTime('bookings', ['location_id' => $booking->location_id])],

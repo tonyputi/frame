@@ -5,12 +5,10 @@ namespace App\Providers;
 use App\Events\BookingCreated;
 use App\Events\BookingDeleted;
 use App\Events\BookingUpdated;
-
 use App\Listeners\SendBookingCreatedNotification;
 use App\Listeners\SendBookingUpdatedNotification;
 use App\Listeners\SendBookingDeletedNotification;
 
-use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

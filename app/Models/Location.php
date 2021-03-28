@@ -81,22 +81,74 @@ class Location extends Model
     }
 
     /**
-     * return location block value always
+     * return the location hostname value
      *
      * @param string $value
      * @return string
      */
-    public function getHostAttribute()
+    public function getHostnameAttribute()
     {
         if($this->currentBooking()->exists())
         {
-            return $this->currentBooking->user->host;
+            return $this->currentBooking->user->hostname;
         }
 
         if($this->default_hostname)
         {
             return $this->default_hostname;
         }
+    }
+
+    /**
+     * return the location ipv4 value
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getIpv4Attribute()
+    {
+        if($this->currentBooking()->exists())
+        {
+            return $this->currentBooking->user->ipv4;
+        }
+
+        if($this->default_ipv4)
+        {
+            return $this->default_ipv4;
+        }
+    }
+
+    /**
+     * return true if the location is currently processable
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getIsProcessableAttribute($value)
+    {
+        return !!$this->hostname;
+    }
+
+    /**
+     * return true if user has resolve option anebled
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getHasResolveOptionAttribute($value)
+    {
+        return $this->hostname and $this->ipv4;
+    }
+
+    /**
+     * return the proxable url
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getProxyPassAttribute($value)
+    {
+        return "https://{$this->hostname}/{$this->location_match}";
     }
 
     /**
@@ -129,9 +181,9 @@ class Location extends Model
      */
     public function getNginxConfigAttribute($value)
     {
-        $keys = ['{{ modifier }}', '{{ match }}', '{{ slot }}', '{{ host }}'];
+        $keys = ['{{ modifier }}', '{{ match }}', '{{ slot }}', '{{ hostname }}'];
 
-        $values = [$this->location_modifier, $this->location_match, $this->location_block, $this->host];
+        $values = [$this->location_modifier, $this->location_match, $this->location_block, $this->hostname];
 
         return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
     }

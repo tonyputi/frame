@@ -46,7 +46,7 @@ class Kernel extends HttpKernel
         ],
 
         'proxy' => [
-            \App\Http\Middleware\LoadLocation::class
+            \App\Http\Middleware\ReverseProxy::class
         ]
     ];
 

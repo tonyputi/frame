@@ -82,9 +82,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->domain(config('frame.domain'))
                 ->prefix(config('frame.prefix'))
                 ->group(function() {
-                    Location::with('currentBooking.user')->each(function($location) {
-                        // $location->routable or $location->configurable
-                        if($location->host) {
+                    Location::with('currentBooking')->each(function($location) {
+                        // TODO: change to isProxable
+                        if($location->isProcessable) {
                             Route::any($location->location_match, ReverseProxyController::class)
                                 ->name(Str::slug($location->name));
                         }

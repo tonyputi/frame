@@ -140,7 +140,7 @@ class Booking extends Model
     public function scopeFilter($query, $value)
     {
         $query->whereHas('user', fn($query) => $query->where('name', 'like', "%{$value}%"));
-        $query->orWhereHas('gameProvider', fn($query) => $query->where('name', 'like', "%{$value}%"));
+        $query->orWhereHas('location', fn($query) => $query->where('name', 'like', "%{$value}%"));
 
         return $query;
     }
