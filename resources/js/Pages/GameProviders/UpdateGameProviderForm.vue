@@ -57,6 +57,14 @@
                 <jet-input-error :message="form.errors.default_hostname" class="mt-2" />
             </div>
 
+            <!-- Default Host -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="default_ipv4" value="Default IPv4" />
+                <jet-input id="default_ipv4" type="text" class="mt-1 block w-full" 
+                    v-model="form.default_ipv4" :disabled="!canUpdateOrCreate" />
+                <jet-input-error :message="form.errors.default_ipv4" class="mt-2" />
+            </div>
+
             <!-- Location Modifier -->
             <div class="col-span-6 sm:col-span-4" v-if="$page.props.frame.stack == 'nginx'">
                 <jet-label for="location_modifier" value="Location Modifier" />
@@ -140,7 +148,8 @@
                     location_modifier: this.attributes.location_modifier,
                     location_match: this.attributes.location_match,
                     location_block: this.attributes.location_block,
-                    default_hostname: this.attributes.default_hostname
+                    default_hostname: this.attributes.default_hostname,
+                    default_ipv4: this.attributes.default_ipv4
                 }),
 
                 logoPreview: null,

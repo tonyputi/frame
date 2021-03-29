@@ -12,21 +12,25 @@ class ReverseProxyController extends Controller
     public function __invoke(Request $request)
     {   
         $location = Location::where('location_match', $request->route()->uri())->firstOrFail();
+
+        $url = $location->proxy_pass;
         if($request->getQueryString()) {
-            $location->proxy_pass.= "?{$request->getQueryString()}";
+            $url.= "?{$request->getQueryString()}";
         }
 
         $options = [];
         if($location->hasResolveOption){
-            $option['curl'] = [
-                CURLOPT_RESOLVE => ["{$location->hostname}:{$location->ipv4}"]
+            $options['curl'] = [
+                CURLOPT_RESOLVE => ["{$location->hostname}:{$request->getPort()}:{$location->ipv4}"]
             ];
         }
 
-        return Http::proxyPass($request, $location->proxy_pass, $options);
+        return Http::proxyPass($request, $url, $options);
+
+        // OLD STUFF
 
         // if($request->getQueryString()) {
-        //     $url.= "?{$request->getQueryString()}";
+        //     $location->proxy_pass.= "?{$request->getQueryString()}";
         // }
 
         // $proxy = new ReverseProxy($request, $location->proxy_pass);
