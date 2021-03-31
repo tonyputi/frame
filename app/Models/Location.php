@@ -93,10 +93,7 @@ class Location extends Model
             return $this->currentBooking->user->hostname;
         }
 
-        if($this->default_hostname)
-        {
-            return $this->default_hostname;
-        }
+        return $this->default_hostname;
     }
 
     /**
@@ -112,10 +109,7 @@ class Location extends Model
             return $this->currentBooking->user->ipv4;
         }
 
-        if($this->default_ipv4)
-        {
-            return $this->default_ipv4;
-        }
+        return $this->default_ipv4;
     }
 
     /**

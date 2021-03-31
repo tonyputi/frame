@@ -17,6 +17,9 @@
                 </div>
 
                 <div v-if="meta.total > 0" class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+                    <!-- <jet-resource-table :data="data" class="mb-2 text-sm" /> -->
+
                     <jet-table class="text-sm">
                         <template #header>
                             <tr class="bg-gray-800 text-white">
@@ -50,9 +53,7 @@
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.name }}</td>
                                 <td class="px-2 py-4 text-left">
                                     <inertia-link :href="route('game-providers.bookings.index', [resource.attributes.id])">
-                                        <span class="inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none text-white bg-gray-800 rounded-full">
-                                            {{ resource.attributes.next_bookings_count }}
-                                        </span>
+                                        <jet-badge>{{ resource.attributes.next_bookings_count }}</jet-badge>
                                     </inertia-link>
                                 </td>
                                 <td class="px-2 py-4 text-left">
@@ -161,14 +162,14 @@
 import AppLayout from '@/Layouts/AppLayout';
 import BookGameProviderModal from './BookGameProviderModal';
 import DeleteGameProviderModal from './DeleteGameProviderModal';
-import GameProviderTableRow from './GameProviderTableRow';
-import Timeline from './Timeline';
 import JetTable from "@/Jetstream/Table";
+import JetResourceTable from "@/Jetstream/ResourceTable";
 import Pagination from "@/Jetstream/Pagination";
 import SearchInput from "@/Jetstream/SearchInput";
 import JetLinkButton from "@/Jetstream/LinkButton";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
+import JetBadge from "@/Jetstream/Badge";
 
 export default {
     components: {
@@ -176,12 +177,13 @@ export default {
         JetLinkButton,
         JetInput,
         JetCheckbox,
+        JetBadge,
         JetTable,
+        JetResourceTable,
         Pagination,
         SearchInput,
         BookGameProviderModal,
-        DeleteGameProviderModal,
-        Timeline
+        DeleteGameProviderModal
     },
 
     props: ['data', 'meta', 'permissions'],
