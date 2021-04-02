@@ -74,7 +74,7 @@ class LocationController extends Controller
     {
         $request->validate([
             'name' => ['required', 'unique:locations'],
-            'location_match' => ['required'],
+            'match' => ['required'],
         ]);
 
         $location = Location::create($request->input());
@@ -125,7 +125,7 @@ class LocationController extends Controller
     {
         $request->validate([
             'name' => ['sometimes', 'required', "unique:locations,name,{$location->id}"],
-            'location_match' => ['sometimes', 'required'],
+            'match' => ['sometimes', 'required'],
         ]);
 
         $location->update($request->except('_method'));

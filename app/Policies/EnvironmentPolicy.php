@@ -45,7 +45,7 @@ class EnvironmentPolicy
      */
     public function view(User $user, Environment $environment)
     {
-        //
+        return true;
     }
 
     /**
@@ -56,7 +56,7 @@ class EnvironmentPolicy
      */
     public function create(User $user)
     {
-        //
+        return false;
     }
 
     /**
@@ -68,7 +68,7 @@ class EnvironmentPolicy
      */
     public function update(User $user, Environment $environment)
     {
-        //
+        return false;
     }
 
     /**
@@ -80,7 +80,7 @@ class EnvironmentPolicy
      */
     public function delete(User $user, Environment $environment)
     {
-        //
+        return false;
     }
 
     /**
@@ -92,7 +92,7 @@ class EnvironmentPolicy
      */
     public function restore(User $user, Environment $environment)
     {
-        //
+        return false;
     }
 
     /**
@@ -104,6 +104,6 @@ class EnvironmentPolicy
      */
     public function forceDelete(User $user, Environment $environment)
     {
-        //
+        return false;
     }
 }

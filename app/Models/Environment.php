@@ -25,4 +25,14 @@ class Environment extends Model
     {
         return $this->hasMany(Location::class, 'environment_id');
     }
+
+    /**
+     * Get all the locations that belongs to the enviroment
+     *
+     * @return HasMany
+     */
+    public function processableLocations()
+    {
+        return $this->locations()->with('currentBooking');
+    }
 }

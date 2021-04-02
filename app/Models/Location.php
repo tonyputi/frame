@@ -96,9 +96,9 @@ class Location extends Model
      * @param string $value
      * @return string
      */
-    public function getDefaultRedirectToAttribute()
+    public function getDefaultRedirectToAttribute($value)
     {
-        return $this->default_redirect_to ?? optional($this->environment)->default_redirect_to;
+        return $value ?? optional($this->environment)->default_redirect_to;
     }
 
     /**
@@ -107,9 +107,9 @@ class Location extends Model
      * @param string $value
      * @return string
      */
-    public function getDefaultRedirectIpv4Attribute()
+    public function getDefaultRedirectIpv4Attribute($value)
     {
-        return $this->default_redirect_ipv4 ?? optional($this->environemnt)->default_redirect_ipv4;
+        return $value ?? optional($this->environemnt)->default_redirect_ipv4;
     }
 
     /**
@@ -174,7 +174,7 @@ class Location extends Model
      */
     public function getProxyPassAttribute($value)
     {
-        return "https://{$this->hostname}/{$this->location_match}";
+        return "https://{$this->hostname}/{$this->match}";
     }
 
     /**
@@ -185,6 +185,6 @@ class Location extends Model
      */
     public function setLocationMatchAttribute($value)
     {
-        $this->attributes['location_match'] = trim($value, '/');
+        $this->attributes['match'] = trim($value, '/');
     }
 }

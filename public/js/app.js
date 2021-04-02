@@ -27216,7 +27216,7 @@ __webpack_require__.r(__webpack_exports__);
         environment_id: this.attributes.environment_id,
         name: this.attributes.name,
         logo: null,
-        location_match: this.attributes.location_match,
+        match: this.attributes.match,
         default_redirect_to: this.attributes.default_redirect_to,
         default_redirect_ipv4: this.attributes.default_redirect_ipv4
       }),
@@ -34670,21 +34670,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Location Match "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "location_match",
+        "for": "match",
         value: "Location Match"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "location_match",
+        id: "match",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: $data.form.location_match,
+        modelValue: $data.form.match,
         "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-          return $data.form.location_match = $event;
+          return $data.form.match = $event;
         }),
         disabled: !$options.canUpdateOrCreate
       }, null, 8
       /* PROPS */
       , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: $data.form.errors.location_match,
+        message: $data.form.errors.match,
         "class": "mt-2"
       }, null, 8
       /* PROPS */

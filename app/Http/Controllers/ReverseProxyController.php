@@ -11,7 +11,7 @@ class ReverseProxyController extends Controller
 {
     public function __invoke(Request $request)
     {   
-        $location = Location::where('location_match', $request->route()->uri())->firstOrFail();
+        $location = Location::where('match', $request->route()->uri())->firstOrFail();
 
         $url = $location->proxy_pass;
         if($request->getQueryString()) {

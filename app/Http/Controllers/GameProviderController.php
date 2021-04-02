@@ -77,7 +77,7 @@ class GameProviderController extends Controller
     {
         $request->validate([
             'name' => ['required', 'unique:locations'],
-            'location_match' => ['required'],
+            'match' => ['required'],
         ]);
 
         $gameProvider = GameProvider::create($request->input());
@@ -132,7 +132,7 @@ class GameProviderController extends Controller
     {
         $request->validate([
             'name' => ['sometimes', 'required', "unique:locations,name,{$gameProvider->id}"],
-            'location_match' => ['sometimes', 'required'],
+            'match' => ['sometimes', 'required'],
         ]);
 
         $gameProvider->update($request->except('_method'));

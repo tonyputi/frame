@@ -75,10 +75,10 @@
 
             <!-- Location Match -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="location_match" value="Location Match" />
-                <jet-input id="location_match" type="text" class="mt-1 block w-full" 
-                    v-model="form.location_match" :disabled="!canUpdateOrCreate" />
-                <jet-input-error :message="form.errors.location_match" class="mt-2" />
+                <jet-label for="match" value="Location Match" />
+                <jet-input id="match" type="text" class="mt-1 block w-full" 
+                    v-model="form.match" :disabled="!canUpdateOrCreate" />
+                <jet-input-error :message="form.errors.match" class="mt-2" />
             </div>
         </template>
 
@@ -141,7 +141,7 @@ export default {
                 environment_id: this.attributes.environment_id,
                 name: this.attributes.name,
                 logo: null,
-                location_match: this.attributes.location_match,
+                match: this.attributes.match,
                 default_redirect_to: this.attributes.default_redirect_to,
                 default_redirect_ipv4: this.attributes.default_redirect_ipv4
             }),

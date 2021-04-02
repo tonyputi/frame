@@ -18,7 +18,7 @@ class CreateLocationsTable extends Migration
             $table->foreignId('environment_id')->constrained();
             $table->string('name')->unique();
             $table->string('logo_path')->nullable();
-            $table->string('location_match')->unique();
+            $table->string('match')->unique();
             $table->string('default_redirect_to')->nullable();
             $table->string('default_redirect_ipv4')->nullable();
             $table->timestamps();

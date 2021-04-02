@@ -78,12 +78,13 @@ class RouteServiceProvider extends ServiceProvider
                     ->middleware($environment->middleware)
                     ->prefix($environment->prefix)
                     ->group(function($router) use($environment) {
-                        $environment->locations()->with('currentBooking')->each(function($location) {
-                            if($location->isProcessable) {
-                                Route::any($location->location_match, ReverseProxyController::class)
-                                    ->name(Str::slug($location->name));
-                            }
-                        });
+                        $this->configureLocations($environment->processableLocations);
+                        // $environment->locations()->with('currentBooking')->each(function($location) use($router) {
+                        //     if($location->isProcessable) {
+                        //         $router->any($location->match, ReverseProxyController::class)
+                        //             ->name(Str::slug($location->name));
+                        //     }
+                        // });
                     });
             });
         } catch(QueryException $e) {
@@ -97,26 +98,13 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function configureLocations()
+    protected function configureLocations($locations)
     {
-        try {
-            Route::namespace($this->namespace)
-                ->middleware(config('frame.middleware'))
-                ->domain(config('frame.domain'))
-                ->prefix(config('frame.prefix'))
-                ->group(function() {
-                    Location::with('currentBooking')->each(function($location) {
-                        // TODO: change to isProxable
-                        if($location->isProcessable) {
-                            Route::any($location->location_match, ReverseProxyController::class)
-                                ->name(Str::slug($location->name));
-                        }
-                    });
-                });
-        } catch(QueryException $e) {
-            // we need to inform application that setup is not completed
-            report($e);
-        }
-        
+        $locations->each(function($location) {
+            if($location->isProcessable) {
+                Route::any($location->match, ReverseProxyController::class)
+                    ->name(Str::slug($location->name));
+            }
+        });   
     }
 }

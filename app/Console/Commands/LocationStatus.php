@@ -45,7 +45,7 @@ class LocationStatus extends Command
                 return [
                     'id' => $resource->id,
                     'name' => $resource->name,
-                    'location_match' => $resource->location_match,
+                    'match' => $resource->match,
                     'host' => $resource->gameActiveProviderQueue->host,
                     'started_at' => $resource->gameActiveProviderQueue->started_at,
                     'ended_at' => $resource->gameActiveProviderQueue->ended_at,

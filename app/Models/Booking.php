@@ -63,16 +63,6 @@ class Booking extends Model
     }
 
     /**
-     * Get the game provider that owns the game provider queue.
-     * 
-     * @deprecated
-     */
-    public function gameProvider()
-    {
-        return $this->belongsTo(GameProvider::class, 'location_id');
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
@@ -89,13 +79,19 @@ class Booking extends Model
      */
     public function scopeActive($query, $value = true)
     {
-        if($value) {
-            $query->whereNotNull('applied_at');
-        } else {
-            $query->whereNull('applied_at');
-        }
-        
-        return $query;
+        return $query->when($value, fn($query) => $query->whereNotNull('applied_at'), fn($query) => $query->whereNull('applied_at'));
+    }
+
+    /**
+     * Scope a query to only include notified bookings.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  boolean  $notified
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeNotified($query, $notified = true)
+    {
+        return $query->when($notified, fn($query) => $query->whereNotNull('notified_at'), fn($query) => $query->whereNull('notified_at'));
     }
 
     /**
@@ -139,22 +135,9 @@ class Booking extends Model
      */
     public function scopeFilter($query, $value)
     {
-        $query->whereHas('user', fn($query) => $query->where('name', 'like', "%{$value}%"));
-        $query->orWhereHas('location', fn($query) => $query->where('name', 'like', "%{$value}%"));
-
-        return $query;
-    }
-
-    /**
-     * Scope a query to only include notified bookings.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  boolean  $notified
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeNotified($query, $notified = true)
-    {
-        $query->when($notified, fn($query) => $query->whereNotNull('notified_at'), fn($query) => $query->whereNull('notified_at'));
+        return $query->where(fn($query) => 
+            $query->whereHas('user', fn($query) => $query->where('name', 'like', "%{$value}%"))
+                ->orWhereHas('location', fn($query) => $query->where('name', 'like', "%{$value}%")));
     }
 
     /**
