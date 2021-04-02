@@ -25,7 +25,6 @@ import JetActionSection from '@/Jetstream/ActionSection'
 import JetConfirmationModal from '@/Jetstream/ConfirmationModal'
 import JetDangerButton from '@/Jetstream/DangerButton'
 import JetSecondaryButton from '@/Jetstream/SecondaryButton'
-import moment from 'moment'
 
 export default {
     components: {

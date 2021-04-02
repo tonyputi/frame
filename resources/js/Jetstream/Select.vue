@@ -1,10 +1,10 @@
 <template>
     <select
         class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
-        :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" ref="select">
-        <template v-for="(element, i) in elements" :key="i">
-            <option :value="element.value">{{ element.name }}</option>
-        </template>
+        :value="modelValue" 
+        @input="$emit('update:modelValue', $event.target.value)" 
+        ref="select">
+        <option v-for="(element, i) in elements" :key="i" :value="element.value">{{ element.name }}</option>
     </select>
 </template>
 
@@ -15,7 +15,7 @@
                 type: String
             },
             options: {
-                type: [Object],
+                type: Object,
                 default: []
             }
         },
@@ -24,18 +24,18 @@
 
         computed: {
             elements() {
-                return _.map(this.options, function(option) {
-                    if(typeof option === 'string'){
-                        return {
-                            name: option,
-                            value: option
-                        }
-                    } else if(typeof option === 'Object') {
+                return _.map(this.options, function(option, key) {
+                    if(typeof option === 'Object') {
                         return {
                             name: option.name,
                             value: option.value
                         }
-                    }                    
+                    }
+
+                    return {
+                        name: key || option,
+                        value: option
+                    }
                 })
             }
         },

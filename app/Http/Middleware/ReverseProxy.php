@@ -17,7 +17,7 @@ class ReverseProxy
      */
     public function handle(Request $request, Closure $next)
     {
-        // $request->headers->remove('host');
+        $request->headers->remove('host');
         $request->headers->set('x-real-ip', $request->ip());
         // here i can user $request->ips()
         $request->headers->set('x-forwarded-for', $request->ips());

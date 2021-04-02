@@ -52,112 +52,111 @@
 </template>
 
 <script>
-    import JetButton from '@/Jetstream/Button'
-    import JetFormSection from '@/Jetstream/FormSection'
-    import JetInput from '@/Jetstream/Input'
-    import JetTextarea from '@/Jetstream/Textarea'
-    import JetInputError from '@/Jetstream/InputError'
-    import JetLabel from '@/Jetstream/Label'
-    import JetActionMessage from '@/Jetstream/ActionMessage'
-    import JetSecondaryButton from '@/Jetstream/SecondaryButton'
-    import moment from 'moment'
-    
-    export default {
-        components: {
-            JetActionMessage,
-            JetButton,
-            JetFormSection,
-            JetInput,
-            JetTextarea,
-            JetInputError,
-            JetLabel,
-            JetSecondaryButton,
-        },
+import JetButton from '@/Jetstream/Button'
+import JetFormSection from '@/Jetstream/FormSection'
+import JetInput from '@/Jetstream/Input'
+import JetTextarea from '@/Jetstream/Textarea'
+import JetInputError from '@/Jetstream/InputError'
+import JetLabel from '@/Jetstream/Label'
+import JetActionMessage from '@/Jetstream/ActionMessage'
+import JetSecondaryButton from '@/Jetstream/SecondaryButton'
 
-        props: {
-            attributes: {
-                type: Object,
-                default: {}
+export default {
+    components: {
+        JetActionMessage,
+        JetButton,
+        JetFormSection,
+        JetInput,
+        JetTextarea,
+        JetInputError,
+        JetLabel,
+        JetSecondaryButton,
+    },
+
+    props: {
+        attributes: {
+            type: Object,
+            default: {}
+        },
+        permissions: {
+            type: Object,
+            default: {}
+        }
+    },
+
+    data() {
+        return {
+            step: 5 * 60,
+            form: this.$inertia.form({
+                started_at: this.nextFifthMinute(),
+                ended_at: this.nextFifthMinute().add(15, 'minutes'),
+                notes: null
+            })
+        }
+    },
+
+    computed: {
+        // TODO: this can be mixed
+        canUpdateOrCreate() {
+            return this.permissions.canUpdate || !this.attributes.id
+        },
+        minDate(){
+            return moment().format('YYYY-MM-DD')
+        },
+        maxDate(){
+            return moment().add(6, 'months').format('YYYY-MM-DD')
+        },
+        date: {
+            get() {
+                return moment(this.form.started_at).format('YYYY-MM-DD')
             },
-            permissions: {
-                type: Object,
-                default: {}
+            set(value) {
+                this.form.started_at = moment(`${value} ${this.start_at}`)
+                this.form.ended_at = moment(`${value} ${this.end_at}`)
             }
         },
-
-        data() {
-            return {
-                step: 5 * 60,
-                form: this.$inertia.form({
-                    started_at: this.nextFifthMinute(),
-                    ended_at: this.nextFifthMinute().add(15, 'minutes'),
-                    notes: null
-                })
+        start_at: {
+            get() {
+                return moment(this.form.started_at).format('HH:mm')
+            },
+            set(value) {
+                this.form.started_at = moment(`${this.date} ${value}`)
             }
         },
+        end_at: {
+            get() {
+                return moment(this.form.ended_at).format('HH:mm')
+            },
+            set(value) {
+                this.form.ended_at = moment(`${this.date} ${value}`)
+            }
+        }
+    },
 
-        computed: {
-            // TODO: this can be mixed
-            canUpdateOrCreate() {
-                return this.permissions.canUpdate || !this.attributes.id
-            },
-            minDate(){
-                return moment().format('YYYY-MM-DD')
-            },
-            maxDate(){
-                return moment().add(6, 'months').format('YYYY-MM-DD')
-            },
-            date: {
-                get() {
-                    return moment(this.form.started_at).format('YYYY-MM-DD')
-                },
-                set(value) {
-                    this.form.started_at = moment(`${value} ${this.start_at}`)
-                    this.form.ended_at = moment(`${value} ${this.end_at}`)
-                }
-            },
-            start_at: {
-                get() {
-                    return moment(this.form.started_at).format('HH:mm')
-                },
-                set(value) {
-                    this.form.started_at = moment(`${this.date} ${value}`)
-                }
-            },
-            end_at: {
-                get() {
-                    return moment(this.form.ended_at).format('HH:mm')
-                },
-                set(value) {
-                    this.form.ended_at = moment(`${this.date} ${value}`)
-                }
+    methods: {
+        updateOrCreate() {
+            if(this.attributes.id) {
+                this.form.put(route('bookings.update', [this.attributes.id]), {
+                    errorBag: 'updateBooking',
+                    preserveScroll: true,
+                    onError: () => this.$refs.date.focus(),
+                });
+            } else {
+                this.form.post(route('game-providers.bookings.store', [route().params['game_provider']]), {
+                    errorBag: 'createBooking',
+                    preserveScroll: true,
+                    onError: () => this.$refs.date.focus(),
+                });
             }
         },
+        nextFifthMinute() {
+            let now = moment()
+            let minute = 5 - (now.minute() % 5)
+            now.add(minute, 'minutes')
+            now.set('seconds', 0)
 
-        methods: {
-            updateOrCreate() {
-                if(this.attributes.id) {
-                    this.form.put(route('bookings.update', [this.attributes.id]), {
-                        errorBag: 'updateBooking',
-                        preserveScroll: true,
-                        onError: () => this.$refs.date.focus(),
-                    });
-                } else {
-                    this.form.post(route('game-providers.bookings.store', [route().params['game_provider']]), {
-                        errorBag: 'createBooking',
-                        preserveScroll: true,
-                        onError: () => this.$refs.date.focus(),
-                    });
-                }
-            },
-            nextFifthMinute() {
-                let now = moment()
-                let minute = 5 - (now.minute() % 5)
-                now.add(minute, 'minutes')
-                now.set('seconds', 0)
-
-                return now
-            },
+            return now
         },
-    }
+    },
+}
 </script>

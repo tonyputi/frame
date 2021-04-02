@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocationsTable extends Migration
+class CreateEnvironmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('locations', function (Blueprint $table) {
+        Schema::create('environments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('environment_id')->constrained();
             $table->string('name')->unique();
-            $table->string('logo_path')->nullable();
-            $table->string('location_match')->unique();
-            $table->string('default_hostname')->nullable();
-            $table->string('default_ipv4')->nullable();
+            $table->string('middleware')->nullable();
+            $table->string('prefix')->nullable();
+            $table->string('domain');
+            $table->boolean('https')->default(false);
+            $table->json('options')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateLocationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('environments');
     }
 }

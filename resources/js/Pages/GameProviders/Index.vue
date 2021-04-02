@@ -126,8 +126,11 @@ import JetBadge from "@/Jetstream/Badge";
 import JetBoolean from "@/Jetstream/Boolean";
 
 import { ClockIcon, EyeIcon, TrashIcon } from '@heroicons/vue/outline'
+import InteractWithCollection from "@/mixins/InteractWithCollection"
+import InteractWithDateTime from "@/mixins/InteractWithDateTime"
 
 export default {
+    mixins: [InteractWithCollection, InteractWithDateTime],
     components: {
         AppLayout,
         JetLinkButton,
@@ -146,8 +149,6 @@ export default {
         TrashIcon
     },
 
-    props: ['data', 'meta', 'permissions'],
-
     data() {
         return {
             gameProviderBeingBooked: null,
@@ -163,18 +164,6 @@ export default {
             },
             set(value) {
                 (value) ? this.gameProvidersSelected = this.data : this.gameProvidersSelected = [];
-            }
-        }
-    },
-
-    methods: {
-        // TODO: this can be mixed in HasTable.js
-        filter(ev) {
-            this.$inertia.reload({data: { search: ev.target.value, page: 1 }})
-        },
-        datetimeFormat(datetime, format = null) {
-            if(datetime) {
-                return moment(datetime).format(format)
             }
         }
     }

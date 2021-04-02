@@ -27,6 +27,16 @@ class Location extends Model
     /**
      * Get all the bookings history for that provider
      *
+     * @return BelongsTo
+     */
+    public function enviroment()
+    {
+        return $this->belongsTo(Enviroment::class, 'environment_id');
+    }
+
+    /**
+     * Get all the bookings history for that provider
+     *
      * @return HasMany
      */
     public function bookings()

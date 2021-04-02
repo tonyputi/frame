@@ -23,38 +23,25 @@
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout'
-    import DeleteBookingForm from './DeleteBookingForm'
-    import UpdateBookingForm from './UpdateBookingForm'
-    import JetSectionBorder from '@/Jetstream/SectionBorder'
+import AppLayout from '@/Layouts/AppLayout'
+import DeleteBookingForm from './DeleteBookingForm'
+import UpdateBookingForm from './UpdateBookingForm'
+import JetSectionBorder from '@/Jetstream/SectionBorder'
+import InteractWithResource from "@/mixins/InteractWithResource"
 
-    export default {
-        props: ['data'],
+export default {
+    mixins: [InteractWithResource],
+    components: {
+        AppLayout,
+        JetSectionBorder,
+        UpdateBookingForm,
+        DeleteBookingForm
+    },
 
-        components: {
-            AppLayout,
-            JetSectionBorder,
-            UpdateBookingForm,
-            DeleteBookingForm
-        },
-
-        props: {
-            data: {
-                type: Object,
-                default: {}
-            }
-        },
-
-        computed: {
-            title() {
-                return this.attributes.id ? `Booking: ${this.attributes.id}` : `Create new booking`
-            },
-            attributes() {
-                return this.data.attributes || {}
-            },
-            permissions() {
-                return this.data.permissions || {}
-            }
+    computed: {
+        title() {
+            return this.attributes.id ? `Booking: ${this.attributes.id}` : `Create new booking`
         }
     }
+}
 </script>

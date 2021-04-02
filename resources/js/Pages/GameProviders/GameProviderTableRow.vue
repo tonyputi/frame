@@ -46,7 +46,6 @@
 
 <script>
 import JetCheckbox from "@/Jetstream/Checkbox";
-import moment from 'moment';
 
 export default {
     components: {

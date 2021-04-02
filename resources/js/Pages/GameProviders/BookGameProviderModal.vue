@@ -50,103 +50,102 @@
 </template>
 
 <script>
-    import JetActionSection from '@/Jetstream/ActionSection'
-    import JetDialogModal from '@/Jetstream/DialogModal'
-    import JetLabel from '@/Jetstream/Label'
-    import JetInput from '@/Jetstream/Input'
-    import JetTextarea from '@/Jetstream/Textarea'
-    import JetInputError from '@/Jetstream/InputError'
-    import JetSecondaryButton from '@/Jetstream/SecondaryButton'
-    import JetButton from '@/Jetstream/Button'
-    import moment from 'moment';
+import JetActionSection from '@/Jetstream/ActionSection'
+import JetDialogModal from '@/Jetstream/DialogModal'
+import JetLabel from '@/Jetstream/Label'
+import JetInput from '@/Jetstream/Input'
+import JetTextarea from '@/Jetstream/Textarea'
+import JetInputError from '@/Jetstream/InputError'
+import JetSecondaryButton from '@/Jetstream/SecondaryButton'
+import JetButton from '@/Jetstream/Button'
 
-    export default {
-        components: {
-            JetActionSection,
-            JetDialogModal,
-            JetInput,
-            JetTextarea,
-            JetLabel,
-            JetInputError,
-            JetSecondaryButton,
-            JetButton,
+export default {
+    components: {
+        JetActionSection,
+        JetDialogModal,
+        JetInput,
+        JetTextarea,
+        JetLabel,
+        JetInputError,
+        JetSecondaryButton,
+        JetButton,
+    },
+
+    props: ['attributes', 'permissions'],
+    emits: ['close'],
+
+    data() {
+        return {
+            step: 5 * 60,
+            form: this.$inertia.form({
+                started_at: this.nextFifthMinute(),
+                ended_at: this.nextFifthMinute().add(15, 'minutes'),
+                notes: null
+            })
+        }
+    },
+
+    computed: {
+        minDate(){
+            return moment().format('YYYY-MM-DD')
         },
-
-        props: ['attributes', 'permissions'],
-        emits: ['close'],
-
-        data() {
-            return {
-                step: 5 * 60,
-                form: this.$inertia.form({
-                    started_at: this.nextFifthMinute(),
-                    ended_at: this.nextFifthMinute().add(15, 'minutes'),
-                    notes: null
-                })
+        maxDate(){
+            return moment().add(6, 'months').format('YYYY-MM-DD')
+        },
+        date: {
+            get() {
+                return moment(this.form.started_at).format('YYYY-MM-DD')
+            },
+            set(value) {
+                this.form.started_at = moment(`${value} ${this.start_at}`)
+                this.form.ended_at = moment(`${value} ${this.end_at}`)
             }
         },
-
-        computed: {
-            minDate(){
-                return moment().format('YYYY-MM-DD')
+        start_at: {
+            get() {
+                return moment(this.form.started_at).format('HH:mm')
             },
-            maxDate(){
-                return moment().add(6, 'months').format('YYYY-MM-DD')
-            },
-            date: {
-                get() {
-                    return moment(this.form.started_at).format('YYYY-MM-DD')
-                },
-                set(value) {
-                    this.form.started_at = moment(`${value} ${this.start_at}`)
-                    this.form.ended_at = moment(`${value} ${this.end_at}`)
-                }
-            },
-            start_at: {
-                get() {
-                    return moment(this.form.started_at).format('HH:mm')
-                },
-                set(value) {
-                    this.form.started_at = moment(`${this.date} ${value}`)
-                }
-            },
-            end_at: {
-                get() {
-                    return moment(this.form.ended_at).format('HH:mm')
-                },
-                set(value) {
-                    this.form.ended_at = moment(`${this.date} ${value}`)
-                }
+            set(value) {
+                this.form.started_at = moment(`${this.date} ${value}`)
             }
         },
-
-        methods: {
-            bookGameProvider() {
-                // need to remove one second to match ie 14:04:59
-                this.form.ended_at = moment(this.form.ended_at).subtract(1, 'second')
-
-                this.form.post(route('game-providers.bookings.store', [this.attributes.id]), {
-                    preserveScroll: true,
-                    onSuccess: () => this.closeModal(),
-                    onError: () => this.$refs.date.focus(),
-                    onFinish: () => this.form.reset(),
-                })
+        end_at: {
+            get() {
+                return moment(this.form.ended_at).format('HH:mm')
             },
+            set(value) {
+                this.form.ended_at = moment(`${this.date} ${value}`)
+            }
+        }
+    },
 
-            nextFifthMinute() {
-                let now = moment()
-                let minute = 5 - (now.minute() % 5)
-                now.add(minute, 'minutes')
-                now.set('seconds', 0)
+    methods: {
+        bookGameProvider() {
+            // need to remove one second to match ie 14:04:59
+            this.form.ended_at = moment(this.form.ended_at).subtract(1, 'second')
 
-                return now
-            },
-
-            closeModal() {
-                this.$emit('close')
-
-                this.form.reset()
-            },
+            this.form.post(route('game-providers.bookings.store', [this.attributes.id]), {
+                preserveScroll: true,
+                onSuccess: () => this.closeModal(),
+                onError: () => this.$refs.date.focus(),
+                onFinish: () => this.form.reset(),
+            })
         },
-    }
+
+        nextFifthMinute() {
+            let now = moment()
+            let minute = 5 - (now.minute() % 5)
+            now.add(minute, 'minutes')
+            now.set('seconds', 0)
+
+            return now
+        },
+
+        closeModal() {
+            this.$emit('close')
+
+            this.form.reset()
+        },
+    },
+}
 </script>

@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\GameProviderController;
 
 /*
@@ -28,6 +29,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
+    Route::resource('environments', EnvironmentController::class);
     Route::resource('game-providers', GameProviderController::class);
     Route::resource('game-providers.bookings', BookingController::class)->shallow();
     Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');

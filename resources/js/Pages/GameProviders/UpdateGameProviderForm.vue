@@ -41,6 +41,14 @@
                 <jet-input-error :message="form.errors.logo" class="mt-2" />
             </div>
 
+            <!-- Environment -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="environment_id" value="Environment" />
+                <jet-select id="environment_id" class="mt-1 block w-full" 
+                    v-model="form.environment_id" :disabled="!canUpdateOrCreate" :options="meta.environments" />
+                <jet-input-error :message="form.errors.environment_id" class="mt-2" />
+            </div>
+
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="name" value="Name" />
@@ -120,12 +128,17 @@
             permissions: {
                 type: Object,
                 default: {}
+            },
+            meta: {
+                type: Object,
+                default: {}
             }
         },
 
         data() {
             return {
                 form: this.$inertia.form({
+                    environment_id: this.attributes.environment_id,
                     name: this.attributes.name,
                     logo: null,
                     location_match: this.attributes.location_match,
