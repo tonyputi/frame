@@ -25,7 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command(Commands\GenerateGameProviderNginxConfig::class)->everyMinute();
         $schedule->job(new Heartbeat)->everyMinute();
     }
 

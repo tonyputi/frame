@@ -44,10 +44,6 @@ class LocationBook extends Command
     {
         parent::__construct();
 
-        if(config('frame.stack') != 'nginx') {
-            $this->hidden = true;
-        }
-
         Carbon::macro('dateRange', function ($start, $end, $unit = 'P1D') {
             return new Collection(CarbonPeriod::create($start, $end, $unit));
         });

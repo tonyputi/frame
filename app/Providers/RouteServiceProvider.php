@@ -51,9 +51,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
-            if(config('frame.stack') == 'proxy') {
-                $this->configureLocations();
-            }
+            
+            $this->configureLocations();
         });
     }
 

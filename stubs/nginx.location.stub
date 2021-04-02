@@ -1,4 +1,0 @@
-location {{ modifier }} /{{ match }} {
-    {{ slot }}
-    proxy_pass https://{{ host }}/{{ match }};
-}

@@ -1,20 +1,6 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Frame Stack
-    |--------------------------------------------------------------------------
-    |
-    | This configuration value informs Frame which "stack" you will be
-    | using for your application. In general, this value is set for you
-    | during installation and will not need to be changed after that.
-    |
-    */
-
-    'stack' => env('FRAME_STACK', 'proxy'),
-
     /*
      |--------------------------------------------------------------------------
      | Frame Route Middleware

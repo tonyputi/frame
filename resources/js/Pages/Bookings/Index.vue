@@ -46,35 +46,27 @@
                                     </inertia-link>
                                 </td>
                                 <td class="px-2 py-4 text-left">
-                                    <span v-if="resource.attributes.is_active" class="bg-red-600 inline-block w-3 h-3 mr-2 rounded-full" />
-                                    <span v-else class="bg-green-600 inline-block w-3 h-3 mr-2 rounded-full" />
+                                    <jet-boolean :value="resource.attributes.is_active" />
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.started_at) }}</td>
                                 <td class="px-2 py-4 text-left">{{ formatDate(resource.attributes.ended_at) }}</td>
                                 <td class="px-2 py-4">
-                                    <div class="flex flex-row">
-                                        <div class="flex-1 ml-2">
-                                            <button class="text-red-500" v-if="resource.permissions.canUpdate" @click="bookingBeingReleased=resource">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="flex-1 ml-2">
-                                            <inertia-link class="text-black-500 p-0"  v-if="resource.permissions.canView" :href="route('bookings.show', resource.attributes.id)">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                                                </svg>
-                                            </inertia-link>
-                                        </div>
-                                        <div class="flex-1 ml-2">
-                                            <button class="text-red-500" v-if="resource.permissions.canDelete" @click="bookingBeingDeleted=resource">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                                                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                                </svg>
-                                            </button>
-                                        </div>
+                                    <div class="inline-flex items-center">
+                                        <button v-if="resource.permissions.canUpdate" 
+                                            @click="bookingBeingReleased=resource"
+                                            class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3">
+                                            <XCircleIcon class="h-6 w-6" />
+                                        </button>
+                                        <inertia-link v-if="resource.permissions.canView" 
+                                            :href="route('bookings.show', resource.attributes.id)"
+                                            class="inline-flex cursor-pointer text-70 hover:text-primary mr-3">
+                                            <EyeIcon class="h-6 w-6" />
+                                        </inertia-link >
+                                        <button v-if="resource.permissions.canDelete" 
+                                            @click="bookingBeingDeleted=resource" 
+                                            class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3">
+                                            <TrashIcon class="h-6 w-6" />
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -115,8 +107,11 @@ import JetLinkButton from "@/Jetstream/LinkButton";
 import SearchInput from "@/Jetstream/SearchInput";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
+import JetBoolean from "@/Jetstream/Boolean";
 import DeleteBookingModal from './DeleteBookingModal';
 import ReleaseBookingModal from './ReleaseBookingModal';
+
+import { XCircleIcon, EyeIcon, TrashIcon } from '@heroicons/vue/outline'
 
 export default {
     components: {
@@ -125,10 +120,14 @@ export default {
         JetInput,
         JetCheckbox,
         JetTable,
+        JetBoolean,
         Pagination,
         SearchInput,
         DeleteBookingModal,
-        ReleaseBookingModal
+        ReleaseBookingModal,
+        XCircleIcon,
+        EyeIcon,
+        TrashIcon
     },
 
     props: ['data', 'meta', 'permissions'],

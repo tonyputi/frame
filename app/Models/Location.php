@@ -155,46 +155,4 @@ class Location extends Model
     {
         $this->attributes['location_match'] = trim($value, '/');
     }
-
-    /**
-     * return location block value always
-     *
-     * @param string $value
-     * @return string
-     */
-    public function getLocationBlockAttribute($value)
-    {
-        return $value ?? $this->defaultLocationBlock();
-    }
-
-    /**
-     * Get the nginx configuration
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getNginxConfigAttribute($value)
-    {
-        $keys = ['{{ modifier }}', '{{ match }}', '{{ slot }}', '{{ hostname }}'];
-
-        $values = [$this->location_modifier, $this->location_match, $this->location_block, $this->hostname];
-
-        return str_replace($keys, $values, File::get(base_path('stubs/nginx.location.stub')));
-    }
-
-    /**
-     * Get the default nginx location block configuration
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public static function defaultLocationBlock()
-    {
-        return <<<'EOD'
-        auth_basic off;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_redirect off;
-        EOD;
-    }
 }

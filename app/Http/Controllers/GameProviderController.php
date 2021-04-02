@@ -75,7 +75,6 @@ class GameProviderController extends Controller
     {
         $request->validate([
             'name' => ['required', 'unique:locations'],
-            'location_modifier' => ['nullable', 'in:=,~,~*,^~'],
             'location_match' => ['required'],
         ]);
 
@@ -127,9 +126,7 @@ class GameProviderController extends Controller
     {
         $request->validate([
             'name' => ['sometimes', 'required', "unique:locations,name,{$gameProvider->id}"],
-            'location_modifier' => ['sometimes', 'required'],
             'location_match' => ['sometimes', 'required'],
-            'location_block' => ['sometimes', 'required'],
         ]);
 
         $gameProvider->update($request->except('_method'));

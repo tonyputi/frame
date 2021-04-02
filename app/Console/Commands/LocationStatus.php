@@ -30,10 +30,6 @@ class LocationStatus extends Command
     public function __construct()
     {
         parent::__construct();
-
-        if(config('frame.stack') != 'nginx') {
-            $this->hidden = true;
-        }
     }
 
     /**
@@ -49,7 +45,6 @@ class LocationStatus extends Command
                 return [
                     'id' => $resource->id,
                     'name' => $resource->name,
-                    'location_modifier' => $resource->location_modifier,
                     'location_match' => $resource->location_match,
                     'host' => $resource->gameActiveProviderQueue->host,
                     'started_at' => $resource->gameActiveProviderQueue->started_at,

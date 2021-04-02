@@ -65,29 +65,12 @@
                 <jet-input-error :message="form.errors.default_ipv4" class="mt-2" />
             </div>
 
-            <!-- Location Modifier -->
-            <div class="col-span-6 sm:col-span-4" v-if="$page.props.frame.stack == 'nginx'">
-                <jet-label for="location_modifier" value="Location Modifier" />
-                <jet-select id="location_modifier" class="mt-1 block w-full"
-                    v-model="form.location_modifier" :options="['', '=', '~', '~*', '^~']" 
-                    :disabled="!canUpdateOrCreate" />
-                <jet-input-error :message="form.errors.location_modifier" class="mt-2" />
-            </div>
-
             <!-- Location Match -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="location_match" value="Location Match" />
                 <jet-input id="location_match" type="text" class="mt-1 block w-full" 
                     v-model="form.location_match" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.location_match" class="mt-2" />
-            </div>
-
-            <!-- Location Block -->
-            <div class="col-span-6 sm:col-span-6 w-full" v-if="$page.props.frame.stack == 'nginx'">
-                <jet-label for="location_block" value="Location Block" />
-                <jet-code id="location_block"
-                    v-model="form.location_block" :disabled="!canUpdateOrCreate" />
-                <jet-input-error :message="form.errors.location_block" class="mt-2" />
             </div>
         </template>
 
@@ -145,9 +128,7 @@
                 form: this.$inertia.form({
                     name: this.attributes.name,
                     logo: null,
-                    location_modifier: this.attributes.location_modifier,
                     location_match: this.attributes.location_match,
-                    location_block: this.attributes.location_block,
                     default_hostname: this.attributes.default_hostname,
                     default_ipv4: this.attributes.default_ipv4
                 }),

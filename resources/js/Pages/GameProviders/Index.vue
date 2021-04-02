@@ -44,8 +44,7 @@
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.id }}</td>
                                 <td class="px-2 py-4 text-left">
-                                    <span v-if="resource.attributes?.current_booking?.is_active" class="bg-red-600 inline-block w-3 h-3 mr-2 rounded-full" />
-                                    <span v-else class="bg-green-600 inline-block w-3 h-3 mr-2 rounded-full" />
+                                    <jet-boolean :value="resource.attributes?.current_booking?.is_active" />
                                 </td>
                                 <td class="px-2 py-4 text-left">
                                     <img class="h-8 w-8 rounded-full object-cover" :src="resource.attributes.logo_url" :alt="resource.attributes.name" />
@@ -65,66 +64,20 @@
                                     {{ datetimeFormat(resource.attributes.current_booking?.ended_at, 'HH:mm') }}
                                 </td>
                                 <td class="px-2 py-4">
-                                    <!-- <div class="inline-flex items-center">
-                                        <span class="inline-flex">
-                                            <a href="#" class="cursor-pointer text-70 hover:text-primary mr-3 inline-flex items-center has-tooltip">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 16" aria-labelledby="view" role="presentation" class="fill-current">
-                                                    <path d="M16.56 13.66a8 8 0 0 1-11.32 0L.3 8.7a1 1 0 0 1 0-1.42l4.95-4.95a8 8 0 0 1 11.32 0l4.95 4.95a1 1 0 0 1 0 1.42l-4.95 4.95-.01.01zm-9.9-1.42a6 6 0 0 0 8.48 0L19.38 8l-4.24-4.24a6 6 0 0 0-8.48 0L2.4 8l4.25 4.24h.01zM10.9 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path
-                                                ></svg>
-                                            </a>
-                                        </span>
-                                        <span class="inline-flex" v-if="resource.attributes.id % 2">
-                                            <a href="#" class="inline-flex cursor-pointer text-70 hover:text-primary mr-3 has-tooltip">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" aria-labelledby="edit" role="presentation" class="fill-current">
-                                                    <path d="M4.3 10.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM6 14h2.59l9-9L15 2.41l-9 9V14zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h6a1 1 0 1 1 0 2H2v14h14v-6z"></path>
-                                                </svg>
-                                            </a>
-                                        </span>
-                                        <button data-testid="operators-items-0-delete-button" class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3 has-tooltip">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" aria-labelledby="delete" role="presentation" class="fill-current">
-                                                <path fill-rule="nonzero" d="M6 4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6H1a1 1 0 1 1 0-2h5zM4 6v12h12V6H4zm8-2V2H8v2h4zM8 8a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z"></path>
-                                            </svg>
+                                    <div class="inline-flex items-center">
+                                        <button @click="gameProviderBeingBooked=resource" 
+                                            class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3">
+                                            <ClockIcon class="h-6 w-6" />
                                         </button>
-                                    </div> -->
-
-                                    <!-- <div class="inline-flex items-center">
-                                        <span class="inline-flex">
-                                            <a href="#" class="cursor-pointer text-70 hover:text-primary mr-3 inline-flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 16" aria-labelledby="view" role="presentation" class="fill-current">
-                                                    <path d="M16.56 13.66a8 8 0 0 1-11.32 0L.3 8.7a1 1 0 0 1 0-1.42l4.95-4.95a8 8 0 0 1 11.32 0l4.95 4.95a1 1 0 0 1 0 1.42l-4.95 4.95-.01.01zm-9.9-1.42a6 6 0 0 0 8.48 0L19.38 8l-4.24-4.24a6 6 0 0 0-8.48 0L2.4 8l4.25 4.24h.01zM10.9 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path
-                                                ></svg>
-                                            </a>
-                                        </span>
-                                        <span class="inline-flex" v-if="resource.attributes.id % 2">
-                                            <a href="#" class="inline-flex cursor-pointer text-70 hover:text-primary mr-3">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" aria-labelledby="edit" role="presentation" class="fill-current">
-                                                    <path d="M4.3 10.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM6 14h2.59l9-9L15 2.41l-9 9V14zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h6a1 1 0 1 1 0 2H2v14h14v-6z"></path>
-                                                </svg>
-                                            </a>
-                                        </span>
-                                        <button class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" aria-labelledby="delete" role="presentation" class="fill-current">
-                                                <path fill-rule="nonzero" d="M6 4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6H1a1 1 0 1 1 0-2h5zM4 6v12h12V6H4zm8-2V2H8v2h4zM8 8a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z"></path>
-                                            </svg>
-                                        </button>
-                                    </div> -->
-
-                                    <div class="flex">
-                                        <button class="text-black-500" @click="gameProviderBeingBooked=resource">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                                                <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
-                                            </svg>
-                                        </button>
-                                        <inertia-link class="text-black-500 ml-4" v-if="resource.permissions.canView" :href="route('game-providers.show', resource.attributes.id)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                                            </svg>
-                                        </inertia-link>
-                                        <button class="text-red-500 ml-4" v-if="resource.permissions.canDelete" @click="gameProviderBeingDeleted=resource">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                            </svg>
+                                        <inertia-link v-if="resource.permissions.canView" 
+                                            :href="route('game-providers.show', resource.attributes.id)"
+                                            class="inline-flex cursor-pointer text-70 hover:text-primary mr-3">
+                                            <EyeIcon class="h-6 w-6" />
+                                        </inertia-link >
+                                        <button v-if="resource.permissions.canDelete" 
+                                            @click="gameProviderBeingDeleted=resource" 
+                                            class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3">
+                                            <TrashIcon class="h-6 w-6" />
                                         </button>
                                     </div>
                                 </td>
@@ -170,6 +123,9 @@ import JetLinkButton from "@/Jetstream/LinkButton";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetBadge from "@/Jetstream/Badge";
+import JetBoolean from "@/Jetstream/Boolean";
+
+import { ClockIcon, EyeIcon, TrashIcon } from '@heroicons/vue/outline'
 
 export default {
     components: {
@@ -178,12 +134,16 @@ export default {
         JetInput,
         JetCheckbox,
         JetBadge,
+        JetBoolean,
         JetTable,
         JetResourceTable,
         Pagination,
         SearchInput,
         BookGameProviderModal,
-        DeleteGameProviderModal
+        DeleteGameProviderModal,
+        ClockIcon,
+        EyeIcon,
+        TrashIcon
     },
 
     props: ['data', 'meta', 'permissions'],

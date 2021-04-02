@@ -37,9 +37,7 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request)
     {
         return array_merge(parent::share($request), [
-            'frame' => [
-                'stack' => config('frame.stack')
-            ]
+            // 
         ]);
     }
 }
