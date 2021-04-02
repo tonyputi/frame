@@ -142,7 +142,7 @@ export default {
                     onError: () => this.$refs.date.focus(),
                 });
             } else {
-                this.form.post(route('game-providers.bookings.store', [route().params['game_provider']]), {
+                this.form.post(route('locations.bookings.store', [route().params.location]), {
                     errorBag: 'createBooking',
                     preserveScroll: true,
                     onError: () => this.$refs.date.focus(),

@@ -9,13 +9,13 @@
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <div>
-                    <update-game-provider-form v-bind="data" :meta="meta" />
+                    <update-resource-form v-bind="data" :meta="meta" />
 
                     <jet-section-border v-if="permissions.canDelete" />
                 </div>
 
                 <div v-if="permissions.canDelete">
-                    <delete-game-provider-form :data="data" class="mt-10 sm:mt-0" />
+                    <delete-resource-form :data="data" class="mt-10 sm:mt-0" />
                 </div>
             </div>
         </div>
@@ -25,8 +25,8 @@
 <script>
 import AppLayout from '@/Layouts/AppLayout'
 import JetSectionBorder from '@/Jetstream/SectionBorder'
-import UpdateGameProviderForm from './UpdateGameProviderForm'
-import DeleteGameProviderForm from './DeleteGameProviderForm'
+import UpdateResourceForm from './UpdateResourceForm'
+import DeleteResourceForm from './DeleteResourceForm'
 import InteractWithResource from "@/mixins/InteractWithResource"
 
 export default {
@@ -34,8 +34,8 @@ export default {
     components: {
         AppLayout,
         JetSectionBorder,
-        DeleteGameProviderForm,
-        UpdateGameProviderForm
+        DeleteResourceForm,
+        UpdateResourceForm
     },
 
     computed: {

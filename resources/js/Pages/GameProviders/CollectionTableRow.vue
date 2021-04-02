@@ -13,7 +13,7 @@
         </td>
         <td class="px-2 py-4 text-left">{{ attributes.name }}</td>
         <td class="px-2 py-4 text-left">
-            <inertia-link :href="route('game-providers.bookings.index', [attributes.id])">
+            <inertia-link :href="route('locations.bookings.index', [attributes.id])">
                 <span class="inline-flex items-center justify-center px-3 py-2 text-xs font-bold leading-none text-white bg-gray-800 rounded-full">
                     {{ attributes.next_bookings_count }}
                 </span>

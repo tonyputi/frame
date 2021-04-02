@@ -124,7 +124,7 @@ export default {
             // need to remove one second to match ie 14:04:59
             this.form.ended_at = moment(this.form.ended_at).subtract(1, 'second')
 
-            this.form.post(route('game-providers.bookings.store', [this.attributes.id]), {
+            this.form.post(route('locations.bookings.store', [this.attributes.id]), {
                 preserveScroll: true,
                 onSuccess: () => this.closeModal(),
                 onError: () => this.$refs.date.focus(),

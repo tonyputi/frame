@@ -96,6 +96,28 @@ class Location extends Model
      * @param string $value
      * @return string
      */
+    public function getDefaultRedirectToAttribute()
+    {
+        return $this->default_redirect_to ?? optional($this->environment)->default_redirect_to;
+    }
+
+    /**
+     * return the location ipv4 value
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getDefaultRedirectIpv4Attribute()
+    {
+        return $this->default_redirect_ipv4 ?? optional($this->environemnt)->default_redirect_ipv4;
+    }
+
+    /**
+     * return the location hostname value
+     *
+     * @param string $value
+     * @return string
+     */
     public function getHostnameAttribute()
     {
         if($this->currentBooking()->exists())
@@ -103,7 +125,7 @@ class Location extends Model
             return $this->currentBooking->user->hostname;
         }
 
-        return $this->default_hostname;
+        return $this->default_redirect_to;
     }
 
     /**
@@ -119,7 +141,7 @@ class Location extends Model
             return $this->currentBooking->user->ipv4;
         }
 
-        return $this->default_ipv4;
+        return $this->default_redirect_ipv4;
     }
 
     /**

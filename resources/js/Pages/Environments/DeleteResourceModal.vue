@@ -11,7 +11,7 @@
                 <jet-input type="text" class="mt-1 block w-3/4" placeholder="Environment Name"
                            ref="name"
                            v-model="form.name"
-                           @keyup.enter="deleteEnvironment" />
+                           @keyup.enter="deleteResource" />
 
                 <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
@@ -22,7 +22,7 @@
                 Nevermind
             </jet-secondary-button>
 
-            <jet-danger-button class="ml-2" @click="deleteEnvironment" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <jet-danger-button class="ml-2" @click="deleteResource" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Delete
             </jet-danger-button>
         </template>
@@ -52,7 +52,7 @@ export default {
 
     data() {
         return {
-            confirmingEnvironmentDeletion: false,
+            confirmingResourceDeletion: false,
 
             form: this.$inertia.form({
                 name: '',
@@ -62,12 +62,12 @@ export default {
 
     methods: {
         confirmEnvironmentDeletion() {
-            this.confirmingEnvironmentDeletion = true;
+            this.confirmingResourceDeletion = true;
 
             setTimeout(() => this.$refs.name.focus(), 250)
         },
 
-        deleteEnvironment() {
+        deleteResource() {
             this.form.delete(route('environments.destroy', [this.attributes.id]), {
                 preserveScroll: true,
                 onSuccess: () => this.closeModal(),

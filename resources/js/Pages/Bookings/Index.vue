@@ -11,7 +11,7 @@
                 <div class="flex my-4">
                     <search-input @input="filter" placeholder="Search for game provider or user" />
 
-                    <jet-link-button class="ml-4" :href="route('game-providers.bookings.create', [gameProviderId])">
+                    <jet-link-button class="ml-4" v-if="canCreate" :href="route('locations.bookings.create', [route().params.location])">
                         Create
                     </jet-link-button>
                 </div>
@@ -21,7 +21,7 @@
                         <template #header>
                             <tr class="bg-gray-800 text-white">
                                 <th class="px-2 py-4 w-16">
-                                    <jet-checkbox v-model:checked="bookingsSelected" />
+                                    <jet-checkbox v-model:checked="collectionSelected" />
                                 </th>
                                 <th class="px-2 py-4 text-left">ID</th>
                                 <th class="px-2 py-4 text-left">User</th>
@@ -36,13 +36,13 @@
                         <template #body>
                             <tr v-for="resource in data" :key="resource.attributes.id" class="border border-black-600">
                                 <td class="px-2 py-4 text-center">
-                                    <jet-checkbox :value="resource" v-model:checked="bookingsSelected" />
+                                    <jet-checkbox :value="resource" v-model:checked="collectionSelected" />
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.id }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.user.name }}</td>
                                 <td class="px-2 py-4 text-left">
-                                    <inertia-link class="text-black-500" :href="route('game-providers.show', resource.attributes.game_provider.id)">
-                                        {{ resource.attributes.game_provider.name }}
+                                    <inertia-link class="text-black-500" :href="route('game-providers.show', resource.attributes.location.id)">
+                                        {{ resource.attributes.location.name }}
                                     </inertia-link>
                                 </td>
                                 <td class="px-2 py-4 text-left">
@@ -53,7 +53,7 @@
                                 <td class="px-2 py-4">
                                     <div class="inline-flex items-center">
                                         <button v-if="resource.permissions.canUpdate" 
-                                            @click="bookingBeingReleased=resource"
+                                            @click="resourceBeingReleased=resource"
                                             class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3">
                                             <XCircleIcon class="h-6 w-6" />
                                         </button>
@@ -63,7 +63,7 @@
                                             <EyeIcon class="h-6 w-6" />
                                         </inertia-link >
                                         <button v-if="resource.permissions.canDelete" 
-                                            @click="bookingBeingDeleted=resource" 
+                                            @click="resourceBeingDeleted=resource" 
                                             class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3">
                                             <TrashIcon class="h-6 w-6" />
                                         </button>
@@ -85,14 +85,14 @@
                 </div>
 
                 <!-- booking delete modal -->
-                <release-booking-modal
-                    v-bind="bookingBeingReleased"
-                    @close="bookingBeingReleased = null" />
+                <release-resource-modal
+                    v-bind="resourceBeingReleased"
+                    @close="resourceBeingReleased = null" />
 
                 <!-- booking delete modal -->
-                <delete-booking-modal
-                    v-bind="bookingBeingDeleted"
-                    @close="bookingBeingDeleted = null" />
+                <delete-resource-modal
+                    v-bind="resourceBeingDeleted"
+                    @close="resourceBeingDeleted = null" />
 
             </div>
         </div>
@@ -108,8 +108,8 @@ import SearchInput from "@/Jetstream/SearchInput";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetBoolean from "@/Jetstream/Boolean";
-import DeleteBookingModal from './DeleteBookingModal';
-import ReleaseBookingModal from './ReleaseBookingModal';
+import DeleteResourceModal from './DeleteResourceModal';
+import ReleaseResourceModal from './ReleaseResourceModal';
 
 import { XCircleIcon, EyeIcon, TrashIcon } from '@heroicons/vue/outline'
 import InteractWithCollection from "@/mixins/InteractWithCollection"
@@ -126,8 +126,8 @@ export default {
         JetBoolean,
         Pagination,
         SearchInput,
-        DeleteBookingModal,
-        ReleaseBookingModal,
+        DeleteResourceModal,
+        ReleaseResourceModal,
         XCircleIcon,
         EyeIcon,
         TrashIcon
@@ -135,15 +135,23 @@ export default {
 
     data() {
         return {
-            bookingBeingDeleted: null,
-            bookingBeingReleased: null,
-            bookingsSelected: []
+            resourceBeingDeleted: null,
+            resourceBeingReleased: null,
+            collectionSelected: []
         }
     },
-
+    
     computed: {
-        gameProviderId() {
-            return route().params['game_provider']
+        selectAll: {
+            get() {
+                return this.data ? this.collectionSelected.length == this.data.length : false;
+            },
+            set(value) {
+                (value) ? this.collectionSelected = this.data : this.collectionSelected = [];
+            }
+        },
+        canCreate() {
+            this.permissions.canCreate && !!route().params.environment;
         }
     }
 };

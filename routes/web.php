@@ -30,7 +30,10 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
     Route::resource('environments', EnvironmentController::class);
-    Route::resource('game-providers', GameProviderController::class);
-    Route::resource('game-providers.bookings', BookingController::class)->shallow();
+    Route::resource('environments.game-providers', GameProviderController::class)->shallow();
+    Route::resource('locations.bookings', BookingController::class)->shallow();
+    
+    Route::get('game-providers', [GameProviderController::class, 'index'])->name('game-providers.index');
     Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
+
 });

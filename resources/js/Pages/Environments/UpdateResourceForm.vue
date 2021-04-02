@@ -27,7 +27,7 @@
 
             <!-- Middleware -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="middleware" value="middleware" />
+                <jet-label for="middleware" value="Middleware" />
                 <jet-input id="middleware" type="text" class="mt-1 block w-full" 
                     v-model="form.middleware" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.middleware" class="mt-2" />
@@ -37,6 +37,22 @@
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="prefix" value="Prefix" />
                 <jet-input id="prefix" type="text" class="mt-1 block w-full" 
+                    v-model="form.prefix" :disabled="!canUpdateOrCreate" />
+                <jet-input-error :message="form.errors.prefix" class="mt-2" />
+            </div>
+
+            <!-- Default redirect to -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="default_redirect_to" value="Default redirect to" />
+                <jet-input id="default_redirect_to" type="text" class="mt-1 block w-full" 
+                    v-model="form.prefix" :disabled="!canUpdateOrCreate" />
+                <jet-input-error :message="form.errors.prefix" class="mt-2" />
+            </div>
+
+            <!-- Default redirect ipv4 -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="default_redirect_ipv4" value="Default redirect IPv4" />
+                <jet-input id="default_redirect_ipv4" type="text" class="mt-1 block w-full" 
                     v-model="form.prefix" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.prefix" class="mt-2" />
             </div>

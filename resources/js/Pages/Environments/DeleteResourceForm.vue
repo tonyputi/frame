@@ -20,7 +20,7 @@
             </div>
 
             <!-- Delete Environment Confirmation Modal -->
-            <delete-environment-modal
+            <delete-resource-modal
                 v-bind="environmentBeingDeleted"
                 @close="environmentBeingDeleted = null" />
         </template>
@@ -34,7 +34,7 @@ import JetDangerButton from '@/Jetstream/DangerButton'
 import JetInput from '@/Jetstream/Input'
 import JetInputError from '@/Jetstream/InputError'
 import JetSecondaryButton from '@/Jetstream/SecondaryButton'
-import DeleteEnvironmentModal from './DeleteEnvironmentModal';
+import DeleteResourceModal from './DeleteResourceModal';
 
 export default {
     components: {
@@ -44,7 +44,7 @@ export default {
         JetInput,
         JetInputError,
         JetSecondaryButton,
-        DeleteEnvironmentModal
+        DeleteResourceModal
     },
 
     props: ['data'],

@@ -37,7 +37,7 @@
                         <template #body>
                             <tr v-for="resource in data" :key="resource.attributes.id" class="border border-black-600"> 
                                 <td class="px-2 py-4 text-center">
-                                    <jet-checkbox :value="resource" v-model:checked="environmentsSelected" />
+                                    <jet-checkbox :value="resource" v-model:checked="collectionSelected" />
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.id }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.name }}</td>
@@ -45,9 +45,9 @@
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.middleware }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.prefix }}</td>
                                 <td class="px-2 py-4 text-left">
-                                    <!-- <inertia-link :href="route('environments.locations.index', [resource.attributes.id])"> -->
+                                    <inertia-link :href="route('environments.game-providers.index', [resource.attributes.id])">
                                         <jet-badge>{{ resource.attributes.locations_count }}</jet-badge>
-                                    <!-- </inertia-link> -->
+                                    </inertia-link>
                                 </td>
                                 <td class="px-2 py-4">
                                     <div class="inline-flex items-center">
@@ -57,7 +57,7 @@
                                             <EyeIcon class="h-6 w-6" />
                                         </inertia-link >
                                         <button v-if="resource.permissions.canDelete" 
-                                            @click="environmentBeingDeleted=resource" 
+                                            @click="resourceBeingDeleted=resource" 
                                             class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3">
                                             <TrashIcon class="h-6 w-6" />
                                         </button>
@@ -78,10 +78,10 @@
                     <p>Ooops! No Game providers to show. Please change search value </p>
                 </div>
 
-                <!-- game provider delete modal -->
-                <delete-environment-modal
-                    v-bind="environmentBeingDeleted"
-                    @close="environmentBeingDeleted = null" />
+                <!-- resource delete modal -->
+                <delete-resource-modal
+                    v-bind="resourceBeingDeleted"
+                    @close="resourceBeingDeleted = null" />
 
             </div>
         </div>
@@ -90,9 +90,8 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout';
-import DeleteEnvironmentModal from './DeleteEnvironmentModal';
+import DeleteResourceModal from './DeleteResourceModal';
 import JetTable from "@/Jetstream/Table";
-import JetResourceTable from "@/Jetstream/ResourceTable";
 import Pagination from "@/Jetstream/Pagination";
 import SearchInput from "@/Jetstream/SearchInput";
 import JetLinkButton from "@/Jetstream/LinkButton";
@@ -114,37 +113,27 @@ export default {
         JetBadge,
         JetBoolean,
         JetTable,
-        JetResourceTable,
         Pagination,
         SearchInput,
-        DeleteEnvironmentModal,
+        DeleteResourceModal,
         EyeIcon,
         TrashIcon
     },
 
     data() {
         return {
-            environmentBeingBooked: null,
-            environmentBeingDeleted: null,
-            environmentsSelected: []
+            resourceBeingDeleted: null,
+            collectionSelected: []
         }
     },
 
     computed: {
         selectAll: {
             get() {
-                return this.data ? this.environmentsSelected.length == this.data.length : false;
+                return this.data ? this.collectionSelected.length == this.data.length : false;
             },
             set(value) {
-                (value) ? this.environmentsSelected = this.data : this.environmentsSelected = [];
-            }
-        }
-    },
-
-    methods: {
-        datetimeFormat(datetime, format = null) {
-            if(datetime) {
-                return moment(datetime).format(format)
+                (value) ? this.collectionSelected = this.data : this.collectionSelected = [];
             }
         }
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Booking;
-use App\Models\GameProvider;
+use App\Models\Location;
 use App\Rules\AvailableTime;
 use Illuminate\Http\Request;
 use App\Http\Resources\JetstreamResource;
@@ -30,7 +30,7 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        $collection = Booking::with(['user', 'gameProvider'])
+        $collection = Booking::with(['user', 'location'])
             ->when($request->game_provider, fn($query) => $query->where('location_id', $request->game_provider))
             ->when($request->input('search'), fn($query) => $query->filter($request->search))
             ->available()
@@ -66,31 +66,31 @@ class BookingController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, GameProvider $gameProvider)
+    public function store(Request $request, Location $location)
     {
         $request->validate([
             'started_at' => [
                 'required',
                 'date',
                 'before:ended_at',
-                new AvailableTime('bookings', ['location_id' => $gameProvider->id])
+                new AvailableTime('bookings', ['location_id' => $location->id])
             ],
             'ended_at' => [
                 'required',
                 'date',
                 'after:started_at',
-                new AvailableTime('bookings', ['location_id' => $gameProvider->id])
+                new AvailableTime('bookings', ['location_id' => $location->id])
             ]
         ]);
 
         $booking = new Booking($request->input());
-        $booking->location_id = $gameProvider->id;
+        $booking->location_id = $location->id;
         $booking->performed_by = $request->user()->id;
         // if not passed user_id is the same as request->id
         $booking->user_id = $request->user()->id;
         $booking->save();
 
-        return back(303)->banner("Game Provider: {$gameProvider->name} booked!");
+        return back(303)->banner("Game Provider: {$location->name} booked!");
     }
 
     /**

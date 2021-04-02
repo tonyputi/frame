@@ -1,28 +1,28 @@
 <template>
     <jet-action-section>
         <template #title>
-            Delete Game Provider
+            Delete Booking
         </template>
 
         <template #description>
-            Permanently delete game provider.
+            Permanently delete booking.
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                Once game provider is deleted, all of its resources and data will be permanently deleted. Before deleting game provider, please download any data or information that you wish to retain.
+                Once bookig is deleted, all of its resources and data will be permanently deleted.
             </div>
 
             <div class="mt-5">
-                <jet-danger-button @click="gameProviderBeingDeleted=data">
-                    Delete Game Provider
+                <jet-danger-button @click="resourceBeingDeleted = data">
+                    Delete Booking
                 </jet-danger-button>
             </div>
 
-            <!-- Delete Game Provider Confirmation Modal -->
-            <delete-game-provider-modal
-                v-bind="gameProviderBeingDeleted"
-                @close="gameProviderBeingDeleted = null" />
+            <!-- Delete Booking Confirmation Modal -->
+            <delete-resource-modal
+                v-bind="resourceBeingDeleted"
+                @close="resourceBeingDeleted = null" />
         </template>
     </jet-action-section>
 </template>
@@ -34,7 +34,7 @@ import JetDangerButton from '@/Jetstream/DangerButton'
 import JetInput from '@/Jetstream/Input'
 import JetInputError from '@/Jetstream/InputError'
 import JetSecondaryButton from '@/Jetstream/SecondaryButton'
-import DeleteGameProviderModal from './DeleteGameProviderModal';
+import DeleteResourceModal from './DeleteResourceModal';
 
 export default {
     components: {
@@ -44,14 +44,14 @@ export default {
         JetInput,
         JetInputError,
         JetSecondaryButton,
-        DeleteGameProviderModal
+        DeleteResourceModal
     },
 
     props: ['data'],
 
     data() {
         return {
-            gameProviderBeingDeleted: null,
+            resourceBeingDeleted: null,
         }
     },
 }

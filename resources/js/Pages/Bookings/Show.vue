@@ -9,13 +9,13 @@
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <div>
-                    <update-booking-form v-bind="data" />
+                    <update-resource-form v-bind="data" />
 
                     <jet-section-border v-if="permissions.canDelete" />
                 </div>
 
                 <div v-if="permissions.canDelete">
-                    <delete-booking-form :data="data" class="mt-10 sm:mt-0" />
+                    <delete-resource-form :data="data" class="mt-10 sm:mt-0" />
                 </div>
             </div>
         </div>
@@ -24,8 +24,8 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout'
-import DeleteBookingForm from './DeleteBookingForm'
-import UpdateBookingForm from './UpdateBookingForm'
+import DeleteResourceForm from './DeleteResourceForm'
+import UpdateResourceForm from './UpdateResourceForm'
 import JetSectionBorder from '@/Jetstream/SectionBorder'
 import InteractWithResource from "@/mixins/InteractWithResource"
 
@@ -34,8 +34,8 @@ export default {
     components: {
         AppLayout,
         JetSectionBorder,
-        UpdateBookingForm,
-        DeleteBookingForm
+        UpdateResourceForm,
+        DeleteResourceForm
     },
 
     computed: {

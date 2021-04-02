@@ -25981,10 +25981,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=script&lang=js":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=script&lang=js ***!
-  \***************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -25998,7 +25998,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
 /* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
-/* harmony import */ var _DeleteBookingModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DeleteBookingModal */ "./resources/js/Pages/Bookings/DeleteBookingModal.vue");
+/* harmony import */ var _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DeleteResourceModal */ "./resources/js/Pages/Bookings/DeleteResourceModal.vue");
 
 
 
@@ -26014,22 +26014,22 @@ __webpack_require__.r(__webpack_exports__);
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__.default,
     JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__.default,
     JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_5__.default,
-    DeleteBookingModal: _DeleteBookingModal__WEBPACK_IMPORTED_MODULE_6__.default
+    DeleteResourceModal: _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_6__.default
   },
   props: ['data'],
   data: function data() {
     return {
-      bookingBeingDeleted: null
+      resourceBeingDeleted: null
     };
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js":
-/*!****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js ***!
-  \****************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -26058,13 +26058,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   emits: ['close'],
   data: function data() {
     return {
-      confirmingBookingDeletion: false,
+      confirmingResourceDeletion: false,
       form: this.$inertia.form({})
     };
   },
   methods: {
     confirmBookingDeletion: function confirmBookingDeletion() {
-      this.confirmingBookingDeletion = true;
+      this.confirmingResourceDeletion = true;
     },
     deleteBooking: function deleteBooking() {
       var _this = this;
@@ -26108,8 +26108,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
 /* harmony import */ var _Jetstream_Boolean__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/Boolean */ "./resources/js/Jetstream/Boolean.vue");
-/* harmony import */ var _DeleteBookingModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./DeleteBookingModal */ "./resources/js/Pages/Bookings/DeleteBookingModal.vue");
-/* harmony import */ var _ReleaseBookingModal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ReleaseBookingModal */ "./resources/js/Pages/Bookings/ReleaseBookingModal.vue");
+/* harmony import */ var _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./DeleteResourceModal */ "./resources/js/Pages/Bookings/DeleteResourceModal.vue");
+/* harmony import */ var _ReleaseResourceModal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ReleaseResourceModal */ "./resources/js/Pages/Bookings/ReleaseResourceModal.vue");
 /* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
 /* harmony import */ var _mixins_InteractWithCollection__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/mixins/InteractWithCollection */ "./resources/js/mixins/InteractWithCollection.js");
 /* harmony import */ var _mixins_InteractWithDateTime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/mixins/InteractWithDateTime */ "./resources/js/mixins/InteractWithDateTime.js");
@@ -26137,32 +26137,40 @@ __webpack_require__.r(__webpack_exports__);
     JetBoolean: _Jetstream_Boolean__WEBPACK_IMPORTED_MODULE_7__.default,
     Pagination: _Jetstream_Pagination__WEBPACK_IMPORTED_MODULE_2__.default,
     SearchInput: _Jetstream_SearchInput__WEBPACK_IMPORTED_MODULE_4__.default,
-    DeleteBookingModal: _DeleteBookingModal__WEBPACK_IMPORTED_MODULE_8__.default,
-    ReleaseBookingModal: _ReleaseBookingModal__WEBPACK_IMPORTED_MODULE_9__.default,
+    DeleteResourceModal: _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_8__.default,
+    ReleaseResourceModal: _ReleaseResourceModal__WEBPACK_IMPORTED_MODULE_9__.default,
     XCircleIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_10__.XCircleIcon,
     EyeIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_10__.EyeIcon,
     TrashIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_10__.TrashIcon
   },
   data: function data() {
     return {
-      bookingBeingDeleted: null,
-      bookingBeingReleased: null,
-      bookingsSelected: []
+      resourceBeingDeleted: null,
+      resourceBeingReleased: null,
+      collectionSelected: []
     };
   },
   computed: {
-    gameProviderId: function gameProviderId() {
-      return route().params['game_provider'];
+    selectAll: {
+      get: function get() {
+        return this.data ? this.collectionSelected.length == this.data.length : false;
+      },
+      set: function set(value) {
+        value ? this.collectionSelected = this.data : this.collectionSelected = [];
+      }
+    },
+    canCreate: function canCreate() {
+      this.permissions.canCreate && !!route().params.environment;
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=script&lang=js":
-/*!*****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=script&lang=js ***!
-  \*****************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -26233,8 +26241,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _DeleteBookingForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteBookingForm */ "./resources/js/Pages/Bookings/DeleteBookingForm.vue");
-/* harmony import */ var _UpdateBookingForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateBookingForm */ "./resources/js/Pages/Bookings/UpdateBookingForm.vue");
+/* harmony import */ var _DeleteResourceForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteResourceForm */ "./resources/js/Pages/Bookings/DeleteResourceForm.vue");
+/* harmony import */ var _UpdateResourceForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateResourceForm */ "./resources/js/Pages/Bookings/UpdateResourceForm.vue");
 /* harmony import */ var _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/SectionBorder */ "./resources/js/Jetstream/SectionBorder.vue");
 /* harmony import */ var _mixins_InteractWithResource__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/mixins/InteractWithResource */ "./resources/js/mixins/InteractWithResource.js");
 
@@ -26247,8 +26255,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     JetSectionBorder: _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_3__.default,
-    UpdateBookingForm: _UpdateBookingForm__WEBPACK_IMPORTED_MODULE_2__.default,
-    DeleteBookingForm: _DeleteBookingForm__WEBPACK_IMPORTED_MODULE_1__.default
+    UpdateResourceForm: _UpdateResourceForm__WEBPACK_IMPORTED_MODULE_2__.default,
+    DeleteResourceForm: _DeleteResourceForm__WEBPACK_IMPORTED_MODULE_1__.default
   },
   computed: {
     title: function title() {
@@ -26259,10 +26267,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=script&lang=js":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=script&lang=js ***!
-  \***************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -26367,7 +26375,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       } else {
-        this.form.post(route('game-providers.bookings.store', [route().params['game_provider']]), {
+        this.form.post(route('locations.bookings.store', [route().params.location]), {
           errorBag: 'createBooking',
           preserveScroll: true,
           onError: function onError() {
@@ -26412,10 +26420,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=script&lang=js":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -26429,7 +26437,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
 /* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
-/* harmony import */ var _DeleteEnvironmentModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DeleteEnvironmentModal */ "./resources/js/Pages/Environments/DeleteEnvironmentModal.vue");
+/* harmony import */ var _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DeleteResourceModal */ "./resources/js/Pages/Environments/DeleteResourceModal.vue");
 
 
 
@@ -26445,7 +26453,7 @@ __webpack_require__.r(__webpack_exports__);
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__.default,
     JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__.default,
     JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_5__.default,
-    DeleteEnvironmentModal: _DeleteEnvironmentModal__WEBPACK_IMPORTED_MODULE_6__.default
+    DeleteResourceModal: _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_6__.default
   },
   props: ['data'],
   data: function data() {
@@ -26457,10 +26465,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=script&lang=js":
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=script&lang=js ***!
-  \************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -26493,7 +26501,7 @@ __webpack_require__.r(__webpack_exports__);
   emits: ['close'],
   data: function data() {
     return {
-      confirmingEnvironmentDeletion: false,
+      confirmingResourceDeletion: false,
       form: this.$inertia.form({
         name: ''
       })
@@ -26503,12 +26511,12 @@ __webpack_require__.r(__webpack_exports__);
     confirmEnvironmentDeletion: function confirmEnvironmentDeletion() {
       var _this = this;
 
-      this.confirmingEnvironmentDeletion = true;
+      this.confirmingResourceDeletion = true;
       setTimeout(function () {
         return _this.$refs.name.focus();
       }, 250);
     },
-    deleteEnvironment: function deleteEnvironment() {
+    deleteResource: function deleteResource() {
       var _this2 = this;
 
       this.form["delete"](route('environments.destroy', [this.attributes.id]), {
@@ -26545,19 +26553,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _DeleteEnvironmentModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteEnvironmentModal */ "./resources/js/Pages/Environments/DeleteEnvironmentModal.vue");
+/* harmony import */ var _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteResourceModal */ "./resources/js/Pages/Environments/DeleteResourceModal.vue");
 /* harmony import */ var _Jetstream_Table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Table */ "./resources/js/Jetstream/Table.vue");
-/* harmony import */ var _Jetstream_ResourceTable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/ResourceTable */ "./resources/js/Jetstream/ResourceTable.vue");
-/* harmony import */ var _Jetstream_Pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Pagination */ "./resources/js/Jetstream/Pagination.vue");
-/* harmony import */ var _Jetstream_SearchInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/SearchInput */ "./resources/js/Jetstream/SearchInput.vue");
-/* harmony import */ var _Jetstream_LinkButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/LinkButton */ "./resources/js/Jetstream/LinkButton.vue");
-/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
-/* harmony import */ var _Jetstream_Badge__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Jetstream/Badge */ "./resources/js/Jetstream/Badge.vue");
-/* harmony import */ var _Jetstream_Boolean__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Jetstream/Boolean */ "./resources/js/Jetstream/Boolean.vue");
-/* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
-/* harmony import */ var _mixins_InteractWithCollection__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/mixins/InteractWithCollection */ "./resources/js/mixins/InteractWithCollection.js");
-
+/* harmony import */ var _Jetstream_Pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Pagination */ "./resources/js/Jetstream/Pagination.vue");
+/* harmony import */ var _Jetstream_SearchInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/SearchInput */ "./resources/js/Jetstream/SearchInput.vue");
+/* harmony import */ var _Jetstream_LinkButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/LinkButton */ "./resources/js/Jetstream/LinkButton.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
+/* harmony import */ var _Jetstream_Badge__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Jetstream/Badge */ "./resources/js/Jetstream/Badge.vue");
+/* harmony import */ var _Jetstream_Boolean__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Jetstream/Boolean */ "./resources/js/Jetstream/Boolean.vue");
+/* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
+/* harmony import */ var _mixins_InteractWithCollection__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/mixins/InteractWithCollection */ "./resources/js/mixins/InteractWithCollection.js");
 
 
 
@@ -26571,45 +26577,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mixins: [_mixins_InteractWithCollection__WEBPACK_IMPORTED_MODULE_12__.default],
+  mixins: [_mixins_InteractWithCollection__WEBPACK_IMPORTED_MODULE_11__.default],
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    JetLinkButton: _Jetstream_LinkButton__WEBPACK_IMPORTED_MODULE_6__.default,
-    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_7__.default,
-    JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_8__.default,
-    JetBadge: _Jetstream_Badge__WEBPACK_IMPORTED_MODULE_9__.default,
-    JetBoolean: _Jetstream_Boolean__WEBPACK_IMPORTED_MODULE_10__.default,
+    JetLinkButton: _Jetstream_LinkButton__WEBPACK_IMPORTED_MODULE_5__.default,
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_6__.default,
+    JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_7__.default,
+    JetBadge: _Jetstream_Badge__WEBPACK_IMPORTED_MODULE_8__.default,
+    JetBoolean: _Jetstream_Boolean__WEBPACK_IMPORTED_MODULE_9__.default,
     JetTable: _Jetstream_Table__WEBPACK_IMPORTED_MODULE_2__.default,
-    JetResourceTable: _Jetstream_ResourceTable__WEBPACK_IMPORTED_MODULE_3__.default,
-    Pagination: _Jetstream_Pagination__WEBPACK_IMPORTED_MODULE_4__.default,
-    SearchInput: _Jetstream_SearchInput__WEBPACK_IMPORTED_MODULE_5__.default,
-    DeleteEnvironmentModal: _DeleteEnvironmentModal__WEBPACK_IMPORTED_MODULE_1__.default,
-    EyeIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_11__.EyeIcon,
-    TrashIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_11__.TrashIcon
+    Pagination: _Jetstream_Pagination__WEBPACK_IMPORTED_MODULE_3__.default,
+    SearchInput: _Jetstream_SearchInput__WEBPACK_IMPORTED_MODULE_4__.default,
+    DeleteResourceModal: _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_1__.default,
+    EyeIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_10__.EyeIcon,
+    TrashIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_10__.TrashIcon
   },
   data: function data() {
     return {
-      environmentBeingBooked: null,
-      environmentBeingDeleted: null,
-      environmentsSelected: []
+      resourceBeingDeleted: null,
+      collectionSelected: []
     };
   },
   computed: {
     selectAll: {
       get: function get() {
-        return this.data ? this.environmentsSelected.length == this.data.length : false;
+        return this.data ? this.collectionSelected.length == this.data.length : false;
       },
       set: function set(value) {
-        value ? this.environmentsSelected = this.data : this.environmentsSelected = [];
-      }
-    }
-  },
-  methods: {
-    datetimeFormat: function datetimeFormat(datetime) {
-      var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      if (datetime) {
-        return moment(datetime).format(format);
+        value ? this.collectionSelected = this.data : this.collectionSelected = [];
       }
     }
   }
@@ -26630,8 +26625,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/SectionBorder */ "./resources/js/Jetstream/SectionBorder.vue");
-/* harmony import */ var _UpdateEnvironmentForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateEnvironmentForm */ "./resources/js/Pages/Environments/UpdateEnvironmentForm.vue");
-/* harmony import */ var _DeleteEnvironmentForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DeleteEnvironmentForm */ "./resources/js/Pages/Environments/DeleteEnvironmentForm.vue");
+/* harmony import */ var _UpdateResourceForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateResourceForm */ "./resources/js/Pages/Environments/UpdateResourceForm.vue");
+/* harmony import */ var _DeleteResourceForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DeleteResourceForm */ "./resources/js/Pages/Environments/DeleteResourceForm.vue");
 /* harmony import */ var _mixins_InteractWithResource__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/mixins/InteractWithResource */ "./resources/js/mixins/InteractWithResource.js");
 
 
@@ -26643,8 +26638,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     JetSectionBorder: _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_1__.default,
-    DeleteEnvironmentForm: _DeleteEnvironmentForm__WEBPACK_IMPORTED_MODULE_3__.default,
-    UpdateEnvironmentForm: _UpdateEnvironmentForm__WEBPACK_IMPORTED_MODULE_2__.default
+    DeleteResourceForm: _DeleteResourceForm__WEBPACK_IMPORTED_MODULE_3__.default,
+    UpdateResourceForm: _UpdateResourceForm__WEBPACK_IMPORTED_MODULE_2__.default
   },
   computed: {
     title: function title() {
@@ -26655,10 +26650,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=script&lang=js":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -26744,10 +26739,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=script&lang=js":
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=script&lang=js ***!
-  \************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -26833,7 +26828,7 @@ __webpack_require__.r(__webpack_exports__);
 
       // need to remove one second to match ie 14:04:59
       this.form.ended_at = moment(this.form.ended_at).subtract(1, 'second');
-      this.form.post(route('game-providers.bookings.store', [this.attributes.id]), {
+      this.form.post(route('locations.bookings.store', [this.attributes.id]), {
         preserveScroll: true,
         onSuccess: function onSuccess() {
           return _this.closeModal();
@@ -26862,131 +26857,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=script&lang=js":
-/*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=script&lang=js ***!
-  \*************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ActionSection */ "./resources/js/Jetstream/ActionSection.vue");
-/* harmony import */ var _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/DialogModal */ "./resources/js/Jetstream/DialogModal.vue");
-/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
-/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
-/* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
-/* harmony import */ var _DeleteGameProviderModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DeleteGameProviderModal */ "./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue");
-
-
-
-
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    JetActionSection: _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default,
-    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__.default,
-    JetDialogModal: _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_1__.default,
-    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__.default,
-    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__.default,
-    JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_5__.default,
-    DeleteGameProviderModal: _DeleteGameProviderModal__WEBPACK_IMPORTED_MODULE_6__.default
-  },
-  props: ['data'],
-  data: function data() {
-    return {
-      gameProviderBeingDeleted: null
-    };
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=script&lang=js":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=script&lang=js ***!
-  \**************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ActionSection */ "./resources/js/Jetstream/ActionSection.vue");
-/* harmony import */ var _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ConfirmationModal */ "./resources/js/Jetstream/ConfirmationModal.vue");
-/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
-/* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
-/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
-
-
-
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    JetActionSection: _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default,
-    JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_1__.default,
-    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
-    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_3__.default,
-    JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_4__.default,
-    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_5__.default
-  },
-  props: ['attributes', 'permissions'],
-  emits: ['close'],
-  data: function data() {
-    return {
-      confirmingGameProviderDeletion: false,
-      form: this.$inertia.form({
-        name: ''
-      })
-    };
-  },
-  methods: {
-    confirmGameProviderDeletion: function confirmGameProviderDeletion() {
-      var _this = this;
-
-      this.confirmingGameProviderDeletion = true;
-      setTimeout(function () {
-        return _this.$refs.name.focus();
-      }, 250);
-    },
-    deleteGameProvider: function deleteGameProvider() {
-      var _this2 = this;
-
-      this.form["delete"](route('game-providers.destroy', [this.attributes.id]), {
-        preserveScroll: true,
-        onSuccess: function onSuccess() {
-          return _this2.closeModal();
-        },
-        onError: function onError() {
-          return _this2.$refs.name.focus();
-        },
-        onFinish: function onFinish() {
-          return _this2.form.reset();
-        }
-      });
-    },
-    closeModal: function closeModal() {
-      this.$emit('close');
-      this.form.reset();
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=script&lang=js":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27035,6 +26909,127 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ActionSection */ "./resources/js/Jetstream/ActionSection.vue");
+/* harmony import */ var _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/DialogModal */ "./resources/js/Jetstream/DialogModal.vue");
+/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
+/* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
+/* harmony import */ var _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DeleteResourceModal */ "./resources/js/Pages/GameProviders/DeleteResourceModal.vue");
+
+
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    JetActionSection: _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default,
+    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__.default,
+    JetDialogModal: _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_1__.default,
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__.default,
+    JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_5__.default,
+    DeleteResourceModal: _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_6__.default
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      resourceBeingDeleted: null
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ActionSection */ "./resources/js/Jetstream/ActionSection.vue");
+/* harmony import */ var _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ConfirmationModal */ "./resources/js/Jetstream/ConfirmationModal.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
+/* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
+/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
+
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    JetActionSection: _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default,
+    JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_1__.default,
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
+    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_4__.default,
+    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_5__.default
+  },
+  props: ['attributes', 'permissions'],
+  emits: ['close'],
+  data: function data() {
+    return {
+      confirmingResourceDeletion: false,
+      form: this.$inertia.form({
+        name: ''
+      })
+    };
+  },
+  methods: {
+    confirmGameProviderDeletion: function confirmGameProviderDeletion() {
+      var _this = this;
+
+      this.confirmingResourceDeletion = true;
+      setTimeout(function () {
+        return _this.$refs.name.focus();
+      }, 250);
+    },
+    deleteResource: function deleteResource() {
+      var _this2 = this;
+
+      this.form["delete"](route('game-providers.destroy', [this.attributes.id]), {
+        preserveScroll: true,
+        onSuccess: function onSuccess() {
+          return _this2.closeModal();
+        },
+        onError: function onError() {
+          return _this2.$refs.name.focus();
+        },
+        onFinish: function onFinish() {
+          return _this2.form.reset();
+        }
+      });
+    },
+    closeModal: function closeModal() {
+      this.$emit('close');
+      this.form.reset();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/Index.vue?vue&type=script&lang=js":
 /*!********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/Index.vue?vue&type=script&lang=js ***!
@@ -27047,8 +27042,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _BookGameProviderModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookGameProviderModal */ "./resources/js/Pages/GameProviders/BookGameProviderModal.vue");
-/* harmony import */ var _DeleteGameProviderModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DeleteGameProviderModal */ "./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue");
+/* harmony import */ var _BookResourceModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookResourceModal */ "./resources/js/Pages/GameProviders/BookResourceModal.vue");
+/* harmony import */ var _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DeleteResourceModal */ "./resources/js/Pages/GameProviders/DeleteResourceModal.vue");
 /* harmony import */ var _Jetstream_Table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Table */ "./resources/js/Jetstream/Table.vue");
 /* harmony import */ var _Jetstream_ResourceTable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/ResourceTable */ "./resources/js/Jetstream/ResourceTable.vue");
 /* harmony import */ var _Jetstream_Pagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Pagination */ "./resources/js/Jetstream/Pagination.vue");
@@ -27089,27 +27084,30 @@ __webpack_require__.r(__webpack_exports__);
     JetResourceTable: _Jetstream_ResourceTable__WEBPACK_IMPORTED_MODULE_4__.default,
     Pagination: _Jetstream_Pagination__WEBPACK_IMPORTED_MODULE_5__.default,
     SearchInput: _Jetstream_SearchInput__WEBPACK_IMPORTED_MODULE_6__.default,
-    BookGameProviderModal: _BookGameProviderModal__WEBPACK_IMPORTED_MODULE_1__.default,
-    DeleteGameProviderModal: _DeleteGameProviderModal__WEBPACK_IMPORTED_MODULE_2__.default,
+    BookResourceModal: _BookResourceModal__WEBPACK_IMPORTED_MODULE_1__.default,
+    DeleteResourceModal: _DeleteResourceModal__WEBPACK_IMPORTED_MODULE_2__.default,
     ClockIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_12__.ClockIcon,
     EyeIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_12__.EyeIcon,
     TrashIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_12__.TrashIcon
   },
   data: function data() {
     return {
-      gameProviderBeingBooked: null,
-      gameProviderBeingDeleted: null,
-      gameProvidersSelected: []
+      resourceBeingBooked: null,
+      resourceBeingDeleted: null,
+      collectionSelected: []
     };
   },
   computed: {
     selectAll: {
       get: function get() {
-        return this.data ? this.gameProvidersSelected.length == this.data.length : false;
+        return this.data ? this.collectionSelected.length == this.data.length : false;
       },
       set: function set(value) {
-        value ? this.gameProvidersSelected = this.data : this.gameProvidersSelected = [];
+        value ? this.collectionSelected = this.data : this.collectionSelected = [];
       }
+    },
+    canCreate: function canCreate() {
+      this.permissions.canCreate && !!route().params.environment;
     }
   }
 });
@@ -27129,8 +27127,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/SectionBorder */ "./resources/js/Jetstream/SectionBorder.vue");
-/* harmony import */ var _UpdateGameProviderForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateGameProviderForm */ "./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue");
-/* harmony import */ var _DeleteGameProviderForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DeleteGameProviderForm */ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue");
+/* harmony import */ var _UpdateResourceForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateResourceForm */ "./resources/js/Pages/GameProviders/UpdateResourceForm.vue");
+/* harmony import */ var _DeleteResourceForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DeleteResourceForm */ "./resources/js/Pages/GameProviders/DeleteResourceForm.vue");
 /* harmony import */ var _mixins_InteractWithResource__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/mixins/InteractWithResource */ "./resources/js/mixins/InteractWithResource.js");
 
 
@@ -27142,8 +27140,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     JetSectionBorder: _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_1__.default,
-    DeleteGameProviderForm: _DeleteGameProviderForm__WEBPACK_IMPORTED_MODULE_3__.default,
-    UpdateGameProviderForm: _UpdateGameProviderForm__WEBPACK_IMPORTED_MODULE_2__.default
+    DeleteResourceForm: _DeleteResourceForm__WEBPACK_IMPORTED_MODULE_3__.default,
+    UpdateResourceForm: _UpdateResourceForm__WEBPACK_IMPORTED_MODULE_2__.default
   },
   computed: {
     title: function title() {
@@ -27154,10 +27152,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=script&lang=js":
-/*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=script&lang=js ***!
-  \*************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27219,8 +27217,8 @@ __webpack_require__.r(__webpack_exports__);
         name: this.attributes.name,
         logo: null,
         location_match: this.attributes.location_match,
-        default_hostname: this.attributes.default_hostname,
-        default_ipv4: this.attributes.default_ipv4
+        default_redirect_to: this.attributes.default_redirect_to,
+        default_redirect_ipv4: this.attributes.default_redirect_ipv4
       }),
       logoPreview: null
     };
@@ -30031,21 +30029,23 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Game Providers ");
 
-var _hoisted_11 = {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Bookings ");
+
+var _hoisted_12 = {
   "class": "hidden sm:flex sm:items-center sm:ml-6"
 };
-var _hoisted_12 = {
+var _hoisted_13 = {
   "class": "ml-3 relative"
 };
-var _hoisted_13 = {
+var _hoisted_14 = {
   "class": "inline-flex rounded-md"
 };
-var _hoisted_14 = {
+var _hoisted_15 = {
   type: "button",
   "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
   "class": "ml-2 -mr-0.5 h-4 w-4",
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 20 20",
@@ -30058,36 +30058,36 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_16 = {
+var _hoisted_17 = {
   "class": "w-60"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "block px-4 py-2 text-xs text-gray-400"
 }, " Manage Team ", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Team Settings ");
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Team Settings ");
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create New Team ");
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create New Team ");
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "border-t border-gray-100"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "block px-4 py-2 text-xs text-gray-400"
 }, " Switch Teams ", -1
 /* HOISTED */
 );
 
-var _hoisted_22 = {
+var _hoisted_23 = {
   "class": "flex items-center"
 };
-var _hoisted_23 = {
+var _hoisted_24 = {
   key: 0,
   "class": "mr-2 h-5 w-5 text-green-400",
   fill: "none",
@@ -30098,29 +30098,29 @@ var _hoisted_23 = {
   viewBox: "0 0 24 24"
 };
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
   d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_25 = {
+var _hoisted_26 = {
   "class": "ml-3 relative"
 };
-var _hoisted_26 = {
+var _hoisted_27 = {
   key: 0,
   "class": "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
 };
-var _hoisted_27 = {
+var _hoisted_28 = {
   key: 1,
   "class": "inline-flex rounded-md"
 };
-var _hoisted_28 = {
+var _hoisted_29 = {
   type: "button",
   "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
 };
 
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
   "class": "ml-2 -mr-0.5 h-4 w-4",
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 20 20",
@@ -30133,97 +30133,97 @@ var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "block px-4 py-2 text-xs text-gray-400"
 }, " Manage Account ", -1
 /* HOISTED */
 );
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Profile ");
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Profile ");
 
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
 
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "border-t border-gray-100"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
 
-var _hoisted_35 = {
+var _hoisted_36 = {
   "class": "-mr-2 flex items-center sm:hidden"
 };
-var _hoisted_36 = {
+var _hoisted_37 = {
   "class": "h-6 w-6",
   stroke: "currentColor",
   fill: "none",
   viewBox: "0 0 24 24"
 };
-var _hoisted_37 = {
+var _hoisted_38 = {
   "class": "pt-2 pb-3 space-y-1"
 };
 
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
 
-var _hoisted_39 = {
+var _hoisted_40 = {
   "class": "pt-4 pb-1 border-t border-gray-200"
 };
-var _hoisted_40 = {
+var _hoisted_41 = {
   "class": "flex items-center px-4"
 };
-var _hoisted_41 = {
+var _hoisted_42 = {
   key: 0,
   "class": "flex-shrink-0 mr-3"
 };
-var _hoisted_42 = {
+var _hoisted_43 = {
   "class": "font-medium text-base text-gray-800"
 };
-var _hoisted_43 = {
+var _hoisted_44 = {
   "class": "font-medium text-sm text-gray-500"
 };
-var _hoisted_44 = {
+var _hoisted_45 = {
   "class": "mt-3 space-y-1"
 };
 
-var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Profile ");
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Profile ");
 
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
+var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
 
-var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
+var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
 
-var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "border-t border-gray-200"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "block px-4 py-2 text-xs text-gray-400"
 }, " Manage Team ", -1
 /* HOISTED */
 );
 
-var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Team Settings ");
+var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Team Settings ");
 
-var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create New Team ");
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create New Team ");
 
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "border-t border-gray-200"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "block px-4 py-2 text-xs text-gray-400"
 }, " Switch Teams ", -1
 /* HOISTED */
 );
 
-var _hoisted_54 = {
+var _hoisted_55 = {
   "class": "flex items-center"
 };
-var _hoisted_55 = {
+var _hoisted_56 = {
   key: 0,
   "class": "mr-2 h-5 w-5 text-green-400",
   fill: "none",
@@ -30234,17 +30234,17 @@ var _hoisted_55 = {
   viewBox: "0 0 24 24"
 };
 
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
   d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_57 = {
+var _hoisted_58 = {
   key: 0,
   "class": "bg-white shadow"
 };
-var _hoisted_58 = {
+var _hoisted_59 = {
   "class": "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -30294,24 +30294,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <jet-nav-link :href=\"route('payment-providers.index')\" :active=\"route().current('payment-providers.index')\">\n                                    Payment Providers\n                                </jet-nav-link> ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Teams Dropdown "), _ctx.$page.props.jetstream.hasTeamFeatures ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_dropdown, {
+  , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_nav_link, {
+    href: _ctx.route('bookings.index'),
+    active: _ctx.route().current('bookings.index')
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_11];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["href", "active"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Teams Dropdown "), _ctx.$page.props.jetstream.hasTeamFeatures ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_dropdown, {
     key: 0,
     align: "right",
     width: "60"
   }, {
     trigger: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.current_team.name) + " ", 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.current_team.name) + " ", 1
       /* TEXT */
-      ), _hoisted_15])])];
+      ), _hoisted_16])])];
     }),
     content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Management "), _ctx.$page.props.jetstream.hasTeamFeatures ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Management "), _ctx.$page.props.jetstream.hasTeamFeatures ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         key: 0
-      }, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Settings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dropdown_link, {
+      }, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Settings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dropdown_link, {
         href: _ctx.route('teams.show', _ctx.$page.props.user.current_team)
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_18];
+          return [_hoisted_19];
         }),
         _: 1
         /* STABLE */
@@ -30323,14 +30335,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         href: _ctx.route('teams.create')
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_19];
+          return [_hoisted_20];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Switcher "), _hoisted_21, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.$page.props.user.all_teams, function (team) {
+      , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Switcher "), _hoisted_22, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.$page.props.user.all_teams, function (team) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("form", {
           key: team.id,
           onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -30340,7 +30352,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           as: "button"
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [team.id == _ctx.$page.props.user.current_team_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_23, [_hoisted_24])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(team.name), 1
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [team.id == _ctx.$page.props.user.current_team_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_24, [_hoisted_25])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(team.name), 1
             /* TEXT */
             )])];
           }),
@@ -30361,27 +30373,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Settings Dropdown "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dropdown, {
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Settings Dropdown "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dropdown, {
     align: "right",
     width: "48"
   }, {
     trigger: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_ctx.$page.props.jetstream.managesProfilePhotos ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+      return [_ctx.$page.props.jetstream.managesProfilePhotos ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
         "class": "h-8 w-8 rounded-full object-cover",
         src: _ctx.$page.props.user.profile_photo_url,
         alt: _ctx.$page.props.user.name
       }, null, 8
       /* PROPS */
-      , ["src", "alt"])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.name) + " ", 1
+      , ["src", "alt"])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.name) + " ", 1
       /* TEXT */
-      ), _hoisted_29])]))];
+      ), _hoisted_30])]))];
     }),
     content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Account Management "), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dropdown_link, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Account Management "), _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dropdown_link, {
         href: _ctx.route('profile.show')
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_31];
+          return [_hoisted_32];
         }),
         _: 1
         /* STABLE */
@@ -30393,14 +30405,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         href: _ctx.route('api-tokens.index')
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_32];
+          return [_hoisted_33];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Authentication "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+      , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Authentication "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
         onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $options.logout && $options.logout.apply($options, arguments);
         }, ["prevent"]))
@@ -30408,7 +30420,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         as: "button"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_34];
+          return [_hoisted_35];
         }),
         _: 1
         /* STABLE */
@@ -30420,12 +30432,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Hamburger "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Hamburger "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $data.showingNavigationDropdown = !$data.showingNavigationDropdown;
     }),
     "class": "inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
     "class": {
       'hidden': $data.showingNavigationDropdown,
       'inline-flex': !$data.showingNavigationDropdown
@@ -30452,34 +30464,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       'block': $data.showingNavigationDropdown,
       'hidden': !$data.showingNavigationDropdown
     }, "sm:hidden"]
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
     href: _ctx.route('dashboard'),
     active: _ctx.route().current('dashboard')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_38];
+      return [_hoisted_39];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["href", "active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Responsive Settings Options "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_40, [_ctx.$page.props.jetstream.managesProfilePhotos ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+  , ["href", "active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Responsive Settings Options "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_41, [_ctx.$page.props.jetstream.managesProfilePhotos ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
     "class": "h-10 w-10 rounded-full object-cover",
     src: _ctx.$page.props.user.profile_photo_url,
     alt: _ctx.$page.props.user.name
   }, null, 8
   /* PROPS */
-  , ["src", "alt"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.name), 1
+  , ["src", "alt"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.name), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.email), 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.email), 1
   /* TEXT */
-  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
     href: _ctx.route('profile.show'),
     active: _ctx.route().current('profile.show')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_45];
+      return [_hoisted_46];
     }),
     _: 1
     /* STABLE */
@@ -30492,7 +30504,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     active: _ctx.route().current('api-tokens.index')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_46];
+      return [_hoisted_47];
     }),
     _: 1
     /* STABLE */
@@ -30508,7 +30520,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     as: "button"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_47];
+      return [_hoisted_48];
     }),
     _: 1
     /* STABLE */
@@ -30517,12 +30529,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* HYDRATE_EVENTS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Management "), _ctx.$page.props.jetstream.hasTeamFeatures ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [_hoisted_48, _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Settings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
+  }, [_hoisted_49, _hoisted_50, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Settings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
     href: _ctx.route('teams.show', _ctx.$page.props.user.current_team),
     active: _ctx.route().current('teams.show')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_50];
+      return [_hoisted_51];
     }),
     _: 1
     /* STABLE */
@@ -30535,14 +30547,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     active: _ctx.route().current('teams.create')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_51];
+      return [_hoisted_52];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["href", "active"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Switcher "), _hoisted_53, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.$page.props.user.all_teams, function (team) {
+  , ["href", "active"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Switcher "), _hoisted_54, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.$page.props.user.all_teams, function (team) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("form", {
       key: team.id,
       onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -30552,7 +30564,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       as: "button"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_54, [team.id == _ctx.$page.props.user.current_team_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_55, [_hoisted_56])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(team.name), 1
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_55, [team.id == _ctx.$page.props.user.current_team_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_56, [_hoisted_57])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(team.name), 1
         /* TEXT */
         )])];
       }),
@@ -30570,7 +30582,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STABLE_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 2
   /* CLASS */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Heading "), _ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])]);
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Heading "), _ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])]);
 }
 
 /***/ }),
@@ -31925,10 +31937,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=template&id=645d2846":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=template&id=645d2846 ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=template&id=c705038e":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=template&id=c705038e ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -31958,7 +31970,7 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_danger_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-danger-button");
 
-  var _component_delete_booking_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-booking-modal");
+  var _component_delete_resource_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-resource-modal");
 
   var _component_jet_action_section = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-action-section");
 
@@ -31972,7 +31984,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_danger_button, {
         onClick: _cache[1] || (_cache[1] = function ($event) {
-          return $data.bookingBeingDeleted = $props.data;
+          return $data.resourceBeingDeleted = $props.data;
         })
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -31981,9 +31993,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Delete Booking Confirmation Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_booking_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.bookingBeingDeleted, {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Delete Booking Confirmation Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_resource_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.resourceBeingDeleted, {
         onClose: _cache[2] || (_cache[2] = function ($event) {
-          return $data.bookingBeingDeleted = null;
+          return $data.resourceBeingDeleted = null;
         })
       }), null, 16
       /* FULL_PROPS */
@@ -31997,10 +32009,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=template&id=0b48e988":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=template&id=0b48e988 ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -32226,9 +32238,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("pagination");
 
-  var _component_release_booking_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("release-booking-modal");
+  var _component_release_resource_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("release-resource-modal");
 
-  var _component_delete_booking_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-booking-modal");
+  var _component_delete_resource_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-resource-modal");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -32242,9 +32254,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         placeholder: "Search for game provider or user"
       }, null, 8
       /* PROPS */
-      , ["onInput"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_link_button, {
+      , ["onInput"]), $options.canCreate ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_link_button, {
+        key: 0,
         "class": "ml-4",
-        href: _ctx.route('game-providers.bookings.create', [$options.gameProviderId])
+        href: _ctx.route('locations.bookings.create', [_ctx.route().params.location])
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_5];
@@ -32254,14 +32267,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["href"])]), _ctx.meta.total > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_table, {
+      , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _ctx.meta.total > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_table, {
         "class": "text-sm"
       }, {
         header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
-            checked: $data.bookingsSelected,
+            checked: $data.collectionSelected,
             "onUpdate:checked": _cache[1] || (_cache[1] = function ($event) {
-              return $data.bookingsSelected = $event;
+              return $data.collectionSelected = $event;
             })
           }, null, 8
           /* PROPS */
@@ -32274,9 +32287,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "class": "border border-black-600"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
               value: resource,
-              checked: $data.bookingsSelected,
+              checked: $data.collectionSelected,
               "onUpdate:checked": _cache[2] || (_cache[2] = function ($event) {
-                return $data.bookingsSelected = $event;
+                return $data.collectionSelected = $event;
               })
             }, null, 8
             /* PROPS */
@@ -32286,10 +32299,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
               "class": "text-black-500",
-              href: _ctx.route('game-providers.show', resource.attributes.game_provider.id)
+              href: _ctx.route('game-providers.show', resource.attributes.location.id)
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.attributes.game_provider.name), 1
+                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.attributes.location.name), 1
                 /* TEXT */
                 )];
               }),
@@ -32309,7 +32322,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [resource.permissions.canUpdate ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
               key: 0,
               onClick: function onClick($event) {
-                return $data.bookingBeingReleased = resource;
+                return $data.resourceBeingReleased = resource;
               },
               "class": "inline-flex appearance-none cursor-pointer hover:text-primary mr-3"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_XCircleIcon, {
@@ -32334,7 +32347,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), resource.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
               key: 2,
               onClick: function onClick($event) {
-                return $data.bookingBeingDeleted = resource;
+                return $data.resourceBeingDeleted = resource;
               },
               "class": "inline-flex appearance-none cursor-pointer hover:text-primary mr-3"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TrashIcon, {
@@ -32355,15 +32368,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 1
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" no result alert "), _hoisted_25], 64
       /* STABLE_FRAGMENT */
-      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" booking delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_release_booking_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.bookingBeingReleased, {
+      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" booking delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_release_resource_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.resourceBeingReleased, {
         onClose: _cache[3] || (_cache[3] = function ($event) {
-          return $data.bookingBeingReleased = null;
+          return $data.resourceBeingReleased = null;
         })
       }), null, 16
       /* FULL_PROPS */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" booking delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_booking_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.bookingBeingDeleted, {
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" booking delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_resource_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.resourceBeingDeleted, {
         onClose: _cache[4] || (_cache[4] = function ($event) {
-          return $data.bookingBeingDeleted = null;
+          return $data.resourceBeingDeleted = null;
         })
       }), null, 16
       /* FULL_PROPS */
@@ -32377,10 +32390,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=template&id=0c9a622f":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=template&id=0c9a622f ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=template&id=34edaa18":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=template&id=34edaa18 ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -32482,11 +32495,11 @@ var _hoisted_3 = {
   key: 0
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_update_booking_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-booking-form");
+  var _component_update_resource_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-resource-form");
 
   var _component_jet_section_border = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-section-border");
 
-  var _component_delete_booking_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-booking-form");
+  var _component_delete_resource_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-resource-form");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -32497,11 +32510,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_booking_form, _ctx.data, null, 16
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_resource_form, _ctx.data, null, 16
       /* FULL_PROPS */
       ), _ctx.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_section_border, {
         key: 0
-      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _ctx.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_booking_form, {
+      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _ctx.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_resource_form, {
         data: _ctx.data,
         "class": "mt-10 sm:mt-0"
       }, null, 8
@@ -32516,10 +32529,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=template&id=a241d530":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=template&id=a241d530 ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=template&id=bb8d9552":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=template&id=bb8d9552 ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -32745,10 +32758,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=template&id=ea774df4":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=template&id=ea774df4 ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=template&id=6a35da73":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=template&id=6a35da73 ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -32778,7 +32791,7 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_danger_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-danger-button");
 
-  var _component_delete_environment_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-environment-modal");
+  var _component_delete_resource_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-resource-modal");
 
   var _component_jet_action_section = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-action-section");
 
@@ -32801,7 +32814,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Delete Environment Confirmation Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_environment_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.environmentBeingDeleted, {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Delete Environment Confirmation Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_resource_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.environmentBeingDeleted, {
         onClose: _cache[2] || (_cache[2] = function ($event) {
           return $data.environmentBeingDeleted = null;
         })
@@ -32817,10 +32830,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=template&id=34452f4a":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=template&id=34452f4a ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=template&id=16c7d6e4":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=template&id=16c7d6e4 ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -32874,7 +32887,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $data.form.name = $event;
         }),
-        onKeyup: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)($options.deleteEnvironment, ["enter"])
+        onKeyup: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)($options.deleteResource, ["enter"])
       }, null, 8
       /* PROPS */
       , ["modelValue", "onKeyup"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
@@ -32900,7 +32913,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": ["ml-2", {
           'opacity-25': $data.form.processing
         }],
-        onClick: $options.deleteEnvironment,
+        onClick: $options.deleteResource,
         disabled: $data.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -33064,9 +33077,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_jet_badge = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-badge");
 
-  var _component_EyeIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("EyeIcon");
-
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
+
+  var _component_EyeIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("EyeIcon");
 
   var _component_TrashIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TrashIcon");
 
@@ -33074,7 +33087,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("pagination");
 
-  var _component_delete_environment_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-environment-modal");
+  var _component_delete_resource_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-resource-modal");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -33121,9 +33134,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "class": "border border-black-600"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
               value: resource,
-              checked: $data.environmentsSelected,
+              checked: $data.collectionSelected,
               "onUpdate:checked": _cache[2] || (_cache[2] = function ($event) {
-                return $data.environmentsSelected = $event;
+                return $data.collectionSelected = $event;
               })
             }, null, 8
             /* PROPS */
@@ -33137,18 +33150,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.attributes.prefix), 1
             /* TEXT */
-            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <inertia-link :href=\"route('environments.locations.index', [resource.attributes.id])\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_badge, null, {
+            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+              href: _ctx.route('environments.game-providers.index', [resource.attributes.id])
+            }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.attributes.locations_count), 1
-                /* TEXT */
+                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_badge, null, {
+                  "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                    return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.attributes.locations_count), 1
+                    /* TEXT */
+                    )];
+                  }),
+                  _: 2
+                  /* DYNAMIC */
+
+                }, 1024
+                /* DYNAMIC_SLOTS */
                 )];
               }),
               _: 2
               /* DYNAMIC */
 
-            }, 1024
-            /* DYNAMIC_SLOTS */
-            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </inertia-link> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [resource.permissions.canView ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
+            }, 1032
+            /* PROPS, DYNAMIC_SLOTS */
+            , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [resource.permissions.canView ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
               key: 0,
               href: _ctx.route('environments.show', resource.attributes.id),
               "class": "inline-flex cursor-pointer text-70 hover:text-primary mr-3"
@@ -33166,7 +33190,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), resource.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
               key: 1,
               onClick: function onClick($event) {
-                return $data.environmentBeingDeleted = resource;
+                return $data.resourceBeingDeleted = resource;
               },
               "class": "inline-flex appearance-none cursor-pointer hover:text-primary mr-3"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TrashIcon, {
@@ -33187,9 +33211,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 1
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" no result alert "), _hoisted_26], 64
       /* STABLE_FRAGMENT */
-      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" game provider delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_environment_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.environmentBeingDeleted, {
+      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" resource delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_resource_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.resourceBeingDeleted, {
         onClose: _cache[3] || (_cache[3] = function ($event) {
-          return $data.environmentBeingDeleted = null;
+          return $data.resourceBeingDeleted = null;
         })
       }), null, 16
       /* FULL_PROPS */
@@ -33226,11 +33250,11 @@ var _hoisted_3 = {
   key: 0
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_update_environment_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-environment-form");
+  var _component_update_resource_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-resource-form");
 
   var _component_jet_section_border = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-section-border");
 
-  var _component_delete_environment_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-environment-form");
+  var _component_delete_resource_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-resource-form");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -33241,11 +33265,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_environment_form, _ctx.data, null, 16
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_resource_form, _ctx.data, null, 16
       /* FULL_PROPS */
       ), _ctx.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_section_border, {
         key: 0
-      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _ctx.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_environment_form, {
+      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _ctx.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_resource_form, {
         data: _ctx.data,
         "class": "mt-10 sm:mt-0"
       }, null, 8
@@ -33260,10 +33284,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=template&id=8b3235b0":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=template&id=8b3235b0 ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=template&id=6ff19191":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=template&id=6ff19191 ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -33290,10 +33314,16 @@ var _hoisted_5 = {
 var _hoisted_6 = {
   "class": "col-span-6 sm:col-span-4"
 };
+var _hoisted_7 = {
+  "class": "col-span-6 sm:col-span-4"
+};
+var _hoisted_8 = {
+  "class": "col-span-6 sm:col-span-4"
+};
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Saved. ");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Saved. ");
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Save ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Save ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
@@ -33358,7 +33388,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Middleware "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "middleware",
-        value: "middleware"
+        value: "Middleware"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "middleware",
         type: "text",
@@ -33394,6 +33424,44 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mt-2"
       }, null, 8
       /* PROPS */
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Default redirect to "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "default_redirect_to",
+        value: "Default redirect to"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "default_redirect_to",
+        type: "text",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.prefix,
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+          return $data.form.prefix = $event;
+        }),
+        disabled: !$options.canUpdateOrCreate
+      }, null, 8
+      /* PROPS */
+      , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+        message: $data.form.errors.prefix,
+        "class": "mt-2"
+      }, null, 8
+      /* PROPS */
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Default redirect ipv4 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "default_redirect_ipv4",
+        value: "Default redirect IPv4"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "default_redirect_ipv4",
+        type: "text",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.prefix,
+        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+          return $data.form.prefix = $event;
+        }),
+        disabled: !$options.canUpdateOrCreate
+      }, null, 8
+      /* PROPS */
+      , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+        message: $data.form.errors.prefix,
+        "class": "mt-2"
+      }, null, 8
+      /* PROPS */
       , ["message"])])];
     }),
     _: 2
@@ -33407,7 +33475,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mr-3"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_7];
+          return [_hoisted_9];
         }),
         _: 1
         /* STABLE */
@@ -33421,7 +33489,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         disabled: $data.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_8];
+          return [_hoisted_10];
         }),
         _: 1
         /* STABLE */
@@ -33437,10 +33505,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=template&id=99d9d96e":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=template&id=99d9d96e ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=template&id=79fb8b1e":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=template&id=79fb8b1e ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -33613,188 +33681,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
-
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Game Provider ");
-
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Permanently delete game provider. ");
-
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "max-w-xl text-sm text-gray-600"
-}, " Once game provider is deleted, all of its resources and data will be permanently deleted. Before deleting game provider, please download any data or information that you wish to retain. ", -1
-/* HOISTED */
-);
-
-var _hoisted_4 = {
-  "class": "mt-5"
-};
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Game Provider ");
-
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_jet_danger_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-danger-button");
-
-  var _component_delete_game_provider_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-game-provider-modal");
-
-  var _component_jet_action_section = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-action-section");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_action_section, null, {
-    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_1];
-    }),
-    description: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_2];
-    }),
-    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_danger_button, {
-        onClick: _cache[1] || (_cache[1] = function ($event) {
-          return $data.gameProviderBeingDeleted = $props.data;
-        })
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_5];
-        }),
-        _: 1
-        /* STABLE */
-
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Delete Game Provider Confirmation Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_game_provider_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.gameProviderBeingDeleted, {
-        onClose: _cache[2] || (_cache[2] = function ($event) {
-          return $data.gameProviderBeingDeleted = null;
-        })
-      }), null, 16
-      /* FULL_PROPS */
-      )];
-    }),
-    _: 1
-    /* STABLE */
-
-  });
-}
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=template&id=0713ec72":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=template&id=0713ec72 ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
-var _hoisted_1 = {
-  "class": "mt-4"
-};
-
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevermind ");
-
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete ");
-
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
-
-  var _component_jet_input_error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input-error");
-
-  var _component_jet_secondary_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-secondary-button");
-
-  var _component_jet_danger_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-danger-button");
-
-  var _component_jet_confirmation_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-confirmation-modal");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_confirmation_modal, {
-    show: $props.attributes,
-    onClose: $options.closeModal
-  }, {
-    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      var _$props$attributes;
-
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$attributes = $props.attributes) === null || _$props$attributes === void 0 ? void 0 : _$props$attributes.name), 1
-      /* TEXT */
-      )];
-    }),
-    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      var _$props$attributes2;
-
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$attributes2 = $props.attributes) === null || _$props$attributes2 === void 0 ? void 0 : _$props$attributes2.name) + "? Once game provider is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. ", 1
-      /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        type: "text",
-        "class": "mt-1 block w-3/4",
-        placeholder: "Game Provider Name",
-        ref: "name",
-        modelValue: $data.form.name,
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.form.name = $event;
-        }),
-        onKeyup: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)($options.deleteGameProvider, ["enter"])
-      }, null, 8
-      /* PROPS */
-      , ["modelValue", "onKeyup"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: $data.form.errors.name,
-        "class": "mt-2"
-      }, null, 8
-      /* PROPS */
-      , ["message"])])];
-    }),
-    footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_secondary_button, {
-        onClick: $options.closeModal
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_2];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_danger_button, {
-        "class": ["ml-2", {
-          'opacity-25': $data.form.processing
-        }],
-        onClick: $options.deleteGameProvider,
-        disabled: $data.form.processing
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_3];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["onClick", "class", "disabled"])];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["show", "onClose"]);
-}
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=template&id=0162b8b7":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=template&id=0162b8b7 ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=template&id=11da725c":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=template&id=11da725c ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -33912,7 +33802,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["src", "alt"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.attributes.name), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: _ctx.route('game-providers.bookings.index', [$options.attributes.id])
+    href: _ctx.route('locations.bookings.index', [$options.attributes.id])
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.attributes.next_bookings_count), 1
@@ -33953,6 +33843,184 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.$emit('delete', $props.resource);
     })
   }, [_hoisted_17])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=template&id=563476b6":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=template&id=563476b6 ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Game Provider ");
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Permanently delete game provider. ");
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "max-w-xl text-sm text-gray-600"
+}, " Once game provider is deleted, all of its resources and data will be permanently deleted. Before deleting game provider, please download any data or information that you wish to retain. ", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
+  "class": "mt-5"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Game Provider ");
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_jet_danger_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-danger-button");
+
+  var _component_delete_resource_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-resource-modal");
+
+  var _component_jet_action_section = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-action-section");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_action_section, null, {
+    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_1];
+    }),
+    description: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_2];
+    }),
+    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_danger_button, {
+        onClick: _cache[1] || (_cache[1] = function ($event) {
+          return $data.resourceBeingDeleted = $props.data;
+        })
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_5];
+        }),
+        _: 1
+        /* STABLE */
+
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Delete resource confirmation modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_resource_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.resourceBeingDeleted, {
+        onClose: _cache[2] || (_cache[2] = function ($event) {
+          return $data.resourceBeingDeleted = null;
+        })
+      }), null, 16
+      /* FULL_PROPS */
+      )];
+    }),
+    _: 1
+    /* STABLE */
+
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=template&id=402d1ec8":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=template&id=402d1ec8 ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "mt-4"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevermind ");
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete ");
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
+
+  var _component_jet_input_error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input-error");
+
+  var _component_jet_secondary_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-secondary-button");
+
+  var _component_jet_danger_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-danger-button");
+
+  var _component_jet_confirmation_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-confirmation-modal");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_confirmation_modal, {
+    show: $props.attributes,
+    onClose: $options.closeModal
+  }, {
+    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      var _$props$attributes;
+
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$attributes = $props.attributes) === null || _$props$attributes === void 0 ? void 0 : _$props$attributes.name), 1
+      /* TEXT */
+      )];
+    }),
+    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      var _$props$attributes2;
+
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$attributes2 = $props.attributes) === null || _$props$attributes2 === void 0 ? void 0 : _$props$attributes2.name) + "? Once game provider is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. ", 1
+      /* TEXT */
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        type: "text",
+        "class": "mt-1 block w-3/4",
+        placeholder: "Game Provider Name",
+        ref: "name",
+        modelValue: $data.form.name,
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+          return $data.form.name = $event;
+        }),
+        onKeyup: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)($options.deleteResource, ["enter"])
+      }, null, 8
+      /* PROPS */
+      , ["modelValue", "onKeyup"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+        message: $data.form.errors.name,
+        "class": "mt-2"
+      }, null, 8
+      /* PROPS */
+      , ["message"])])];
+    }),
+    footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_secondary_button, {
+        onClick: $options.closeModal
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_2];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_danger_button, {
+        "class": ["ml-2", {
+          'opacity-25': $data.form.processing
+        }],
+        onClick: $options.deleteResource,
+        disabled: $data.form.processing
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_3];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["onClick", "class", "disabled"])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show", "onClose"]);
 }
 
 /***/ }),
@@ -34115,9 +34183,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("pagination");
 
-  var _component_book_game_provider_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("book-game-provider-modal");
+  var _component_book_resource_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("book-resource-modal");
 
-  var _component_delete_game_provider_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-game-provider-modal");
+  var _component_delete_resource_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-resource-modal");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -34131,10 +34199,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         placeholder: "Search for game provider"
       }, null, 8
       /* PROPS */
-      , ["onInput"]), _ctx.permissions.canCreate ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_link_button, {
+      , ["onInput"]), $options.canCreate ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_link_button, {
         key: 0,
         "class": "ml-4",
-        href: _ctx.route('game-providers.create')
+        href: _ctx.route('environments.game-providers.create', [_ctx.route().params.environment])
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_5];
@@ -34166,9 +34234,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "class": "border border-black-600"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
               value: resource,
-              checked: $data.gameProvidersSelected,
+              checked: $data.collectionSelected,
               "onUpdate:checked": _cache[2] || (_cache[2] = function ($event) {
-                return $data.gameProvidersSelected = $event;
+                return $data.collectionSelected = $event;
               })
             }, null, 8
             /* PROPS */
@@ -34187,7 +34255,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             , ["src", "alt"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(resource.attributes.name), 1
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-              href: _ctx.route('game-providers.bookings.index', [resource.attributes.id])
+              href: _ctx.route('locations.bookings.index', [resource.attributes.id])
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                 return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_badge, null, {
@@ -34214,7 +34282,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
               onClick: function onClick($event) {
-                return $data.gameProviderBeingBooked = resource;
+                return $data.resourceBeingBooked = resource;
               },
               "class": "inline-flex appearance-none cursor-pointer hover:text-primary mr-3"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ClockIcon, {
@@ -34239,7 +34307,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), resource.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
               key: 1,
               onClick: function onClick($event) {
-                return $data.gameProviderBeingDeleted = resource;
+                return $data.resourceBeingDeleted = resource;
               },
               "class": "inline-flex appearance-none cursor-pointer hover:text-primary mr-3"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TrashIcon, {
@@ -34260,15 +34328,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 1
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" no result alert "), _hoisted_27], 64
       /* STABLE_FRAGMENT */
-      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" game provider book modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_book_game_provider_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.gameProviderBeingBooked, {
+      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" resource book modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_book_resource_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.resourceBeingBooked, {
         onClose: _cache[3] || (_cache[3] = function ($event) {
-          return $data.gameProviderBeingBooked = null;
+          return $data.resourceBeingBooked = null;
         })
       }), null, 16
       /* FULL_PROPS */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" game provider delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_game_provider_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.gameProviderBeingDeleted, {
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" resource delete modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_resource_modal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)($data.resourceBeingDeleted, {
         onClose: _cache[4] || (_cache[4] = function ($event) {
-          return $data.gameProviderBeingDeleted = null;
+          return $data.resourceBeingDeleted = null;
         })
       }), null, 16
       /* FULL_PROPS */
@@ -34305,11 +34373,11 @@ var _hoisted_3 = {
   key: 0
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_update_game_provider_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-game-provider-form");
+  var _component_update_resource_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-resource-form");
 
   var _component_jet_section_border = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-section-border");
 
-  var _component_delete_game_provider_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-game-provider-form");
+  var _component_delete_resource_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-resource-form");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -34320,13 +34388,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_game_provider_form, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)(_ctx.data, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_resource_form, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)(_ctx.data, {
         meta: _ctx.meta
       }), null, 16
       /* FULL_PROPS */
       , ["meta"]), _ctx.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_section_border, {
         key: 0
-      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _ctx.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_game_provider_form, {
+      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _ctx.permissions.canDelete ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_resource_form, {
         data: _ctx.data,
         "class": "mt-10 sm:mt-0"
       }, null, 8
@@ -34385,10 +34453,10 @@ function render(_ctx, _cache) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=template&id=786a5b90":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=template&id=786a5b90 ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=template&id=4abd087a":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=template&id=4abd087a ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -34564,40 +34632,40 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Default Host "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "default_hostname",
+        "for": "default_redirect_to",
         value: "Default Host"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "default_hostname",
+        id: "default_redirect_to",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: $data.form.default_hostname,
+        modelValue: $data.form.default_redirect_to,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return $data.form.default_hostname = $event;
+          return $data.form.default_redirect_to = $event;
         }),
         disabled: !$options.canUpdateOrCreate
       }, null, 8
       /* PROPS */
       , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: $data.form.errors.default_hostname,
+        message: $data.form.errors.default_redirect_to,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Default Host "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "default_ipv4",
+        "for": "default_redirect_ipv4",
         value: "Default IPv4"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "default_ipv4",
+        id: "default_redirect_ipv4",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: $data.form.default_ipv4,
+        modelValue: $data.form.default_redirect_ipv4,
         "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return $data.form.default_ipv4 = $event;
+          return $data.form.default_redirect_ipv4 = $event;
         }),
         disabled: !$options.canUpdateOrCreate
       }, null, 8
       /* PROPS */
       , ["modelValue", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: $data.form.errors.default_ipv4,
+        message: $data.form.errors.default_redirect_ipv4,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
@@ -90592,35 +90660,9 @@ _VerifyEmail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Bookings/DeleteBookingForm.vue":
-/*!***********************************************************!*\
-  !*** ./resources/js/Pages/Bookings/DeleteBookingForm.vue ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _DeleteBookingForm_vue_vue_type_template_id_645d2846__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteBookingForm.vue?vue&type=template&id=645d2846 */ "./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=template&id=645d2846");
-/* harmony import */ var _DeleteBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteBookingForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=script&lang=js");
-
-
-
-_DeleteBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteBookingForm_vue_vue_type_template_id_645d2846__WEBPACK_IMPORTED_MODULE_0__.render
-/* hot reload */
-if (false) {}
-
-_DeleteBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Bookings/DeleteBookingForm.vue"
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
-
-/***/ }),
-
-/***/ "./resources/js/Pages/Bookings/DeleteBookingModal.vue":
+/***/ "./resources/js/Pages/Bookings/DeleteResourceForm.vue":
 /*!************************************************************!*\
-  !*** ./resources/js/Pages/Bookings/DeleteBookingModal.vue ***!
+  !*** ./resources/js/Pages/Bookings/DeleteResourceForm.vue ***!
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -90629,18 +90671,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _DeleteBookingModal_vue_vue_type_template_id_3f5e811b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteBookingModal.vue?vue&type=template&id=3f5e811b */ "./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b");
-/* harmony import */ var _DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteBookingModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _DeleteResourceForm_vue_vue_type_template_id_c705038e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteResourceForm.vue?vue&type=template&id=c705038e */ "./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=template&id=c705038e");
+/* harmony import */ var _DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteResourceForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=script&lang=js");
 
 
 
-_DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteBookingModal_vue_vue_type_template_id_3f5e811b__WEBPACK_IMPORTED_MODULE_0__.render
+_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteResourceForm_vue_vue_type_template_id_c705038e__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Bookings/DeleteBookingModal.vue"
+_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Bookings/DeleteResourceForm.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Bookings/DeleteResourceModal.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/DeleteResourceModal.vue ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DeleteResourceModal_vue_vue_type_template_id_0b48e988__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteResourceModal.vue?vue&type=template&id=0b48e988 */ "./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=template&id=0b48e988");
+/* harmony import */ var _DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteResourceModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=script&lang=js");
+
+
+
+_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteResourceModal_vue_vue_type_template_id_0b48e988__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Bookings/DeleteResourceModal.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
@@ -90670,10 +90738,10 @@ _Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file =
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Bookings/ReleaseBookingModal.vue":
-/*!*************************************************************!*\
-  !*** ./resources/js/Pages/Bookings/ReleaseBookingModal.vue ***!
-  \*************************************************************/
+/***/ "./resources/js/Pages/Bookings/ReleaseResourceModal.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/ReleaseResourceModal.vue ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -90681,18 +90749,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ReleaseBookingModal_vue_vue_type_template_id_0c9a622f__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReleaseBookingModal.vue?vue&type=template&id=0c9a622f */ "./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=template&id=0c9a622f");
-/* harmony import */ var _ReleaseBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReleaseBookingModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _ReleaseResourceModal_vue_vue_type_template_id_34edaa18__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReleaseResourceModal.vue?vue&type=template&id=34edaa18 */ "./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=template&id=34edaa18");
+/* harmony import */ var _ReleaseResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReleaseResourceModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=script&lang=js");
 
 
 
-_ReleaseBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _ReleaseBookingModal_vue_vue_type_template_id_0c9a622f__WEBPACK_IMPORTED_MODULE_0__.render
+_ReleaseResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _ReleaseResourceModal_vue_vue_type_template_id_34edaa18__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_ReleaseBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Bookings/ReleaseBookingModal.vue"
+_ReleaseResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Bookings/ReleaseResourceModal.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ReleaseBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ReleaseResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
@@ -90722,10 +90790,10 @@ _Show_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Bookings/UpdateBookingForm.vue":
-/*!***********************************************************!*\
-  !*** ./resources/js/Pages/Bookings/UpdateBookingForm.vue ***!
-  \***********************************************************/
+/***/ "./resources/js/Pages/Bookings/UpdateResourceForm.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/UpdateResourceForm.vue ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -90733,18 +90801,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _UpdateBookingForm_vue_vue_type_template_id_a241d530__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateBookingForm.vue?vue&type=template&id=a241d530 */ "./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=template&id=a241d530");
-/* harmony import */ var _UpdateBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateBookingForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _UpdateResourceForm_vue_vue_type_template_id_bb8d9552__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateResourceForm.vue?vue&type=template&id=bb8d9552 */ "./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=template&id=bb8d9552");
+/* harmony import */ var _UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateResourceForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=script&lang=js");
 
 
 
-_UpdateBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _UpdateBookingForm_vue_vue_type_template_id_a241d530__WEBPACK_IMPORTED_MODULE_0__.render
+_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _UpdateResourceForm_vue_vue_type_template_id_bb8d9552__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_UpdateBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Bookings/UpdateBookingForm.vue"
+_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Bookings/UpdateResourceForm.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_UpdateBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
@@ -90774,10 +90842,10 @@ _Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__fi
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Environments/DeleteEnvironmentForm.vue":
-/*!*******************************************************************!*\
-  !*** ./resources/js/Pages/Environments/DeleteEnvironmentForm.vue ***!
-  \*******************************************************************/
+/***/ "./resources/js/Pages/Environments/DeleteResourceForm.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/Pages/Environments/DeleteResourceForm.vue ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -90785,25 +90853,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _DeleteEnvironmentForm_vue_vue_type_template_id_ea774df4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteEnvironmentForm.vue?vue&type=template&id=ea774df4 */ "./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=template&id=ea774df4");
-/* harmony import */ var _DeleteEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteEnvironmentForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _DeleteResourceForm_vue_vue_type_template_id_6a35da73__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteResourceForm.vue?vue&type=template&id=6a35da73 */ "./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=template&id=6a35da73");
+/* harmony import */ var _DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteResourceForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=script&lang=js");
 
 
 
-_DeleteEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteEnvironmentForm_vue_vue_type_template_id_ea774df4__WEBPACK_IMPORTED_MODULE_0__.render
+_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteResourceForm_vue_vue_type_template_id_6a35da73__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_DeleteEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Environments/DeleteEnvironmentForm.vue"
+_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Environments/DeleteResourceForm.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Environments/DeleteEnvironmentModal.vue":
-/*!********************************************************************!*\
-  !*** ./resources/js/Pages/Environments/DeleteEnvironmentModal.vue ***!
-  \********************************************************************/
+/***/ "./resources/js/Pages/Environments/DeleteResourceModal.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Pages/Environments/DeleteResourceModal.vue ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -90811,18 +90879,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _DeleteEnvironmentModal_vue_vue_type_template_id_34452f4a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteEnvironmentModal.vue?vue&type=template&id=34452f4a */ "./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=template&id=34452f4a");
-/* harmony import */ var _DeleteEnvironmentModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteEnvironmentModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _DeleteResourceModal_vue_vue_type_template_id_16c7d6e4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteResourceModal.vue?vue&type=template&id=16c7d6e4 */ "./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=template&id=16c7d6e4");
+/* harmony import */ var _DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteResourceModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=script&lang=js");
 
 
 
-_DeleteEnvironmentModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteEnvironmentModal_vue_vue_type_template_id_34452f4a__WEBPACK_IMPORTED_MODULE_0__.render
+_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteResourceModal_vue_vue_type_template_id_16c7d6e4__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_DeleteEnvironmentModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Environments/DeleteEnvironmentModal.vue"
+_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Environments/DeleteResourceModal.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteEnvironmentModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
@@ -90878,10 +90946,10 @@ _Show_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Environments/UpdateEnvironmentForm.vue":
-/*!*******************************************************************!*\
-  !*** ./resources/js/Pages/Environments/UpdateEnvironmentForm.vue ***!
-  \*******************************************************************/
+/***/ "./resources/js/Pages/Environments/UpdateResourceForm.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/Pages/Environments/UpdateResourceForm.vue ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -90889,25 +90957,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _UpdateEnvironmentForm_vue_vue_type_template_id_8b3235b0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateEnvironmentForm.vue?vue&type=template&id=8b3235b0 */ "./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=template&id=8b3235b0");
-/* harmony import */ var _UpdateEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateEnvironmentForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _UpdateResourceForm_vue_vue_type_template_id_6ff19191__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateResourceForm.vue?vue&type=template&id=6ff19191 */ "./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=template&id=6ff19191");
+/* harmony import */ var _UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateResourceForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=script&lang=js");
 
 
 
-_UpdateEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _UpdateEnvironmentForm_vue_vue_type_template_id_8b3235b0__WEBPACK_IMPORTED_MODULE_0__.render
+_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _UpdateResourceForm_vue_vue_type_template_id_6ff19191__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_UpdateEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Environments/UpdateEnvironmentForm.vue"
+_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Environments/UpdateResourceForm.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_UpdateEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/BookGameProviderModal.vue":
-/*!********************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/BookGameProviderModal.vue ***!
-  \********************************************************************/
+/***/ "./resources/js/Pages/GameProviders/BookResourceModal.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/BookResourceModal.vue ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -90915,25 +90983,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _BookGameProviderModal_vue_vue_type_template_id_99d9d96e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookGameProviderModal.vue?vue&type=template&id=99d9d96e */ "./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=template&id=99d9d96e");
-/* harmony import */ var _BookGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookGameProviderModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _BookResourceModal_vue_vue_type_template_id_79fb8b1e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookResourceModal.vue?vue&type=template&id=79fb8b1e */ "./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=template&id=79fb8b1e");
+/* harmony import */ var _BookResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookResourceModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=script&lang=js");
 
 
 
-_BookGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _BookGameProviderModal_vue_vue_type_template_id_99d9d96e__WEBPACK_IMPORTED_MODULE_0__.render
+_BookResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _BookResourceModal_vue_vue_type_template_id_79fb8b1e__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_BookGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/BookGameProviderModal.vue"
+_BookResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/BookResourceModal.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_BookGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_BookResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue":
-/*!*********************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue ***!
-  \*********************************************************************/
+/***/ "./resources/js/Pages/GameProviders/CollectionTableRow.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/CollectionTableRow.vue ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -90941,25 +91009,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _DeleteGameProviderForm_vue_vue_type_template_id_01c84bcc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc */ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc");
-/* harmony import */ var _DeleteGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteGameProviderForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _CollectionTableRow_vue_vue_type_template_id_11da725c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CollectionTableRow.vue?vue&type=template&id=11da725c */ "./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=template&id=11da725c");
+/* harmony import */ var _CollectionTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CollectionTableRow.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=script&lang=js");
 
 
 
-_DeleteGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteGameProviderForm_vue_vue_type_template_id_01c84bcc__WEBPACK_IMPORTED_MODULE_0__.render
+_CollectionTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _CollectionTableRow_vue_vue_type_template_id_11da725c__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_DeleteGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/DeleteGameProviderForm.vue"
+_CollectionTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/CollectionTableRow.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_CollectionTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue":
-/*!**********************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue ***!
-  \**********************************************************************/
+/***/ "./resources/js/Pages/GameProviders/DeleteResourceForm.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/DeleteResourceForm.vue ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -90967,25 +91035,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _DeleteGameProviderModal_vue_vue_type_template_id_0713ec72__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteGameProviderModal.vue?vue&type=template&id=0713ec72 */ "./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=template&id=0713ec72");
-/* harmony import */ var _DeleteGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteGameProviderModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _DeleteResourceForm_vue_vue_type_template_id_563476b6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteResourceForm.vue?vue&type=template&id=563476b6 */ "./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=template&id=563476b6");
+/* harmony import */ var _DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteResourceForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=script&lang=js");
 
 
 
-_DeleteGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteGameProviderModal_vue_vue_type_template_id_0713ec72__WEBPACK_IMPORTED_MODULE_0__.render
+_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteResourceForm_vue_vue_type_template_id_563476b6__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_DeleteGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/DeleteGameProviderModal.vue"
+_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/DeleteResourceForm.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/GameProviderTableRow.vue":
-/*!*******************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/GameProviderTableRow.vue ***!
-  \*******************************************************************/
+/***/ "./resources/js/Pages/GameProviders/DeleteResourceModal.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/DeleteResourceModal.vue ***!
+  \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -90993,18 +91061,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _GameProviderTableRow_vue_vue_type_template_id_0162b8b7__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GameProviderTableRow.vue?vue&type=template&id=0162b8b7 */ "./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=template&id=0162b8b7");
-/* harmony import */ var _GameProviderTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GameProviderTableRow.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=script&lang=js");
+/* harmony import */ var _DeleteResourceModal_vue_vue_type_template_id_402d1ec8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteResourceModal.vue?vue&type=template&id=402d1ec8 */ "./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=template&id=402d1ec8");
+/* harmony import */ var _DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteResourceModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=script&lang=js");
 
 
 
-_GameProviderTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _GameProviderTableRow_vue_vue_type_template_id_0162b8b7__WEBPACK_IMPORTED_MODULE_0__.render
+_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteResourceModal_vue_vue_type_template_id_402d1ec8__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_GameProviderTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/GameProviderTableRow.vue"
+_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/DeleteResourceModal.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_GameProviderTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
@@ -91084,10 +91152,10 @@ script.__file = "resources/js/Pages/GameProviders/Timeline.vue"
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue":
-/*!*********************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue ***!
-  \*********************************************************************/
+/***/ "./resources/js/Pages/GameProviders/UpdateResourceForm.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/UpdateResourceForm.vue ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -91095,18 +91163,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _UpdateGameProviderForm_vue_vue_type_template_id_786a5b90__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateGameProviderForm.vue?vue&type=template&id=786a5b90 */ "./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=template&id=786a5b90");
-/* harmony import */ var _UpdateGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateGameProviderForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _UpdateResourceForm_vue_vue_type_template_id_4abd087a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateResourceForm.vue?vue&type=template&id=4abd087a */ "./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=template&id=4abd087a");
+/* harmony import */ var _UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateResourceForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=script&lang=js");
 
 
 
-_UpdateGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _UpdateGameProviderForm_vue_vue_type_template_id_786a5b90__WEBPACK_IMPORTED_MODULE_0__.render
+_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _UpdateResourceForm_vue_vue_type_template_id_4abd087a__WEBPACK_IMPORTED_MODULE_0__.render
 /* hot reload */
 if (false) {}
 
-_UpdateGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/UpdateGameProviderForm.vue"
+_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/GameProviders/UpdateResourceForm.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_UpdateGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
@@ -92112,34 +92180,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=script&lang=js":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteBookingForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=script&lang=js");
- 
-
-/***/ }),
-
-/***/ "./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js":
+/***/ "./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=script&lang=js":
 /*!************************************************************************************!*\
-  !*** ./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js ***!
+  !*** ./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=script&lang=js ***!
   \************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteBookingModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=script&lang=js":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=script&lang=js ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -92160,18 +92228,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=script&lang=js":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=script&lang=js ***!
-  \*************************************************************************************/
+/***/ "./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=script&lang=js":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReleaseBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReleaseResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReleaseBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ReleaseBookingModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReleaseResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ReleaseResourceModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -92192,18 +92260,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=script&lang=js":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************/
+/***/ "./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=script&lang=js":
+/*!************************************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=script&lang=js ***!
+  \************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateBookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateBookingForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateResourceForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -92224,34 +92292,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=script&lang=js":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=script&lang=js ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=script&lang=js":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteEnvironmentForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=script&lang=js");
  
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=script&lang=js":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=script&lang=js ***!
-  \********************************************************************************************/
+/***/ "./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteEnvironmentModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteEnvironmentModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteEnvironmentModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -92288,82 +92356,82 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=script&lang=js":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=script&lang=js ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=script&lang=js":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateEnvironmentForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateEnvironmentForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateResourceForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=script&lang=js");
  
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=script&lang=js":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=script&lang=js ***!
-  \********************************************************************************************/
+/***/ "./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=script&lang=js":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookGameProviderModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookResourceModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=script&lang=js");
  
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=script&lang=js":
-/*!*********************************************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=script&lang=js ***!
-  \*********************************************************************************************/
+/***/ "./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CollectionTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteGameProviderForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CollectionTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CollectionTableRow.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=script&lang=js");
  
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=script&lang=js":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=script&lang=js ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteGameProviderModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteGameProviderModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=script&lang=js");
  
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=script&lang=js":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=script&lang=js ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=script&lang=js":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameProviderTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameProviderTableRow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./GameProviderTableRow.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -92400,18 +92468,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=script&lang=js":
-/*!*********************************************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=script&lang=js ***!
-  \*********************************************************************************************/
+/***/ "./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateGameProviderForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateGameProviderForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateResourceForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -93408,34 +93476,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=template&id=645d2846":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=template&id=645d2846 ***!
-  \*****************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingForm_vue_vue_type_template_id_645d2846__WEBPACK_IMPORTED_MODULE_0__.render)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingForm_vue_vue_type_template_id_645d2846__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteBookingForm.vue?vue&type=template&id=645d2846 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingForm.vue?vue&type=template&id=645d2846");
-
-
-/***/ }),
-
-/***/ "./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b":
+/***/ "./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=template&id=c705038e":
 /*!******************************************************************************************!*\
-  !*** ./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b ***!
+  !*** ./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=template&id=c705038e ***!
   \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingModal_vue_vue_type_template_id_3f5e811b__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_template_id_c705038e__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteBookingModal_vue_vue_type_template_id_3f5e811b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteBookingModal.vue?vue&type=template&id=3f5e811b */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteBookingModal.vue?vue&type=template&id=3f5e811b");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_template_id_c705038e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceForm.vue?vue&type=template&id=c705038e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceForm.vue?vue&type=template&id=c705038e");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=template&id=0b48e988":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=template&id=0b48e988 ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_template_id_0b48e988__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_template_id_0b48e988__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceModal.vue?vue&type=template&id=0b48e988 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/DeleteResourceModal.vue?vue&type=template&id=0b48e988");
 
 
 /***/ }),
@@ -93456,18 +93524,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=template&id=0c9a622f":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=template&id=0c9a622f ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=template&id=34edaa18":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=template&id=34edaa18 ***!
+  \********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReleaseBookingModal_vue_vue_type_template_id_0c9a622f__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReleaseResourceModal_vue_vue_type_template_id_34edaa18__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReleaseBookingModal_vue_vue_type_template_id_0c9a622f__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ReleaseBookingModal.vue?vue&type=template&id=0c9a622f */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseBookingModal.vue?vue&type=template&id=0c9a622f");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReleaseResourceModal_vue_vue_type_template_id_34edaa18__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ReleaseResourceModal.vue?vue&type=template&id=34edaa18 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/ReleaseResourceModal.vue?vue&type=template&id=34edaa18");
 
 
 /***/ }),
@@ -93488,18 +93556,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=template&id=a241d530":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=template&id=a241d530 ***!
-  \*****************************************************************************************/
+/***/ "./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=template&id=bb8d9552":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=template&id=bb8d9552 ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateBookingForm_vue_vue_type_template_id_a241d530__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_template_id_bb8d9552__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateBookingForm_vue_vue_type_template_id_a241d530__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateBookingForm.vue?vue&type=template&id=a241d530 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateBookingForm.vue?vue&type=template&id=a241d530");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_template_id_bb8d9552__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateResourceForm.vue?vue&type=template&id=bb8d9552 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Bookings/UpdateResourceForm.vue?vue&type=template&id=bb8d9552");
 
 
 /***/ }),
@@ -93520,34 +93588,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=template&id=ea774df4":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=template&id=ea774df4 ***!
-  \*************************************************************************************************/
+/***/ "./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=template&id=6a35da73":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=template&id=6a35da73 ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteEnvironmentForm_vue_vue_type_template_id_ea774df4__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_template_id_6a35da73__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteEnvironmentForm_vue_vue_type_template_id_ea774df4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteEnvironmentForm.vue?vue&type=template&id=ea774df4 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentForm.vue?vue&type=template&id=ea774df4");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_template_id_6a35da73__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceForm.vue?vue&type=template&id=6a35da73 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceForm.vue?vue&type=template&id=6a35da73");
 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=template&id=34452f4a":
-/*!**************************************************************************************************!*\
-  !*** ./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=template&id=34452f4a ***!
-  \**************************************************************************************************/
+/***/ "./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=template&id=16c7d6e4":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=template&id=16c7d6e4 ***!
+  \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteEnvironmentModal_vue_vue_type_template_id_34452f4a__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_template_id_16c7d6e4__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteEnvironmentModal_vue_vue_type_template_id_34452f4a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteEnvironmentModal.vue?vue&type=template&id=34452f4a */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteEnvironmentModal.vue?vue&type=template&id=34452f4a");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_template_id_16c7d6e4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceModal.vue?vue&type=template&id=16c7d6e4 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/DeleteResourceModal.vue?vue&type=template&id=16c7d6e4");
 
 
 /***/ }),
@@ -93584,82 +93652,82 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=template&id=8b3235b0":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=template&id=8b3235b0 ***!
-  \*************************************************************************************************/
+/***/ "./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=template&id=6ff19191":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=template&id=6ff19191 ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateEnvironmentForm_vue_vue_type_template_id_8b3235b0__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_template_id_6ff19191__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateEnvironmentForm_vue_vue_type_template_id_8b3235b0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateEnvironmentForm.vue?vue&type=template&id=8b3235b0 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateEnvironmentForm.vue?vue&type=template&id=8b3235b0");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_template_id_6ff19191__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateResourceForm.vue?vue&type=template&id=6ff19191 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Environments/UpdateResourceForm.vue?vue&type=template&id=6ff19191");
 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=template&id=99d9d96e":
-/*!**************************************************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=template&id=99d9d96e ***!
-  \**************************************************************************************************/
+/***/ "./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=template&id=79fb8b1e":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=template&id=79fb8b1e ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookGameProviderModal_vue_vue_type_template_id_99d9d96e__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookResourceModal_vue_vue_type_template_id_79fb8b1e__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookGameProviderModal_vue_vue_type_template_id_99d9d96e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookGameProviderModal.vue?vue&type=template&id=99d9d96e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookGameProviderModal.vue?vue&type=template&id=99d9d96e");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookResourceModal_vue_vue_type_template_id_79fb8b1e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookResourceModal.vue?vue&type=template&id=79fb8b1e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/BookResourceModal.vue?vue&type=template&id=79fb8b1e");
 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc":
-/*!***************************************************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc ***!
-  \***************************************************************************************************/
+/***/ "./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=template&id=11da725c":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=template&id=11da725c ***!
+  \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteGameProviderForm_vue_vue_type_template_id_01c84bcc__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CollectionTableRow_vue_vue_type_template_id_11da725c__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteGameProviderForm_vue_vue_type_template_id_01c84bcc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue?vue&type=template&id=01c84bcc");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CollectionTableRow_vue_vue_type_template_id_11da725c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CollectionTableRow.vue?vue&type=template&id=11da725c */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/CollectionTableRow.vue?vue&type=template&id=11da725c");
 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=template&id=0713ec72":
-/*!****************************************************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=template&id=0713ec72 ***!
-  \****************************************************************************************************/
+/***/ "./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=template&id=563476b6":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=template&id=563476b6 ***!
+  \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteGameProviderModal_vue_vue_type_template_id_0713ec72__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_template_id_563476b6__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteGameProviderModal_vue_vue_type_template_id_0713ec72__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteGameProviderModal.vue?vue&type=template&id=0713ec72 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue?vue&type=template&id=0713ec72");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceForm_vue_vue_type_template_id_563476b6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceForm.vue?vue&type=template&id=563476b6 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceForm.vue?vue&type=template&id=563476b6");
 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=template&id=0162b8b7":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=template&id=0162b8b7 ***!
-  \*************************************************************************************************/
+/***/ "./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=template&id=402d1ec8":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=template&id=402d1ec8 ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameProviderTableRow_vue_vue_type_template_id_0162b8b7__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_template_id_402d1ec8__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameProviderTableRow_vue_vue_type_template_id_0162b8b7__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./GameProviderTableRow.vue?vue&type=template&id=0162b8b7 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/GameProviderTableRow.vue?vue&type=template&id=0162b8b7");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteResourceModal_vue_vue_type_template_id_402d1ec8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteResourceModal.vue?vue&type=template&id=402d1ec8 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/DeleteResourceModal.vue?vue&type=template&id=402d1ec8");
 
 
 /***/ }),
@@ -93712,18 +93780,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=template&id=786a5b90":
-/*!***************************************************************************************************!*\
-  !*** ./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=template&id=786a5b90 ***!
-  \***************************************************************************************************/
+/***/ "./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=template&id=4abd087a":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=template&id=4abd087a ***!
+  \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateGameProviderForm_vue_vue_type_template_id_786a5b90__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_template_id_4abd087a__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateGameProviderForm_vue_vue_type_template_id_786a5b90__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateGameProviderForm.vue?vue&type=template&id=786a5b90 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue?vue&type=template&id=786a5b90");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UpdateResourceForm_vue_vue_type_template_id_4abd087a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UpdateResourceForm.vue?vue&type=template&id=4abd087a */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/GameProviders/UpdateResourceForm.vue?vue&type=template&id=4abd087a");
 
 
 /***/ }),
@@ -94216,46 +94284,46 @@ var map = {
 	"./Auth/TwoFactorChallenge.vue": "./resources/js/Pages/Auth/TwoFactorChallenge.vue",
 	"./Auth/VerifyEmail": "./resources/js/Pages/Auth/VerifyEmail.vue",
 	"./Auth/VerifyEmail.vue": "./resources/js/Pages/Auth/VerifyEmail.vue",
-	"./Bookings/DeleteBookingForm": "./resources/js/Pages/Bookings/DeleteBookingForm.vue",
-	"./Bookings/DeleteBookingForm.vue": "./resources/js/Pages/Bookings/DeleteBookingForm.vue",
-	"./Bookings/DeleteBookingModal": "./resources/js/Pages/Bookings/DeleteBookingModal.vue",
-	"./Bookings/DeleteBookingModal.vue": "./resources/js/Pages/Bookings/DeleteBookingModal.vue",
+	"./Bookings/DeleteResourceForm": "./resources/js/Pages/Bookings/DeleteResourceForm.vue",
+	"./Bookings/DeleteResourceForm.vue": "./resources/js/Pages/Bookings/DeleteResourceForm.vue",
+	"./Bookings/DeleteResourceModal": "./resources/js/Pages/Bookings/DeleteResourceModal.vue",
+	"./Bookings/DeleteResourceModal.vue": "./resources/js/Pages/Bookings/DeleteResourceModal.vue",
 	"./Bookings/Index": "./resources/js/Pages/Bookings/Index.vue",
 	"./Bookings/Index.vue": "./resources/js/Pages/Bookings/Index.vue",
-	"./Bookings/ReleaseBookingModal": "./resources/js/Pages/Bookings/ReleaseBookingModal.vue",
-	"./Bookings/ReleaseBookingModal.vue": "./resources/js/Pages/Bookings/ReleaseBookingModal.vue",
+	"./Bookings/ReleaseResourceModal": "./resources/js/Pages/Bookings/ReleaseResourceModal.vue",
+	"./Bookings/ReleaseResourceModal.vue": "./resources/js/Pages/Bookings/ReleaseResourceModal.vue",
 	"./Bookings/Show": "./resources/js/Pages/Bookings/Show.vue",
 	"./Bookings/Show.vue": "./resources/js/Pages/Bookings/Show.vue",
-	"./Bookings/UpdateBookingForm": "./resources/js/Pages/Bookings/UpdateBookingForm.vue",
-	"./Bookings/UpdateBookingForm.vue": "./resources/js/Pages/Bookings/UpdateBookingForm.vue",
+	"./Bookings/UpdateResourceForm": "./resources/js/Pages/Bookings/UpdateResourceForm.vue",
+	"./Bookings/UpdateResourceForm.vue": "./resources/js/Pages/Bookings/UpdateResourceForm.vue",
 	"./Dashboard": "./resources/js/Pages/Dashboard.vue",
 	"./Dashboard.vue": "./resources/js/Pages/Dashboard.vue",
-	"./Environments/DeleteEnvironmentForm": "./resources/js/Pages/Environments/DeleteEnvironmentForm.vue",
-	"./Environments/DeleteEnvironmentForm.vue": "./resources/js/Pages/Environments/DeleteEnvironmentForm.vue",
-	"./Environments/DeleteEnvironmentModal": "./resources/js/Pages/Environments/DeleteEnvironmentModal.vue",
-	"./Environments/DeleteEnvironmentModal.vue": "./resources/js/Pages/Environments/DeleteEnvironmentModal.vue",
+	"./Environments/DeleteResourceForm": "./resources/js/Pages/Environments/DeleteResourceForm.vue",
+	"./Environments/DeleteResourceForm.vue": "./resources/js/Pages/Environments/DeleteResourceForm.vue",
+	"./Environments/DeleteResourceModal": "./resources/js/Pages/Environments/DeleteResourceModal.vue",
+	"./Environments/DeleteResourceModal.vue": "./resources/js/Pages/Environments/DeleteResourceModal.vue",
 	"./Environments/Index": "./resources/js/Pages/Environments/Index.vue",
 	"./Environments/Index.vue": "./resources/js/Pages/Environments/Index.vue",
 	"./Environments/Show": "./resources/js/Pages/Environments/Show.vue",
 	"./Environments/Show.vue": "./resources/js/Pages/Environments/Show.vue",
-	"./Environments/UpdateEnvironmentForm": "./resources/js/Pages/Environments/UpdateEnvironmentForm.vue",
-	"./Environments/UpdateEnvironmentForm.vue": "./resources/js/Pages/Environments/UpdateEnvironmentForm.vue",
-	"./GameProviders/BookGameProviderModal": "./resources/js/Pages/GameProviders/BookGameProviderModal.vue",
-	"./GameProviders/BookGameProviderModal.vue": "./resources/js/Pages/GameProviders/BookGameProviderModal.vue",
-	"./GameProviders/DeleteGameProviderForm": "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue",
-	"./GameProviders/DeleteGameProviderForm.vue": "./resources/js/Pages/GameProviders/DeleteGameProviderForm.vue",
-	"./GameProviders/DeleteGameProviderModal": "./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue",
-	"./GameProviders/DeleteGameProviderModal.vue": "./resources/js/Pages/GameProviders/DeleteGameProviderModal.vue",
-	"./GameProviders/GameProviderTableRow": "./resources/js/Pages/GameProviders/GameProviderTableRow.vue",
-	"./GameProviders/GameProviderTableRow.vue": "./resources/js/Pages/GameProviders/GameProviderTableRow.vue",
+	"./Environments/UpdateResourceForm": "./resources/js/Pages/Environments/UpdateResourceForm.vue",
+	"./Environments/UpdateResourceForm.vue": "./resources/js/Pages/Environments/UpdateResourceForm.vue",
+	"./GameProviders/BookResourceModal": "./resources/js/Pages/GameProviders/BookResourceModal.vue",
+	"./GameProviders/BookResourceModal.vue": "./resources/js/Pages/GameProviders/BookResourceModal.vue",
+	"./GameProviders/CollectionTableRow": "./resources/js/Pages/GameProviders/CollectionTableRow.vue",
+	"./GameProviders/CollectionTableRow.vue": "./resources/js/Pages/GameProviders/CollectionTableRow.vue",
+	"./GameProviders/DeleteResourceForm": "./resources/js/Pages/GameProviders/DeleteResourceForm.vue",
+	"./GameProviders/DeleteResourceForm.vue": "./resources/js/Pages/GameProviders/DeleteResourceForm.vue",
+	"./GameProviders/DeleteResourceModal": "./resources/js/Pages/GameProviders/DeleteResourceModal.vue",
+	"./GameProviders/DeleteResourceModal.vue": "./resources/js/Pages/GameProviders/DeleteResourceModal.vue",
 	"./GameProviders/Index": "./resources/js/Pages/GameProviders/Index.vue",
 	"./GameProviders/Index.vue": "./resources/js/Pages/GameProviders/Index.vue",
 	"./GameProviders/Show": "./resources/js/Pages/GameProviders/Show.vue",
 	"./GameProviders/Show.vue": "./resources/js/Pages/GameProviders/Show.vue",
 	"./GameProviders/Timeline": "./resources/js/Pages/GameProviders/Timeline.vue",
 	"./GameProviders/Timeline.vue": "./resources/js/Pages/GameProviders/Timeline.vue",
-	"./GameProviders/UpdateGameProviderForm": "./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue",
-	"./GameProviders/UpdateGameProviderForm.vue": "./resources/js/Pages/GameProviders/UpdateGameProviderForm.vue",
+	"./GameProviders/UpdateResourceForm": "./resources/js/Pages/GameProviders/UpdateResourceForm.vue",
+	"./GameProviders/UpdateResourceForm.vue": "./resources/js/Pages/GameProviders/UpdateResourceForm.vue",
 	"./PrivacyPolicy": "./resources/js/Pages/PrivacyPolicy.vue",
 	"./PrivacyPolicy.vue": "./resources/js/Pages/PrivacyPolicy.vue",
 	"./Profile/DeleteUserForm": "./resources/js/Pages/Profile/DeleteUserForm.vue",

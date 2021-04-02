@@ -10,6 +10,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Http\Controllers\ReverseProxyController;
+use App\Models\Environment;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -52,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             
-            $this->configureLocations();
+            $this->configureEnviroments();
         });
     }
 
@@ -66,6 +67,29 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
+    }
+
+    protected function configureEnviroments()
+    {
+        try {
+            Environment::each(function($environment) {
+                Route::namespace($this->namespace)
+                    ->domain($environment->domain)
+                    ->middleware($environment->middleware)
+                    ->prefix($environment->prefix)
+                    ->group(function($router) use($environment) {
+                        $environment->locations()->with('currentBooking')->each(function($location) {
+                            if($location->isProcessable) {
+                                Route::any($location->location_match, ReverseProxyController::class)
+                                    ->name(Str::slug($location->name));
+                            }
+                        });
+                    });
+            });
+        } catch(QueryException $e) {
+            // we need to inform application that setup is not completed
+            report($e);
+        }
     }
 
     /**

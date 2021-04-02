@@ -40,14 +40,14 @@ export default {
 
     data() {
         return {
-            confirmingBookingDeletion: false,
+            confirmingResourceDeletion: false,
             form: this.$inertia.form({})
         }
     },
 
     methods: {
         confirmBookingDeletion() {
-            this.confirmingBookingDeletion = true;
+            this.confirmingResourceDeletion = true;
         },
 
         deleteBooking() {

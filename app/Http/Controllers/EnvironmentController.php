@@ -71,6 +71,7 @@ class EnvironmentController extends Controller
     {
         $request->validate([
             'name' => ['required', 'unique:environments'],
+            'domain' => ['required'],
         ]);
 
         $environment = Environment::create($request->input());

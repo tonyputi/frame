@@ -1,28 +1,28 @@
 <template>
     <jet-action-section>
         <template #title>
-            Delete Booking
+            Delete Game Provider
         </template>
 
         <template #description>
-            Permanently delete booking.
+            Permanently delete game provider.
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                Once bookig is deleted, all of its resources and data will be permanently deleted.
+                Once game provider is deleted, all of its resources and data will be permanently deleted. Before deleting game provider, please download any data or information that you wish to retain.
             </div>
 
             <div class="mt-5">
-                <jet-danger-button @click="bookingBeingDeleted = data">
-                    Delete Booking
+                <jet-danger-button @click="resourceBeingDeleted=data">
+                    Delete Game Provider
                 </jet-danger-button>
             </div>
 
-            <!-- Delete Booking Confirmation Modal -->
-            <delete-booking-modal
-                v-bind="bookingBeingDeleted"
-                @close="bookingBeingDeleted = null" />
+            <!-- Delete resource confirmation modal -->
+            <delete-resource-modal
+                v-bind="resourceBeingDeleted"
+                @close="resourceBeingDeleted = null" />
         </template>
     </jet-action-section>
 </template>
@@ -34,7 +34,7 @@ import JetDangerButton from '@/Jetstream/DangerButton'
 import JetInput from '@/Jetstream/Input'
 import JetInputError from '@/Jetstream/InputError'
 import JetSecondaryButton from '@/Jetstream/SecondaryButton'
-import DeleteBookingModal from './DeleteBookingModal';
+import DeleteResourceModal from './DeleteResourceModal';
 
 export default {
     components: {
@@ -44,14 +44,14 @@ export default {
         JetInput,
         JetInputError,
         JetSecondaryButton,
-        DeleteBookingModal
+        DeleteResourceModal
     },
 
     props: ['data'],
 
     data() {
         return {
-            bookingBeingDeleted: null,
+            resourceBeingDeleted: null,
         }
     },
 }
