@@ -45,16 +45,16 @@
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="default_redirect_to" value="Default redirect to" />
                 <jet-input id="default_redirect_to" type="text" class="mt-1 block w-full" 
-                    v-model="form.prefix" :disabled="!canUpdateOrCreate" />
-                <jet-input-error :message="form.errors.prefix" class="mt-2" />
+                    v-model="form.default_redirect_to" :disabled="!canUpdateOrCreate" />
+                <jet-input-error :message="form.errors.default_redirect_to" class="mt-2" />
             </div>
 
             <!-- Default redirect ipv4 -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="default_redirect_ipv4" value="Default redirect IPv4" />
                 <jet-input id="default_redirect_ipv4" type="text" class="mt-1 block w-full" 
-                    v-model="form.prefix" :disabled="!canUpdateOrCreate" />
-                <jet-input-error :message="form.errors.prefix" class="mt-2" />
+                    v-model="form.default_redirect_ipv4" :disabled="!canUpdateOrCreate" />
+                <jet-input-error :message="form.errors.default_redirect_ipv4" class="mt-2" />
             </div>
         </template>
 
@@ -113,7 +113,9 @@
                     name: this.attributes.name,
                     domain: this.attributes.domain,
                     middleware: this.attributes.middleware,
-                    prefix: this.attributes.prefix
+                    prefix: this.attributes.prefix,
+                    default_redirect_to: this.attributes.default_redirect_to,
+                    default_redirect_ipv4: this.attributes.default_redirect_ipv4
                 })
             }
         },

@@ -24,9 +24,9 @@
                                     <jet-checkbox v-model:checked="collectionSelected" />
                                 </th>
                                 <th class="px-2 py-4 text-left">ID</th>
-                                <th class="px-2 py-4 text-left">User</th>
+                                <th class="px-2 py-4 text-center">Status</th>
                                 <th class="px-2 py-4 text-left">Game Provider</th>
-                                <th class="px-2 py-4 text-left">Status</th>
+                                <th class="px-2 py-4 text-left">User</th>
                                 <th class="px-2 py-4 text-left">Started At</th>
                                 <th class="px-2 py-4 text-left">Ended At</th>
                                 <th class="px-2 py-4"></th>
@@ -39,15 +39,15 @@
                                     <jet-checkbox :value="resource" v-model:checked="collectionSelected" />
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.id }}</td>
-                                <td class="px-2 py-4 text-left">{{ resource.attributes.user.name }}</td>
+                                <td class="px-2 py-4 text-center">
+                                    <jet-boolean :value="resource.attributes.is_active" />
+                                </td>
                                 <td class="px-2 py-4 text-left">
                                     <inertia-link class="text-black-500" :href="route('game-providers.show', resource.attributes.location.id)">
                                         {{ resource.attributes.location.name }}
                                     </inertia-link>
                                 </td>
-                                <td class="px-2 py-4 text-left">
-                                    <jet-boolean :value="resource.attributes.is_active" />
-                                </td>
+                                <td class="px-2 py-4 text-left">{{ resource.attributes.user.name }}</td>
                                 <td class="px-2 py-4 text-left">{{ datetimeFormat(resource.attributes.started_at, 'YYYY-MM-DD HH:mm:ss') }}</td>
                                 <td class="px-2 py-4 text-left">{{ datetimeFormat(resource.attributes.ended_at, 'YYYY-MM-DD HH:mm:ss') }}</td>
                                 <td class="px-2 py-4">

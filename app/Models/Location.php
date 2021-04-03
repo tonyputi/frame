@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,9 +30,9 @@ class Location extends Model
      *
      * @return BelongsTo
      */
-    public function enviroment()
+    public function environment()
     {
-        return $this->belongsTo(Enviroment::class, 'environment_id');
+        return $this->belongsTo(Environment::class, 'environment_id');
     }
 
     /**
@@ -41,7 +42,7 @@ class Location extends Model
      */
     public function bookings()
     {
-        return $this->hasMany(Booking::class, 'location_id')
+        return $this->hasMany(Booking::class)
             ->orderBy('started_at', 'asc');
     }
 
@@ -53,7 +54,7 @@ class Location extends Model
     public function nextBookings()
     {
         return $this->bookings()
-            ->available();
+            ->next();
     }
 
     /**
@@ -63,9 +64,8 @@ class Location extends Model
      */
     public function nextBooking()
     {
-        return $this->hasOne(Booking::class, 'location_id')
-            ->available()
-            ->orderBy('started_at', 'asc');
+        return $this->hasOne(Booking::class)
+            ->next();
     }
 
     /**
@@ -75,19 +75,32 @@ class Location extends Model
      */
     public function currentBooking()
     {
-        return $this->hasOne(Booking::class, 'location_id')
-            ->current()
-            ->orderBy('started_at', 'asc');
+        return $this->hasOne(Booking::class)
+            ->current();
     }
 
     /**
      * Get the game provider queues for the application.
      */
-    public function expiredBookings()
+    public function pastBookings()
     {
-        return $this->hasMany(Booking::class, 'location_id')
-            ->expired()
-            ->orderBy('started_at', 'asc');
+        return $this->hasMany(Booking::class)
+            ->past();
+    }
+
+    /**
+     * Return only current proxable locations
+     *
+     * @param [type] $query
+     * @return void
+     */
+    public function scopeProxable($query)
+    {
+        $query->whereHas('bookings', fn($query) => $query->current());
+        $query->orWhereNotNull('default_redirect_to');
+        $query->orWhereHas('environment', fn($query) => $query->whereNotNull('default_redirect_to'));
+
+        return $query;
     }
 
     /**

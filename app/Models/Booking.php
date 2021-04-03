@@ -95,14 +95,15 @@ class Booking extends Model
     }
 
     /**
-     * Scope a query to only include available/queable bookings.
+     * Scope a query to only include next/queable bookings.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeAvailable($query)
+    public function scopeNext($query)
     {
-        return $query->where('ended_at', '>=', $this->freshTimestamp());
+        return $query->where('ended_at', '>=', $this->freshTimestamp())
+            ->orderBy('started_at', 'asc');
     }
 
     /**
@@ -113,18 +114,20 @@ class Booking extends Model
      */
     public function scopeCurrent($query)
     {
-        return $query->whereRaw("? BETWEEN started_at AND ended_at", [$this->freshTimestamp()]);
+        return $query->whereRaw('? BETWEEN started_at AND ended_at', [$this->freshTimestamp()])
+            ->orderBy('started_at', 'asc');
     }
 
     /**
-     * Scope a query to only include expired bookings.
+     * Scope a query to only include past bookings.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeExpired($query)
+    public function scopePast($query)
     {
-        return $query->where('ended_at', '<', $this->freshTimestamp());
+        return $query->where('ended_at', '<', $this->freshTimestamp())
+            ->orderBy('started_at', 'asc');
     }
 
     /**

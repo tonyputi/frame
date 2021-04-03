@@ -28,8 +28,7 @@
                                 <th class="px-2 py-4 text-left">Domain</th>
                                 <th class="px-2 py-4 text-left">Middleware</th>
                                 <th class="px-2 py-4 text-left">Prefix</th>
-                                <th class="px-2 py-4 text-left">Locations</th>
-                                <th class="px-2 py-4 text-left">Booked Time</th>
+                                <th class="px-2 py-4 text-center">Locations</th>
                                 <th class="px-2 py-4"></th>
                             </tr>
                         </template>
@@ -43,14 +42,19 @@
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.name }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.domain }}</td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.middleware }}</td>
-                                <td class="px-2 py-4 text-left">{{ resource.attributes.prefix }}</td>
-                                <td class="px-2 py-4 text-left">
+                                <td class="px-2 py-4 text-left">{{ resource.attributes.prefix ?? '-' }}</td>
+                                <td class="px-2 py-4 text-center">
                                     <inertia-link :href="route('environments.game-providers.index', [resource.attributes.id])">
                                         <jet-badge>{{ resource.attributes.locations_count }}</jet-badge>
                                     </inertia-link>
                                 </td>
                                 <td class="px-2 py-4">
                                     <div class="inline-flex items-center">
+                                        <button v-if="permissions.canCreate"
+                                            @click="resourceBeingDuplicated=resource" 
+                                            class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3">
+                                            <DuplicateIcon class="h-6 w-6" />
+                                        </button>
                                         <inertia-link v-if="resource.permissions.canView" 
                                             :href="route('environments.show', resource.attributes.id)"
                                             class="inline-flex cursor-pointer text-70 hover:text-primary mr-3">
@@ -79,6 +83,12 @@
                 </div>
 
                 <!-- resource delete modal -->
+                <duplicate-resource-modal
+                    v-if="resourceBeingDuplicated"
+                    v-bind="resourceBeingDuplicated"
+                    @close="resourceBeingDuplicated = null" />
+
+                <!-- resource delete modal -->
                 <delete-resource-modal
                     v-bind="resourceBeingDeleted"
                     @close="resourceBeingDeleted = null" />
@@ -90,7 +100,6 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout';
-import DeleteResourceModal from './DeleteResourceModal';
 import JetTable from "@/Jetstream/Table";
 import Pagination from "@/Jetstream/Pagination";
 import SearchInput from "@/Jetstream/SearchInput";
@@ -99,8 +108,11 @@ import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetBadge from "@/Jetstream/Badge";
 import JetBoolean from "@/Jetstream/Boolean";
+import DuplicateResourceModal from './DuplicateResourceModal';
+import DeleteResourceModal from './DeleteResourceModal';
 
-import { EyeIcon, TrashIcon } from '@heroicons/vue/outline'
+
+import { DuplicateIcon, EyeIcon, TrashIcon } from '@heroicons/vue/outline'
 import InteractWithCollection from "@/mixins/InteractWithCollection"
 
 export default {
@@ -115,13 +127,16 @@ export default {
         JetTable,
         Pagination,
         SearchInput,
+        DuplicateResourceModal,
         DeleteResourceModal,
+        DuplicateIcon,
         EyeIcon,
         TrashIcon
     },
 
     data() {
         return {
+            resourceBeingDuplicated: null,
             resourceBeingDeleted: null,
             collectionSelected: []
         }

@@ -30,6 +30,8 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
     Route::resource('environments', EnvironmentController::class);
+    Route::post('environments/duplicate', [EnvironmentController::class, 'duplicate'])->name('environments.duplicate');
+
     Route::resource('environments.game-providers', GameProviderController::class)->shallow();
     Route::resource('locations.bookings', BookingController::class)->shallow();
     

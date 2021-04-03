@@ -143,4 +143,34 @@ class EnvironmentController extends Controller
             ->route('environments.index')
             ->banner("Environment: {$environment->name} deleted!");
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function duplicate(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'unique:environments'],
+            'domain' => ['required'],
+            'withLocations' => ['boolean']
+        ]);
+
+        $environment = Environment::findOrFail($request->id);
+        $cloned = $environment->replicate()
+            ->fill($request->except('id', 'withLocations'));
+        $cloned->save();
+
+        if($request->withLocations) {
+            $environment->locations->each(function($location) use($cloned) {
+                $cloned->locations()->save($location->replicate());
+            });
+        }
+
+        return redirect()
+            ->route('environments.index')
+            ->banner("Environment: {$environment->name} created!");
+    }
 }

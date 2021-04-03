@@ -30,6 +30,7 @@ class GameProviderController extends Controller
     public function index(Request $request)
     {
         $collection = GameProvider::query()
+            ->when($request->environment, fn($query) => $query->where('environment_id', $request->environment))
             ->when($request->input('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
             ->with('currentBooking.user')
             ->withCount('nextBookings')

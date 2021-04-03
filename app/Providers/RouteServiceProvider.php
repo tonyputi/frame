@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Location;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -72,39 +71,28 @@ class RouteServiceProvider extends ServiceProvider
     protected function configureEnviroments()
     {
         try {
-            Environment::each(function($environment) {
+            // Environment::routes()->each(function($route) {
+            //     Route::namespace($this->namespace)
+            //         ->domain($route->domain)
+            //         ->middleware($route->middleware)
+            //         ->prefix($route->prefix)
+            //         ->any($route->match, ReverseProxyController::class)
+            //         ->name(Str::slug($route->name));
+            // });
+
+            Environment::with('proxableLocations')->each(function($environment) {
                 Route::namespace($this->namespace)
                     ->domain($environment->domain)
                     ->middleware($environment->middleware)
                     ->prefix($environment->prefix)
-                    ->group(function($router) use($environment) {
-                        $this->configureLocations($environment->processableLocations);
-                        // $environment->locations()->with('currentBooking')->each(function($location) use($router) {
-                        //     if($location->isProcessable) {
-                        //         $router->any($location->match, ReverseProxyController::class)
-                        //             ->name(Str::slug($location->name));
-                        //     }
-                        // });
-                    });
+                    ->group(fn($router) => 
+                        $environment->proxableLocations->each(fn($location) => 
+                            $router->any($location->match, ReverseProxyController::class)
+                                ->name(Str::slug($location->name))));
             });
         } catch(QueryException $e) {
             // we need to inform application that setup is not completed
             report($e);
         }
-    }
-
-    /**
-     * Generate dynamic locations as routes
-     *
-     * @return void
-     */
-    protected function configureLocations($locations)
-    {
-        $locations->each(function($location) {
-            if($location->isProcessable) {
-                Route::any($location->match, ReverseProxyController::class)
-                    ->name(Str::slug($location->name));
-            }
-        });   
     }
 }

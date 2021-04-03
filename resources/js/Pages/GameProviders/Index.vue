@@ -27,10 +27,10 @@
                                     <jet-checkbox v-model:checked="selectAll" />
                                 </th>
                                 <th class="px-2 py-4 text-left">ID</th>
-                                <th class="px-2 py-4 text-left">Status</th>
+                                <th class="px-2 py-4 text-center">Status</th>
                                 <th class="px-2 py-4 text-left">Logo</th>
                                 <th class="px-2 py-4 text-left">Name</th>
-                                <th class="px-2 py-4 text-left">Bookings</th>
+                                <th class="px-2 py-4 text-center">Bookings</th>
                                 <th class="px-2 py-4 text-left">Booked By</th>
                                 <th class="px-2 py-4 text-left">Booked Time</th>
                                 <th class="px-2 py-4"></th>
@@ -43,14 +43,14 @@
                                     <jet-checkbox :value="resource" v-model:checked="collectionSelected" />
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.id }}</td>
-                                <td class="px-2 py-4 text-left">
+                                <td class="px-2 py-4 text-center">
                                     <jet-boolean :value="resource.attributes?.current_booking?.is_active" />
                                 </td>
                                 <td class="px-2 py-4 text-left">
                                     <img class="h-8 w-8 rounded-full object-cover" :src="resource.attributes.logo_url" :alt="resource.attributes.name" />
                                 </td>
                                 <td class="px-2 py-4 text-left">{{ resource.attributes.name }}</td>
-                                <td class="px-2 py-4 text-left">
+                                <td class="px-2 py-4 text-center">
                                     <inertia-link :href="route('locations.bookings.index', [resource.attributes.id])">
                                         <jet-badge>{{ resource.attributes.next_bookings_count }}</jet-badge>
                                     </inertia-link>

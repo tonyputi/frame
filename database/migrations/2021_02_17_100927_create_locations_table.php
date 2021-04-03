@@ -16,12 +16,15 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('environment_id')->constrained();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('logo_path')->nullable();
-            $table->string('match')->unique();
+            $table->string('match');
             $table->string('default_redirect_to')->nullable();
             $table->string('default_redirect_ipv4')->nullable();
             $table->timestamps();
+
+            $table->unique(['environment_id', 'name']);
+            $table->unique(['environment_id', 'match']);
         });
     }
 
