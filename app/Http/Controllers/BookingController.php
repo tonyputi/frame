@@ -33,8 +33,7 @@ class BookingController extends Controller
         $collection = Booking::with(['user', 'location'])
             ->when($request->location, fn($query) => $query->where('location_id', $request->location))
             ->when($request->input('search'), fn($query) => $query->filter($request->search))
-            ->available()
-            ->orderBy('started_at', 'asc')
+            ->next()
             ->paginate();
 
         // TODO: this is a workaround. inertia should already provide

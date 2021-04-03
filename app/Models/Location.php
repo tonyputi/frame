@@ -42,7 +42,7 @@ class Location extends Model
      */
     public function bookings()
     {
-        return $this->hasMany(Booking::class)
+        return $this->hasMany(Booking::class, 'location_id')
             ->orderBy('started_at', 'asc');
     }
 
@@ -53,8 +53,7 @@ class Location extends Model
      */
     public function nextBookings()
     {
-        return $this->bookings()
-            ->next();
+        return $this->bookings()->next();
     }
 
     /**
@@ -64,8 +63,7 @@ class Location extends Model
      */
     public function nextBooking()
     {
-        return $this->hasOne(Booking::class)
-            ->next();
+        return $this->hasOne(Booking::class, 'location_id')->next();
     }
 
     /**
@@ -75,8 +73,7 @@ class Location extends Model
      */
     public function currentBooking()
     {
-        return $this->hasOne(Booking::class)
-            ->current();
+        return $this->hasOne(Booking::class, 'location_id')->current();
     }
 
     /**
@@ -84,8 +81,7 @@ class Location extends Model
      */
     public function pastBookings()
     {
-        return $this->hasMany(Booking::class)
-            ->past();
+        return $this->hasMany(Booking::class, 'location_id')->past();
     }
 
     /**

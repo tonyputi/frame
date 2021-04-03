@@ -19,7 +19,6 @@ class EnvironmentPolicy
     */
     public function before(User $user, $ability)
     {
-        return true;
         if ($user->is_admin) {
             return true;
         }

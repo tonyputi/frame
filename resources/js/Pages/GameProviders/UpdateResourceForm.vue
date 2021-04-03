@@ -57,6 +57,14 @@
                 <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
 
+            <!-- Location Match -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="match" value="Location Match" />
+                <jet-input id="match" type="text" class="mt-1 block w-full" 
+                    v-model="form.match" :disabled="!canUpdateOrCreate" />
+                <jet-input-error :message="form.errors.match" class="mt-2" />
+            </div>
+
             <!-- Default Host -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="default_redirect_to" value="Default Host" />
@@ -71,14 +79,6 @@
                 <jet-input id="default_redirect_ipv4" type="text" class="mt-1 block w-full" 
                     v-model="form.default_redirect_ipv4" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.default_redirect_ipv4" class="mt-2" />
-            </div>
-
-            <!-- Location Match -->
-            <div class="col-span-6 sm:col-span-4">
-                <jet-label for="match" value="Location Match" />
-                <jet-input id="match" type="text" class="mt-1 block w-full" 
-                    v-model="form.match" :disabled="!canUpdateOrCreate" />
-                <jet-input-error :message="form.errors.match" class="mt-2" />
             </div>
         </template>
 
