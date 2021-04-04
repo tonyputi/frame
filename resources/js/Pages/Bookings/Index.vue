@@ -151,7 +151,7 @@ export default {
             }
         },
         canCreate() {
-            this.permissions.canCreate && !!route().params.environment;
+            return this.permissions.canCreate && route().params.location;
         }
     }
 };
