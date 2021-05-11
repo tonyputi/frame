@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Client\PendingRequest;
+use App\Services\ReverseProxy\ReverseProxyNg;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
     {
         // TODO: this is for the ones using MySQL
         Schema::defaultStringLength(191);
+
+        Request::macro('proxypass', function($base_uri) {
+            return ReverseProxyNg::createFromRequest($this)->pass($base_uri);
+        });
 
         PendingRequest::macro('proxyPass', function($request, $url, $options = []) {
             $request->headers->remove('host');

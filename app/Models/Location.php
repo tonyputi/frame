@@ -192,7 +192,7 @@ class Location extends Model
      * @param string $value
      * @return void
      */
-    public function setLocationMatchAttribute($value)
+    public function setMatchAttribute($value)
     {
         $this->attributes['match'] = trim($value, '/');
     }

@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\GameProviderController;
+use App\Http\Controllers\ReverseProxyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     
     Route::get('game-providers', [GameProviderController::class, 'index'])->name('game-providers.index');
     Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
+});
 
+Route::group(['prefix' => 'proxy'], function () {
+    Route::get('{location:match}', ReverseProxyController::class)->where('location', '.*');
 });

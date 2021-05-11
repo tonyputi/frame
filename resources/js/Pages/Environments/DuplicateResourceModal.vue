@@ -24,7 +24,7 @@
                 <!-- Include locations -->
                 <div class="col-span-6 sm:col-span-4 mt-2">
                     <jet-label for="withLocations" value="Include locations" />
-                    <jet-checkbox id="withLocations" v-model="form.withLocations" ref="withLocations" />
+                    <jet-checkbox id="withLocations" v-model:checked="form.withLocations" ref="withLocations" />
                     <jet-input-error :message="form.errors.withLocations" class="mt-2" />
                 </div>
             </form>
