@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Location;
-use App\Models\GameProvider;
+use App\Models\Location;
 use Illuminate\Console\Command;
 
 class LocationStatus extends Command
@@ -45,15 +45,17 @@ class LocationStatus extends Command
                 return [
                     'id' => $resource->id,
                     'name' => $resource->name,
+                    'environment' => $resource->environment->name,
                     'match' => $resource->match,
-                    'host' => $resource->gameActiveProviderQueue->host,
-                    'started_at' => $resource->gameActiveProviderQueue->started_at,
-                    'ended_at' => $resource->gameActiveProviderQueue->ended_at,
+                    'host' => $resource->hostname,
+                    'ip' => $resource->ip,
+                    'started_at' => optional($resource->currentBooking)->started_at,
+                    'ended_at' => optional($resource->currentBooking)->ended_at,
                 ];
             });
 
         $this->table(
-           ['ID', 'Name', 'Modifier', 'Match', 'Hostname', 'Started at', 'Ended at'],
+           ['ID', 'Name', 'Environment', 'Match', 'Hostname', 'IP', 'Started at', 'Ended at'],
            $collection->toArray()
         );
     }

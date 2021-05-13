@@ -22,26 +22,16 @@ class CreateEnvironmentsTable extends Migration
             $table->boolean('https')->default(false);
             $table->json('options')->nullable();
             $table->string('default_redirect_to')->nullable();
-            $table->string('default_redirect_ipv4')->nullable();
+            $table->string('default_redirect_ip')->nullable();
             $table->timestamps();
 
-            // here i need to create a column like default_redirect_hostname and default_redirect_ipv4
-            // default_redirect_to
-            // default_redirect_ipv4
 
-            // "https": true,
-            // "default": {
-            //     "redirect": {
-            //         "to": "stage-it.videoslots.com",
-            //         "ipv4": "192.168.88.22"
-            //     }
-            // }
-
+            // TODO: OPTIONS MAYBE CAN CONTAINS INFORMATIONS ABOUT DEFAULT REDIRECT
             // $options = [
             //     'default' => [
             //         'redirect' => [
             //             'to' => 'stage-it.videoslots.com',
-            //             'ipv4' => '192.168.88.22',
+            //             'ip' => '192.168.88.22',
             //         ]
             //     ]
             // ];

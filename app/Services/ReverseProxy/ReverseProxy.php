@@ -3,183 +3,205 @@
 namespace App\Services\ReverseProxy;
 
 use GuzzleHttp\Client;
-use Illuminate\Support\Arr;
 use GuzzleHttp\HandlerStack;
 use Illuminate\Http\Request;
-use GuzzleHttp\Handler\CurlHandler;
 
 class ReverseProxy
 {
-    protected const default_config = [
-        'timeout' => 20.0
-    ];
+    /**
+     * guzzle options
+     *
+     * @var array
+     */
+    protected array $options = [];
 
-    protected array $headers = [];
+    /**
+     * The method for the request.
+     *
+     * @var string
+     */
+    protected $method;
 
-    protected string $url;
+    /**
+     * The uri for the request.
+     *
+     * @var string
+     */
+    protected $uri;
 
-    protected string $method;
-
-    protected $queryString;
-
-    protected $content;
-
-    protected $resolve;
+    /**
+     * The transfer stats for the request.
+     *
+     * \GuzzleHttp\TransferStats
+     */
+    protected $transferStats;
 
     /**
      * Class constructor
      *
-     * @param Request $request
-     * @param string $url
      */
-    public function __construct(Request $request, $url)
+    public function __construct($method, $uri, $options = [])
     {
-        logger('request', [
-            'route' => $request->route()->uri(),
-            'headers' => $request->header(),
-            'query' => $request->query(),
-            'content' => $request->getContent()
-        ]);
+        $this->method = $method;
+        $this->uri = $uri;
 
-        $this->headers = Arr::except($request->header(), ['host']);
-        $this->headers['x-real-ip'] = $request->ip();
-        // here we need to append ip to chain
-        $this->headers['x-forwarded-for'] = [implode(', ', array_merge(explode(', ', $request->header('x-forwarded-for')), [$request->ip()]))];
-        $this->headers['x-forwarded-host'] = $request->getHost();
-        $this->headers['x-forwarded-proto'] = $request->getScheme();
-
-        $this->resolve = null;
-
-        $this->withUrl($url);
-        $this->withMethod($request->method());
-        $this->withQueryString($request->getQueryString());
-        $this->withContent($request->getContent());
+        $this->withOptions(array_merge([
+            'http_errors' => false,
+            'on_stats' => fn ($transferStats) => $this->transferStats = $transferStats,
+        ], $options));
     }
 
     /**
-     * Set proxy headers
+     * Create reverse proxy from laravel request
      *
-     * @param array $headers
-     * @return void
+     * @param Request $request
+     * @return static
+     */
+    public static function createFromRequest(Request $request, $uri, $options = [])
+    {
+        $headers = clone($request->headers);
+        $headers->remove('host', 'connection');
+        $headers->set('x-forwarded-for', $request->ips());
+        $headers->set('x-forwarded-host', $request->getHost());
+        $headers->set('x-forwarded-proto', $request->getScheme());
+
+        $proxy = new static($request->method(), $uri, $options);
+        $proxy->withHeaders($headers->all());
+        $proxy->withQueryString($request->query());
+        $proxy->withContent($request->getContent());
+
+        return $proxy;
+    }
+
+    /**
+     * Merge new options into the client.
+     *
+     * @param  array  $options
+     * @return $this
+     */
+    public function withOptions(array $options)
+    {
+        return tap($this, fn ($request) => $this->options = array_merge_recursive($this->options, $options));
+    }
+
+    /**
+     * Add the given headers to the request.
+     *
+     * @param  array  $headers
+     * @return $this
      */
     public function withHeaders(array $headers)
     {
-        $this->headers = array_merge($this->headers, $headers);
-        return $this;
+        return $this->withOptions(compact('headers'));
     }
 
     /**
-     * Set proxy method
+     * Add the given headers to the request.
      *
-     * @param string $method
-     * @return void
+     * @param  array  $query
+     * @return $this
      */
-    public function withMethod(string $method)
+    public function withQueryString(array $query = [])
     {
-        $this->method = $method;
-        return $this;
+        return $this->withOptions(compact('query'));
     }
 
     /**
-     * Set proxy url to be called
+     * Add the given headers to the request.
      *
-     * @param string $url
-     * @return void
+     * @param  mixed  $content
+     * @return $this
      */
-    public function withUrl(string $url)
+    public function withContent($content = null)
     {
-        $this->url = $url;
-        return $this;
-    }
+        unset($this->options['json']);
+        unset($this->options['body']);
 
-    /**
-     * Set proxy query string
-     *
-     * @param string $queryString
-     * @return void
-     */
-    public function withQueryString(string $queryString)
-    {
-        $this->queryString = $queryString;
-        return $this;
-    }
-
-    /**
-     * Set proxy body
-     *
-     * @param string $body
-     * @return void
-     */
-    public function withContent($content)
-    {
-        $this->content = $content;
-        return $this;
-    }
-
-    /**
-     * Set internal curl resolve system
-     *
-     * @param string $hostname
-     * @param string $ip
-     * @param integer $port
-     * @return void
-     */
-    public function withResolve(string $hostname, string $ip, int $port)
-    {
-        $this->resolve = "{$hostname}:{$port}:{$ip}";
-        return $this;
-    }
-
-    /**
-     * Send the request
-     *
-     * @return response
-     */
-    public function send()
-    {
-        $options = ['headers' => $this->headers];
-
-        if($this->resolve) {
-            $options['curl'] = [
-                CURLOPT_RESOLVE => [$this->resolve]
-            ];
+        if(!empty($content)) {
+            if(is_array($content)) {
+                $this->options['json'] = $content;
+            } else if(is_string($content)) {
+                $this->options['body'] = $content;
+            }
         }
 
-        $response = $this->client()->request($this->method, $this->url, $options);
-
-        $responseBody = $response->getBody();
-        $responseHeaders = $this->sanitizeHeaders($response->getHeaders(), ['connection', 'transfer-encoding']);
-        
-        return response($responseBody)->withHeaders($responseHeaders);
+        return $this;
     }
 
     /**
-     * Return new guzzle client
+     * Resolve the request by the provided hostname, ip and port
      *
-     * @param array $config
-     * @return Client
+     * @param  mixed  $content
+     * @return $this
      */
-    protected function client($config = [])
+    public function resolve($hostname, $ip, $port)
     {
-        $handler = HandlerStack::create(new CurlHandler());
-
-        return new Client(array_merge(static::default_config, compact('handler'), $config));
+        return $this->withOptions([
+            'curl' => [
+                CURLOPT_RESOLVE => ["{$hostname}:{$port}:{$ip}"]
+            ]
+        ]);
     }
 
     /**
-     * sanitize headers
+     * Apply the callback's proxy changes if the given "value" is true.
      *
-     * @param array $headers
-     * @param array $ignores
-     * @return void
+     * @param  mixed  $value
+     * @param  callable  $callback
+     * @return mixed|$this
      */
-    protected function sanitizeHeaders($headers, $ignores = [])
+    public function when($value, $callback)
     {
-        $headers = array_filter($headers, fn($key) => !in_array(strtolower($key), $ignores), ARRAY_FILTER_USE_KEY);
-        
-        array_walk($headers, fn(&$value) => $value = is_array($value) ? implode(', ', $value) : $value);
-        // $headers = array_map(fn($key, $value) => [$key => $value], array_keys($headers), $headers);
+        if ($value) {
+            return $callback($this, $value) ?: $this;
+        }
 
-        return $headers;
+        return $this;
+    }
+
+    /**
+     * Build the Guzzle client.
+     *
+     * @return \GuzzleHttp\Client
+     */
+    public function buildClient()
+    {
+        return new Client([
+            'handler' => $this->buildHandlerStack(),
+            'cookies' => true,
+        ]);
+    }
+
+    /**
+     * Build the before sending handler stack.
+     *
+     * @return \GuzzleHttp\HandlerStack
+     */
+    public function buildHandlerStack()
+    {
+         return tap(HandlerStack::create(), function ($stack) {
+            // $stack->push($this->buildBeforeSendingHandler());
+            // $stack->push($this->buildRecorderHandler());
+            // $stack->push($this->buildStubHandler());
+
+            // $this->middleware->each(function ($middleware) use ($stack) {
+            //     $stack->push($middleware);
+            // });
+         });
+    }
+
+    /**
+     * Execute the proxy pass request
+     *
+     * @param array $options
+     * @return \Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function pass($options = [])
+    {
+        $this->withOptions($options);
+
+        return $this->buildClient()
+            ->request($this->method, $this->uri, $this->options);
     }
 }

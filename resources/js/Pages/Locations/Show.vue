@@ -40,7 +40,7 @@ export default {
 
     computed: {
         title() {
-            return this.attributes.id ? `Game Provider: ${this.attributes.name}` : `Create new game provider`
+            return this.attributes.id ? `Location: ${this.attributes.name}` : `Create new location`
         }
     }
 }

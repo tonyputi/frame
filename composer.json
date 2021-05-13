@@ -20,6 +20,7 @@
         "laravel/slack-notification-channel": "^2.3",
         "laravel/telescope": "^4.4",
         "laravel/tinker": "^2.5",
+        "symfony/psr-http-message-bridge": "^2.1",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

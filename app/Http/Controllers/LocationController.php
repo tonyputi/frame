@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
-use App\Models\GameProvider;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Resources\JetstreamResource;
 use App\Models\Environment;
 
-class GameProviderController extends Controller
+class LocationController extends Controller
 {
     /**
      * Create the controller instance.
@@ -18,7 +18,7 @@ class GameProviderController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(GameProvider::class, 'game_provider');
+        $this->authorizeResource(Location::class, 'location');
     }
 
     /**
@@ -29,7 +29,7 @@ class GameProviderController extends Controller
      */
     public function index(Request $request)
     {
-        $collection = GameProvider::query()
+        $collection = Location::query()
             ->when($request->environment, fn($query) => $query->where('environment_id', $request->environment))
             ->when($request->input('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
             ->with('currentBooking.user')
@@ -41,13 +41,13 @@ class GameProviderController extends Controller
         $props = JetstreamResource::collection($collection)
             ->additional([
                 'permissions' => [
-                    'canCreate' => $request->user()->can('create', GameProvider::class)
+                    'canCreate' => $request->user()->can('create', Location::class)
                 ]
             ])
             ->toResponse($request)
             ->getData(true);
 
-        return Inertia::render('GameProviders/Index', $props);
+        return Inertia::render('Locations/Index', $props);
     }
 
     /**
@@ -57,7 +57,7 @@ class GameProviderController extends Controller
      */
     public function create(Request $request)
     {
-        $props = (new JetstreamResource(new GameProvider))
+        $props = (new JetstreamResource(new Location))
             ->toResponse($request)
             ->getData(true);
         // TODO: this shit is just to be able to have logo_url on the location
@@ -65,7 +65,7 @@ class GameProviderController extends Controller
 
         $props['meta']['environments'] = Environment::pluck('id', 'name');
 
-        return Inertia::render('GameProviders/Show', $props);
+        return Inertia::render('Locations/Show', $props);
     }
 
     /**
@@ -77,82 +77,82 @@ class GameProviderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'unique:locations'],
+            'name' => ['required', 'string'],
             'match' => ['required'],
         ]);
 
-        $gameProvider = GameProvider::create($request->input());
+        $location = Location::create($request->input());
 
         return redirect()
-            ->route('game-providers.index')
-            ->banner("Game Provider: {$gameProvider->name} created!");
+            ->route('locations.index')
+            ->banner("Location: {$location->name} created!");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  GameProvider  $gameProvider
+     * @param  Location  $location
      * @return \Inertia\Response
      */
-    public function show(Request $request, GameProvider $gameProvider)
+    public function show(Request $request, Location $location)
     {
-        $props = (new JetstreamResource($gameProvider))
+        $props = (new JetstreamResource($location))
             ->toResponse($request)
             ->getData(true);
 
         $props['meta']['environments'] = Environment::pluck('id', 'name');
 
-        return Inertia::render('GameProviders/Show', $props);
+        return Inertia::render('Locations/Show', $props);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  GameProvider  $gameProvider
+     * @param  Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, GameProvider $gameProvider)
+    public function edit(Request $request, Location $location)
     {
-        $props = (new JetstreamResource($gameProvider))
+        $props = (new JetstreamResource($location))
             ->toResponse($request)
             ->getData(true);
 
         $props['meta']['environments'] = Environment::pluck('id', 'name');
 
-        return Inertia::render('GameProviders/Show', $props);
+        return Inertia::render('Locations/Show', $props);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  GameProvider  $gameProvider
+     * @param  Location  $location
      * @return Response
      */
-    public function update(Request $request, GameProvider $gameProvider)
+    public function update(Request $request, Location $location)
     {
         $request->validate([
-            'name' => ['sometimes', 'required', "unique:locations,name,{$gameProvider->id}"],
+            'name' => ['sometimes', 'required', "string"],
             'match' => ['sometimes', 'required'],
         ]);
 
-        $gameProvider->update($request->except('_method'));
+        $location->update($request->except('_method'));
 
-        return back(303)->banner("Game Provider: {$gameProvider->name} updated!");
+        return back(303)->banner("Location: {$location->name} updated!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  GameProvider  $gameProvider
+     * @param  Location  $location
      * @return Response
      */
-    public function destroy(GameProvider $gameProvider)
+    public function destroy(Location $location)
     {
-        $gameProvider->delete();
+        $location->delete();
 
         return redirect()
-            ->route('game-providers.index')
-            ->banner("Game Provider: {$gameProvider->name} deleted!");
+            ->route('locations.index')
+            ->banner("Location: {$location->name} deleted!");
     }
 }

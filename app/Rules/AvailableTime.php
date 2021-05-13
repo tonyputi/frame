@@ -57,6 +57,6 @@ class AvailableTime implements Rule
      */
     public function message()
     {
-        return 'The game provider is already reseved for :attribute.';
+        return 'The location is already reseved for :attribute.';
     }
 }

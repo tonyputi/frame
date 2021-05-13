@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\GameProvider;
+use App\Models\Location;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class GameProviderPolicy
+class LocationPolicy
 {
     use HandlesAuthorization;
 
@@ -39,10 +39,10 @@ class GameProviderPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\GameProvider  $gameProvider
+     * @param  \App\Models\Location  $location
      * @return mixed
      */
-    public function view(User $user, GameProvider $gameProvider)
+    public function view(User $user, Location $location)
     {
         return true;
     }
@@ -62,10 +62,10 @@ class GameProviderPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\GameProvider  $gameProvider
+     * @param  \App\Models\Location  $location
      * @return mixed
      */
-    public function update(User $user, GameProvider $gameProvider)
+    public function update(User $user, Location $location)
     {
         return false;
     }
@@ -74,10 +74,10 @@ class GameProviderPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\GameProvider  $gameProvider
+     * @param  \App\Models\Location  $location
      * @return mixed
      */
-    public function delete(User $user, GameProvider $gameProvider)
+    public function delete(User $user, Location $location)
     {
         return false;
     }
@@ -86,10 +86,10 @@ class GameProviderPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\GameProvider  $gameProvider
+     * @param  \App\Models\Location  $location
      * @return mixed
      */
-    public function restore(User $user, GameProvider $gameProvider)
+    public function restore(User $user, Location $location)
     {
         return false;
     }
@@ -98,10 +98,10 @@ class GameProviderPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\GameProvider  $gameProvider
+     * @param  \App\Models\Location  $location
      * @return mixed
      */
-    public function forceDelete(User $user, GameProvider $gameProvider)
+    public function forceDelete(User $user, Location $location)
     {
         return false;
     }

@@ -9,7 +9,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 
-class GameProviderRedirected extends Notification
+class LocationRedirected extends Notification
 {
     use Queueable;
 
@@ -45,7 +45,7 @@ class GameProviderRedirected extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line("Hi, with this email we want to inform you that {$this->booking->gameProvider->name} is now redirected to {$this->booking->user->name}")
+            ->line("Hi, with this email we want to inform you that {$this->booking->location->name} is now redirected to {$this->booking->user->name}")
             // ->line('The introduction to the notification.')
             // ->action('Notification Action', url('/'))
             ->line('Thank you for using our application!');

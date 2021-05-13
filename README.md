@@ -4,16 +4,16 @@
 ## Casino Provider and environment switcher
 
 With the objective to acquire and redirect a casino provider in any dev environment, the frame project was created to
-help developers manage game provider configurations.
+help developers manage location configurations.
 
-Providing a GUI is possible to control the game provider's access by the admin and identify what dev is using each
+Providing a GUI is possible to control the location's access by the admin and identify what dev is using each
 provider.
 
 ## Features
 - Avoid SSH access
 - Automate Nginx config changes
 - Set a time limit to avoid forever redirects to dev machines
-- Automatic posting to slack informing the availability of the game provider
+- Automatic posting to slack informing the availability of the location
 - Queue system, allowing casino provider booking
 
 
@@ -75,7 +75,7 @@ npm run watch
 - notify event for booking created, update, deleted, applied
 - job heartbeat to notify events each minutes
 - add dashboard with bookings organized by provider
-- autorefresh both game providers and booking index with setTimeout
+- autorefresh both locations and booking index with setTimeout
 
 ### PHASE 2
 - review command name
@@ -84,5 +84,5 @@ npm run watch
 - create time calendar select component (hard)
 - add dashboard with queue provider lists calendar version
 - install opensource implementation of pusher/broadcast
-- autorefresh both game providers and booking index through websockets
+- autorefresh both locations and booking index through websockets
 - add socialiate to proper register players through office365

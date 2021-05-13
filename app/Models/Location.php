@@ -26,7 +26,7 @@ class Location extends Model
     protected $guarded = ['id'];
 
     /**
-     * Get all the bookings history for that provider
+     * Get the environment that own the location
      *
      * @return BelongsTo
      */
@@ -77,7 +77,7 @@ class Location extends Model
     }
 
     /**
-     * Get the game provider queues for the application.
+     * Get the location queues for the application.
      */
     public function pastBookings()
     {

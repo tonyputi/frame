@@ -55,7 +55,7 @@ class Booking extends Model
     ];
 
     /**
-     * Get the game provider that owns the game provider queue.
+     * Get the location that owns the location queue.
      */
     public function location()
     {
@@ -75,7 +75,7 @@ class Booking extends Model
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
-     * @deprecated 
+     * @deprecated
      */
     public function scopeActive($query, $value = true)
     {
@@ -138,7 +138,7 @@ class Booking extends Model
      */
     public function scopeFilter($query, $value)
     {
-        return $query->where(fn($query) => 
+        return $query->where(fn($query) =>
             $query->whereHas('user', fn($query) => $query->where('name', 'like', "%{$value}%"))
                 ->orWhereHas('location', fn($query) => $query->where('name', 'like', "%{$value}%")));
     }

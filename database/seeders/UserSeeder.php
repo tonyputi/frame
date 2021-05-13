@@ -46,7 +46,8 @@ class UserSeeder extends Seeder
             'name' => 'Filippo Sallemi',
             'email' => 'filippo.sallemi@videoslots.com',
             'hostname' => 'filippo.videoslots.com',
-            'password' => Hash::make('12345678')
+            'password' => Hash::make('12345678'),
+            'is_admin' => true
         ]);
         $user->teams()->attach($team, ['role' => 'editor']);
         $user->switchTeam($team);

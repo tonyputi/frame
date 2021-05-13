@@ -68,6 +68,6 @@ class User extends Authenticatable
      */
     public function getHasResolveOptionAttribute($value)
     {
-        return $this->hostname and $this->ipv4;
+        return $this->hostname and $this->ip;
     }
 }

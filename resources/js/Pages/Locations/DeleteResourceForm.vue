@@ -1,21 +1,21 @@
 <template>
     <jet-action-section>
         <template #title>
-            Delete Game Provider
+            Delete Location
         </template>
 
         <template #description>
-            Permanently delete game provider.
+            Permanently delete location.
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                Once game provider is deleted, all of its resources and data will be permanently deleted. Before deleting game provider, please download any data or information that you wish to retain.
+                Once location is deleted, all of its resources and data will be permanently deleted. Before deleting location, please download any data or information that you wish to retain.
             </div>
 
             <div class="mt-5">
                 <jet-danger-button @click="resourceBeingDeleted=data">
-                    Delete Game Provider
+                    Delete Location
                 </jet-danger-button>
             </div>
 

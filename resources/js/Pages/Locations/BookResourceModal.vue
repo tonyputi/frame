@@ -1,5 +1,5 @@
 <template>
-    <!-- Boook Game Provider Modal -->
+    <!-- Boook Location Modal -->
     <jet-dialog-modal :show="attributes" @close="closeModal">
         <template #title>
             Book {{ attributes?.name }}
@@ -42,7 +42,7 @@
                 Nevermind
             </jet-secondary-button>
 
-            <jet-button class="ml-2" @click="bookGameProvider" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <jet-button class="ml-2" @click="bookLocation" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Book Now
             </jet-button>
         </template>
@@ -120,7 +120,7 @@ export default {
     },
 
     methods: {
-        bookGameProvider() {
+        bookLocation() {
             // need to remove one second to match ie 14:04:59
             this.form.ended_at = moment(this.form.ended_at).subtract(1, 'second')
 

@@ -17,13 +17,13 @@ class ReverseProxy
      */
     public function handle(Request $request, Closure $next)
     {
-        $request->headers->remove('host');
-        $request->headers->set('x-real-ip', $request->ip());
-        // here i can user $request->ips()
-        $request->headers->set('x-forwarded-for', $request->ips());
-        // $request->headers->set('x-forwarded-for', $this->forwardedFor($request->header('x-forwarded-for'), $request->ip()));
-        $request->headers->set('x-forwarded-host', $request->getHost());
-        $request->headers->set('x-forwarded-proto', $request->getScheme());
+//        $request->headers->remove('host');
+//        $request->headers->set('x-real-ip', $request->ip());
+//        // here i can user $request->ips()
+//        $request->headers->set('x-forwarded-for', $request->ips());
+//        // $request->headers->set('x-forwarded-for', $this->forwardedFor($request->header('x-forwarded-for'), $request->ip()));
+//        $request->headers->set('x-forwarded-host', $request->getHost());
+//        $request->headers->set('x-forwarded-proto', $request->getScheme());
 
         return $next($request);
     }

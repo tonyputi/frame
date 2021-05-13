@@ -20,7 +20,7 @@ class CreateLocationsTable extends Migration
             $table->string('logo_path')->nullable();
             $table->string('match');
             $table->string('default_redirect_to')->nullable();
-            $table->string('default_redirect_ipv4')->nullable();
+            $table->string('default_redirect_ip')->nullable();
             $table->timestamps();
 
             $table->unique(['environment_id', 'name']);

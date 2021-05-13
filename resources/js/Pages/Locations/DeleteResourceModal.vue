@@ -5,10 +5,10 @@
         </template>
 
         <template #content>
-            Are you sure you want to delete {{ attributes?.name }}? Once game provider is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
+            Are you sure you want to delete {{ attributes?.name }}? Once location is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
 
             <div class="mt-4">
-                <jet-input type="text" class="mt-1 block w-3/4" placeholder="Game Provider Name"
+                <jet-input type="text" class="mt-1 block w-3/4" placeholder="Location Name"
                            ref="name"
                            v-model="form.name"
                            @keyup.enter="deleteResource" />
@@ -61,14 +61,14 @@ export default {
     },
 
     methods: {
-        confirmGameProviderDeletion() {
+        confirmLocationDeletion() {
             this.confirmingResourceDeletion = true;
 
             setTimeout(() => this.$refs.name.focus(), 250)
         },
 
         deleteResource() {
-            this.form.delete(route('game-providers.destroy', [this.attributes.id]), {
+            this.form.delete(route('locations.destroy', [this.attributes.id]), {
                 preserveScroll: true,
                 onSuccess: () => this.closeModal(),
                 onError: () => this.$refs.name.focus(),

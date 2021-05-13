@@ -50,7 +50,7 @@ class Environment extends Model
             'environments.middleware',
             'environments.domain',
             'environments.prefix',
-            'locations.name', 
+            'locations.name',
             'locations.match',
             DB::raw('CASE
                 WHEN users.hostname IS NOT NULL THEN users.hostname
@@ -58,10 +58,10 @@ class Environment extends Model
                 WHEN environments.default_redirect_to IS NOT NULL THEN environments.default_redirect_to
             END AS hostname'),
             DB::raw('CASE
-                WHEN users.ipv4 IS NOT NULL THEN users.ipv4
-                WHEN locations.default_redirect_ipv4 IS NOT NULL THEN locations.default_redirect_ipv4
-                WHEN environments.default_redirect_ipv4 IS NOT NULL THEN environments.default_redirect_ipv4
-            END AS ipv4'));
+                WHEN users.ip IS NOT NULL THEN users.ip
+                WHEN locations.default_redirect_ip IS NOT NULL THEN locations.default_redirect_ip
+                WHEN environments.default_redirect_ip IS NOT NULL THEN environments.default_redirect_ip
+            END AS ip'));
         $query->join('locations', 'locations.environment_id', '=', 'environments.id');
         $query->leftJoin('bookings', 'bookings.location_id', '=', 'locations.id');
         $query->leftJoin('users', 'bookings.user_id', '=', 'users.id');

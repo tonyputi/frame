@@ -23,8 +23,8 @@
                                 <jet-nav-link :href="route('environments.index')" :active="route().current('environments.index')">
                                     Environments
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('game-providers.index')" :active="route().current('game-providers.index')">
-                                    Game Providers
+                                <jet-nav-link :href="route('locations.index')" :active="route().current('locations.index')">
+                                    Locations
                                 </jet-nav-link>
                                 <jet-nav-link :href="route('bookings.index')" :active="route().current('bookings.index')">
                                     Bookings

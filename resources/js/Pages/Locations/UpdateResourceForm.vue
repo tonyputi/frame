@@ -1,50 +1,18 @@
 <template>
     <jet-form-section @submitted="updateOrCreate">
         <template #title>
-            Game Provider Information
+            Location Information
         </template>
 
         <template #description>
-            Update the game provider information.
+            Update the location information.
         </template>
 
         <template #form>
-            <!-- Game Provider Logo -->
-            <div class="col-span-6 sm:col-span-4">
-                <!-- Game Provider File Input -->
-                <input type="file" class="hidden" ref="logo" 
-                    @change="updateLogoPreview" 
-                    v-if="canUpdateOrCreate" />
-
-                <jet-label for="logo" value="Logo" />
-
-                <!-- Current Game Provider Logo -->
-                <div class="mt-2" v-show="!logoPreview">
-                    <img class="rounded-full h-20 w-20 object-cover" :src="attributes.logo_url" :alt="attributes.name">
-                </div>
-
-                <!-- New Game Provider Logo Preview -->
-                <div class="mt-2" v-show="logoPreview">
-                    <span class="block rounded-full w-20 h-20"
-                        :style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + logoPreview + '\');'">
-                    </span>
-                </div>
-
-                <jet-secondary-button type="button" class="mt-2 mr-2" @click.prevent="selectNewLogo" v-if="canUpdateOrCreate">
-                    Select A New Logo
-                </jet-secondary-button>
-
-                <jet-secondary-button type="button" class="mt-2" @click.prevent="deleteLogo" v-if="attributes.logo_path">
-                    Remove Logo
-                </jet-secondary-button>
-
-                <jet-input-error :message="form.errors.logo" class="mt-2" />
-            </div>
-
             <!-- Environment -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="environment_id" value="Environment" />
-                <jet-select id="environment_id" class="mt-1 block w-full" 
+                <jet-select id="environment_id" class="mt-1 block w-full"
                     v-model="form.environment_id" :disabled="!canUpdateOrCreate" :options="meta.environments" />
                 <jet-input-error :message="form.errors.environment_id" class="mt-2" />
             </div>
@@ -52,7 +20,7 @@
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="name" value="Name" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" 
+                <jet-input id="name" type="text" class="mt-1 block w-full"
                     v-model="form.name" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
@@ -60,7 +28,7 @@
             <!-- Location Match -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="match" value="Location Match" />
-                <jet-input id="match" type="text" class="mt-1 block w-full" 
+                <jet-input id="match" type="text" class="mt-1 block w-full"
                     v-model="form.match" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.match" class="mt-2" />
             </div>
@@ -68,7 +36,7 @@
             <!-- Default Host -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="default_redirect_to" value="Default Host" />
-                <jet-input id="default_redirect_to" type="text" class="mt-1 block w-full" 
+                <jet-input id="default_redirect_to" type="text" class="mt-1 block w-full"
                     v-model="form.default_redirect_to" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.default_redirect_to" class="mt-2" />
             </div>
@@ -76,7 +44,7 @@
             <!-- Default Host -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="default_redirect_ipv4" value="Default IPv4" />
-                <jet-input id="default_redirect_ipv4" type="text" class="mt-1 block w-full" 
+                <jet-input id="default_redirect_ipv4" type="text" class="mt-1 block w-full"
                     v-model="form.default_redirect_ipv4" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.default_redirect_ipv4" class="mt-2" />
             </div>
@@ -138,7 +106,7 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                environment_id: this.attributes.environment_id,
+                environment_id: this.attributes.environment_id || route().params.environment,
                 name: this.attributes.name,
                 logo: null,
                 match: this.attributes.match,
@@ -164,38 +132,17 @@ export default {
             }
 
             if(this.attributes.id) {
-                this.form.put(route('game-providers.update', [this.attributes.id]), {
-                    errorBag: 'updateGameProvider',
+                this.form.put(route('locations.update', [this.attributes.id]), {
+                    errorBag: 'updateLocation',
                     preserveScroll: true
                 });
             } else {
-                this.form.post(route('game-providers.store'), {
-                    errorBag: 'createGameProvider',
+                this.form.post(route('locations.store'), {
+                    errorBag: 'createLocation',
                     preserveScroll: true
                 });
             }
-        },
-
-        selectNewLogo() {
-            this.$refs.logo.click();
-        },
-
-        updateLogoPreview() {
-            const reader = new FileReader();
-
-            reader.onload = (e) => {
-                this.logoPreview = e.target.result;
-            };
-
-            reader.readAsDataURL(this.$refs.logo.files[0]);
-        },
-
-        deleteLogo() {
-            this.$inertia.delete(route('game-provider-logo.destroy'), {
-                preserveScroll: true,
-                onSuccess: () => (this.logoPreview = null),
-            });
-        },
+        }
     },
 }
 </script>

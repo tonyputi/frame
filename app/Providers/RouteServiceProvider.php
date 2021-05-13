@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
+use App\Services\ReverseProxy\ReverseProxyController;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Database\QueryException;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
-use App\Http\Controllers\ReverseProxyController;
 use App\Models\Environment;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -51,7 +51,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
-            
+
             $this->configureEnviroments();
         });
     }
@@ -85,8 +85,8 @@ class RouteServiceProvider extends ServiceProvider
                     ->domain($environment->domain)
                     ->middleware($environment->middleware)
                     ->prefix($environment->prefix)
-                    ->group(fn($router) => 
-                        $environment->proxableLocations->each(fn($location) => 
+                    ->group(fn($router) =>
+                        $environment->proxableLocations->each(fn($location) =>
                             $router->any($location->match, ReverseProxyController::class)
                                 ->name(Str::slug($location->name))));
             });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Carbon;
 use Inertia\Inertia;
 use App\Models\Booking;
 use App\Models\Location;
@@ -89,7 +90,7 @@ class BookingController extends Controller
         $booking->user_id = $request->user()->id;
         $booking->save();
 
-        return back(303)->banner("Game Provider: {$location->name} booked!");
+        return back(303)->banner("Location: {$location->name} booked!");
     }
 
     /**
@@ -153,5 +154,19 @@ class BookingController extends Controller
         $booking->delete();
 
         return back();
+    }
+
+    /**
+     * Release the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Booking $booking
+     * @return \Illuminate\Http\Response
+     */
+    public function release(Request $request, Booking $booking)
+    {
+        $booking->update(['ended_at' => Carbon::now()]);
+
+        return back(303)->banner("Location: {$booking->location->name} released!");
     }
 }

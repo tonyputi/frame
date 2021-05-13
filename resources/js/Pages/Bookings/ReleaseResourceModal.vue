@@ -49,7 +49,7 @@ export default {
 
     methods: {
         releaseBooking() {
-            this.form.put(route('bookings.update', [this.attributes.id]), {
+            this.form.put(route('bookings.release', [this.attributes.id]), {
                 preserveScroll: true,
                 onSuccess: () => this.closeModal(),
                 // onError: () => this.$refs.name.focus(),
