@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\Location;
-use App\Models\Location;
 use Illuminate\Console\Command;
 
 class LocationStatus extends Command

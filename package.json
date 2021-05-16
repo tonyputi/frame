@@ -32,6 +32,9 @@
         "fsevents": "^2.3.2"
     },
     "dependencies": {
-        "@heroicons/vue": "^1.0.0"
+        "@heroicons/vue": "^1.0.0",
+        "apexcharts": "^3.26.2",
+        "flatpickr": "^4.6.9",
+        "vue3-apexcharts": "^1.4.0"
     }
 }

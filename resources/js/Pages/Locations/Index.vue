@@ -94,6 +94,7 @@
 
                 <!-- resource book modal -->
                 <book-resource-modal
+                    v-if="resourceBeingBooked"
                     v-bind="resourceBeingBooked"
                     @close="resourceBeingBooked = null" />
 

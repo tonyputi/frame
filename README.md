@@ -43,13 +43,6 @@ Serve the application
 php artisan serve
 ```
 
-Create `/etc/sudoers/frame`
-
-```
-www-data ALL=(ALL:ALL) NOPASSWD: /usr/sbin/nginx -t
-www-data ALL=(ALL:ALL) NOPASSWD: /usr/sbin/nginx -s reload
-```
-
 Install node development environment (only for developers)
 ```sh
 npm install
@@ -64,7 +57,6 @@ npm run watch
 
 ## Known issues
 
-- when flush db nginx config command is not flushing file as well
 - create booking from booking page is not working
 - improve pagination with ...
 
@@ -78,7 +70,6 @@ npm run watch
 - autorefresh both locations and booking index with setTimeout
 
 ### PHASE 2
-- review command name
 - create a preview of nginx configuration
 - add videoslots style
 - create time calendar select component (hard)

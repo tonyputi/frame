@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -30,7 +31,7 @@ Route::group(['domain' => 'frame.videoslots.com'], function() {
     });
 
     Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-        Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
+        Route::get('/dashboard', DashboardController::class)->name('dashboard');
         Route::resource('environments', EnvironmentController::class);
         Route::post('environments/duplicate', [EnvironmentController::class, 'duplicate'])->name('environments.duplicate');
 
