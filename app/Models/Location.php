@@ -116,7 +116,7 @@ class Location extends Model
      * @param string $value
      * @return string
      */
-    public function getDefaultRedirectIpv4Attribute($value)
+    public function getDefaultRedirectIpAttribute($value)
     {
         return $value ?? optional($this->environemnt)->default_redirect_ip;
     }
@@ -143,7 +143,7 @@ class Location extends Model
      * @param string $value
      * @return string
      */
-    public function getIpv4Attribute()
+    public function getIpAttribute()
     {
         if($this->currentBooking()->exists())
         {
