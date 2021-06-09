@@ -111,14 +111,14 @@ class Location extends Model
     }
 
     /**
-     * return the location ipv4 value
+     * return the location ip value
      *
      * @param string $value
      * @return string
      */
     public function getDefaultRedirectIpv4Attribute($value)
     {
-        return $value ?? optional($this->environemnt)->default_redirect_ipv4;
+        return $value ?? optional($this->environemnt)->default_redirect_ip;
     }
 
     /**
@@ -138,7 +138,7 @@ class Location extends Model
     }
 
     /**
-     * return the location ipv4 value
+     * return the location ip value
      *
      * @param string $value
      * @return string
@@ -147,10 +147,10 @@ class Location extends Model
     {
         if($this->currentBooking()->exists())
         {
-            return $this->currentBooking->user->ipv4;
+            return $this->currentBooking->user->ip;
         }
 
-        return $this->default_redirect_ipv4;
+        return $this->default_redirect_ip;
     }
 
     /**
@@ -172,7 +172,7 @@ class Location extends Model
      */
     public function getHasResolveOptionAttribute($value)
     {
-        return $this->hostname and $this->ipv4;
+        return $this->hostname and $this->ip;
     }
 
     /**

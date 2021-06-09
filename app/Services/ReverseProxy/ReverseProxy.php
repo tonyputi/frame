@@ -146,14 +146,14 @@ class ReverseProxy
     /**
      * Apply the callback's proxy changes if the given "value" is true.
      *
-     * @param  mixed  $value
+     * @param  mixed  $condition
      * @param  callable  $callback
      * @return mixed|$this
      */
-    public function when($value, $callback)
+    public function when($condition, $callback)
     {
-        if ($value) {
-            return $callback($this, $value) ?: $this;
+        if ($condition) {
+            return $callback($this, $condition) ?: $this;
         }
 
         return $this;
