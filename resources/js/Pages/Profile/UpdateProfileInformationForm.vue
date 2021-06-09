@@ -64,9 +64,9 @@
 
             <!-- IPv4 -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="ipv4" value="IPv4" />
-                <jet-input id="ipv4" type="text" class="mt-1 block w-full" v-model="form.ipv4" />
-                <jet-input-error :message="form.errors.ipv4" class="mt-2" />
+                <jet-label for="ip" value="IPv4" />
+                <jet-input id="ip" type="text" class="mt-1 block w-full" v-model="form.ip" />
+                <jet-input-error :message="form.errors.ip" class="mt-2" />
             </div>
         </template>
 
@@ -111,7 +111,7 @@
                     name: this.user.name,
                     email: this.user.email,
                     hostname: this.user.hostname,
-                    ipv4: this.user.ipv4,
+                    ip: this.user.ip,
                     photo: null,
                 }),
 
