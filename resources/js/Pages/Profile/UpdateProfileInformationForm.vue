@@ -62,9 +62,9 @@
                 <jet-input-error :message="form.errors.hostname" class="mt-2" />
             </div>
 
-            <!-- IPv4 -->
+            <!-- IP -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="ip" value="IPv4" />
+                <jet-label for="ip" value="IP" />
                 <jet-input id="ip" type="text" class="mt-1 block w-full" v-model="form.ip" />
                 <jet-input-error :message="form.errors.ip" class="mt-2" />
             </div>

@@ -12,7 +12,7 @@
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="name" value="Name" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" 
+                <jet-input id="name" type="text" class="mt-1 block w-full"
                     v-model="form.name" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
@@ -20,7 +20,7 @@
             <!-- Domain -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="domain" value="Domain" />
-                <jet-input id="domain" type="text" class="mt-1 block w-full" 
+                <jet-input id="domain" type="text" class="mt-1 block w-full"
                     v-model="form.domain" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.domain" class="mt-2" />
             </div>
@@ -28,7 +28,7 @@
             <!-- Middleware -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="middleware" value="Middleware" />
-                <jet-input id="middleware" type="text" class="mt-1 block w-full" 
+                <jet-input id="middleware" type="text" class="mt-1 block w-full"
                     v-model="form.middleware" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.middleware" class="mt-2" />
             </div>
@@ -36,7 +36,7 @@
             <!-- Prefix -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="prefix" value="Prefix" />
-                <jet-input id="prefix" type="text" class="mt-1 block w-full" 
+                <jet-input id="prefix" type="text" class="mt-1 block w-full"
                     v-model="form.prefix" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.prefix" class="mt-2" />
             </div>
@@ -44,17 +44,17 @@
             <!-- Default redirect to -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="default_redirect_to" value="Default redirect to" />
-                <jet-input id="default_redirect_to" type="text" class="mt-1 block w-full" 
+                <jet-input id="default_redirect_to" type="text" class="mt-1 block w-full"
                     v-model="form.default_redirect_to" :disabled="!canUpdateOrCreate" />
                 <jet-input-error :message="form.errors.default_redirect_to" class="mt-2" />
             </div>
 
-            <!-- Default redirect ipv4 -->
+            <!-- Default redirect ip -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="default_redirect_ipv4" value="Default redirect IPv4" />
-                <jet-input id="default_redirect_ipv4" type="text" class="mt-1 block w-full" 
-                    v-model="form.default_redirect_ipv4" :disabled="!canUpdateOrCreate" />
-                <jet-input-error :message="form.errors.default_redirect_ipv4" class="mt-2" />
+                <jet-label for="default_redirect_ip" value="Default redirect IP" />
+                <jet-input id="default_redirect_ip" type="text" class="mt-1 block w-full"
+                    v-model="form.default_redirect_ip" :disabled="!canUpdateOrCreate" />
+                <jet-input-error :message="form.errors.default_redirect_ip" class="mt-2" />
             </div>
         </template>
 
@@ -81,7 +81,7 @@
     import JetActionMessage from '@/Jetstream/ActionMessage'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton'
     import JetSelect from '@/Jetstream/Select'
-    
+
     export default {
         components: {
             JetActionMessage,
@@ -115,7 +115,7 @@
                     middleware: this.attributes.middleware,
                     prefix: this.attributes.prefix,
                     default_redirect_to: this.attributes.default_redirect_to,
-                    default_redirect_ipv4: this.attributes.default_redirect_ipv4
+                    default_redirect_ip: this.attributes.default_redirect_ip
                 })
             }
         },
