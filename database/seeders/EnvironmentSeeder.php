@@ -15,16 +15,8 @@ class EnvironmentSeeder extends Seeder
     public function run()
     {
         Environment::factory()->create([
-            'name' => 'Stage IT',
-            'domain' => 'ittest.videoslots.com',
-            'middleware' => 'proxy',
-            'prefix' => null,
-            'default_redirect_to' => 'it.videoslots.com',
-        ]);
-
-        Environment::factory()->create([
-            'name' => 'vs-wsdev18',
-            'domain' => 'vs-wsdev18.videoslots.com',
+            'name' => gethostname(),
+            'domain' => gethostname() . '.videoslots.com',
             'middleware' => 'proxy',
             'prefix' => null
         ]);

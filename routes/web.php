@@ -20,7 +20,7 @@ use App\Http\Controllers\ReverseProxyController;
 |
 */
 
-Route::group(['domain' => 'frame.videoslots.com'], function() {
+// Route::group(['domain' => 'local-frame.videoslots.com'], function() {
     Route::get('/', function () {
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
@@ -42,7 +42,7 @@ Route::group(['domain' => 'frame.videoslots.com'], function() {
         Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
         Route::put('bookings/{booking}/release', [BookingController::class, 'release'])->name('bookings.release');
     });
-});
+// });
 
 // FIND A WAY TO PUT THIS MANNER TO ROUTE SERVICE PROVIDER
 //Route::group(['prefix' => 'proxy'], function () {
