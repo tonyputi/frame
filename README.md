@@ -77,3 +77,21 @@ npm run watch
 - install opensource implementation of pusher/broadcast
 - autorefresh both locations and booking index through websockets
 - add socialiate to proper register players through office365
+
+
+- add possibility to temporarely disable reserveration/booking of locations
+- decrease or hide the number of booking per hour in dashboard
+- improve the guzzle/curl/resolve time
+- improve panic button to properly release game providers for emergency
+- ask to have a slack hook for notifications
+- job heartbeat to notify events each minutes / notify event for booking created, update, deleted, applied
+- autorefresh both locations and booking index through websockets (install opensource implementation of pusher/broadcast)
+- improve booking date/time selection with suggested next time slots
+- add videoslots style
+- improve dashboard allowing bookings by provider on the heat map
+- add socialiate to proper register players through office365
+- plan a browser plugin to interface with frame (new project)
+
+KNOWN BUGS
+- there is a foreign constrain error while deleting environment;
+- route.php is hardcoding frame.videoslots.com add an entry on ENV

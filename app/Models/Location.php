@@ -175,7 +175,7 @@ class Location extends Model
         return $this->hostname and $this->ip;
     }
 
-    /**
+    /** 
      * return the proxable url
      *
      * @param string $value

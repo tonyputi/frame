@@ -9,6 +9,20 @@ use Illuminate\Http\Request;
 class ReverseProxy
 {
     /**
+     * The number of times to try the request.
+     *
+     * @var int
+     */
+    protected $tries = 1;
+
+    /**
+     * The number of milliseconds to wait between retries.
+     *
+     * @var int
+     */
+    protected $retryDelay = 100;
+
+    /**
      * guzzle options
      *
      * @var array
@@ -60,7 +74,8 @@ class ReverseProxy
     public static function createFromRequest(Request $request, $uri, $options = [])
     {
         $headers = clone($request->headers);
-        $headers->remove('host', 'connection');
+        $headers->remove('host');
+        $headers->remove('connection');
         $headers->set('x-forwarded-for', $request->ips());
         $headers->set('x-forwarded-host', $request->getHost());
         $headers->set('x-forwarded-proto', $request->getScheme());
@@ -200,6 +215,26 @@ class ReverseProxy
     public function pass($options = [])
     {
         $this->withOptions($options);
+
+        // return retry($this->tries, function () {
+        //     try {
+        //         return tap($this->buildClient()->request($this->method, $this->uri, $this->options), function ($response) {
+        //             $success = ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300);
+        //
+        //             if ($this->tries > 1 && ! $success) {
+        //                 $callback = func_get_args()[0] ?? null;
+        //
+        //                 throw tap(new RequestException($this), function ($exception) use ($callback) {
+        //                     if ($callback && is_callable($callback)) {
+        //                         $callback($this, $exception);
+        //                     }
+        //                 });
+        //             }
+        //         });
+        //     } catch (ConnectException $e) {
+        //         throw new ConnectionException($e->getMessage(), 0, $e);
+        //     }
+        // }, $this->retryDelay ?? 100);
 
         return $this->buildClient()
             ->request($this->method, $this->uri, $this->options);

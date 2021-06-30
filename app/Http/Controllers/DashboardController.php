@@ -24,7 +24,7 @@ class DashboardController extends Controller
             $query->select('id', 'environment_id', 'name');
         }])->get();
 
-//        return $this->chartOptions($collection);
+        // return $this->chartOptions($collection);
 
         return Inertia::render('Dashboard', [
             'charts' => $this->chartOptions($collection)

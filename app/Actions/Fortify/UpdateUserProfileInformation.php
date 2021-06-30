@@ -21,9 +21,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
             'hostname' => ['sometimes'],
-            'ip' => ['sometimes'],
-            'photo' => ['nullable', 'image', 'max:1024'],
+            'ip' => ['sometimes']
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
@@ -37,8 +37,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->forceFill([
                 'name' => $input['name'],
                 'email' => $input['email'],
-                'ip' => $input['ip'],
-                'hostname' => $input['hostname']
+                'hostname' => $input['hostname'],
+                'ip' => $input['ip']
             ])->save();
         }
     }
