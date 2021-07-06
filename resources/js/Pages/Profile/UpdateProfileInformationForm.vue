@@ -65,9 +65,13 @@
             <!-- IP -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="ip" value="IP" />
-                <jet-input id="ip" type="text" class="mt-1 block w-full" v-model="form.ip" />
+                <jet-input id="ip" type="text" class="mt-1 block w-full" v-model="form.ip" list="current_ips" />
                 <jet-input-error :message="form.errors.ip" class="mt-2" />
             </div>
+
+            <datalist id="current_ips">
+                <option v-for="ip in user.current_ips" :value="ip" />
+            </datalist>
         </template>
 
         <template #actions>

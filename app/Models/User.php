@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -58,16 +59,13 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'current_ips'
     ];
 
-    /**
-     * return true if user has resolve option anebled
-     *
-     * @param string $value
-     * @return string
-     */
-    public function getHasResolveOptionAttribute($value)
+    public function getCurrentIpsAttribute()
     {
-        return $this->hostname and $this->ip;
+        return with(app(Request::class), function ($request) {
+           return $request->ips();
+        });
     }
 }

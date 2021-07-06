@@ -165,17 +165,6 @@ class Location extends Model
     }
 
     /**
-     * return true if user has resolve option anebled
-     *
-     * @param string $value
-     * @return string
-     */
-    public function getHasResolveOptionAttribute($value)
-    {
-        return $this->hostname and $this->ip;
-    }
-
-    /** 
      * return the proxable url
      *
      * @param string $value
