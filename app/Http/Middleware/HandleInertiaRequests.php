@@ -36,8 +36,15 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
+        // TODO: MAYBE WE SHOULD NEED TO MOVE THIS IN ANOTHER MIDDLEWARE
+        if ($user = $request->user() and $user->hasChangedIp)
+        {
+            $request->session()->flash('flash.banner', "Looks that your ip was changed from your latest visit. Previous: {$user->ip} Current: {$user->current_ip}");
+            $request->session()->flash('flash.bannerStyle', 'warning');
+        }
+
         return array_merge(parent::share($request), [
-            // 
+            //
         ]);
     }
 }

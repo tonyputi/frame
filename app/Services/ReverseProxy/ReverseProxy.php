@@ -75,7 +75,7 @@ class ReverseProxy
     {
         $headers = clone($request->headers);
         $headers->remove('host');
-        $headers->remove('connection');
+        $headers->set('connection', 'close');
         $headers->set('x-forwarded-for', $request->ips());
         $headers->set('x-forwarded-host', $request->getHost());
         $headers->set('x-forwarded-proto', $request->getScheme());
@@ -215,6 +215,8 @@ class ReverseProxy
     public function pass($options = [])
     {
         $this->withOptions($options);
+
+        debug('proxy-pass-options', $options);
 
         // return retry($this->tries, function () {
         //     try {

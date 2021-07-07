@@ -62,10 +62,32 @@ class User extends Authenticatable
         'current_ips'
     ];
 
+    /**
+     * Return current ip of the user
+     *
+     * @return string
+     */
+    public function getCurrentIpAttribute()
+    {
+        return with(app(Request::class), function ($request) {
+            return $request->ip();
+        });
+    }
+
+    /**
+     * Return current ips of the user
+     *
+     * @return array
+     */
     public function getCurrentIpsAttribute()
     {
         return with(app(Request::class), function ($request) {
            return $request->ips();
         });
+    }
+
+    public function getHasChangedIpAttribute()
+    {
+        return ($this->ip and $this->ip != $this->current_ip);
     }
 }
