@@ -118,7 +118,7 @@ class Location extends Model
      */
     public function getDefaultRedirectIpAttribute($value)
     {
-        return $value ?? optional($this->environemnt)->default_redirect_ip;
+        return $value ?? optional($this->environment)->default_redirect_ip;
     }
 
     /**

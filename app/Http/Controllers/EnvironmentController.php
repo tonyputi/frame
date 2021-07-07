@@ -55,8 +55,6 @@ class EnvironmentController extends Controller
         $props = (new JetstreamResource(new Environment))
             ->toResponse($request)
             ->getData(true);
-        // TODO: this shit is just to be able to have logo_url on the location
-        unset($props['data']['permissions']);
 
         return Inertia::render('Environments/Show', $props);
     }
