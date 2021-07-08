@@ -25,6 +25,13 @@
                 <jet-input-error :message="form.errors.domain" class="mt-2" />
             </div>
 
+            <!-- Is bookable -->
+            <div class="col-span-6 sm:col-span-4 mt-2">
+                <jet-label for="is_bookable" value="Bookable" />
+                <jet-checkbox id="is_bookable" v-model:checked="form.is_bookable" ref="is_bookable" />
+                <jet-input-error :message="form.errors.is_bookable" class="mt-2" />
+            </div>
+
             <!-- Middleware -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="middleware" value="Middleware" />
@@ -74,8 +81,7 @@
     import JetButton from '@/Jetstream/Button'
     import JetFormSection from '@/Jetstream/FormSection'
     import JetInput from '@/Jetstream/Input'
-    import JetTextarea from '@/Jetstream/Textarea'
-    import JetCode from '@/Jetstream/Code'
+    import JetCheckbox from '@/Jetstream/Checkbox'
     import JetInputError from '@/Jetstream/InputError'
     import JetLabel from '@/Jetstream/Label'
     import JetActionMessage from '@/Jetstream/ActionMessage'
@@ -88,8 +94,7 @@
             JetButton,
             JetFormSection,
             JetInput,
-            JetTextarea,
-            JetCode,
+            JetCheckbox,
             JetInputError,
             JetLabel,
             JetSelect,
@@ -112,6 +117,7 @@
                 form: this.$inertia.form({
                     name: this.attributes.name,
                     domain: this.attributes.domain,
+                    is_bookable: this.attributes.is_bookable,
                     middleware: this.attributes.middleware,
                     prefix: this.attributes.prefix,
                     default_redirect_to: this.attributes.default_redirect_to,

@@ -34,6 +34,12 @@ class Heartbeat implements ShouldQueue
      */
     public function handle()
     {
+        // 1. get all the bookings that will be processed in the next 5 minutes
+        // 2. foreach booking send notification to the user regarding the next booking
+
+        // 1. get all the new unnotified bookings
+        // 2. notify all the users that are not own the booking regarding the new booking
+
         Booking::current()->notified(false)->each(function($booking) {
             User::each(fn($user) => $user->notify(new BookingAppliedNotification($booking)));
             $booking->notified_at = Carbon::now();

@@ -26,6 +26,15 @@ class Location extends Model
     protected $guarded = ['id'];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_bookable' => 'boolean'
+    ];
+
+    /**
      * Get the environment that own the location
      *
      * @return BelongsTo
@@ -100,6 +109,21 @@ class Location extends Model
     }
 
     /**
+     * return the is_bookable computed value
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getIsBookableAttribute($value)
+    {
+        if(!$this->environment->is_bookable) {
+            return false;
+        }
+
+        return (bool)$value;
+    }
+
+    /**
      * return the location hostname value
      *
      * @param string $value
@@ -129,12 +153,12 @@ class Location extends Model
      */
     public function getHostnameAttribute()
     {
-        if($this->currentBooking()->exists())
+        if(!$this->is_bookable or !$this->environment->is_bookable or !$this->currentBooking()->exists())
         {
-            return $this->currentBooking->user->hostname;
+            return $this->default_redirect_to;
         }
 
-        return $this->default_redirect_to;
+        return $this->currentBooking->user->hostname;
     }
 
     /**
@@ -145,12 +169,12 @@ class Location extends Model
      */
     public function getIpAttribute()
     {
-        if($this->currentBooking()->exists())
+        if(!$this->is_bookable or !$this->environment->is_bookable or !$this->currentBooking()->exists())
         {
-            return $this->currentBooking->user->ip;
+            return $this->default_redirect_ip;
         }
 
-        return $this->default_redirect_ip;
+        return $this->currentBooking->user->ip;
     }
 
     /**

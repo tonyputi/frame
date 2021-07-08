@@ -61,7 +61,8 @@
                                 </td>
                                 <td class="px-2 py-4">
                                     <div class="inline-flex items-center">
-                                        <button @click="resourceBeingBooked=resource"
+                                        <button v-if="resource.attributes.is_bookable"
+                                            @click="resourceBeingBooked=resource"
                                             class="inline-flex appearance-none cursor-pointer hover:text-primary mr-3">
                                             <ClockIcon class="h-6 w-6" />
                                         </button>

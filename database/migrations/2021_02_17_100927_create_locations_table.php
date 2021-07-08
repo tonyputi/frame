@@ -21,6 +21,7 @@ class CreateLocationsTable extends Migration
             $table->string('match');
             $table->string('default_redirect_to')->nullable();
             $table->string('default_redirect_ip')->nullable();
+            $table->string('is_bookable')->default(true);
             $table->timestamps();
 
             $table->unique(['environment_id', 'name']);

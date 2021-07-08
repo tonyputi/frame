@@ -18,6 +18,15 @@ class Environment extends Model
     protected $guarded = ['id'];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_bookable' => 'boolean'
+    ];
+
+    /**
      * Get all the locations that belongs to the enviroment
      *
      * @return HasMany

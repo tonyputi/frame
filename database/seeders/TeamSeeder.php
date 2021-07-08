@@ -16,7 +16,7 @@ class TeamSeeder extends Seeder
     public function run()
     {
         $admin = User::where('is_admin', true)->firstOrFail();
-        $users = User::where('is_admin', false)->get();
+        $users = User::all();
 
         $paradoxical = Team::factory()->create([
             'name' => 'Paradoxical',

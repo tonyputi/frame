@@ -25,6 +25,13 @@
                 <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
 
+            <!-- Is bookable -->
+            <div class="col-span-6 sm:col-span-4 mt-2">
+                <jet-label for="is_bookable" value="Bookable" />
+                <jet-checkbox id="is_bookable" v-model:checked="form.is_bookable" ref="is_bookable" />
+                <jet-input-error :message="form.errors.is_bookable" class="mt-2" />
+            </div>
+
             <!-- Location Match -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="match" value="Location Match" />
@@ -66,8 +73,7 @@
 import JetButton from '@/Jetstream/Button'
 import JetFormSection from '@/Jetstream/FormSection'
 import JetInput from '@/Jetstream/Input'
-import JetTextarea from '@/Jetstream/Textarea'
-import JetCode from '@/Jetstream/Code'
+import JetCheckbox from '@/Jetstream/Checkbox'
 import JetInputError from '@/Jetstream/InputError'
 import JetLabel from '@/Jetstream/Label'
 import JetActionMessage from '@/Jetstream/ActionMessage'
@@ -80,8 +86,7 @@ export default {
         JetButton,
         JetFormSection,
         JetInput,
-        JetTextarea,
-        JetCode,
+        JetCheckbox,
         JetInputError,
         JetLabel,
         JetSelect,
@@ -108,6 +113,7 @@ export default {
             form: this.$inertia.form({
                 environment_id: this.attributes.environment_id || route().params.environment,
                 name: this.attributes.name,
+                is_bookable: this.attributes.is_bookable,
                 logo: null,
                 match: this.attributes.match,
                 default_redirect_to: this.attributes.default_redirect_to,
