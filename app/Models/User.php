@@ -63,6 +63,17 @@ class User extends Authenticatable
     ];
 
     /**
+     * Route notifications for the Slack channel.
+     *
+     * @param  \Illuminate\Notifications\Notification  $notification
+     * @return string
+     */
+    public function routeNotificationForSlack($notification)
+    {
+        return 'https://hooks.slack.com/services/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';
+    }
+
+    /**
      * Return current ip of the user
      *
      * @return string
@@ -86,6 +97,11 @@ class User extends Authenticatable
         });
     }
 
+    /**
+     * Return true if current ip is not matching the previous one and not null
+     *
+     * @return bool
+     */
     public function getHasChangedIpAttribute()
     {
         return ($this->ip and $this->ip != $this->current_ip);

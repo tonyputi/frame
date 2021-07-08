@@ -15,7 +15,8 @@ class BookingDeletedNotification extends BookingCreatedNotification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line("Booking deleted")
+            ->line("{$this->booking->location->name} booking deleted!")
+            ->line("Requested for {$this->booking->user->name}")
             ->action('Notification Action', url('/'))
             ->line('Thank you for using our application!');
     }

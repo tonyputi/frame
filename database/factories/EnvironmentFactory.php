@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Environment;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class EnvironmentFactory extends Factory
 {
@@ -22,7 +23,9 @@ class EnvironmentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->numerify('Stage ###'),
+            'domain' => fn (array $attributes) => Str::kebab($attributes['name']),
+            'is_bookable' => true
         ];
     }
 }

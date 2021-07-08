@@ -18,11 +18,17 @@ class BookingSeeder extends Seeder
      */
     public function run()
     {
-//        $intervals = CarbonInterval::minutes(5)->toPeriod(0, 23);
-//        $period = CarbonPeriod::create('today', '1 hour', 'tomorrow');
-//        foreach($period as $key => $span) {
-//            dump($key, $span->format('H:i:s'));
-//        }
+        // $intervals = CarbonInterval::minutes(5)->toPeriod(0, 23);
+        // $period = CarbonPeriod::create('today', '1 hour', 'tomorrow');
+        // foreach($period as $key => $span) {
+        //    dump($key, $span->format('H:i:s'));
+        // }
+
+        // 1. take users in random order
+        // 2. for each user:
+        //    1. take one environment in random order
+        //    2. take on location in random order form the given environment
+        //    3. check the last ended_at booking for the given provider and create new one based on it
 
         for($i = 0; $i < 24; $i++) {
             $user = User::inRandomOrder()->firstOrFail();

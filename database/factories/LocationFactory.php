@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Environment;
 use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,10 @@ class LocationFactory extends Factory
     public function definition()
     {
         return [
-            
+            'environment_id' => fn (array $attributes) => Environment::factory()->create(),
+            'name' => fn (array $attributes) => $this->faker->numerify('Location ###'),
+            'match' => fn (array $attributes) => $this->faker->url(),
+            'is_bookable' => true
         ];
     }
 }

@@ -216,7 +216,7 @@ class ReverseProxy
     {
         $this->withOptions($options);
 
-        debug('proxy-pass-options', $options);
+        info('proxy-pass-options', $options);
 
         // return retry($this->tries, function () {
         //     try {

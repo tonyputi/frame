@@ -15,7 +15,8 @@ class BookingUpdatedNotification extends BookingCreatedNotification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Booking Updated')
+            ->line("{$this->booking->location->name} booking updated!")
+            ->line("Requested for {$this->booking->user->name} from: {$this->booking->started_at} to: {$this->booking->ended_at}")
             ->action('Notification Action', url('/'))
             ->line('Thank you for using our application!');
     }
