@@ -25,7 +25,7 @@ class LocationFactory extends Factory
         return [
             'environment_id' => fn (array $attributes) => Environment::factory()->create(),
             'name' => fn (array $attributes) => $this->faker->numerify('Location ###'),
-            'match' => fn (array $attributes) => $this->faker->url(),
+            'match' => fn (array $attributes) => $this->faker->regexify('diamondbet\/soap\/[a-z]{6,12}\.php'),
             'is_bookable' => true
         ];
     }

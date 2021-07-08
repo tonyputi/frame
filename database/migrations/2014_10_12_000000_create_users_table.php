@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->text('profile_photo_path')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_enabled')->default(true);
+            $table->json('options')->nullable();
             $table->timestamps();
         });
     }

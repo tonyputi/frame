@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'hostname'
+        'name', 'email', 'password', 'hostname', 'ip'
     ];
 
     /**
@@ -49,7 +49,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'is_admin' => 'boolean'
+        'is_enabled' => 'boolean',
+        'is_admin' => 'boolean',
+        'options' => 'json'
     ];
 
     /**
@@ -70,7 +72,7 @@ class User extends Authenticatable
      */
     public function routeNotificationForSlack($notification)
     {
-        return 'https://hooks.slack.com/services/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';
+        return optional($this->options)->slack_webhook_url;
     }
 
     /**

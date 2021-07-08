@@ -37,6 +37,9 @@ class UserSeeder extends Seeder
             'email' => 'filippo.sallemi@videoslots.com',
             'hostname' => 'filippo.videoslots.com',
             'password' => Hash::make('12345678'),
+            'options' => [
+                'slack_webhook_url' => 'https://hooks.slack.com/services/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'
+            ]
         ]);
 
         User::factory()->create([

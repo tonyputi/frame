@@ -28,8 +28,7 @@ class Booking extends Model
         'is_active' => 'boolean',
         'started_at' => 'datetime',
         'ended_at' => 'datetime',
-        'notified_at' => 'timestamp',
-        'applied_at' => 'timestamp'
+        'notified_at' => 'timestamp'
     ];
 
     /**
@@ -68,18 +67,6 @@ class Booking extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Scope a query to only include active bookings.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     * @deprecated
-     */
-    public function scopeActive($query, $value = true)
-    {
-        return $query->when($value, fn($query) => $query->whereNotNull('applied_at'), fn($query) => $query->whereNull('applied_at'));
     }
 
     /**
