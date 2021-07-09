@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Environment;
+use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
@@ -15,7 +17,7 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
-        // $this->authorizeResource(Dashboard::class, 'dashboard');
+        $this->authorizeResource(Dashboard::class, 'dashboard');
     }
 
     public function __invoke(Request $request)
@@ -31,18 +33,35 @@ class DashboardController extends Controller
         ]);
     }
 
+    /**
+     * Return heatmap chart options
+     *
+     * @param $collection
+     * @return mixed
+     */
     protected function chartOptions($collection)
     {
         return $collection->map(function($environment) {
             $series = $environment->locations()->get()->map(function($location) {
                 return [
                     'name' => $location->name,
-                    'data' => $this->generateData(24, 0, 50)
+                    'data' => $this->getSerie($location)
                 ];
             });
 
             return [
                 'options' => [
+                    'plotOptions' => [
+                        'heatmap' => [
+                            'colorScale' => [
+                                'ranges' => [
+                                    ['from' => 0, 'to' => 0, 'color' => '#00A100', 'name' => __('Low')],
+                                    ['from' => 1, 'to' => 2, 'color' => '#128FD9', 'name' => __('Normal')],
+                                    ['from' => 3, 'to' => 45, 'color' => '#990000', 'name' => __('High')]
+                                ]
+                            ]
+                        ]
+                    ],
                     'chart' => [
                         'toolbar' => [
                             'show' => false
@@ -53,7 +72,17 @@ class DashboardController extends Controller
                     ],
                     'colors' => ['#008FFB'],
                     'xaxis' => [
-                        'type' => 'category'
+                        'type' => 'category',
+                        // 'categories' => [
+                        //     "00:00",
+                        //     "00:30",
+                        //     "11:00",
+                        //     "11:30",
+                        //     "12:00",
+                        //     "12:30",
+                        //     "01:00",
+                        //     "01:30"
+                        // ]
                     ],
                     'title' => [
                         'text' => $environment->name
@@ -64,15 +93,32 @@ class DashboardController extends Controller
         });
     }
 
-    protected function generateData($count, $min, $max)
+
+    /**
+     * Generate heatmap serie
+     *
+     * @param Location $location
+     * @return array
+     */
+    protected function getSerie(Location $location)
     {
-        $series = [];
-        for($i = 0; $i < $count; $i++) {
-            $x = (string)$i;
-            $y = floor((mt_rand() / (mt_getrandmax() + 1)) * ($max - $min + 1)) + $min;
-            array_push($series, compact('x', 'y'));
+        $data = [];
+
+        for ($i = 0; $i < 24; $i++) {
+            $data[$i] = 0;
         }
 
-        return $series;
+        $query = $location->bookings();
+        $query->selectRaw("strftime('%H', started_at) as x");
+        $query->selectRaw("count('id') as y");
+        $query->whereBetween('started_at', [Carbon::today()->startOfDay(), Carbon::today()->endOfDay()]);
+        $query->groupBy('hour');
+
+        // THIS IS VERY UGLY fin better solution
+        $query->pluck('y', 'x')->each(function($e, $k) use (&$data, $location) {
+            $data[(int)$k] = (int)$e;
+        });
+
+        return $data;
     }
 }

@@ -63,34 +63,21 @@ npm run watch
 ## TODO
 
 ### PHASE 1
-- populate factories and use proper seeder
-- notify event for booking created, update, deleted, applied
-- job heartbeat to notify events each minutes
+- reminder notification for booking
 - add dashboard with bookings organized by provider
 - autorefresh both locations and booking index with setTimeout
+- add possibility to temporarely disable reserveration/booking of locations
 
 ### PHASE 2
-- create a preview of nginx configuration
 - add videoslots style
 - create time calendar select component (hard)
-- add dashboard with queue provider lists calendar version
-- install opensource implementation of pusher/broadcast
-- autorefresh both locations and booking index through websockets
-- add socialiate to proper register players through office365
-
-
-- add possibility to temporarely disable reserveration/booking of locations
-- decrease or hide the number of booking per hour in dashboard
-- improve the guzzle/curl/resolve time
-- improve panic button to properly release game providers for emergency
-- ask to have a slack hook for notifications
-- job heartbeat to notify events each minutes / notify event for booking created, update, deleted, applied
-- autorefresh both locations and booking index through websockets (install opensource implementation of pusher/broadcast)
-- improve booking date/time selection with suggested next time slots
-- add videoslots style
 - improve dashboard allowing bookings by provider on the heat map
+- install opensource implementation of pusher/broadcast
+- autorefresh both locations and booking index through websockets (install opensource implementation of pusher/broadcast)
 - add socialiate to proper register players through office365
-- plan a browser plugin to interface with frame (new project)
+- decrease or hide the number of booking per hour in dashboard
+- improve panic button to properly release game providers for emergency
+- improve booking date/time selection with suggested next time slots
 
 KNOWN BUGS
 - there is a foreign constrain error while deleting environment;

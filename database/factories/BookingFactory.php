@@ -29,19 +29,21 @@ class BookingFactory extends Factory
             'user_id' => fn (array $attributes) => User::factory()->create(),
             'performed_by' => fn (array $attributes) => $attributes['user_id'],
             'started_at' => function (array $attributes) {
+                $now = Carbon::now();
+
                 $booking = Booking::select('ended_at')
-                    ->where('ended_at', '=>', Carbon::now())
+                    ->where('ended_at', '>=', $now)
                     ->where('location_id', $attributes['location_id'])
                     ->orderBy('ended_at', 'desc')
                     ->first();
 
                 if (!$booking) {
-                    return Carbon::now();
+                    return $now;
                 }
 
                 return $booking->ended_at->addSecond();
             },
-            'ended_at' => fn (array $attributes) => Carbon::parse($attributes['started_at'])->addMinutes(15),
+            'ended_at' => fn (array $attributes) => Carbon::parse($attributes['started_at'])->addMinutes($this->faker->numberBetween(15, 60)),
         ];
     }
 }
