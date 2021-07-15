@@ -64,21 +64,21 @@ npm run watch
 
 ### PHASE 1
 - reminder notification for booking
-- add dashboard with bookings organized by provider
+- add dashboard with bookings organized by provider and heatmap
+- allowing bookings by provider on the heat map
 - autorefresh both locations and booking index with setTimeout
 - add possibility to temporarely disable reserveration/booking of locations
 
 ### PHASE 2
 - add videoslots style
 - create time calendar select component (hard)
-- improve dashboard allowing bookings by provider on the heat map
 - install opensource implementation of pusher/broadcast
 - autorefresh both locations and booking index through websockets (install opensource implementation of pusher/broadcast)
 - add socialiate to proper register players through office365
-- decrease or hide the number of booking per hour in dashboard
 - improve panic button to properly release game providers for emergency
 - improve booking date/time selection with suggested next time slots
 
 KNOWN BUGS
-- there is a foreign constrain error while deleting environment;
 - route.php is hardcoding frame.videoslots.com add an entry on ENV
+- fix issue with provider sending parameters not as query string but as url segments
+- there is a foreign constrain error while deleting environment;

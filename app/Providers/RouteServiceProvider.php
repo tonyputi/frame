@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Location;
 use App\Services\ReverseProxy\ReverseProxyController;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -42,6 +43,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
+            $this->configureEnviroments();
+
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)
@@ -50,10 +53,23 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
-
-
-            $this->configureEnviroments();
         });
+
+        // Route::bind('location', function ($value) {
+        //     $domain = $this->app->request->getHost();
+        //
+        //     // $environment = Environment::with('proxableLocations')
+        //     //     ->where('domain', $domain)
+        //     //     ->whereHas('proxableLocations', fn ($query) => $query->where('match', $value))
+        //     //     ->firstOrFail();
+        //     //
+        //     // return $environment->proxableLocations->first();
+        //
+        //     // TODO: WE ARE NOT TAKING THE PROXABLE ONLY
+        //     return Location::where('match', $value)
+        //         ->whereHas('environment', fn ($query) => $query->where('domain', $domain))
+        //         ->firstOrFail();
+        // });
     }
 
     /**

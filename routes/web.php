@@ -1,13 +1,10 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\LocationController;
-use App\Http\Controllers\ReverseProxyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +17,14 @@ use App\Http\Controllers\ReverseProxyController;
 |
 */
 
-// Route::group(['domain' => 'local-frame.videoslots.com'], function() {
-    Route::get('/', function () {
-        return Inertia::render('Welcome', [
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'laravelVersion' => Application::VERSION,
-            'phpVersion' => PHP_VERSION,
-        ]);
-    });
+// FIND A WAY TO PUT THIS MANNER TO ROUTE SERVICE PROVIDER
+// Route::group(['prefix' => 'proxy'], function () {
+//     Route::any('{location}', ReverseProxyController::class)->where('location', '.*');
+// });
 
+Route::group(['domain' => 'frame.videoslots.com'], function() {
     Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+        Route::get('/', DashboardController::class)->name('dashboard');
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
         Route::resource('environments', EnvironmentController::class);
         Route::post('environments/duplicate', [EnvironmentController::class, 'duplicate'])->name('environments.duplicate');
@@ -42,9 +36,4 @@ use App\Http\Controllers\ReverseProxyController;
         Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
         Route::put('bookings/{booking}/release', [BookingController::class, 'release'])->name('bookings.release');
     });
-// });
-
-// FIND A WAY TO PUT THIS MANNER TO ROUTE SERVICE PROVIDER
-//Route::group(['prefix' => 'proxy'], function () {
-//    Route::get('{location:match}', ReverseProxyController::class)->where('location', '.*');
-//});
+});

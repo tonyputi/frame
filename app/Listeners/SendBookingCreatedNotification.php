@@ -30,6 +30,6 @@ class SendBookingCreatedNotification
     public function handle(BookingCreated $event)
     {
         $users = User::where('id', '<>', $event->booking->user_id)->get();
-        Notification::send($users, new BookingCreatedNotification($event->booking));
+        // Notification::send($users, new BookingCreatedNotification($event->booking));
     }
 }

@@ -18,7 +18,8 @@ class EnvironmentSeeder extends Seeder
             'name' => gethostname(),
             'domain' => gethostname() . '.videoslots.com',
             'middleware' => 'proxy',
-            'prefix' => null
+            'prefix' => null,
+            'default_redirect_to' => 'filippo.videoslots.com'
         ]);
     }
 }
