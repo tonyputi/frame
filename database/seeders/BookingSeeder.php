@@ -18,12 +18,6 @@ class BookingSeeder extends Seeder
      */
     public function run()
     {
-        // $intervals = CarbonInterval::minutes(5)->toPeriod(0, 23);
-        // $period = CarbonPeriod::create('today', '1 hour', 'tomorrow');
-        // foreach($period as $key => $span) {
-        //    dump($key, $span->format('H:i:s'));
-        // }
-
         // 1. take users in random order
         // 2. for each user:
         //    1. take one environment in random order
@@ -33,42 +27,10 @@ class BookingSeeder extends Seeder
         for($i = 0; $i < 24; $i++) {
             $user = User::inRandomOrder()->firstOrFail();
 
-            $booking = Booking::create([
-                'location_id' => Location::firstOrFail()->id,
+            Booking::factory()->create([
+                'location_id' => Location::inRandomOrder()->firstOrFail()->id,
                 'performed_by' => $user->id,
-                'user_id' => $user->id,
-                'started_at' => Carbon::now()->startOfMinute(),
-                'ended_at' => Carbon::now()->endOfHour(),
-            ]);
-
-            $user = User::inRandomOrder()->firstOrFail();
-
-            $booking = Booking::create([
-                'location_id' => Location::firstOrFail()->id,
-                'performed_by' => $user->id,
-                'user_id' => $user->id,
-                'started_at' => Carbon::parse($booking->ended_at)->addSecond(),
-                'ended_at' => Carbon::parse($booking->ended_at)->addMinutes(15),
-            ]);
-
-            $user = User::inRandomOrder()->firstOrFail();
-
-            $booking = Booking::create([
-                'location_id' => Location::firstOrFail()->id,
-                'performed_by' => $user->id,
-                'user_id' => $user->id,
-                'started_at' => Carbon::parse($booking->ended_at)->addSecond(),
-                'ended_at' => Carbon::parse($booking->ended_at)->addMinutes(30),
-            ]);
-
-            $user = User::inRandomOrder()->firstOrFail();
-
-            $booking = Booking::create([
-                'location_id' => Location::firstOrFail()->id,
-                'performed_by' => $user->id,
-                'user_id' => $user->id,
-                'started_at' => Carbon::parse($booking->ended_at)->addSecond()->addHour(),
-                'ended_at' => Carbon::parse($booking->ended_at)->addHour()->addMinutes(30),
+                'user_id' => $user->id
             ]);
         }
     }
