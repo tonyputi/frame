@@ -135,10 +135,15 @@ export default {
 
     data() {
         return {
+            scheduler: null,
             resourceBeingDeleted: null,
             resourceBeingReleased: null,
             collectionSelected: []
         }
+    },
+
+    mounted() {
+        this.$nextTick(() => this.scheduler = setInterval(() => this.$inertia.reload(), 5000));
     },
 
     computed: {

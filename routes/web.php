@@ -22,18 +22,16 @@ use App\Http\Controllers\LocationController;
 //     Route::any('{location}', ReverseProxyController::class)->where('location', '.*');
 // });
 
-// Route::group(['domain' => 'frame.videoslots.com'], function() {
-    Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-        Route::get('/', DashboardController::class)->name('dashboard');
-        Route::get('/dashboard', DashboardController::class)->name('dashboard');
-        Route::resource('environments', EnvironmentController::class);
-        Route::post('environments/duplicate', [EnvironmentController::class, 'duplicate'])->name('environments.duplicate');
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+    Route::get('/', DashboardController::class)->name('dashboard');
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    Route::resource('environments', EnvironmentController::class);
+    Route::post('environments/duplicate', [EnvironmentController::class, 'duplicate'])->name('environments.duplicate');
 
-        Route::resource('environments.locations', LocationController::class)->shallow();
-        Route::resource('locations.bookings', BookingController::class)->shallow();
+    Route::resource('environments.locations', LocationController::class)->shallow();
+    Route::resource('locations.bookings', BookingController::class)->shallow();
 
-        Route::get('locations', [LocationController::class, 'index'])->name('locations.index');
-        Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
-        Route::put('bookings/{booking}/release', [BookingController::class, 'release'])->name('bookings.release');
-    });
-// });
+    Route::get('locations', [LocationController::class, 'index'])->name('locations.index');
+    Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
+    Route::put('bookings/{booking}/release', [BookingController::class, 'release'])->name('bookings.release');
+});
