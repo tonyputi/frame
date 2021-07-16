@@ -55,6 +55,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
 
+        // THIS IS THE RIGHT WAY TO DO IT
         // Route::bind('location', function ($value) {
         //     $domain = $this->app->request->getHost();
         //
@@ -87,6 +88,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function configureEnviroments()
     {
         try {
+            // ANOTHER WAY TO DO IT
             // Environment::routes()->each(function($route) {
             //     Route::namespace($this->namespace)
             //         ->domain($route->domain)
