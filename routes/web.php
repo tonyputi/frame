@@ -22,7 +22,7 @@ use App\Http\Controllers\LocationController;
 //     Route::any('{location}', ReverseProxyController::class)->where('location', '.*');
 // });
 
-Route::group(['domain' => 'frame.videoslots.com'], function() {
+// Route::group(['domain' => 'frame.videoslots.com'], function() {
     Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/', DashboardController::class)->name('dashboard');
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
@@ -36,4 +36,4 @@ Route::group(['domain' => 'frame.videoslots.com'], function() {
         Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
         Route::put('bookings/{booking}/release', [BookingController::class, 'release'])->name('bookings.release');
     });
-});
+// });

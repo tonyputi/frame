@@ -103,7 +103,8 @@ class RouteServiceProvider extends ServiceProvider
                     ->prefix($environment->prefix)
                     ->group(fn($router) =>
                         $environment->proxableLocations->each(fn($location) =>
-                            $router->any($location->match, ReverseProxyController::class)
+                            $router->any("{$location->match}/{params?}", ReverseProxyController::class)
+                                ->where('params', '.*')
                                 ->name(Str::slug($location->name))));
             });
         } catch(QueryException $e) {
