@@ -57,24 +57,19 @@ npm run watch
 
 ## Known issues
 
-- create booking from booking page is not working
+- there is a foreign constraint error while deleting environment;
+- create booking from bookings page is not working
 - improve pagination with ...
 
 ## TODO
-
-### PHASE 1
-- autorefresh both locations and booking index with setTimeout
-- allowing bookings by provider on the heat map
+- allowing bookings by provider on the heatmap
 - add possibility to temporarely disable reserveration/booking of locations
-
-### PHASE 2
-- add videoslots style
 - install opensource implementation of pusher/broadcast
 - autorefresh both locations and booking index through websockets (install opensource implementation of pusher/broadcast)
 - add socialiate to proper register players through office365
 - improve panic button to properly release game providers for emergency
 - improve booking date/time selection with suggested next time slots
 - create time calendar select component (hard)
+- add videoslots style
 
-KNOWN BUGS
-- there is a foreign constrain error while deleting environment;
+
