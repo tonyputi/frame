@@ -1,4 +1,3 @@
-![Frame Project](https://www.videoslots.com/diamondbet/images/logo.png)
 # Frame Project (Hackathon)
 
 ## Casino Provider and environment switcher
