@@ -25,17 +25,6 @@ class CreateEnvironmentsTable extends Migration
             $table->string('default_redirect_ip')->nullable();
             $table->string('is_bookable')->default(true);
             $table->timestamps();
-
-
-            // TODO: OPTIONS MAYBE CAN CONTAINS INFORMATIONS ABOUT DEFAULT REDIRECT
-            // $options = [
-            //     'default' => [
-            //         'redirect' => [
-            //             'to' => 'stage-it.videoslots.com',
-            //             'ip' => '192.168.88.22',
-            //         ]
-            //     ]
-            // ];
         });
     }
 

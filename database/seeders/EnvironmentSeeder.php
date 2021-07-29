@@ -16,10 +16,10 @@ class EnvironmentSeeder extends Seeder
     {
         Environment::factory()->create([
             'name' => gethostname(),
-            'domain' => gethostname() . '.videoslots.com',
+            'domain' => gethostname() . '.example.com',
             'middleware' => 'proxy',
             'prefix' => null,
-            'default_redirect_to' => 'filippo.videoslots.com'
+            'default_redirect_to' => 'filippo.example.com'
         ]);
     }
 }
